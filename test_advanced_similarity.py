@@ -130,42 +130,39 @@ def test_comprehensive_matching():
             kw2 = sum(1 for kw in keywords if kw in pattern_lower)
             kw_score = 1 - abs(kw1 - kw2) / max(kw1 + kw2, 1)
             
-            # Weighted combination
-            final_score = (seq_score * 0.30 + jaccard * 0.35 + lev_score * 0.25 + kw_score * 0.10)
+            # Algorithm 5: Token-based similarity (order-independent)
+            tokens1 = set(error_lower.replace('-', ' ').split())
+            tokens2 = set(pattern_lower.replace('-', ' ').split())
+            token_score = len(tokens1 & tokens2) / max(len(tokens1), len(tokens2)) if tokens1 or tokens2 else 0
             
-                # Algorithm 5: Token-based similarity (order-independent)
-                tokens1 = set(error_lower.replace('-', ' ').split())
-                tokens2 = set(pattern_lower.replace('-', ' ').split())
-                token_score = len(tokens1 & tokens2) / max(len(tokens1), len(tokens2)) if tokens1 or tokens2 else 0
+            # Algorithm 6: Semantic synonym matching
+            synonyms = {
+                'error': ['fail', 'problem', 'issue'],
+                'cannot': ['unable', 'can not', 'failed to'],
+                'missing': ['not found', 'absent', 'unavailable'],
+                'invalid': ['incorrect', 'wrong', 'bad'],
+                'parameter': ['param', 'argument', 'arg'],
+                'binding': ['bind', 'binding', 'assignment']
+            }
             
-                # Algorithm 6: Semantic synonym matching
-                synonyms = {
-                    'error': ['fail', 'problem', 'issue'],
-                    'cannot': ['unable', 'can not', 'failed to'],
-                    'missing': ['not found', 'absent', 'unavailable'],
-                    'invalid': ['incorrect', 'wrong', 'bad'],
-                    'parameter': ['param', 'argument', 'arg'],
-                    'binding': ['bind', 'binding', 'assignment']
-                }
+            def has_synonym_match(text1, text2):
+                for word, syns in synonyms.items():
+                    if (word in text1 or any(s in text1 for s in syns)) and \
+                       (word in text2 or any(s in text2 for s in syns)):
+                        return True
+                return False
             
-                def has_synonym_match(text1, text2):
-                    for word, syns in synonyms.items():
-                        if (word in text1 or any(s in text1 for s in syns)) and \
-                           (word in text2 or any(s in text2 for s in syns)):
-                            return True
-                    return False
+            semantic_score = 1.0 if has_synonym_match(error_lower, pattern_lower) else 0.0
             
-                semantic_score = 1.0 if has_synonym_match(error_lower, pattern_lower) else 0.0
-            
-                # Optimized weighted combination (6 algorithms)
-                final_score = (
-                    seq_score * 0.20 +      # Reduced: char-level less important
-                    jaccard * 0.25 +         # Important: word overlap
-                    lev_score * 0.15 +       # Moderate: edit distance
-                    kw_score * 0.10 +        # Moderate: keyword presence
-                    token_score * 0.20 +     # Important: order-independent tokens
-                    semantic_score * 0.10    # Bonus: synonym matching
-                )
+            # Optimized weighted combination (6 algorithms)
+            final_score = (
+                seq_score * 0.20 +      # Reduced: char-level less important
+                jaccard * 0.25 +         # Important: word overlap
+                lev_score * 0.15 +       # Moderate: edit distance
+                kw_score * 0.10 +        # Moderate: keyword presence
+                token_score * 0.20 +     # Important: order-independent tokens
+                semantic_score * 0.10    # Bonus: synonym matching
+            )
 
             if final_score > best_score:
                 best_score = final_score
