@@ -353,58 +353,149 @@ class ControlPanel(tk.Tk):
         self.chat_output.see(tk.END)
 
     def process_chat_command(self, text: str) -> str:
-        \"\"\"
-        Advanced NLU for chat commands - understands natural language and fuzzy intent matching.
+        """
+        FULL COPILOT MODE - Direct execution, no copy-paste!
         Supports:
-        - Security: start/stop security, defender scan, show threats
+        - Web: search, learn from youtube/github, navigate
+        - Code: generate scripts, analyze patterns
+        - Security: start/stop, scan, threats
         - System: status, cpu, memory
-        - Cleanup: clean temp, clean browser, clean all
-        - Logs: show logs (agent/security/task)
-        - Domain: add/remove whitelist, unsafe mode
-        - File: format python, open vscode
-        \"\"\"
+        - AI Learning: adaptive rate control
+        """
         txt = text.lower().strip()
         parts = text.split()
         
-        # Intent detection with fuzzy matching
-        # Security commands
-        if any(kw in txt for kw in ['güvenlik başlat', 'security start', 'start security', 'güvenliği aç', 'güvenlik aç']):
+        # === AI WEB LEARNING (DIRECT) ===
+        if any(kw in txt for kw in ['ara', 'search', 'google']):
+            query = text
+            for kw in ['ara', 'search', 'google', 'google\'da']:
+                query = query.replace(kw, '').strip()
+            
+            if not query:
+                return "Ne aramak istersin? Örnek: 'python machine learning ara'"
+            
+            if not WEB_NAV_AVAILABLE:
+                return "Web Navigator modülü yüklü değil. pip install selenium"
+            
+            try:
+                if not self.web_nav:
+                    self.web_nav = WebNavigator(headless=False)
+                result = self.web_nav.search_google(query)
+                results_text = "\n".join([f"{i+1}. {r}" for i, r in enumerate(result.get('top_results', [])[:5])])
+                return f"Google araması tamamlandı: '{query}'\n\nİlk 5 sonuç:\n{results_text}\n\nScreenshot kaydedildi."
+            except Exception as e:
+                return f"Arama hatası: {e}"
+        
+        # YouTube learning
+        if 'youtube' in txt and ('öğren' in txt or 'izle' in txt or 'learn' in txt):
+            url = next((p for p in parts if 'youtube.com' in p or 'youtu.be' in p), None)
+            if not url:
+                return "YouTube URL ver. Örnek: 'youtube.com/watch?v=xyz öğren'"
+            
+            if not WEB_NAV_AVAILABLE:
+                return "Web Navigator modülü yüklü değil."
+            
+            try:
+                if not self.web_nav:
+                    self.web_nav = WebNavigator(headless=False)
+                result = self.web_nav.learn_from_youtube(url, duration_sec=30)
+                return f"YouTube öğrenme tamamlandı!\nVideo: {result.get('title', 'N/A')}\nScreenshot: {result.get('screenshots', 0)} adet\nSüre: {result.get('duration')}s"
+            except Exception as e:
+                return f"YouTube öğrenme hatası: {e}"
+        
+        # GitHub repo learning
+        if 'github.com' in txt and ('öğren' in txt or 'analiz' in txt or 'learn' in txt):
+            url = next((p for p in parts if 'github.com' in p), None)
+            if not url:
+                return "GitHub repo URL ver. Örnek: 'github.com/user/repo öğren'"
+            
+            if not WEB_NAV_AVAILABLE:
+                return "Web Navigator modülü yüklü değil."
+            
+            try:
+                if not self.web_nav:
+                    self.web_nav = WebNavigator(headless=False)
+                result = self.web_nav.learn_from_code_repo(url)
+                return f"GitHub repo analizi tamamlandı!\nRepo: {result.get('repo_name', 'N/A')}\nKod dosyaları: {result.get('code_files', 0)} adet"
+            except Exception as e:
+                return f"GitHub öğrenme hatası: {e}"
+        
+        # === AI CODE GENERATION (DIRECT) ===
+        if any(kw in txt for kw in ['kod yaz', 'code generate', 'script yaz', 'program yaz']):
+            script_name = None
+            for part in parts:
+                if part not in ['kod', 'yaz', 'code', 'generate', 'script', 'program']:
+                    script_name = part
+                    break
+            
+            if not script_name:
+                return "Hangi script'i yazayım? Örnek: 'kod yaz calculator'"
+            
+            if not CODE_GEN_AVAILABLE:
+                return "Code Generator modülü yüklü değil."
+            
+            try:
+                if not self.code_gen:
+                    self.code_gen = CodeGenerator()
+                script_path = self.code_gen.generate_script(script_name, template_type="class")
+                test_result = self.code_gen.test_generated_code(script_path)
+                
+                if test_result.get('returncode') == 0:
+                    return f"✅ Kod yazıldı ve test edildi!\nDosya: {script_path.name}\nTest: BAŞARILI\nKonum: {script_path}"
+                else:
+                    return f"⚠️ Kod yazıldı ama test hatası:\nDosya: {script_path.name}\nHata: {test_result.get('stderr', 'N/A')[:200]}"
+            except Exception as e:
+                return f"Kod yazma hatası: {e}"
+        
+        # Workspace learning
+        if any(kw in txt for kw in ['workspace öğren', 'projeyi öğren', 'tüm kodları öğren']):
+            if not CODE_GEN_AVAILABLE:
+                return "Code Generator modülü yüklü değil."
+            
+            try:
+                if not self.code_gen:
+                    self.code_gen = CodeGenerator()
+                count = self.code_gen.learn_from_workspace()
+                funcs = len(self.code_gen.patterns.get('function_templates', []))
+                classes = len(self.code_gen.patterns.get('class_templates', []))
+                return f"📚 Workspace öğrenimi tamamlandı!\nAnaliz edilen dosya: {count}\nÖğrenilen function: {funcs}\nÖğrenilen class: {classes}"
+            except Exception as e:
+                return f"Öğrenme hatası: {e}"
+        
+        # === SECURITY COMMANDS ===
+        if any(kw in txt for kw in ['güvenlik başlat', 'security start', 'start security']):
             self.start_security()
-            return \"Güvenlik ajanı başlatıldı.\"
+            return "🛡️ Güvenlik ajanı başlatıldı."
         
-        if any(kw in txt for kw in ['güvenlik durdur', 'security stop', 'stop security', 'güvenliği kapat']):
+        if any(kw in txt for kw in ['güvenlik durdur', 'security stop', 'stop security']):
             self.stop_security()
-            return \"Güvenlik ajanı durduruldu.\"
+            return "🛡️ Güvenlik ajanı durduruldu."
         
-        if any(kw in txt for kw in ['defender tara', 'defender scan', 'virüs tara', 'scan', 'tarama yap']):
+        if any(kw in txt for kw in ['defender tara', 'virüs tara', 'scan']):
             try:
                 subprocess.Popen(['powershell', '-Command', 'Start-MpScan -ScanType QuickScan'])
-                return \"Windows Defender taraması başlatıldı.\"
+                return "🔍 Windows Defender taraması başlatıldı."
             except Exception as e:
-                return f\"Defender tarama hatası: {e}\"
+                return f"Tarama hatası: {e}"
         
-        if any(kw in txt for kw in ['tehdit', 'threat', 'virüs listesi', 'zarar']):
-            sec_log = LOG_DIR / 'security.log'
-            if sec_log.exists():
-                try:
-                    lines = sec_log.read_text(encoding='utf-8').splitlines()[-20:]
-                    threats = [l for l in lines if 'threat' in l.lower() or 'suspicious' in l.lower()]
-                    if threats:
-                        return \"Son tehditler:\\n\" + \"\\n\".join(threats[-5:])
-                    return \"Tehdit kaydı bulunamadı.\"
-                except Exception:
-                    pass
-            return \"Güvenlik logu bulunamadı.\"
-        
-        # System status
-        if any(kw in txt for kw in ['sistem durumu', 'system status', 'durum', 'status', 'bilgi ver']):
+        # === SYSTEM STATUS ===
+        if any(kw in txt for kw in ['sistem durumu', 'system status', 'durum', 'status']):
             info = []
             if psutil:
-                info.append(f\"CPU: {psutil.cpu_percent(interval=0.5):.1f}%\")
+                info.append(f"CPU: {psutil.cpu_percent(interval=0.5):.1f}%")
                 mem = psutil.virtual_memory()
-                info.append(f\"RAM: {mem.percent:.1f}% ({mem.used // (1024**3)}GB / {mem.total // (1024**3)}GB)\")
-                info.append(f\"Süreçler: {len(list(psutil.process_iter()))}\")
-            return \"Sistem:\\n\" + \"\\n\".join(info) if info else \"psutil yok\"
+                info.append(f"RAM: {mem.percent:.1f}% ({mem.used // (1024**3)}GB / {mem.total // (1024**3)}GB)")
+                info.append(f"Süreçler: {len(list(psutil.process_iter()))}")
+            
+            # Add AI skills if available
+            if LEARNING_AVAILABLE and self.learner:
+                skills = self.learner.get_skill_levels()
+                info.append(f"\n🧠 AI Becerileri:")
+                info.append(f"  Kod yazma: {skills.get('coding', 0):.1f}/100")
+                info.append(f"  Web gezinme: {skills.get('web_navigation', 0):.1f}/100")
+                info.append(f"  Oyun geliştirme: {skills.get('game_development', 0):.1f}/100")
+            
+            return "📊 Sistem Durumu:\n" + "\n".join(info) if info else "psutil yük"
         
         # Cleanup commands
         if any(kw in txt for kw in ['temizlik yap', 'cleanup', 'clean', 'temizle', 'dosya sil']):
