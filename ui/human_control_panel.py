@@ -576,12 +576,12 @@ class ControlPanel(tk.Tk):
         if any(kw in txt for kw in ['temizlik yap', 'cleanup', 'clean', 'temizle', 'dosya sil']):
             try:
                 # Trigger cleanup via security agent or direct
-                return \"Temizlik başlatıldı (temp klasörleri, 7 gün+). Detaylar security.log'da.\"
+                return "Temizlik başlatıldı (temp klasörleri, 7 gün+). Detaylar security.log'da."
             except Exception as e:
-                return f\"Temizlik hatası: {e}\"
+                return f"Temizlik hatası: {e}"
         
         if any(kw in txt for kw in ['tarayıcı', 'browser cache', 'cache temizle']):
-            return \"Tarayıcı cache temizliği için security_config.json'da 'browser_cache_cleanup': true yapın.\"
+            return "Tarayıcı cache temizliği için security_config.json'da 'browser_cache_cleanup': true yapın."
         
         # Logs
         if any(kw in txt for kw in ['log göster', 'show log', 'log aç', 'loglara bak', 'günlük']):
