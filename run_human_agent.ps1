@@ -1,3 +1,6 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 # Runs the Human Interface Agent with BelowNormal priority and minimal CPU pressure
 [CmdletBinding()]
 param(
