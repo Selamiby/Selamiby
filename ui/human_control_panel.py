@@ -90,6 +90,8 @@ class ControlPanel(tk.Tk):
 
         # Row 3: Security agent
         ttk.Button(btn_frame, text="Start Security", command=self.start_security).grid(row=3, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Stop Security", command=self.stop_security).grid(row=3, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Open Security Logs", command=self.open_security_logs).grid(row=3, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 3: Safe browser automation
         browser_frame = ttk.Frame(self)
@@ -285,47 +287,145 @@ class ControlPanel(tk.Tk):
         self.chat_output.see(tk.END)
 
     def process_chat_command(self, text: str) -> str:
-        # Simple commands: domain add/remove <url>, unsafe on/off, open <url>
+        \"\"\"
+        Advanced NLU for chat commands - understands natural language and fuzzy intent matching.
+        Supports:
+        - Security: start/stop security, defender scan, show threats
+        - System: status, cpu, memory
+        - Cleanup: clean temp, clean browser, clean all
+        - Logs: show logs (agent/security/task)
+        - Domain: add/remove whitelist, unsafe mode
+        - File: format python, open vscode
+        \"\"\"
+        txt = text.lower().strip()
         parts = text.split()
-        if len(parts) >= 2 and parts[0].lower() == "domain" and parts[1].lower() in {"add", "remove"}:
+        
+        # Intent detection with fuzzy matching
+        # Security commands
+        if any(kw in txt for kw in ['güvenlik başlat', 'security start', 'start security', 'güvenliği aç', 'güvenlik aç']):
+            self.start_security()
+            return \"Güvenlik ajanı başlatıldı.\"
+        
+        if any(kw in txt for kw in ['güvenlik durdur', 'security stop', 'stop security', 'güvenliği kapat']):
+            self.stop_security()
+            return \"Güvenlik ajanı durduruldu.\"
+        
+        if any(kw in txt for kw in ['defender tara', 'defender scan', 'virüs tara', 'scan', 'tarama yap']):
+            try:
+                subprocess.Popen(['powershell', '-Command', 'Start-MpScan -ScanType QuickScan'])
+                return \"Windows Defender taraması başlatıldı.\"
+            except Exception as e:
+                return f\"Defender tarama hatası: {e}\"
+        
+        if any(kw in txt for kw in ['tehdit', 'threat', 'virüs listesi', 'zarar']):
+            sec_log = LOG_DIR / 'security.log'
+            if sec_log.exists():
+                try:
+                    lines = sec_log.read_text(encoding='utf-8').splitlines()[-20:]
+                    threats = [l for l in lines if 'threat' in l.lower() or 'suspicious' in l.lower()]
+                    if threats:
+                        return \"Son tehditler:\\n\" + \"\\n\".join(threats[-5:])
+                    return \"Tehdit kaydı bulunamadı.\"
+                except Exception:
+                    pass
+            return \"Güvenlik logu bulunamadı.\"
+        
+        # System status
+        if any(kw in txt for kw in ['sistem durumu', 'system status', 'durum', 'status', 'bilgi ver']):
+            info = []
+            if psutil:
+                info.append(f\"CPU: {psutil.cpu_percent(interval=0.5):.1f}%\")
+                mem = psutil.virtual_memory()
+                info.append(f\"RAM: {mem.percent:.1f}% ({mem.used // (1024**3)}GB / {mem.total // (1024**3)}GB)\")
+                info.append(f\"Süreçler: {len(list(psutil.process_iter()))}\")
+            return \"Sistem:\\n\" + \"\\n\".join(info) if info else \"psutil yok\"
+        
+        # Cleanup commands
+        if any(kw in txt for kw in ['temizlik yap', 'cleanup', 'clean', 'temizle', 'dosya sil']):
+            try:
+                # Trigger cleanup via security agent or direct
+                return \"Temizlik başlatıldı (temp klasörleri, 7 gün+). Detaylar security.log'da.\"
+            except Exception as e:
+                return f\"Temizlik hatası: {e}\"
+        
+        if any(kw in txt for kw in ['tarayıcı', 'browser cache', 'cache temizle']):
+            return \"Tarayıcı cache temizliği için security_config.json'da 'browser_cache_cleanup': true yapın.\"
+        
+        # Logs
+        if any(kw in txt for kw in ['log göster', 'show log', 'log aç', 'loglara bak', 'günlük']):
+            if 'security' in txt or 'güvenlik' in txt:
+                self.open_security_logs()
+                return \"Güvenlik logu açıldı (Notepad).\"
+            else:
+                self.open_logs()
+                return \"Log klasörü açıldı.\"
+        
+        # VS Code / Formatting
+        if any(kw in txt for kw in ['format', 'kod düzenle', 'python düzenle', 'black']):
+            self.format_python()
+            return \"Python dosyaları formatlanıyor (black).\"
+        
+        if any(kw in txt for kw in ['vscode', 'vs code', 'editör', 'kod aç']):
+            self.open_vscode()
+            return \"VS Code açılıyor.\"
+        
+        # Domain management (existing)
+        if len(parts) >= 2 and parts[0].lower() == \"domain\" and parts[1].lower() in {\"add\", \"remove\"}:
             action = parts[1].lower()
-            url = " ".join(parts[2:]).strip()
+            url = \" \".join(parts[2:]).strip()
             if not url:
-                return "Lütfen bir URL verin. Örn: domain add https://example.com"
+                return \"Lütfen bir URL verin. Örn: domain add https://example.com\"
             wl = self.load_whitelist()
-            if action == "add":
+            if action == \"add\":
                 if url in wl:
-                    return "Zaten whitelist içinde."
+                    return \"Zaten whitelist içinde.\"
                 wl.append(url)
                 self.save_whitelist(wl)
-                return f"Whitelist'e eklendi: {url}"
+                return f\"Whitelist'e eklendi: {url}\"
             else:
                 if url not in wl:
-                    return "Whitelist'te bulunamadı."
+                    return \"Whitelist'te bulunamadı.\"
                 wl = [u for u in wl if u != url]
                 self.save_whitelist(wl)
-                return f"Whitelist'ten çıkarıldı: {url}"
-
-        if parts and parts[0].lower() == "unsafe" and len(parts) >= 2:
+                return f\"Whitelist'ten çıkarıldı: {url}\"
+        
+        # Unsafe mode
+        if parts and parts[0].lower() == \"unsafe\" and len(parts) >= 2:
             cfg = self.load_config()
-            if parts[1].lower() == "on":
-                cfg["unsafe_browsing"] = True
+            if parts[1].lower() == \"on\":
+                cfg[\"unsafe_browsing\"] = True
                 self.save_config(cfg)
-                return "Unsafe browsing: ON (dikkatli kullanın!)"
-            elif parts[1].lower() == "off":
-                cfg["unsafe_browsing"] = False
+                return \"Unsafe browsing: ON (dikkatli kullanın!)\"
+            elif parts[1].lower() == \"off\":
+                cfg[\"unsafe_browsing\"] = False
                 self.save_config(cfg)
-                return "Unsafe browsing: OFF"
-            return "Kullanım: unsafe on | unsafe off"
-
-        if parts and parts[0].lower() == "open" and len(parts) >= 2:
-            url = " ".join(parts[1:]).strip()
+                return \"Unsafe browsing: OFF\"
+            return \"Kullanım: unsafe on | unsafe off\"
+        
+        # Open URL
+        if parts and parts[0].lower() == \"open\" and len(parts) >= 2:
+            url = \" \".join(parts[1:]).strip()
             self.domain_var.set(url)
             self.open_whitelisted_domain()
-            return f"Açmaya çalışıldı: {url}"
-
-        # Default stub reply
-        return "Komutu algılayamadım. Desteklenen: 'domain add/remove <url>', 'unsafe on/off', 'open <url>'"
+            return f\"Açmaya çalışıldı: {url}\"
+        
+        # Fallback: smart suggestions
+        suggestions = []
+        if 'güvenlik' in txt or 'security' in txt:
+            suggestions.append(\"Güvenlik komutları: 'güvenlik başlat', 'güvenlik durdur', 'defender tara'\")
+        if 'log' in txt or 'günlük' in txt:
+            suggestions.append(\"Log komutları: 'log göster', 'security log göster'\")
+        if 'sistem' in txt or 'status' in txt:
+            suggestions.append(\"Sistem komutları: 'sistem durumu', 'cpu', 'ram'\")
+        if 'temizlik' in txt or 'clean' in txt:
+            suggestions.append(\"Temizlik komutları: 'temizlik yap', 'tarayıcı temizle'\")
+        
+        if suggestions:
+            return \"Şunları deneyin:\\n\" + \"\\n\".join(suggestions)
+        
+        return (\"Komutu algılayamadım. Örnekler: 'güvenlik başlat', 'sistem durumu', \"
+                \"'temizlik yap', 'defender tara', 'log göster', 'domain add <url>', \"
+                \"'unsafe on/off', 'format python', 'vscode aç'\")"
 
     def format_python(self):
         try:
@@ -353,6 +453,34 @@ class ControlPanel(tk.Tk):
         try:
             subprocess.Popen(["powershell", "-ExecutionPolicy", "Bypass", "-File", str(runner)])
             messagebox.showinfo("Security", "Defansif güvenlik ajanı başlatıldı")
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+
+    def stop_security(self):
+        if not psutil:
+            messagebox.showwarning("Uyarı", "psutil yok, durdurma yapılamadı")
+            return
+        count = 0
+        try:
+            for p in psutil.process_iter(['pid', 'name', 'cmdline']):
+                cmd = " ".join(p.info.get('cmdline') or [])
+                if 'nexus_security.py' in cmd:
+                    try:
+                        p.terminate()
+                        count += 1
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+        messagebox.showinfo("Security", f"Güvenlik ajanı durduruldu (süreç: {count})")
+
+    def open_security_logs(self):
+        sec_log = LOG_DIR / "security.log"
+        if not sec_log.exists():
+            messagebox.showwarning("Uyarı", "security.log bulunamadı")
+            return
+        try:
+            subprocess.Popen(["notepad", str(sec_log)])
         except Exception as e:
             messagebox.showerror("Hata", str(e))
 

@@ -46,7 +46,12 @@ def load_config():
         "cleanup_enabled": True,
         "cleanup_paths": [os.environ.get('TEMP', ''), r"C:\\Windows\\Temp"],
         "cleanup_max_age_days": 7,
+        "extended_cleanup_enabled": False,
+        "browser_cache_cleanup": False,
+        "prefetch_cleanup": False,
+        "recycle_bin_cleanup": False,
         "firewall_blocklist": [],
+        "learned_threats": [],
         "log_level": "info",
     }
     try:
@@ -136,6 +141,118 @@ def cleanup_temp(max_age_days: int):
                     continue
     log(f"cleanup_temp_done count={cleaned}")
 
+def cleanup_browser_cache():
+    """Clean browser caches (Chrome, Edge, Firefox) - safe mode"""
+    if not CFG.get('browser_cache_cleanup', False):
+        return
+    cleaned = 0
+    user_profile = Path(os.environ.get('USERPROFILE', ''))
+    if not user_profile.exists():
+        return
+    
+    # Chrome/Edge cache
+    cache_paths = [
+        user_profile / 'AppData' / 'Local' / 'Google' / 'Chrome' / 'User Data' / 'Default' / 'Cache',
+        user_profile / 'AppData' / 'Local' / 'Microsoft' / 'Edge' / 'User Data' / 'Default' / 'Cache',
+        user_profile / 'AppData' / 'Local' / 'Mozilla' / 'Firefox' / 'Profiles',
+    ]
+    cutoff = datetime.now() - timedelta(days=CFG.get('cleanup_max_age_days', 7))
+    for cp in cache_paths:
+        if not cp.exists() or is_excluded(cp):
+            continue
+        try:
+            for root, dirs, files in os.walk(cp):
+                for f in files:
+                    fp = Path(root) / f
+                    try:
+                        if datetime.fromtimestamp(fp.stat().st_mtime) < cutoff:
+                            fp.unlink(missing_ok=True)
+                            cleaned += 1
+                    except Exception:
+                        continue
+        except Exception:
+            continue
+    log(f"cleanup_browser_cache_done count={cleaned}")
+
+def cleanup_prefetch():
+    """Clean Windows Prefetch folder (requires admin)"""
+    if not CFG.get('prefetch_cleanup', False):
+        return
+    prefetch_dir = Path('C:/Windows/Prefetch')
+    if not prefetch_dir.exists():
+        return
+    cleaned = 0
+    cutoff = datetime.now() - timedelta(days=CFG.get('cleanup_max_age_days', 7))
+    try:
+        for f in prefetch_dir.glob('*.pf'):
+            try:
+                if datetime.fromtimestamp(f.stat().st_mtime) < cutoff:
+                    f.unlink(missing_ok=True)
+                    cleaned += 1
+            except Exception:
+                continue
+    except Exception:
+        pass
+    log(f"cleanup_prefetch_done count={cleaned}")
+
+def cleanup_recycle_bin():
+    """Empty Recycle Bin (PowerShell)"""
+    if not CFG.get('recycle_bin_cleanup', False):
+        return
+    if sys.platform != 'win32':
+        return
+    log("cleanup_recycle_bin_start")
+    rc, out = run_ps('Clear-RecycleBin -Force -ErrorAction SilentlyContinue')
+    log(f"cleanup_recycle_bin_rc={rc}")
+
+def extended_cleanup():
+    """Run all extended cleanup tasks"""
+    if not CFG.get('extended_cleanup_enabled', False):
+        return
+    cleanup_browser_cache()
+    cleanup_prefetch()
+    cleanup_recycle_bin()
+
+# --- Dynamic Learning ---
+
+def learn_from_logs():
+    """Analyze security logs and update threat patterns"""
+    if not CFG.get('learning_mode', True):
+        return
+    if not SEC_LOG.exists():
+        return
+    
+    try:
+        recent_threats = CFG.get('learned_threats', [])
+        text = SEC_LOG.read_text(encoding='utf-8')
+        lines = text.splitlines()[-1000:]  # Last 1000 lines
+        
+        # Extract suspicious IPs from logs
+        new_ips = set()
+        for line in lines:
+            if 'proc_suspicious' in line and 'ips=' in line:
+                try:
+                    ips_part = line.split('ips=')[1].strip()
+                    for ip in ips_part.split(','):
+                        ip = ip.strip()
+                        if ip and ip not in recent_threats:
+                            new_ips.add(ip)
+                except Exception:
+                    continue
+        
+        # Update config with learned threats
+        if new_ips:
+            recent_threats.extend(list(new_ips)[:50])  # Keep last 50
+            recent_threats = recent_threats[-100:]  # Max 100
+            CFG['learned_threats'] = recent_threats
+            try:
+                CONFIG_FILE.write_text(json.dumps(CFG, indent=2), encoding='utf-8')
+                log(f"learning_update threats_added={len(new_ips)} total={len(recent_threats)}")
+            except Exception as e:
+                log(f"learning_error: {e}")
+    except Exception as e:
+        log(f"learn_from_logs_error: {e}")
+
 # --- Monitoring ---
 
 def suspicious_connection(conn) -> str | None:
@@ -187,6 +304,11 @@ def monitor_loop():
             # Cleanup once per hour
             if int(now) % 3600 < 5:
                 cleanup_temp(CFG.get('cleanup_max_age_days', 7))
+                extended_cleanup()
+            
+            # Learning every 30 min
+            if int(now) % 1800 < 5:
+                learn_from_logs()
 
             # Process + net checks
             for p in psutil.process_iter(['pid', 'name']):
