@@ -1,0 +1,69 @@
+[2026-01-12 00:38:22] [INFO] === NEXUS-ONE Otomatik Hata Düzeltme Baþlýyor ===
+[2026-01-12 00:39:20] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\ISSUE_TEMPLATE\1.bug.yml: 'charmap' codec can't decode byte 0x90 in position 19: character maps to <undefined>
+[2026-01-12 00:39:20] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\ISSUE_TEMPLATE\2.feature.yml: 'charmap' codec can't decode byte 0x8f in position 374: character maps to <undefined>
+[2026-01-12 00:39:20] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\classic-autogpt-docker-ci.yml: 'charmap' codec can't decode byte 0x8f in position 2612: character maps to <undefined>
+[2026-01-12 00:39:22] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\claude-dependabot.yml: 'charmap' codec can't decode byte 0x8f in position 8605: character maps to <undefined>
+[2026-01-12 00:39:22] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\claude.yml: 'charmap' codec can't decode byte 0x8f in position 9463: character maps to <undefined>
+[2026-01-12 00:39:22] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\codeql.yml: 'charmap' codec can't decode byte 0x8f in position 3912: character maps to <undefined>
+[2026-01-12 00:39:23] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\copilot-setup-steps.yml: 'charmap' codec can't decode byte 0x8f in position 8939: character maps to <undefined>
+[2026-01-12 00:39:23] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\platform-dev-deploy-event-dispatcher.yml: 'charmap' codec can't decode byte 0x9d in position 2257: character maps to <undefined>
+[2026-01-12 00:39:23] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\platform-frontend-ci.yml: 'charmap' codec can't decode byte 0x9d in position 6319: character maps to <undefined>
+[2026-01-12 00:39:23] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\platform-fullstack-ci.yml: 'charmap' codec can't decode byte 0x9d in position 3599: character maps to <undefined>
+[2026-01-12 00:39:23] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\repo-pr-label.yml: 'charmap' codec can't decode byte 0x8e in position 1270: character maps to <undefined>
+[2026-01-12 00:39:23] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\.github\workflows\codeql.yml: 'charmap' codec can't decode byte 0x8f in position 4268: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\.github\workflows\type-checker.yml: 'charmap' codec can't decode byte 0x9d in position 3409: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\check_core_versions.yml: 'charmap' codec can't decode byte 0x8d in position 140: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\check_diffs.yml: 'charmap' codec can't decode byte 0x90 in position 1547: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\integration_tests.yml: 'charmap' codec can't decode byte 0x8f in position 226: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\pr_labeler_file.yml: 'charmap' codec can't decode byte 0x8f in position 123: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\pr_labeler_title.yml: 'charmap' codec can't decode byte 0x8f in position 202: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\pr_lint.yml: 'charmap' codec can't decode byte 0x90 in position 193: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\v03_api_doc_build.yml: 'charmap' codec can't decode byte 0x90 in position 2948: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\_compile_integration_test.yml: 'charmap' codec can't decode byte 0x90 in position 894: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\_lint.yml: 'charmap' codec can't decode byte 0x90 in position 1002: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\_test.yml: 'charmap' codec can't decode byte 0x90 in position 902: character maps to <undefined>
+[2026-01-12 00:39:24] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\_test_pydantic.yml: 'charmap' codec can't decode byte 0x90 in position 96: character maps to <undefined>
+[2026-01-12 00:39:27] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\nexus_web\frontend\node_modules\string.prototype.includes\.github\workflows\require-allow-edits.yml: 'charmap' codec can't decode byte 0x9d in position 30: character maps to <undefined>
+[2026-01-12 00:39:28] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\docs\enterprise-api.ko.yaml: 'charmap' codec can't decode byte 0x9d in position 49: character maps to <undefined>
+[2026-01-12 00:39:30] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\lib\crewai\tests\cassettes\test_crew_kickoff_usage_metrics.yaml: 'charmap' codec can't decode byte 0x90 in position 3677: character maps to <undefined>
+[2026-01-12 00:39:37] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\lib\crewai\tests\cassettes\test_long_term_memory_with_memory_flag.yaml: 'charmap' codec can't decode byte 0x9d in position 29955: character maps to <undefined>
+[2026-01-12 00:39:50] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: 'charmap' codec can't decode byte 0x90 in position 5118: character maps to <undefined>
+[2026-01-12 00:39:50] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: 'charmap' codec can't decode byte 0x9e in position 3251: character maps to <undefined>
+[2026-01-12 00:39:50] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\autonomous_sync.ps1: 'charmap' codec can't decode byte 0x9e in position 2201: character maps to <undefined>
+[2026-01-12 00:39:50] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1: 'charmap' codec can't decode byte 0x90 in position 517: character maps to <undefined>
+[2026-01-12 00:39:50] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\nexus_setup.ps1: 'charmap' codec can't decode byte 0x9e in position 1244: character maps to <undefined>
+[2026-01-12 00:39:50] [WARNING] YAML hatalarý bulundu: 2
+[2026-01-12 00:39:50] [SUCCESS] YAML düzeltildi: C:\Users\selam\NEXUS-ONE\.github\workflows\ci-cd.yml
+[2026-01-12 00:39:50] [SUCCESS] YAML düzeltildi: C:\Users\selam\NEXUS-ONE\.github\workflows\ci-cd.yml
+[2026-01-12 00:39:50] [SUCCESS] === 2 hata düzeltildi ===
+[2026-01-12 00:39:50] [INFO] === NEXUS-ONE Hata Raporu ===
+[2026-01-12 00:39:50] [INFO] Öðrenilmiþ YAML patterns: 2
+[2026-01-12 00:39:50] [INFO] Öðrenilmiþ PowerShell patterns: 0
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\ISSUE_TEMPLATE\1.bug.yml: 'charmap' codec can't decode byte 0x90 in position 19: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\ISSUE_TEMPLATE\2.feature.yml: 'charmap' codec can't decode byte 0x8f in position 374: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\classic-autogpt-docker-ci.yml: 'charmap' codec can't decode byte 0x8f in position 2612: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\claude-dependabot.yml: 'charmap' codec can't decode byte 0x8f in position 8605: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\claude.yml: 'charmap' codec can't decode byte 0x8f in position 9463: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\codeql.yml: 'charmap' codec can't decode byte 0x8f in position 3912: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\copilot-setup-steps.yml: 'charmap' codec can't decode byte 0x8f in position 8939: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\platform-dev-deploy-event-dispatcher.yml: 'charmap' codec can't decode byte 0x9d in position 2257: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\platform-frontend-ci.yml: 'charmap' codec can't decode byte 0x9d in position 6319: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\platform-fullstack-ci.yml: 'charmap' codec can't decode byte 0x9d in position 3599: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\AutoGPT\.github\workflows\repo-pr-label.yml: 'charmap' codec can't decode byte 0x8e in position 1270: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\.github\workflows\codeql.yml: 'charmap' codec can't decode byte 0x8f in position 4268: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\.github\workflows\type-checker.yml: 'charmap' codec can't decode byte 0x9d in position 3409: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\check_core_versions.yml: 'charmap' codec can't decode byte 0x8d in position 140: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\check_diffs.yml: 'charmap' codec can't decode byte 0x90 in position 1547: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\integration_tests.yml: 'charmap' codec can't decode byte 0x8f in position 226: character maps to <undefined>
+[2026-01-12 00:39:53] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\pr_labeler_file.yml: 'charmap' codec can't decode byte 0x8f in position 123: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\pr_labeler_title.yml: 'charmap' codec can't decode byte 0x8f in position 202: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\pr_lint.yml: 'charmap' codec can't decode byte 0x90 in position 193: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\v03_api_doc_build.yml: 'charmap' codec can't decode byte 0x90 in position 2948: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\_compile_integration_test.yml: 'charmap' codec can't decode byte 0x90 in position 894: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\_lint.yml: 'charmap' codec can't decode byte 0x90 in position 1002: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\_test.yml: 'charmap' codec can't decode byte 0x90 in position 902: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\github_repos\langchain\.github\workflows\_test_pydantic.yml: 'charmap' codec can't decode byte 0x90 in position 96: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\nexus_web\frontend\node_modules\string.prototype.includes\.github\workflows\require-allow-edits.yml: 'charmap' codec can't decode byte 0x9d in position 30: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\docs\enterprise-api.ko.yaml: 'charmap' codec can't decode byte 0x9d in position 49: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\lib\crewai\tests\cassettes\test_crew_kickoff_usage_metrics.yaml: 'charmap' codec can't decode byte 0x90 in position 3677: character maps to <undefined>
+[2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\lib\crewai\tests\cassettes\test_long_term_memory_with_memory_flag.yaml: 'charmap' codec can't decode byte 0x9d in position 29955: character maps to <undefined>

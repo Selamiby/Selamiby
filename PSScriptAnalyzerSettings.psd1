@@ -1,6 +1,6 @@
 @{
     # Use Severity when you want to limit messages from a scaling in terms of severity
-    Severity = 'Error'
+    Severity     = 'Error'
 
     # Use IncludeRules when you want to run only a subset of rules
     # IncludeRules = @('PSAvoidDefaultValueSwitchParameter', 'PSMissingModuleManifestField', 'PSReservedCmdletChar', 'PSReservedParams')
