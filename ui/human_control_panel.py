@@ -8,9 +8,9 @@ NEXUS-ONE Human Control Panel (Windows)
 """
 import os
 import subprocess
-import webbrowser
 import sys
 import time
+import webbrowser
 from pathlib import Path
 
 try:
