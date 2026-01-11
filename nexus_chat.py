@@ -9,6 +9,7 @@ from typing import Optional
 
 
 
+
 class ChatAssistant:
     """Hafif sohbet asistanı"""
 

@@ -14,6 +14,7 @@ from typing import Dict, List, Tuple
 
 
 
+
 class NEXUSAutoHealer:
     def __init__(self, workspace_root: str):
         self.workspace_root = Path(workspace_root)
@@ -257,6 +258,7 @@ class NEXUSAutoHealer:
             self.log(f"\n{error_type.upper()} Hataları:", "INFO")
             for file_path, error, _ in error_list:
                 self.log(f"  - {file_path}: {error}", "WARNING")
+
 
 
 

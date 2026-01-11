@@ -9,6 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 
+
 def generate_summary():
     report = f"""
 ================================================================================
@@ -58,19 +59,19 @@ Repository Status:
   - Git Commits: 23
   - Git Branches: 3
   - GitHub Remote: Selamiby/Selamiby
-  
+
 Code Statistics:
   - Python Files: 4,377
   - JavaScript Files: 14,935
   - TypeScript Files: 5,680
   - Config Files: 2,214
   - Total LOC (estimated): 250,000+
-  
+
 Code Quality:
   - High Complexity Files: 7
   - Unused Variables Found: ~12 per cycle
   - Potential Issues: 230 tracked
-  
+
 Deployment Readiness:
   - Git Repository: OK
   - GitHub Actions: OK
@@ -113,17 +114,17 @@ Core Automation:
   - nexus_advanced_features.py        [Monitoring & Analysis]
   - nexus_auto_healer.py              [Error Detection & Fixing]
   - nexus_learner.py                  [Knowledge Base]
-  
+
 Orchestration:
   - autonomous_production.ps1         [Main Autonomous System]
   - autonomous_sync.ps1               [Git Sync]
   - run_advanced_automation.ps1       [Feature Orchestrator]
-  
+
 Data & Logs:
   - data/API_DOCUMENTATION.md         [Auto-generated API docs]
   - data/healer_patterns.json         [Learned error patterns]
   - nexus_logs/autonomous.log         [Operation logs]
-  
+
 Documentation:
   - ADVANCED_FEATURES.md              [Feature Documentation]
   - NEXUS_LEARNING.md                 [Learning Dashboard]
@@ -153,7 +154,7 @@ EXECUTION FLOW
   3. Git Push (sync to GitHub)
   4. Auto Healer (error detection & fixing)
      - nexus_auto_healer.py runs
-  
+
 [Every 150 seconds (5 cycles)]
   5. Advanced Features Analysis
      - Real-time monitoring dashboard
@@ -196,7 +197,7 @@ SUPPORT & TROUBLESHOOTING
 Check Logs:
   - PowerShell: nexus_logs/autonomous.log
   - Python errors: Console output during execution
-  
+
 Monitor Status:
   - Watch: nexus_logs/autonomous.log (real-time)
   - Check: data/API_DOCUMENTATION.md (latest generated docs)
@@ -213,15 +214,15 @@ Restart System:
 
 ================================================================================
 """
-    
+
     print(report)
-    
+
     # Save report to file
     report_file = Path("data/AUTOMATION_SUMMARY.txt")
     report_file.parent.mkdir(parents=True, exist_ok=True)
     with open(report_file, 'w', encoding='utf-8', errors='replace') as f:
         f.write(report)
-    
+
     print(f"\nReport saved to: {report_file}")
 
 

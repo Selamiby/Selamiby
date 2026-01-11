@@ -1,13 +1,19 @@
 # NEXUS-ONE API Documentation
 
-**Generated**: 2026-01-12 00:53:54
+**Generated**: 2026-01-12 00:57:23
 
 ## Project Modules
 
 
+### generate_summary_report.py
+**Functions**: generate_summary
+
 ### nexus_advanced_automation.py
 **Classes**: bulma
 **Functions**: analyze_performance, format_code, generate_tests, scan_security, generate_docs
+
+### nexus_advanced_features.py
+**Functions**: feature_1_realtime_monitoring, feature_2_git_analysis, feature_3_code_formatter, feature_4_error_prediction, feature_5_deployment_readiness
 
 ### nexus_auto_healer.py
 **Classes**: NEXUSAutoHealer
