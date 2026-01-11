@@ -1,16 +1,4 @@
 {
-  "FUZZY_MATCH_UPGRADE.md": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "__pycache__/nexus_super_learner.cpython-311.pyc": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "__pycache__/test_similarity_v2.cpython-311-pytest-9.0.2.pyc": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
@@ -19,11 +7,27 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "nexus_logs/autonomous.log": {
+  "generate_summary_report.py": {
     "contributors": 1,
     "recent_changes": 5
   },
-  "nexus_super_learner.py": {
+  "nexus_advanced_automation.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "nexus_advanced_features.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "nexus_auto_healer.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "nexus_chat.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "nexus_logs/autonomous.log": {
     "contributors": 1,
     "recent_changes": 5
   }
