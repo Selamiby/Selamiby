@@ -549,3 +549,30 @@ POWERSHELL Hatalarý:
 [2026-01-12 01:22:22] [WARNING]   - C:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1: Variable '$Mode' assigned but never used
 [2026-01-12 01:22:22] [WARNING]   - C:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1: Variable '$authStatus' assigned but never used
 [2026-01-12 01:22:25] [SUCCESS] GitHub'a commit ve push yapýldý
+[2026-01-12 01:23:00] [INFO] === NEXUS-ONE Otomatik Hata Düzeltme Baþlýyor ===
+[2026-01-12 01:23:05] [WARNING] PowerShell hatalarý bulundu: 9
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1
+[2026-01-12 01:23:05] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1
+[2026-01-12 01:23:05] [SUCCESS] === 9 hata düzeltildi ===
+[2026-01-12 01:23:05] [INFO] === NEXUS-ONE Hata Raporu ===
+[2026-01-12 01:23:05] [INFO] Öðrenilmiþ YAML patterns: 4
+[2026-01-12 01:23:05] [INFO] Öðrenilmiþ PowerShell patterns: 160
+[2026-01-12 01:23:10] [INFO] Toplam hata: 9
+[2026-01-12 01:23:10] [INFO] 
+POWERSHELL Hatalarý:
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: Variable '$elapsedMs' assigned but never used
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: Variable '$pushJob' assigned but never used
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$EnableSmartCommit' assigned but never used
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$EnableParallelOps' assigned but never used
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$pushResult' assigned but never used
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$timestamp' assigned but never used
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1: Variable '$DashboardPort' assigned but never used
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1: Variable '$Mode' assigned but never used
+[2026-01-12 01:23:10] [WARNING]   - C:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1: Variable '$authStatus' assigned but never used
