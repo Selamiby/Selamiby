@@ -1,3 +1,6 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 # Creates a desktop shortcut to the NEXUS-ONE Control Panel
 $ErrorActionPreference = 'Stop'
 
@@ -11,7 +14,7 @@ $WScriptShell = New-Object -ComObject WScript.Shell
 $Shortcut = $WScriptShell.CreateShortcut($shortcutPath)
 $Shortcut.TargetPath = $target
 $Shortcut.Arguments = $arguments
-$Shortcut.WorkingDirectory = $PWD
+$Shortcut.WorkingDirectory = $PWD.Path
 if (Test-Path $icon) { $Shortcut.IconLocation = $icon }
 $Shortcut.Save()
 
