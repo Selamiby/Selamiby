@@ -1,0 +1,11 @@
+# API Anahtarları (Güvenli tutun!)
+# Bu dosya production'da environment variables'dan yüklenmelidir
+
+openai_api_key: "sk-xxxxxxxxxxxx"
+huggingface_token: "hf_xxxxxxxxxxxx"
+anthropic_api_key: "sk-ant-xxxxxxxxxxxx"
+
+# Geliştirme ortamı anahtarları
+development:
+  debug_token: "dev_debug_token"
+  test_api_key: "test_key_12345"

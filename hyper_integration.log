@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\selam\NEXUS-ONE\hyper_integration.py", line 415, in <module>
+    nexus = NexusHyperCore()
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\selam\NEXUS-ONE\hyper_integration.py", line 11, in __init__
+    self.setup_all()
+  File "C:\Users\selam\NEXUS-ONE\hyper_integration.py", line 15, in setup_all
+    print("\U0001f680 HYPER-ENTEGRASYON BAÞLATILIYOR...")
+  File "C:\Users\selam\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1254.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 0: character maps to <undefined>

@@ -1,0 +1,2 @@
+Bu bir test dosyasıdır.
+AetherOS File Manager tarafından oluşturuldu.

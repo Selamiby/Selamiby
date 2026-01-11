@@ -1,0 +1,21 @@
+flask
+flask-socketio
+flask-cors
+crewai
+langchain
+openai
+autogpt
+gpt-engineer
+unity-python-api
+godot-python
+diffusers
+transformers
+accelerate
+TTS
+coqui-ai
+web3
+eth-account
+paho-mqtt
+psutil
+# Linux/Raspberry Pi için opsiyonel
+# RPi.GPIO

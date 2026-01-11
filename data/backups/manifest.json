@@ -1,0 +1,10 @@
+{
+  "test_backup_001": {
+    "name": "test_backup_001",
+    "source": "test_backup_dir",
+    "type": "full",
+    "created": "2026-01-11T13:37:15.748119",
+    "path": "data\\backups\\test_backup_001",
+    "hash": "a8e6af4dab452a6314075f4fafe8a191"
+  }
+}

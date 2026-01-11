@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>🚀 NEXUS HYPER CONTROL PANEL</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+        }
+
+        .module {
+            background: #1a1a1a;
+            border: 2px solid #00ff00;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 300px;
+        }
+
+        .status-online {
+            color: #00ff00;
+        }
+
+        .status-offline {
+            color: #ff0000;
+        }
+
+        button {
+            background: #00ff00;
+            color: black;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🚀 NEXUS HYPER CONTROL PANEL</h1>
+
+    <div id="modules">
+        <!-- Modüller buraya dinamik eklenecek -->
+    </div>
+
+    <div class="module">
+        <h2>⚡ Hızlı Komutlar</h2>
+        <button onclick="runAutoGPT()">🤖 AutoGPT Çalıştır</button>
+        <button onclick="generateCode()">💻 Kod Üret</button>
+        <button onclick="createGame()">🎮 Oyun Oluştur</button>
+        <button onclick="generateImage()">🎨 Görsel Üret</button>
+    </div>
+
+    <script>
+        // Modül durumlarını çek
+        fetch('/api/status')
+            .then(r => r.json())
+            .then(data => {
+                let html = '';
+                data.modules.forEach(module => {
+                    html += `
+                        <div class="module">
+                            <h3>${module.toUpperCase()}</h3>
+                            <p class="status-online">✅ ONLINE</p>
+                            <button onclick="runModule('${module}')">
+                                Çalıştır
+                            </button>
+                        </div>
+                    `;
+                });
+                document.getElementById('modules').innerHTML = html;
+            });
+
+        function runModule(module) {
+            const task = prompt(`${module} için görev girin:`);
+            if (task) {
+                fetch(`/api/run/${module}/${encodeURIComponent(task)}`)
+                    .then(r => r.json())
+                    .then(data => alert('Sonuç: ' + JSON.stringify(data)));
+            }
+        }
+
+        function runAutoGPT() {
+            fetch('/api/run/autogpt/proje planı oluştur')
+                .then(r => r.json())
+                .then(data => alert('AutoGPT: ' + data.result));
+        }
+    </script>
+</body>
+
+</html>

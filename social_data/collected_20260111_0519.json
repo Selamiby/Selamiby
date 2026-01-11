@@ -1,0 +1,149 @@
+{
+  "youtube": [
+    {
+      "platform": "YouTube",
+      "baslik": "Yapay Zeka 2026: Geleceğin Teknolojileri",
+      "kategori": "Teknoloji",
+      "tahmini_izlenme": "1,000,000",
+      "zaman": "2026-01-11T05:19:45.566971"
+    },
+    {
+      "platform": "YouTube",
+      "baslik": "Python ile 1 Saatte AI Asistanı",
+      "kategori": "Teknoloji",
+      "tahmini_izlenme": "1,500,000",
+      "zaman": "2026-01-11T05:19:45.566971"
+    },
+    {
+      "platform": "YouTube",
+      "baslik": "ChatGPT-5: Devrim Niteliğinde Özellikler",
+      "kategori": "Teknoloji",
+      "tahmini_izlenme": "2,000,000",
+      "zaman": "2026-01-11T05:19:45.566971"
+    },
+    {
+      "platform": "YouTube",
+      "baslik": "Kendi Oyun Motorunuzu Yazın",
+      "kategori": "Teknoloji",
+      "tahmini_izlenme": "2,500,000",
+      "zaman": "2026-01-11T05:19:45.566971"
+    },
+    {
+      "platform": "YouTube",
+      "baslik": "Blockchain ve Web3 Temelleri",
+      "kategori": "Teknoloji",
+      "tahmini_izlenme": "3,000,000",
+      "zaman": "2026-01-11T05:19:45.566971"
+    }
+  ],
+  "github": [
+    {
+      "platform": "GitHub",
+      "isim": "public-apis",
+      "aciklama": "A collective list of free APIs",
+      "yildiz": 390506,
+      "dil": "Python",
+      "url": "https://github.com/public-apis/public-apis"
+    },
+    {
+      "platform": "GitHub",
+      "isim": "free-programming-books",
+      "aciklama": ":books: Freely available programming books",
+      "yildiz": 380259,
+      "dil": "Python",
+      "url": "https://github.com/EbookFoundation/free-programming-books"
+    },
+    {
+      "platform": "GitHub",
+      "isim": "system-design-primer",
+      "aciklama": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
+      "yildiz": 331868,
+      "dil": "Python",
+      "url": "https://github.com/donnemartin/system-design-primer"
+    },
+    {
+      "platform": "GitHub",
+      "isim": "awesome-python",
+      "aciklama": "An opinionated list of awesome Python frameworks, libraries, software and resources.",
+      "yildiz": 277659,
+      "dil": "Python",
+      "url": "https://github.com/vinta/awesome-python"
+    },
+    {
+      "platform": "GitHub",
+      "isim": "Python",
+      "aciklama": "All Algorithms implemented in Python",
+      "yildiz": 216722,
+      "dil": "Python",
+      "url": "https://github.com/TheAlgorithms/Python"
+    }
+  ],
+  "twitter": [
+    {
+      "platform": "Twitter/X",
+      "konu": "#AIRevolution2026",
+      "tweet_sayisi": "30,189",
+      "kategori": "Teknoloji"
+    },
+    {
+      "platform": "Twitter/X",
+      "konu": "#PythonDev",
+      "tweet_sayisi": "26,121",
+      "kategori": "Teknoloji"
+    },
+    {
+      "platform": "Twitter/X",
+      "konu": "#MachineLearning",
+      "tweet_sayisi": "43,103",
+      "kategori": "Teknoloji"
+    },
+    {
+      "platform": "Twitter/X",
+      "konu": "#Web3",
+      "tweet_sayisi": "37,000",
+      "kategori": "Teknoloji"
+    },
+    {
+      "platform": "Twitter/X",
+      "konu": "#GameDev",
+      "tweet_sayisi": "45,093",
+      "kategori": "Teknoloji"
+    }
+  ],
+  "stackoverflow": [
+    {
+      "platform": "Stack Overflow",
+      "soru": "Can you access Excel functions (eg XLOOKUP) when using python inside an Excel cell?",
+      "goruntulenme": 52,
+      "cevap": 0,
+      "tags": [
+        "python",
+        "excel"
+      ]
+    },
+    {
+      "platform": "Stack Overflow",
+      "soru": "Why do I get ModuleNotFoundError for &#39;requests&#39; even after installing it with pip?",
+      "goruntulenme": 64,
+      "cevap": 3,
+      "tags": [
+        "python",
+        "visual-studio-code",
+        "pip"
+      ]
+    },
+    {
+      "platform": "Stack Overflow",
+      "soru": "Can&#39;t insert into Access database",
+      "goruntulenme": 58,
+      "cevap": 1,
+      "tags": [
+        "python",
+        "node.js",
+        "windows"
+      ]
+    }
+  ],
+  "collection_time": "2026-01-11T05:19:47.502787",
+  "total_items": 18
+}

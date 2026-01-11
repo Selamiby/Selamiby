@@ -1,0 +1,1 @@
+# AI çekirdek modülü

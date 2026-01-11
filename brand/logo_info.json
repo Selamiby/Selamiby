@@ -1,0 +1,35 @@
+{
+  "brand": {
+    "name": "NEXUS-ONE",
+    "version": "1.0.0",
+    "slogan": "Where All Intelligence Converges",
+    "colors": {
+      "primary": "#0A74DA",
+      "secondary": "#00D4AA",
+      "accent": "#FF6B9D",
+      "dark": "#0A0A1E",
+      "light": "#F0F4FF"
+    },
+    "fonts": {
+      "primary": "Inter",
+      "secondary": "JetBrains Mono",
+      "display": "Orbitron"
+    },
+    "logo_variants": [
+      "full_color",
+      "monochrome",
+      "icon_only",
+      "animated"
+    ]
+  },
+  "logo_files": {
+    "full_logo": "C:\\Users\\selam\\NEXUS-ONE\\brand\\logos\\nexus_logo.svg",
+    "icon": "C:\\Users\\selam\\NEXUS-ONE\\brand\\logos\\nexus_icon.svg",
+    "ascii": "\n        ╔╗╔╦╗╔╦╗╔═╗╦ ╦╔═╗  ╔═╗╔╗╔╔═╗╔╦╗\n        ║║║║║ ║║╠═╝║ ║╚═╗  ║ ║║║║╚═╗ ║ \n        ╝╚╝╩╩═╝╩╩  ╚═╝╚═╝  ╚═╝╝╚╝╚═╝ ╩ \n        \n        ╔══════════════════════════════════════╗\n        ║     Autonomous AI Operating System   ║\n        ║      Where All Intelligence Converges║\n        ╚══════════════════════════════════════╝\n        "
+  },
+  "usage": {
+    "python": "from brand.logo_display import NexusBrand",
+    "display": "NexusBrand().display_rich_logo()",
+    "colors": "NexusBrand().get_color_palette()"
+  }
+}
