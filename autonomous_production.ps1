@@ -155,6 +155,7 @@ function Invoke-AutoSync {
 Write-AdvLog "NEXUS-ONE Advanced Autonomous System başlatıldı" "INFO"
 Write-AdvLog "Interval: $IntervalSeconds saniye" "INFO"
 Write-AdvLog "Advanced Features: Her 5 senkronizasyonda" "INFO"
+Write-AdvLog "Enhanced Learning: Her 10 senkronizasyonda" "INFO"
 $cycleCount = 0
 
 
@@ -201,6 +202,7 @@ while ($true) {
         Invoke-AutoSync
         $cycleCount++
         Invoke-AdvancedFeatures $cycleCount
+        Invoke-SuperLearner $cycleCount
     }
     catch {
         Write-AdvLog "Kritik hata: $_" "ERROR"
