@@ -29,6 +29,12 @@ WORKSPACE = Path.cwd()
 LOG_DIR = WORKSPACE / "nexus_logs"
 LOG_DIR.mkdir(exist_ok=True)
 
+# Chat/config storage
+DATA_DIR = WORKSPACE / "nexus_data"
+DATA_DIR.mkdir(exist_ok=True)
+CONFIG_FILE = DATA_DIR / "chat_config.json"
+WL_FILE = DATA_DIR / "domain_whitelist.json"
+
 PYTHON = Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Python" / "Python311" / "python.exe"
 PYTHON = str(PYTHON if PYTHON.exists() else sys.executable)
 
@@ -104,6 +110,18 @@ class ControlPanel(tk.Tk):
         self.log_text.pack(fill="both", expand=True, padx=12, pady=6)
         self.refresh_logs()
 
+        # Chat controls
+        chat_frame = ttk.LabelFrame(self, text="Chat")
+        chat_frame.pack(fill="both", expand=True, padx=12, pady=6)
+        self.chat_output = tk.Text(chat_frame, height=8, wrap="word")
+        self.chat_output.pack(fill="both", expand=True, padx=6, pady=6)
+        input_row = ttk.Frame(chat_frame)
+        input_row.pack(fill="x", padx=6, pady=6)
+        self.chat_var = tk.StringVar()
+        chat_entry = ttk.Entry(input_row, textvariable=self.chat_var)
+        chat_entry.pack(side="left", fill="x", expand=True)
+        ttk.Button(input_row, text="Send", command=self.chat_send).pack(side="left", padx=6)
+
     def update_status(self):
         # CPU
         if psutil:
@@ -123,6 +141,35 @@ class ControlPanel(tk.Tk):
         self.refresh_logs()
 
         self.after(1500, self.update_status)
+
+    # Config / whitelist helpers
+    def load_config(self):
+        try:
+            if CONFIG_FILE.exists():
+                return json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+        return {"provider": "stub", "unsafe_browsing": False}
+
+    def save_config(self, cfg):
+        try:
+            CONFIG_FILE.write_text(json.dumps(cfg, indent=2), encoding="utf-8")
+        except Exception:
+            pass
+
+    def load_whitelist(self):
+        try:
+            if WL_FILE.exists():
+                return json.loads(WL_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+        return []
+
+    def save_whitelist(self, wl):
+        try:
+            WL_FILE.write_text(json.dumps(wl, indent=2), encoding="utf-8")
+        except Exception:
+            pass
 
     def find_agent_pids(self):
         pids = []
@@ -207,20 +254,73 @@ class ControlPanel(tk.Tk):
 
     def open_whitelisted_domain(self):
         url = self.domain_var.get()
-        whitelist = {
-            "https://github.com/Selamiby/Selamiby",
-            "https://docs.python.org/",
-            "https://code.visualstudio.com/",
-            "https://www.microsoft.com/"
-        }
-        if url not in whitelist:
-            messagebox.showwarning("Uyarı", "Domain whitelist dışında")
+        cfg = self.load_config()
+        wl = set(self.load_whitelist())
+        if not cfg.get("unsafe_browsing", False) and url not in wl:
+            messagebox.showwarning("Uyarı", "Domain whitelist dışında (unsafe OFF)")
             return
+        if cfg.get("unsafe_browsing", False) and url not in wl:
+            if not messagebox.askyesno("Onay", f"Unsafe browsing açık. Şu domain açılacak: {url}\nOnaylıyor musun?"):
+                return
         try:
             webbrowser.open(url)
             messagebox.showinfo("Browser", f"Açıldı: {url}")
         except Exception as e:
             messagebox.showerror("Hata", str(e))
+
+    # Chat handling
+    def chat_send(self):
+        text = (self.chat_var.get() or "").strip()
+        if not text:
+            return
+        self.chat_output.insert(tk.END, f"You: {text}\n")
+        self.chat_var.set("")
+        reply = self.process_chat_command(text)
+        self.chat_output.insert(tk.END, f"Agent: {reply}\n\n")
+        self.chat_output.see(tk.END)
+
+    def process_chat_command(self, text: str) -> str:
+        # Simple commands: domain add/remove <url>, unsafe on/off, open <url>
+        parts = text.split()
+        if len(parts) >= 2 and parts[0].lower() == "domain" and parts[1].lower() in {"add", "remove"}:
+            action = parts[1].lower()
+            url = " ".join(parts[2:]).strip()
+            if not url:
+                return "Lütfen bir URL verin. Örn: domain add https://example.com"
+            wl = self.load_whitelist()
+            if action == "add":
+                if url in wl:
+                    return "Zaten whitelist içinde."
+                wl.append(url)
+                self.save_whitelist(wl)
+                return f"Whitelist'e eklendi: {url}"
+            else:
+                if url not in wl:
+                    return "Whitelist'te bulunamadı."
+                wl = [u for u in wl if u != url]
+                self.save_whitelist(wl)
+                return f"Whitelist'ten çıkarıldı: {url}"
+
+        if parts and parts[0].lower() == "unsafe" and len(parts) >= 2:
+            cfg = self.load_config()
+            if parts[1].lower() == "on":
+                cfg["unsafe_browsing"] = True
+                self.save_config(cfg)
+                return "Unsafe browsing: ON (dikkatli kullanın!)"
+            elif parts[1].lower() == "off":
+                cfg["unsafe_browsing"] = False
+                self.save_config(cfg)
+                return "Unsafe browsing: OFF"
+            return "Kullanım: unsafe on | unsafe off"
+
+        if parts and parts[0].lower() == "open" and len(parts) >= 2:
+            url = " ".join(parts[1:]).strip()
+            self.domain_var.set(url)
+            self.open_whitelisted_domain()
+            return f"Açmaya çalışıldı: {url}"
+
+        # Default stub reply
+        return "Komutu algılayamadım. Desteklenen: 'domain add/remove <url>', 'unsafe on/off', 'open <url>'"
 
     def format_python(self):
         try:
