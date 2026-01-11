@@ -546,6 +546,33 @@ class ControlPanel(tk.Tk):
             except Exception as e:
                 return f"Oyun projesi hatası: {e}"
         
+        # === SELF-LEARNING COMMANDS (NEW!) ===
+        if any(kw in txt for kw in ['self-learning başlat', 'kendini öğren', 'otonom öğren', 'sürekli öğren']):
+            try:
+                # Trigger self-learning via button
+                self.after(100, self.start_self_learning)
+                return "🧠 Self-learning başlatılıyor... 7/24 otonom öğrenme aktif!"
+            except Exception as e:
+                return f"Self-learning hatası: {e}"
+        
+        if any(kw in txt for kw in ['learning stats', 'öğrenme istatistik', 'bilgi ağacı', 'knowledge graph']):
+            try:
+                # Show stats via button
+                self.after(100, self.show_learning_stats)
+                return "📊 Öğrenme istatistikleri açılıyor..."
+            except Exception as e:
+                return f"İstatistik hatası: {e}"
+        
+        if any(kw in txt for kw in ['self-update', 'kendini güncelle', 'yeni komut ekle']):
+            try:
+                # Run self-updater
+                import subprocess
+                subprocess.Popen([sys.executable, "nexus_self_updater.py"], 
+                               creationflags=subprocess.CREATE_NEW_CONSOLE)
+                return "🔄 Self-updater çalıştırıldı! Öğrenilen bilgiler koda entegre ediliyor..."
+            except Exception as e:
+                return f"Self-update hatası: {e}"
+        
         # === GENERAL HELP ===
         if any(kw in txt for kw in ['help', 'yardım', 'ne yapabilirsin', 'komutlar']):
             return """🤖 NEXUS-ONE AI Copilot Komutları:
@@ -573,7 +600,13 @@ class ControlPanel(tk.Tk):
 🎮 GAME ENGINE:
   • "unity proje MyGame" - Unity projesi oluştur
 
-Örnek: 'machine learning ara' yaz, direkt sonuçları görürsün!"""
+🧠 SELF-LEARNING (YENİ! 7/24):
+    • "kendini öğren" - Otonom öğrenmeyi başlat
+    • "learning stats" - Bilgi ağacını göster
+    • "self-update" - Öğrenilenleri koda entegre et
+
+Örnek: 'machine learning ara' yaz, direkt sonuçları görürsün!
+🆕 'kendini öğren' yaz, AI sürekli öğrenmeye başlasın!"""
         
         # Unknown command
         return f"❓ Anlamadım: '{text}'\n'help' yaz komutları gör."
@@ -774,6 +807,110 @@ class ControlPanel(tk.Tk):
             self.log_text.insert(tk.END, content)
         except Exception:
             pass
+    
+    # === SELF-LEARNING SYSTEM (NEW!) ===
+    def start_self_learning(self):
+        """Start autonomous self-learning background process"""
+        try:
+            # Start PowerShell autonomous learner in background
+            ps_script = WORKSPACE / "autonomous_learner.ps1"
+            if not ps_script.exists():
+                messagebox.showerror("Error", "autonomous_learner.ps1 not found!")
+                return
+            
+            rate = self.learning_rate.get()
+            
+            # Start in background
+            subprocess.Popen([
+                "powershell",
+                "-ExecutionPolicy", "Bypass",
+                "-File", str(ps_script),
+                "-LearningRate", str(int(rate)),
+                "-Aggressive", "$true"
+            ], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            
+            messagebox.showinfo("Self-Learning", 
+                              f"🧠 Otonom öğrenme başlatıldı!\n"
+                              f"Hız: {rate:.1f}x\n"
+                              f"Mode: Aggressive\n\n"
+                              f"7/24 çalışacak, workspace'i sürekli öğrenecek!\n"
+                              f"Log: nexus_logs/autonomous_learner.log")
+        except Exception as e:
+            messagebox.showerror("Error", f"Self-learning başlatma hatası:\n{e}")
+    
+    def stop_self_learning(self):
+        """Stop autonomous learning processes"""
+        try:
+            # Find and kill autonomous learner processes
+            killed = 0
+            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+                try:
+                    cmdline = ' '.join(proc.info.get('cmdline') or [])
+                    if 'autonomous_learner' in cmdline or 'nexus_self_learner' in cmdline:
+                        proc.kill()
+                        killed += 1
+                except Exception:
+                    pass
+            
+            if killed > 0:
+                messagebox.showinfo("Self-Learning", f"⏹️ {killed} öğrenme süreçleri durduruldu.")
+            else:
+                messagebox.showinfo("Self-Learning", "Aktif öğrenme süreci bulunamadı.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Durdurma hatası:\n{e}")
+    
+    def show_learning_stats(self):
+        """Show knowledge graph and learning statistics"""
+        try:
+            stats_file = DATA_DIR / "learning_stats.json"
+            knowledge_file = DATA_DIR / "knowledge_graph" / "knowledge_graph.json"
+            
+            stats_text = "📊 NEXUS-ONE Self-Learning İstatistikleri\n" + "="*50 + "\n\n"
+            
+            # Load stats
+            if stats_file.exists():
+                stats = json.loads(stats_file.read_text(encoding='utf-8'))
+                stats_text += f"🔄 Öğrenme Oturumları: {stats.get('sessions', 0)}\n"
+                stats_text += f"📁 İşlenen Dosyalar: {stats.get('files_learned', 0)}\n"
+                stats_text += f"💡 Öğrenilen Kavramlar: {stats.get('concepts_learned', 0)}\n"
+                stats_text += f"⚡ Öğrenilen Komutlar: {stats.get('commands_learned', 0)}\n"
+                stats_text += f"🎯 Öğrenilen Patternler: {stats.get('patterns_learned', 0)}\n"
+                stats_text += f"🌐 Web Oturumları: {stats.get('web_sessions', 0)}\n"
+                last_learn = stats.get('last_learn_time', 'N/A')
+                stats_text += f"⏰ Son Öğrenme: {last_learn}\n\n"
+            else:
+                stats_text += "⚠️ Henüz öğrenme başlamadı.\n\n"
+            
+            # Load knowledge graph
+            if knowledge_file.exists():
+                kg = json.loads(knowledge_file.read_text(encoding='utf-8'))
+                kg_stats = kg.get('statistics', {})
+                stats_text += "🧠 Bilgi Ağacı (Knowledge Graph):\n"
+                stats_text += f"  • Toplam Kavram: {kg_stats.get('total_concepts', 0)}\n"
+                stats_text += f"  • Toplam Komut: {kg_stats.get('total_commands', 0)}\n"
+                stats_text += f"  • Toplam Pattern: {kg_stats.get('total_patterns', 0)}\n"
+                stats_text += f"  • Son Güncelleme: {kg_stats.get('last_updated', 'N/A')}\n\n"
+                
+                # Show top 5 commands
+                commands = kg.get('commands', {})
+                if commands:
+                    stats_text += "🏆 En Çok Kullanılan Komutlar:\n"
+                    sorted_cmds = sorted(commands.items(), 
+                                       key=lambda x: x[1].get('usage_count', 0), 
+                                       reverse=True)[:5]
+                    for i, (cmd, data) in enumerate(sorted_cmds, 1):
+                        stats_text += f"  {i}. {cmd} ({data.get('usage_count', 0)}x)\n"
+            else:
+                stats_text += "⚠️ Knowledge graph henüz oluşmadı.\n"
+            
+            stats_text += "\n" + "="*50 + "\n"
+            stats_text += "💡 Self-Learning çalışıyorsa sürekli güncellenir!"
+            
+            # Show in messagebox (or could open in new window)
+            messagebox.showinfo("Learning Statistics", stats_text)
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"İstatistik okuma hatası:\n{e}")
 
 
 def main():

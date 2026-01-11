@@ -1,3 +1,6 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 # NEXUS-ONE Autonomous Learner - 24/7 Background Service
 # =======================================================
 # Continuously runs self-learning engine in background
