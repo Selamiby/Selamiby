@@ -58,21 +58,27 @@ jobs:
       if: success()
       continue-on-error: true
       env:
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || 'dummy-token' }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm i -g vercel || true
         cd nexus_web/frontend
-        vercel --prod --token=$VERCEL_TOKEN || true
+        if [ "$VERCEL_TOKEN" != "dummy-token" ]; then
+          vercel --prod --token=$VERCEL_TOKEN || true
+        fi
 
     - name: Deploy to production
       if: success()
       continue-on-error: true
       env:
-        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || 'dummy-key' }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        echo "Deployment triggered for main branch"
+        if [ "$DEPLOY_KEY" != "dummy-key" ]; then
+          echo "Deployment triggered for main branch with key"
+        else
+          echo "Deployment triggered for main branch (no key)"
+        fi
 
   notify:
     needs: [test, build, deploy]
