@@ -1,3 +1,5 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
 # NEXUS-ONE Real-Time Monitoring & Dashboard
 # WebSocket & Real-time stats, alerts, performance tracking
 

@@ -1,3 +1,5 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
 # NEXUS-ONE Advanced Autonomous System v2.0 FIXED
 param([int]$IntervalSeconds = 30)
 

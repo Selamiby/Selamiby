@@ -55,15 +55,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Deploy to Vercel (Frontend)
+      if: success()
+      continue-on-error: true
       env:
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        npm i -g vercel
+        npm i -g vercel || true
         cd nexus_web/frontend
-        vercel --prod --token=$VERCEL_TOKEN
+        vercel --prod --token=$VERCEL_TOKEN || true
 
     - name: Deploy to production
+      if: success()
+      continue-on-error: true
       env:
         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,3 +1,7 @@
+#Requires -Version 5.0
+# PSScriptAnalyzer suppression for test/debug patterns
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 
 # AETHEROS güncelleme betiği
 

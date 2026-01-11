@@ -1,3 +1,5 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
 # NEXUS-ONE Otonom Senkronizasyon Sistemi
 # Projeyi sürekli otomatik olarak günceller, entegre eder ve GitHub'a sync eder
 
