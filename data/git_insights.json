@@ -1,15 +1,19 @@
 {
-  ".pytest_cache/v/cache/lastfailed": {
+  "FUZZY_MATCH_UPGRADE.md": {
     "contributors": 1,
-    "recent_changes": 2
+    "recent_changes": 1
+  },
+  "__pycache__/nexus_super_learner.cpython-311.pyc": {
+    "contributors": 1,
+    "recent_changes": 1
+  },
+  "__pycache__/test_similarity_v2.cpython-311-pytest-9.0.2.pyc": {
+    "contributors": 1,
+    "recent_changes": 1
   },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
-  },
-  "data/learned_patterns.json": {
-    "contributors": 1,
-    "recent_changes": 2
   },
   "data/logs/auto_healer.log": {
     "contributors": 1,
@@ -19,12 +23,8 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "test_advanced_similarity.py": {
+  "nexus_super_learner.py": {
     "contributors": 1,
-    "recent_changes": 4
-  },
-  "test_similarity_v2.py": {
-    "contributors": 1,
-    "recent_changes": 1
+    "recent_changes": 5
   }
 }
