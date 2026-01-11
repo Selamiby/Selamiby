@@ -1,17 +1,42 @@
 [
   {
-    "error": "ForegroundColor parameter binding error",
-    "solution": "Use switch statement instead of hash table",
-    "timestamp": "2026-01-12T01:24:00.775882"
+    "error": "ForegroundColor parameter cannot be null",
+    "solution": "Use switch statement with default value",
+    "success_rate": 100
   },
   {
-    "error": "YAML secrets context missing",
-    "solution": "Add environment secrets to workflow",
-    "timestamp": "2026-01-12T01:24:00.775882"
+    "error": "Parameter binding failed for ForegroundColor",
+    "solution": "Replace hash table with switch",
+    "success_rate": 100
   },
   {
-    "error": "Import module cannot be found",
-    "solution": "Install required package with pip",
-    "timestamp": "2026-01-12T01:24:00.775882"
+    "error": "YAML workflow context missing secrets",
+    "solution": "Add secrets to GitHub repository settings",
+    "success_rate": 95
+  },
+  {
+    "error": "Module import failed - package not found",
+    "solution": "Install missing package with pip",
+    "success_rate": 100
+  },
+  {
+    "error": "Cannot parse PowerShell script - duplicate param",
+    "solution": "Remove duplicate param() block",
+    "success_rate": 100
+  },
+  {
+    "error": "Git push rejected - authentication failed",
+    "solution": "Configure Git credentials or PAT token",
+    "success_rate": 90
+  },
+  {
+    "error": "Python syntax error - invalid indentation",
+    "solution": "Fix indentation to match Python standards",
+    "success_rate": 100
+  },
+  {
+    "error": "File not found error - path does not exist",
+    "solution": "Create directory or check file path",
+    "success_rate": 95
   }
 ]

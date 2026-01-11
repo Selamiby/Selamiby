@@ -167,5 +167,6 @@
   "gpt-engineer/tests/core/test_token_usage.py": true,
   "gpt-engineer/tests/test_install.py": true,
   "gpt-engineer/tests/test_project_config.py": true,
-  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_components_with_existing_responses": true
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_components_with_existing_responses": true,
+  "test_advanced_similarity.py": true
 }
