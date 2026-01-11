@@ -1,34 +1,142 @@
-# web_navigator.py
+#!/usr/bin/env python3
+"""
+NEXUS-ONE Web Navigator & Learning Agent
+- Selenium-based browser automation
+- Screenshot capture and visual learning
+- Form interaction and navigation
+- Content extraction and pattern learning
+"""
+import json
+import os
+import sys
 import time
+from datetime import datetime
+from pathlib import Path
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+try:
+    from PIL import Image
+except Exception:
+    Image = None
+
+WORKSPACE = Path.cwd()
+DATA_DIR = WORKSPACE / "nexus_data"
+LOG_DIR = WORKSPACE / "nexus_logs"
+SCREENSHOT_DIR = DATA_DIR / "screenshots"
+LEARNING_DATA = DATA_DIR / "web_learning.json"
+LOG_FILE = LOG_DIR / "web_navigator.log"
+
+def log(msg: str):
+    ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    line = f"[{ts}] {msg}\n"
+    try:
+        LOG_DIR.mkdir(exist_ok=True)
+        with LOG_FILE.open('a', encoding='utf-8') as f:
+            f.write(line)
+    except Exception:
+        pass
+    print(line.strip())
 
 
 class WebNavigator:
-    def __init__(self):
+    def __init__(self, headless=False):
         self.driver = None
-        print("🌐 AI WEB TARAYICI HAZIR")
+        self.headless = headless
+        self.learning_data = self.load_learning_data()
+        SCREENSHOT_DIR.mkdir(exist_ok=True, parents=True)
+        log("web_navigator_init")
+    
+    def load_learning_data(self):
+        try:
+            if LEARNING_DATA.exists():
+                return json.loads(LEARNING_DATA.read_text(encoding='utf-8'))
+        except Exception:
+            pass
+        return {"visited_urls": [], "learned_patterns": [], "interests": [], "code_snippets": []}
+    
+    def save_learning_data(self):
+        try:
+            LEARNING_DATA.write_text(json.dumps(self.learning_data, indent=2), encoding='utf-8')
+        except Exception as e:
+            log(f"save_learning_error: {e}")
     
     def start_browser(self):
-        """Tarayıcıyı başlat"""
-        options = webdriver.ChromeOptions()
-        options.add_argument('--headless')  # Görünmez mod
-        options.add_argument('--no-sandbox')
-        
-        self.driver = webdriver.Chrome(options=options)
-        return "✅ Tarayıcı başlatıldı"
+        """Tarayıcıyı başlat - advanced options"""
+        try:
+            options = Options()
+            if self.headless:
+                options.add_argument('--headless')
+            options.add_argument('--disable-blink-features=AutomationControlled')
+            options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_experimental_option('useAutomationExtension', False)
+            
+            self.driver = webdriver.Chrome(options=options)
+            self.driver.maximize_window()
+            log("browser_started")
+            return True
+        except Exception as e:
+            log(f"browser_start_error: {e}")
+            return False
     
     def navigate_to(self, url):
-        """Belirtilen URL'ye git"""
+        """Belirtilen URL'ye git ve öğren"""
         if not self.driver:
-            self.start_browser()
+            if not self.start_browser():
+                return "❌ Tarayıcı başlatılamadı"
         
-        if self.driver:
+        try:
             self.driver.get(url)
+            log(f"navigate url={url}")
+            self.learning_data["visited_urls"].append({"url": url, "time": datetime.now().isoformat()})
+            self.save_learning_data()
+            time.sleep(2)
             return f"🌐 {url} yüklendi"
-        return "❌ Tarayıcı başlatılamadı"
+        except Exception as e:
+            log(f"navigate_error url={url} err={e}")
+            return f"❌ Hata: {e}"
+    
+    def take_screenshot(self, name: str = None) -> Path | None:
+        """Take screenshot and save"""
+        if not self.driver:
+            return None
+        try:
+            if not name:
+                name = f"screen_{int(time.time())}.png"
+            path = SCREENSHOT_DIR / name
+            self.driver.save_screenshot(str(path))
+            log(f"screenshot saved={path.name}")
+            return path
+        except Exception as e:
+            log(f"screenshot_error: {e}")
+            return None
+    
+    def extract_text(self) -> str:
+        """Extract visible text from page"""
+        if not self.driver:
+            return ""
+        try:
+            text = self.driver.find_element(By.TAG_NAME, "body").text
+            return text[:10000]  # Limit to 10k chars
+        except Exception:
+            return ""
+    
+    def find_links(self) -> list[str]:
+        """Extract all links from page"""
+        if not self.driver:
+            return []
+        try:
+            links = self.driver.find_elements(By.TAG_NAME, "a")
+            return [link.get_attribute("href") for link in links if link.get_attribute("href")][:100]
+        except Exception:
+            return []
     
     def search_google(self, query):
         """Google'da arama yap"""
