@@ -1,0 +1,18 @@
+[
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_to_openapi_all_http_methods",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_to_openapi_basic",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_to_openapi_cached_schema",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_to_openapi_empty_components",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_to_openapi_existing_responses",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_to_openapi_multiple_security_schemes",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_to_openapi_no_security_endpoints",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_to_openapi_with_security",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_add_auth_responses_with_no_routes",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_bearer_jwt_auth_scheme_config",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_components_with_existing_responses",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_custom_openapi_function_replacement",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_endpoint_without_responses_section",
+  "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_openapi_schema_persistence",
+  "github_repos/langchain/libs/partners/huggingface/tests/integration_tests/test_compile.py::test_placeholder",
+  "tests/test_file_manager.py::test_file_manager"
+]
