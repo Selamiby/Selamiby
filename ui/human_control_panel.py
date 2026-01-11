@@ -7,6 +7,7 @@ NEXUS-ONE Human Control Panel (Windows)
 - Run demo (Notepad typing + VS Code)
 """
 import os
+import json
 import subprocess
 import sys
 import time
