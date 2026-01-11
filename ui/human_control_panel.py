@@ -587,77 +587,75 @@ class ControlPanel(tk.Tk):
         if any(kw in txt for kw in ['log göster', 'show log', 'log aç', 'loglara bak', 'günlük']):
             if 'security' in txt or 'güvenlik' in txt:
                 self.open_security_logs()
-                return \"Güvenlik logu açıldı (Notepad).\"
+                return "Güvenlik logu açıldı (Notepad)."
             else:
                 self.open_logs()
-                return \"Log klasörü açıldı.\"
+                return "Log klasörü açıldı."
         
         # VS Code / Formatting
         if any(kw in txt for kw in ['format', 'kod düzenle', 'python düzenle', 'black']):
             self.format_python()
-            return \"Python dosyaları formatlanıyor (black).\"
+            return "Python dosyaları formatlanıyor (black)."
         
         if any(kw in txt for kw in ['vscode', 'vs code', 'editör', 'kod aç']):
             self.open_vscode()
-            return \"VS Code açılıyor.\"
+            return "VS Code açılıyor."
         
         # Domain management (existing)
-        if len(parts) >= 2 and parts[0].lower() == \"domain\" and parts[1].lower() in {\"add\", \"remove\"}:
+        if len(parts) >= 2 and parts[0].lower() == "domain" and parts[1].lower() in {"add", "remove"}:
             action = parts[1].lower()
-            url = \" \".join(parts[2:]).strip()
+            url = " ".join(parts[2:]).strip()
             if not url:
-                return \"Lütfen bir URL verin. Örn: domain add https://example.com\"
+                return "Lütfen bir URL verin. Örn: domain add https://example.com"
             wl = self.load_whitelist()
-            if action == \"add\":
+            if action == "add":
                 if url in wl:
-                    return \"Zaten whitelist içinde.\"
+                    return "Zaten whitelist içinde."
                 wl.append(url)
                 self.save_whitelist(wl)
-                return f\"Whitelist'e eklendi: {url}\"
+                return f"Whitelist'e eklendi: {url}"
             else:
                 if url not in wl:
-                    return \"Whitelist'te bulunamadı.\"
+                    return "Whitelist'te bulunamadı."
                 wl = [u for u in wl if u != url]
                 self.save_whitelist(wl)
-                return f\"Whitelist'ten çıkarıldı: {url}\"
+                return f"Whitelist'ten çıkarıldı: {url}"
         
         # Unsafe mode
-        if parts and parts[0].lower() == \"unsafe\" and len(parts) >= 2:
+        if parts and parts[0].lower() == "unsafe" and len(parts) >= 2:
             cfg = self.load_config()
-            if parts[1].lower() == \"on\":
-                cfg[\"unsafe_browsing\"] = True
+            if parts[1].lower() == "on":
+                cfg["unsafe_browsing"] = True
                 self.save_config(cfg)
-                return \"Unsafe browsing: ON (dikkatli kullanın!)\"
-            elif parts[1].lower() == \"off\":
-                cfg[\"unsafe_browsing\"] = False
+                return "Unsafe browsing: ON (dikkatli kullanın!)"
+            elif parts[1].lower() == "off":
+                cfg["unsafe_browsing"] = False
                 self.save_config(cfg)
-                return \"Unsafe browsing: OFF\"
-            return \"Kullanım: unsafe on | unsafe off\"
+                return "Unsafe browsing: OFF"
+            return "Kullanım: unsafe on | unsafe off"
         
         # Open URL
-        if parts and parts[0].lower() == \"open\" and len(parts) >= 2:
-            url = \" \".join(parts[1:]).strip()
+        if parts and parts[0].lower() == "open" and len(parts) >= 2:
+            url = " ".join(parts[1:]).strip()
             self.domain_var.set(url)
             self.open_whitelisted_domain()
-            return f\"Açmaya çalışıldı: {url}\"
+            return f"Açmaya çalışıldı: {url}"
         
         # Fallback: smart suggestions
         suggestions = []
         if 'güvenlik' in txt or 'security' in txt:
-            suggestions.append(\"Güvenlik komutları: 'güvenlik başlat', 'güvenlik durdur', 'defender tara'\")
+            suggestions.append("Güvenlik komutları: 'güvenlik başlat', 'güvenlik durdur', 'defender tara'")
         if 'log' in txt or 'günlük' in txt:
-            suggestions.append(\"Log komutları: 'log göster', 'security log göster'\")
+            suggestions.append("Log komutları: 'log göster', 'security log göster'")
         if 'sistem' in txt or 'status' in txt:
-            suggestions.append(\"Sistem komutları: 'sistem durumu', 'cpu', 'ram'\")
+            suggestions.append("Sistem komutları: 'sistem durumu', 'cpu', 'ram'")
         if 'temizlik' in txt or 'clean' in txt:
-            suggestions.append(\"Temizlik komutları: 'temizlik yap', 'tarayıcı temizle'\")
+            suggestions.append("Temizlik komutları: 'temizlik yap', 'tarayıcı temizle'")
         
         if suggestions:
-            return \"Şunları deneyin:\\n\" + \"\\n\".join(suggestions)
+            return "Şunları deneyin:\n" + "\n".join(suggestions)
         
-        return (\"Komutu algılayamadım. Örnekler: 'güvenlik başlat', 'sistem durumu', \"
-                \"'temizlik yap', 'defender tara', 'log göster', 'domain add <url>', \"
-                \"'unsafe on/off', 'format python', 'vscode aç'\")"
+        return "Komutu algılayamadım. 'help' yaz komutları gör."
 
     def format_python(self):
         try:
