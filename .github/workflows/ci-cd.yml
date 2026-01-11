@@ -55,12 +55,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Deploy to Vercel (Frontend)
-      continue-on-error: true
-      continue-on-error: true
       if: success()
       continue-on-error: true
       env:
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm i -g vercel || true
@@ -68,12 +66,10 @@ jobs:
         vercel --prod --token=$VERCEL_TOKEN || true
 
     - name: Deploy to production
-      continue-on-error: true
-      continue-on-error: true
       if: success()
       continue-on-error: true
       env:
-        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo "Deployment triggered for main branch"
