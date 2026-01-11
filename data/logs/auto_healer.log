@@ -1685,3 +1685,4 @@ POWERSHELL Hatalarý:
 [2026-01-12 01:59:01] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\create_desktop_shortcut.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-12 01:59:01] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_control_panel.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-12 01:59:01] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-12 01:59:12] [SUCCESS] GitHub'a commit ve push yapýldý
