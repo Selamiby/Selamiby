@@ -139,51 +139,191 @@ class WebNavigator:
             return []
     
     def search_google(self, query):
-        """Google'da arama yap"""
+        """Google'da arama yap ve öğren"""
         self.navigate_to("https://www.google.com")
         
         if not self.driver:
             return {"error": "Tarayıcı başlatılamadı"}
-
-        search_box = self.driver.find_element(By.NAME, "q")
-        search_box.send_keys(query)
-        search_box.send_keys(Keys.RETURN)
         
-        time.sleep(2)  # Sayfanın yüklenmesini bekle
+        try:
+            search_box = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.NAME, "q"))
+            )
+            search_box.send_keys(query)
+            search_box.send_keys(Keys.RETURN)
+            time.sleep(2)
+            
+            # Screenshot results
+            self.take_screenshot(f"search_{query.replace(' ', '_')[:30]}.png")
+            
+            # Extract results
+            results = self.driver.find_elements(By.CSS_SELECTOR, "h3")
+            top_results = [r.text for r in results[:10] if r.text]
+            
+            # Learn from search
+            self.learning_data["learned_patterns"].append({
+                "type": "search",
+                "query": query,
+                "results_count": len(top_results),
+                "time": datetime.now().isoformat()
+            })
+            self.save_learning_data()
+            
+            log(f"search_complete query={query} results={len(top_results)}")
+            return {
+                "query": query,
+                "top_results": top_results,
+                "result_count": len(results)
+            }
+        except Exception as e:
+            log(f"search_error: {e}")
+            return {"error": str(e)}
+    
+    def learn_from_youtube(self, video_url: str, duration_sec: int = 30):
+        """YouTube videosunu izle ve öğren"""
+        self.navigate_to(video_url)
         
-        # Sonuçları al
-        results = self.driver.find_elements(By.CSS_SELECTOR, "h3")
-        top_results = [r.text for r in results[:5] if r.text]
+        if not self.driver:
+            return {"error": "Tarayıcı başlatılamadı"}
         
-        return {
-            "query": query,
-            "top_results": top_results,
-            "result_count": len(results)
-        }
+        try:
+            log(f"youtube_learning duration={duration_sec}s url={video_url}")
+            start = time.time()
+            screenshots = []
+            
+            # Capture frames periodically
+            while time.time() - start < duration_sec:
+                path = self.take_screenshot(f"yt_{int(time.time())}.png")
+                if path:
+                    screenshots.append(str(path.name))
+                time.sleep(5)
+            
+            # Extract title and description
+            title = ""
+            try:
+                title_el = self.driver.find_element(By.CSS_SELECTOR, "h1.ytd-video-primary-info-renderer")
+                title = title_el.text
+            except Exception:
+                pass
+            
+            self.learning_data["learned_patterns"].append({
+                "type": "youtube",
+                "url": video_url,
+                "title": title,
+                "duration": duration_sec,
+                "screenshots": len(screenshots),
+                "time": datetime.now().isoformat()
+            })
+            self.save_learning_data()
+            
+            log(f"youtube_learning_complete screenshots={len(screenshots)}")
+            return {
+                "title": title,
+                "screenshots": len(screenshots),
+                "duration": duration_sec
+            }
+        except Exception as e:
+            log(f"youtube_error: {e}")
+            return {"error": str(e)}
+    
+    def learn_from_code_repo(self, repo_url: str):
+        """GitHub repo'dan kod öğren"""
+        self.navigate_to(repo_url)
+        
+        if not self.driver:
+            return {"error": "Tarayıcı başlatılamadı"}
+        
+        try:
+            # Get repo name
+            repo_name = ""
+            try:
+                repo_name = self.driver.find_element(By.CSS_SELECTOR, "[itemprop='name']").text
+            except Exception:
+                pass
+            
+            # Find code files
+            time.sleep(2)
+            code_links = []
+            try:
+                file_elements = self.driver.find_elements(By.CSS_SELECTOR, "a.Link--primary")
+                for el in file_elements[:20]:
+                    href = el.get_attribute("href")
+                    if href and ('.py' in href or '.js' in href or '.ts' in href):
+                        code_links.append(href)
+            except Exception:
+                pass
+            
+            self.learning_data["code_snippets"].append({
+                "repo": repo_url,
+                "repo_name": repo_name,
+                "files_found": len(code_links),
+                "time": datetime.now().isoformat()
+            })
+            self.save_learning_data()
+            
+            log(f"code_learning repo={repo_name} files={len(code_links)}")
+            return {
+                "repo_name": repo_name,
+                "code_files": len(code_links),
+                "sample_files": code_links[:5]
+            }
+        except Exception as e:
+            log(f"code_learning_error: {e}")
+            return {"error": str(e)}
     
     def scrape_github_trending(self):
-        """GitHub trending'den veri çek"""
+        """GitHub trending'den veri çek ve öğren"""
         self.navigate_to("https://github.com/trending")
 
         if not self.driver:
-            return [] # Hata durumunda boş liste döndür
+            return []
         
         repos = []
-        
-        # Repo isimlerini bul
-        repo_elements = self.driver.find_elements(By.CSS_SELECTOR, "h2 a")
-        for element in repo_elements[:10]:
-            repo_name = element.text.strip()
-            repo_url = element.get_attribute("href")
+        try:
+            repo_elements = self.driver.find_elements(By.CSS_SELECTOR, "h2 a")
+            for element in repo_elements[:10]:
+                repo_name = element.text.strip()
+                repo_url = element.get_attribute("href")
+                
+                if repo_name and repo_url:
+                    repos.append({
+                        "name": repo_name,
+                        "url": repo_url
+                    })
             
-            if repo_name and repo_url:
-                repos.append({
-                    "name": repo_name,
-                    "url": repo_url,
-                    "description": self.get_repo_description(element)
-                })
+            log(f"github_trending_scraped repos={len(repos)}")
+            return repos
+        except Exception as e:
+            log(f"github_trending_error: {e}")
+            return []
+    
+    def close(self):
+        """Close browser"""
+        if self.driver:
+            try:
+                self.driver.quit()
+                log("browser_closed")
+            except Exception:
+                pass
+
+def demo_web_learning():
+    """Demo: Search, navigate, learn"""
+    nav = WebNavigator(headless=False)
+    try:
+        # Search for programming tutorials
+        nav.search_google("Python machine learning tutorial")
+        time.sleep(3)
         
-        return repos
+        # Navigate to Python docs
+        nav.navigate_to("https://docs.python.org/3/tutorial/")
+        nav.take_screenshot("python_docs.png")
+        
+        log("demo_complete")
+    finally:
+        nav.close()
+
+if __name__ == '__main__':
+    demo_web_learning()
     
     def get_repo_description(self, element):
         """Repo açıklamasını al"""

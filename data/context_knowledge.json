@@ -8,7 +8,7 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7455
+    "size": 7457
   },
   "human_interface_agent.py": {
     "imports": [
@@ -28,7 +28,7 @@
       "open_vscode_workspace",
       "main"
     ],
-    "size": 3996
+    "size": 4010
   },
   "nexus_advanced_automation.py": {
     "imports": [
@@ -48,7 +48,7 @@
       "generate_docs",
       "main"
     ],
-    "size": 6828
+    "size": 6840
   },
   "nexus_advanced_features.py": {
     "imports": [
@@ -67,7 +67,7 @@
       "feature_5_deployment_readiness",
       "main"
     ],
-    "size": 6779
+    "size": 6791
   },
   "nexus_auto_healer.py": {
     "imports": [
@@ -91,7 +91,7 @@
       "fix_yaml_context_warnings",
       "auto_fix_all"
     ],
-    "size": 11281
+    "size": 11285
   },
   "nexus_chat.py": {
     "imports": [
@@ -227,11 +227,11 @@
       "firewall_block_ip",
       "is_excluded",
       "cleanup_temp",
-      "suspicious_connection",
-      "is_process_path_suspicious",
-      "monitor_loop"
+      "cleanup_browser_cache",
+      "cleanup_prefetch",
+      "cleanup_recycle_bin"
     ],
-    "size": 7287
+    "size": 11692
   },
   "nexus_start.py": {
     "imports": [
