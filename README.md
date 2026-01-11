@@ -63,24 +63,104 @@ RAM: 68.3% (16GB / 32GB)
 ---
 
 ## 📚 Dokümantasyon
-    ```bash
-    git clone https://github.com/your-username/aetheros.git
-    cd aetheros
-    ```
 
-2.  **Python bağımlılıklarını kurun:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+### Başlangıç Kılavuzları
+- **[🚀 QUICK_START_COPILOT.md](QUICK_START_COPILOT.md)** - İlk kullanım, hızlı başlangıç
+- **[🤖 COPILOT_MODE_GUIDE.md](COPILOT_MODE_GUIDE.md)** - Tüm komutlar, örnekler, teknik detaylar
 
-3.  **Ortam değişkenlerini ayarlayın:**
-    `.env.example` dosyasını kopyalayarak `.env` adında yeni bir dosya oluşturun ve gerekirse içindeki değişkenleri düzenleyin.
+### Özellik Detayları
+- **[🧠 AI_LEARNING_GUIDE.md](AI_LEARNING_GUIDE.md)** - Web learning, code generation, game engine
+- **[🛡️ SECURITY_AND_CHAT_GUIDE.md](SECURITY_AND_CHAT_GUIDE.md)** - Güvenlik özellikleri, chat komutları
 
-### Başlatma
-Sistemi başlatmak için `api_server.py` dosyasını çalıştırın:
-```bash
-python backend/api_server.py
+---
+
+## 🔧 Kurulum
+
+### Gereksinimler
+- **Python 3.11+** (zorunlu)
+- **Windows 10/11** (PowerShell, Windows Defender API kullanır)
+- **Chrome** (Web learning için)
+
+### Paket Kurulumu
+```powershell
+pip install -r requirements.txt
+pip install selenium pillow opencv-python
 ```
+
+### Unity (Opsiyonel - Oyun geliştirme için)
+```
+Unity Hub → Editor Yükle → 2022.3.0f1+
+```
+
+---
+
+## 💬 Tüm Chat Komutları
+
+| Kategori | Komut | Açıklama |
+|----------|-------|----------|
+| **Web** | `X ara` | Google'da ara, 5 sonuç getir |
+| | `youtube.com/... öğren` | Video izle, screenshot al |
+| | `github.com/... öğren` | Repo analiz et |
+| **Code** | `kod yaz X` | Script oluştur, test et |
+| | `workspace öğren` | 50+ dosyadan öğren |
+| **Security** | `güvenlik başlat` | Monitoring başlat |
+| | `defender tara` | Virüs taraması |
+| **System** | `sistem durumu` | CPU/RAM/AI becerileri |
+| **Learning** | `öğrenme hızı Xx` | Hız ayarla (0.1x-10x) |
+| **Game** | `unity proje X` | Unity projesi oluştur |
+| **Help** | `help` | Komut listesi + örnekler |
+
+---
+
+## 🎮 Masaüstü Kısayol
+
+Panel'i hızlıca açmak için masaüstünde **"NEXUS-ONE AI"** kısayolu var:
+```
+Hedef: C:\Users\selam\NEXUS-ONE\ui\human_control_panel.py
+Python: C:\Users\selam\AppData\Local\Programs\Python\Python311\python.exe
+```
+
+**Çift tıkla → Panel açılır → Chat'e komut yaz!**
+
+---
+
+## 🧠 AI Becerileri
+
+NEXUS-ONE gerçek zamanlı öğrenir ve becerilerini chat'te gösterir:
+
+```
+sistem durumu
+```
+
+**Çıktı**:
+```
+🧠 AI Becerileri:
+  Kod yazma: 0-100 (workspace'ten öğrendikçe artar)
+  Web gezinme: 0-100 (Google/YouTube/GitHub gezinceleri)
+  Oyun geliştirme: 0-100 (Unity proje sayısı)
+```
+
+Her işlem sonrası beceriler güncellenir!
+
+---
+
+## 📊 Teknik Mimari
+
+### Modüler Yapı
+```
+NEXUS-ONE/
+├── ui/
+│   └── human_control_panel.py   # 🎛️ Copilot Panel (Tkinter)
+├── web_navigator.py              # 🌐 Selenium browser automation
+├── code_generator.py             # 💻 AST-based code generation
+├── game_engine_controller.py     # 🎮 Unity/Unreal automation
+├── accelerated_learning.py       # ⚡ Multi-modal learning system
+├── nexus_security.py             # 🛡️ Defensive security agent
+└── requirements.txt              # 📦 Dependencies
+```
+
+### Threading Model
+- **Main Thread**: Tkinter UI (chat display, buttons)
 Sunucu varsayılan olarak `http://127.0.0.1:8000` adresinde çalışmaya başlayacaktır.
 
 - **Dashboard:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
