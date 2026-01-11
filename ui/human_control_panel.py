@@ -920,4 +920,13 @@ def main():
     app.mainloop()
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BaseException as e:
+        # Yakalanmayan hataları logla ki pencere neden kapandı görelim
+        crash_log = LOG_DIR / "panel_crash.log"
+        try:
+            crash_log.write_text(str(e), encoding="utf-8")
+        except Exception:
+            pass
+        print(f"[PANEL CRASH] {e}")
