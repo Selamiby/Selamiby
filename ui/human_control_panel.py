@@ -495,7 +495,82 @@ class ControlPanel(tk.Tk):
                 info.append(f"  Web gezinme: {skills.get('web_navigation', 0):.1f}/100")
                 info.append(f"  Oyun geliştirme: {skills.get('game_development', 0):.1f}/100")
             
-            return "📊 Sistem Durumu:\n" + "\n".join(info) if info else "psutil yük"
+            return "📊 Sistem Durumu:\n" + "\n".join(info) if info else "psutil yüklü değil"
+        
+        # === LEARNING RATE CONTROL ===
+        if any(kw in txt for kw in ['öğrenme hızı', 'learning rate', 'hız artır', 'hız azalt']):
+            if not LEARNING_AVAILABLE or not self.learner:
+                return "Accelerated Learning modülü yüklü değil."
+            
+            try:
+                # Extract number from command
+                import re
+                numbers = re.findall(r'\d+\.?\d*', text)
+                if numbers:
+                    factor = float(numbers[0])
+                    self.learner.increase_learning_rate(factor)
+                    return f"⚡ Öğrenme hızı {factor}x olarak ayarlandı!"
+                return "Hız değeri ver. Örnek: 'öğrenme hızı 5x'"
+            except Exception as e:
+                return f"Hız ayarlama hatası: {e}"
+        
+        # === GAME ENGINE ===
+        if any(kw in txt for kw in ['unity proje', 'unreal proje', 'oyun yap', 'game create']):
+            if not GAME_ENGINE_AVAILABLE:
+                return "Game Engine Controller modülü yüklü değil."
+            
+            try:
+                from game_engine_controller import GameEngineController
+                engine = GameEngineController()
+                
+                # Detect project name
+                project_name = "MyGame"
+                for part in parts:
+                    if part not in ['unity', 'unreal', 'proje', 'oyun', 'yap', 'game', 'create']:
+                        project_name = part.capitalize()
+                        break
+                
+                if 'unity' in txt:
+                    result = engine.create_unity_project(project_name, template="3D")
+                    return f"🎮 Unity projesi oluşturuldu!\nİsim: {project_name}\nKonum: {result.get('project_path', 'N/A')}"
+                elif 'unreal' in txt:
+                    return "🎮 Unreal Engine desteği yakında eklenecek."
+                else:
+                    return "Hangi engine? 'unity proje MyGame' veya 'unreal proje MyGame'"
+            except Exception as e:
+                return f"Oyun projesi hatası: {e}"
+        
+        # === GENERAL HELP ===
+        if any(kw in txt for kw in ['help', 'yardım', 'ne yapabilirsin', 'komutlar']):
+            return """🤖 NEXUS-ONE AI Copilot Komutları:
+
+🔍 WEB & LEARNING:
+  • "python machine learning ara" - Google'da ara
+  • "youtube.com/watch?v=xyz öğren" - Video izle
+  • "github.com/user/repo öğren" - GitHub repo analiz et
+  • "workspace öğren" - Tüm kodları öğren
+
+💻 CODE GENERATION:
+  • "kod yaz calculator" - Script oluştur
+  • "program yaz game" - Program yaz
+
+🛡️ SECURITY:
+  • "güvenlik başlat/durdur" - Koruma aç/kapat
+  • "defender tara" - Virüs taraması
+
+📊 SYSTEM:
+  • "sistem durumu" - CPU, RAM, AI becerileri
+
+⚡ LEARNING:
+  • "öğrenme hızı 5x" - Hızı ayarla
+
+🎮 GAME ENGINE:
+  • "unity proje MyGame" - Unity projesi oluştur
+
+Örnek: 'machine learning ara' yaz, direkt sonuçları görürsün!"""
+        
+        # Unknown command
+        return f"❓ Anlamadım: '{text}'\n'help' yaz komutları gör."
         
         # Cleanup commands
         if any(kw in txt for kw in ['temizlik yap', 'cleanup', 'clean', 'temizle', 'dosya sil']):
