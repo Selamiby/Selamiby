@@ -1046,6 +1046,51 @@
       "file": "C:\\Users\\selam\\NEXUS-ONE\\setup_github_secrets.ps1",
       "variable": "authStatus",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\autonomous_advanced.ps1",
+      "variable": "elapsedMs",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\autonomous_advanced.ps1",
+      "variable": "pushJob",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
+      "variable": "EnableSmartCommit",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
+      "variable": "pushResult",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
+      "variable": "EnableParallelOps",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
+      "variable": "timestamp",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\monitoring_dashboard.ps1",
+      "variable": "DashboardPort",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\run_advanced_automation.ps1",
+      "variable": "Mode",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "C:\\Users\\selam\\NEXUS-ONE\\setup_github_secrets.ps1",
+      "variable": "authStatus",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     }
   ],
   "import_errors": []

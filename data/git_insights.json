@@ -1,7 +1,15 @@
 {
+  ".pytest_cache/v/cache/lastfailed": {
+    "contributors": 1,
+    "recent_changes": 2
+  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
+  },
+  "data/learned_patterns.json": {
+    "contributors": 1,
+    "recent_changes": 2
   },
   "data/logs/auto_healer.log": {
     "contributors": 1,
@@ -11,8 +19,12 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "nexus_super_learner.py": {
+  "test_advanced_similarity.py": {
     "contributors": 1,
-    "recent_changes": 3
+    "recent_changes": 4
+  },
+  "test_similarity_v2.py": {
+    "contributors": 1,
+    "recent_changes": 1
   }
 }
