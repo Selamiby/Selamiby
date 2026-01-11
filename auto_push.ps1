@@ -5,7 +5,7 @@ param(
     [int]$IntervalSeconds = 300  # Varsayılan: 5 dakika
 )
 
-function Invoke-AutoCommitPush {
+function Invoke-AutoCommitAndPush {
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     
     try {

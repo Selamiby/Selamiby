@@ -17,7 +17,14 @@ function Write-AdvLog {
     param([string]$Message, [string]$Level = "INFO")
     $time = Get-Date -Format "HH:mm:ss"
     $logMsg = "[$time] [$Level] $Message"
-    Write-Host $logMsg -ForegroundColor @{INFO="Cyan"; SUCCESS="Green"; WARNING="Yellow"; ERROR="Red"}[$Level]
+    $colorMap = @{"INFO" = "Cyan"; "SUCCESS" = "Green"; "WARNING" = "Yellow"; "ERROR" = "Red" }
+    $color = $colorMap[$Level]
+    if ($color) {
+        Write-Host $logMsg -ForegroundColor $color
+    }
+    else {
+        Write-Host $logMsg
+    }
     Add-Content $LogPath -Value $logMsg -ErrorAction SilentlyContinue
 }
 
@@ -40,13 +47,15 @@ function Invoke-GitPull {
         if ($LASTEXITCODE -eq 0) {
             Write-AdvLog "Pull başarılı" "SUCCESS"
             return $true
-        } else {
+        }
+        else {
             Write-AdvLog "Merge hatası: $mergeResult" "WARNING"
             # Çakışma çözme
             & git merge --abort 2>$null
             return $false
         }
-    } catch {
+    }
+    catch {
         Write-AdvLog "Pull hatası: $_" "ERROR"
         return $false
     }
@@ -69,7 +78,8 @@ function Invoke-SmartCommit {
             Write-AdvLog "Commit başarılı" "SUCCESS"
             return $true
         }
-    } catch {
+    }
+    catch {
         Write-AdvLog "Commit hatası: $_" "ERROR"
     }
     return $false
@@ -82,7 +92,8 @@ function Invoke-GitPush {
         if ($LASTEXITCODE -eq 0) {
             Write-AdvLog "Push başarılı" "SUCCESS"
             return $true
-        } else {
+        }
+        else {
             Write-AdvLog "Push hatası, force push deneniyor..." "WARNING"
             & git push origin main --force-with-lease 2>$null
             if ($LASTEXITCODE -eq 0) {
@@ -90,7 +101,8 @@ function Invoke-GitPush {
                 return $true
             }
         }
-    } catch {
+    }
+    catch {
         Write-AdvLog "Push hatası: $_" "ERROR"
     }
     return $false
@@ -117,7 +129,8 @@ function Invoke-AutoSync {
                 Write-AdvLog "=== SYNC BAŞARILI ===" "SUCCESS"
                 break
             }
-        } else {
+        }
+        else {
             # Commit yapılmadıysa pull yeterli
             $success = $true
             Write-AdvLog "=== SYNC BAŞARILI (no changes) ===" "SUCCESS"
@@ -137,7 +150,8 @@ Write-AdvLog "Interval: $IntervalSeconds saniye" "INFO"
 while ($true) {
     try {
         Invoke-AutoSync
-    } catch {
+    }
+    catch {
         Write-AdvLog "Kritik hata: $_" "ERROR"
     }
     

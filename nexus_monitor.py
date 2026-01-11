@@ -3,9 +3,10 @@
 
 import json
 import os
+import subprocess
 from datetime import datetime
 from pathlib import Path
-import subprocess
+
 
 class NexusMonitor:
     def __init__(self):

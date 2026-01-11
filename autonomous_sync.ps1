@@ -79,7 +79,7 @@ function Invoke-AutonomousSync {
         }
         
         # 2. Commit (değişiklikleri kaydet)
-        Invoke-GitCommit
+        $commitSuccess = Invoke-GitCommit
         
         # 3. Push (GitHub'a gönder)
         if (-not (Invoke-GitPush)) {

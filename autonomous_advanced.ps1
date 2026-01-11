@@ -121,7 +121,10 @@ function Invoke-MultiBranchSync {
         
         foreach ($branch in $branches) {
             if (& git rev-parse --verify $branch 2>$null) {
-                Write-AutoLog "  ✓ $branch senkronize ediliyor..." "INFO"
+                $pushJob = Start-Job -ScriptBlock {
+                    & git push origin $branch 2>&1
+                }
+                Write-AutoLog "  ✓ $branch senkronize ediliyor... (Job: $($pushJob.Id))" "INFO"
                 & git checkout $branch -q 2>$null
                 & git pull origin $branch --allow-unrelated-histories --no-edit 2>$null
             }
@@ -141,7 +144,8 @@ function Get-PerformanceStats {
     try {
         $commits = (& git rev-list --all --count)
         $branches = (& git branch -r | Measure-Object -Line).Lines
-        $size = (Get-ChildItem -Path . -Recurse -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum / 1MB
+        $sizeBytes = (Get-ChildItem -Path . -Recurse -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
+        $size = $sizeBytes / 1MB
         
         Write-AutoLog "📊 Stats | Commits: $commits | Branches: $branches | Size: $([math]::Round($size, 2))MB" "PERF"
     }
