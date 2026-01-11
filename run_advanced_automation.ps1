@@ -14,7 +14,7 @@ Write-Host "[NEXUS] Advanced Automation Orchestrator"
 Write-Host "=================================================="
 Write-Host ""
 
-function Run-AdvancedAutomation {
+function Invoke-AdvancedAutomation {
     param([string]$Mode = "full")
     
     Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Running Advanced Automation..." -ForegroundColor Cyan
@@ -43,14 +43,14 @@ function Run-AdvancedAutomation {
 
 # Main loop
 if ($Interactive) {
-    Run-AdvancedAutomation "interactive"
+    Invoke-AdvancedAutomation "interactive"
 }
 else {
     Write-Host "[INFO] Starting continuous automation (every ${IntervalSeconds}s)..." -ForegroundColor Yellow
     Write-Host "[INFO] Press Ctrl+C to stop`n" -ForegroundColor Yellow
     
     while ($true) {
-        Run-AdvancedAutomation "continuous"
+        Invoke-AdvancedAutomation "continuous"
         
         Write-Host "[$(Get-Date -Format 'HH:mm:ss')] Next run in ${IntervalSeconds}s..." -ForegroundColor Gray
         Start-Sleep -Seconds $IntervalSeconds

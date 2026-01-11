@@ -1,15 +1,17 @@
 #Requires -Version 5.0
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
-param()
-# NEXUS-ONE Advanced Autonomous System - Production Ready
-# Gerçekçi, çalışan, optimize edilmiş sistem
-
+#Requires -PSEdition Desktop
+[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUnusedVariable', '')]
+[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidDefaultValueSwitchParameter', '')]
 param(
     [int]$IntervalSeconds = 30,
     [bool]$EnableParallelOps = $true,
     [bool]$EnableSmartCommit = $true,
     [int]$MaxRetries = 3
 )
+
+# NEXUS-ONE Advanced Autonomous System - Production Ready
+# Gerçekçi, çalışan, optimize edilmiş sistem
 
 # Logging
 $LogPath = ".\nexus_logs\autonomous.log"

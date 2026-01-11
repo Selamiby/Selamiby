@@ -60,7 +60,7 @@ jobs:
       continue-on-error: true
       # Secrets are safely handled with fallback values
       env:
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Valid in production
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm i -g vercel || true
@@ -71,7 +71,7 @@ jobs:
       if: success()
       continue-on-error: true
       env:
-        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}  # Valid in production
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo "Deployment triggered for main branch"
