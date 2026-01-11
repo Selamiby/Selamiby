@@ -36,7 +36,8 @@ for ($i = 0; $i -lt 5; $i++) {
     try {
         $cpu = [math]::Round((Get-CpuUsage), 1)
         Write-Host "CPU: $cpu%" -ForegroundColor Yellow
-    } catch {}
+    }
+    catch {}
 }
 
 Write-Host "Agent launched. Check nexus_logs/human_agent.log" -ForegroundColor Cyan
