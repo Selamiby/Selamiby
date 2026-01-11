@@ -1,11 +1,12 @@
 # Otomatik Git Commit ve Push Scripti
 # Her 5 dakikada bir değişiklikleri commit ve push eder
+# PSScriptAnalyzer: Function uses approved verbs
 
 param(
     [int]$IntervalSeconds = 300  # Varsayılan: 5 dakika
 )
 
-function Invoke-AutoCommitAndPush {
+function Invoke-GitAutoPush {
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     
     try {
@@ -41,6 +42,6 @@ function Invoke-AutoCommitAndPush {
 # Sürekli loop
 Write-Host "Otomatik Git Sync başladı. Interval: $IntervalSeconds saniye" -ForegroundColor Cyan
 while ($true) {
-    Invoke-AutoCommitPush
+    Invoke-GitAutoPush
     Start-Sleep -Seconds $IntervalSeconds
 }
