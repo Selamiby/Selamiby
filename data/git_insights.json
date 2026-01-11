@@ -7,28 +7,16 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "generate_summary_report.py": {
+  "human_interface_agent.py": {
     "contributors": 1,
-    "recent_changes": 5
-  },
-  "nexus_advanced_automation.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "nexus_advanced_features.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "nexus_auto_healer.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "nexus_chat.py": {
-    "contributors": 1,
-    "recent_changes": 5
+    "recent_changes": 1
   },
   "nexus_logs/autonomous.log": {
     "contributors": 1,
     "recent_changes": 5
+  },
+  "run_human_agent.ps1": {
+    "contributors": 1,
+    "recent_changes": 2
   }
 }

@@ -8,7 +8,27 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7449
+    "size": 7451
+  },
+  "human_interface_agent.py": {
+    "imports": [
+      "os",
+      "sys",
+      "time",
+      "json",
+      "subprocess",
+      "pathlib"
+    ],
+    "functions": [
+      "log",
+      "cpu_throttle",
+      "find_app_paths",
+      "launch_app",
+      "demo_notepad_typing",
+      "open_vscode_workspace",
+      "main"
+    ],
+    "size": 3968
   },
   "nexus_advanced_automation.py": {
     "imports": [
@@ -28,7 +48,7 @@
       "generate_docs",
       "main"
     ],
-    "size": 6792
+    "size": 6804
   },
   "nexus_advanced_features.py": {
     "imports": [
@@ -47,7 +67,7 @@
       "feature_5_deployment_readiness",
       "main"
     ],
-    "size": 6743
+    "size": 6755
   },
   "nexus_auto_healer.py": {
     "imports": [
@@ -71,7 +91,7 @@
       "fix_yaml_context_warnings",
       "auto_fix_all"
     ],
-    "size": 11269
+    "size": 11273
   },
   "nexus_chat.py": {
     "imports": [
@@ -88,7 +108,7 @@
       "get_chat_summary",
       "start_lightweight_chat"
     ],
-    "size": 4525
+    "size": 4526
   },
   "nexus_daemon.py": {
     "imports": [
@@ -300,25 +320,5 @@
     "imports": [],
     "functions": [],
     "size": 302
-  },
-  "social_learner.py": {
-    "imports": [
-      "json",
-      "os",
-      "re",
-      "datetime",
-      "requests",
-      "bs4"
-    ],
-    "functions": [
-      "__init__",
-      "youtube_trends",
-      "github_trends",
-      "twitter_trends",
-      "stackoverflow_trends",
-      "collect_all",
-      "analyze_and_learn"
-    ],
-    "size": 8462
   }
 }
