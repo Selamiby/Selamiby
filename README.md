@@ -1,53 +1,68 @@
 
-# 🚀 AETHEROS / NEXUS-ONE
-## Autonomous System Management Platform
+# 🤖 NEXUS-ONE AI Copilot
+## Masaüstü Yapay Zeka Asistanı - Kopyala-Yapıştır YOK!
 
-### 📋 Özellikler
-- 🔄 **Otonom Backup Management**
-- 📊 **Real-time System Monitoring**
-- 🗂️ **Smart File Organization**
-- 🌐 **REST API + Web Dashboard**
-- ⚡ **Modüler Mimari**
-- 🔧 **Kolay Kurulum**
+### ⚡ Özellikler
+- 💬 **Copilot Chat Mode**: Chat'te komut ver, direkt sonuç gör!
+- 🔍 **Web Learning**: Google ara, YouTube izle, GitHub öğren
+- 💻 **Code Generation**: AI workspace'i öğrenir, kod yazar (171 fonksiyon bilir)
+- 🎮 **Game Engine**: Unity/Unreal proje oluştur
+- 🛡️ **Security**: Autonomous güvenlik duvarı, Windows Defender entegrasyonu
+- 📊 **System Monitor**: CPU, RAM, AI becerileri canlı takip
+- ⚡ **Learning Rate**: 0.1x - 10x öğrenme hızı kontrolü
+- 🧵 **Threading**: Panel donmaz, her şey arka planda
 
 ### 🚀 Hızlı Başlangıç
 
-#### Kurulum
-```bash
-# 1. Kurulum script'ini çalıştır
-curl -sSL https://raw.githubusercontent.com/your-repo/install.sh | bash
+#### 1. Masaüstü Kısayol (EN KOLAY)
+```
+Masaüstünde "NEXUS-ONE AI" simgesi → Çift tıkla!
+```
 
-# 2. Proje dizinine git
-cd ~/aetheros
+#### 2. PowerShell
+```powershell
+cd C:\Users\selam\NEXUS-ONE
+python ui/human_control_panel.py
+```
 
-# 3. Başlat
-./scripts/start.sh
+#### 3. İlk Komut (Chat'te yaz!)
+```
+help
+```
+→ Tüm komutlar görünür
+
+---
+
+## 🎯 Copilot Mode Örnekleri
+
+### Google Arama (5 saniye)
+```
+python machine learning ara
+```
+**Sonuç**: İlk 5 Google sonucu chat'te!
+
+### Kod Yaz (3 saniye)
+```
+kod yaz calculator
+```
+**Sonuç**: ✅ calculator.py oluşturuldu, test edildi!
+
+### Sistem Durumu
+```
+sistem durumu
+```
+**Sonuç**: 
+```
+CPU: 45.2%
+RAM: 68.3% (16GB / 32GB)
+🧠 AI Becerileri:
+  Kod yazma: 85/100
+  Web gezinme: 72/100
 ```
 
 ---
 
-**AETHEROS, otonom bir sistem yönetimi ve görev otomasyon platformudur.**
-
-Bu proje, `NEXUS-ONE` kod adıyla geliştirilen, modüler ve genişletilebilir bir yapıya sahip akıllı bir backend sistemidir. Sistem kaynaklarını izler, otomatik yedeklemeler yapar, görevleri zamanlar ve bir API aracılığıyla yönetilebilir.
-
-## ✨ Temel Özellikler
-
-- **Modüler Mimari:** `NexusCore` etrafında şekillenen, kolayca yeni yetenekler eklenebilen bir yapı.
-- **Sistem İzleme:** CPU, bellek, disk, ağ ve GPU kullanımını gerçek zamanlı olarak izler ve anormal durumlarda uyarılar oluşturur.
-- **Otomatik Yedekleme:** Belirlenen dosya ve klasörleri zamanlanmış görevlerle sıkıştırarak yedekler ve eski yedekleri temizler.
-- **Görev Zamanlama:** Tekrarlayan veya tek seferlik görevleri (örn. sistem temizliği, raporlama) otomatize eder.
-- **Dosya Organizasyonu:** Klasörleri izleyerek dosyaları türlerine göre otomatik olarak düzenler.
-- **RESTful API:** Sistemin tüm fonksiyonlarını kontrol etmek için `FastAPI` tabanlı modern bir API sunar.
-- **Basit Web Arayüzü:** Sistemin genel durumunu gösteren ve temel işlemleri yapmaya olanak tanıyan bir dashboard.
-
-## 🚀 Kurulum ve Başlatma
-
-### Gereksinimler
-- Python 3.9+
-- pip
-
-### Kurulum
-1.  **Projeyi klonlayın (veya indirin):**
+## 📚 Dokümantasyon
     ```bash
     git clone https://github.com/your-username/aetheros.git
     cd aetheros
