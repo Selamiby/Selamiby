@@ -1,0 +1,322 @@
+{
+  "generate_summary_report.py": {
+    "imports": [
+      "json",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "generate_summary"
+    ],
+    "size": 7442
+  },
+  "nexus_advanced_automation.py": {
+    "imports": [
+      "json",
+      "os",
+      "re",
+      "subprocess",
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "analyze_performance",
+      "format_code",
+      "generate_tests",
+      "scan_security",
+      "generate_docs",
+      "main"
+    ],
+    "size": 6750
+  },
+  "nexus_advanced_features.py": {
+    "imports": [
+      "json",
+      "os",
+      "subprocess",
+      "collections",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "feature_1_realtime_monitoring",
+      "feature_2_git_analysis",
+      "feature_3_code_formatter",
+      "feature_4_error_prediction",
+      "feature_5_deployment_readiness",
+      "main"
+    ],
+    "size": 6701
+  },
+  "nexus_auto_healer.py": {
+    "imports": [
+      "json",
+      "os",
+      "re",
+      "subprocess",
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "__init__",
+      "load_patterns",
+      "save_patterns",
+      "log",
+      "get_errors",
+      "parse_errors",
+      "check_yaml_files",
+      "check_powershell_files",
+      "fix_yaml_context_warnings",
+      "auto_fix_all"
+    ],
+    "size": 11255
+  },
+  "nexus_chat.py": {
+    "imports": [
+      "asyncio",
+      "sys",
+      "datetime",
+      "typing"
+    ],
+    "functions": [
+      "__init__",
+      "start_chat",
+      "process_message",
+      "run_chat_loop",
+      "get_chat_summary",
+      "start_lightweight_chat"
+    ],
+    "size": 4518
+  },
+  "nexus_daemon.py": {
+    "imports": [
+      "json",
+      "time",
+      "datetime",
+      "time",
+      "json",
+      "datetime",
+      "os",
+      "hyper_integration"
+    ],
+    "functions": [
+      "__init__",
+      "load_tasks",
+      "run_scheduled_tasks",
+      "execute_task",
+      "run_forever",
+      "__init__",
+      "load_tasks",
+      "run_scheduled_tasks",
+      "execute_task",
+      "run_forever"
+    ],
+    "size": 6468
+  },
+  "nexus_final_touch.py": {
+    "imports": [
+      "json",
+      "os",
+      "sys",
+      "time",
+      "datetime"
+    ],
+    "functions": [
+      "analyze_code_mood",
+      "auto_fix_problems",
+      "predict_tech_trends",
+      "predict_next_language",
+      "execute_code",
+      "send_command",
+      "autonomous_mission",
+      "start_browser",
+      "search_google",
+      "close"
+    ],
+    "size": 14754
+  },
+  "nexus_learner.py": {
+    "imports": [
+      "json",
+      "subprocess",
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "__init__",
+      "load_learning_data",
+      "save_learning_data",
+      "learn_error_pattern",
+      "learn_solution",
+      "update_success_rate",
+      "get_learned_solutions",
+      "get_learning_summary",
+      "__init__",
+      "integrate_with_autonomous_system"
+    ],
+    "size": 7489
+  },
+  "nexus_monitor.py": {
+    "imports": [
+      "json",
+      "os",
+      "subprocess",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "__init__",
+      "load_stats",
+      "save_stats",
+      "record_sync",
+      "get_repo_stats",
+      "generate_report"
+    ],
+    "size": 3702
+  },
+  "nexus_one_real.py": {
+    "imports": [
+      "psutil",
+      "config"
+    ],
+    "functions": [
+      "check_system",
+      "main"
+    ],
+    "size": 811
+  },
+  "nexus_start.py": {
+    "imports": [
+      "os",
+      "time",
+      "datetime"
+    ],
+    "functions": [],
+    "size": 1049
+  },
+  "NEXUS_SUMMARY.py": {
+    "imports": [],
+    "functions": [],
+    "size": 4104
+  },
+  "nexus_super.py": {
+    "imports": [
+      "os",
+      "sys",
+      "time",
+      "datetime"
+    ],
+    "functions": [
+      "__init__",
+      "calis",
+      "kontrol_et",
+      "karar_ver",
+      "calistir"
+    ],
+    "size": 3722
+  },
+  "nexus_super_learner.py": {
+    "imports": [
+      "json",
+      "re",
+      "subprocess",
+      "pathlib",
+      "datetime",
+      "collections",
+      "difflib"
+    ],
+    "functions": [
+      "__init__",
+      "feature_1_pattern_mining",
+      "feature_2_context_learning",
+      "feature_3_git_blame_analysis",
+      "feature_4_similarity_detection",
+      "feature_5_solution_ranking",
+      "feature_6_predictive_analysis",
+      "run_all_features"
+    ],
+    "size": 11022
+  },
+  "programming_language_master.py": {
+    "imports": [
+      "hashlib",
+      "json",
+      "os",
+      "re",
+      "collections",
+      "datetime"
+    ],
+    "functions": [
+      "__init__",
+      "function_name",
+      "load_sample_codes",
+      "fibonacci",
+      "__init__",
+      "add",
+      "detect_language",
+      "translate_code",
+      "learn_from_data",
+      "create_new_language"
+    ],
+    "size": 16088
+  },
+  "quick_start.py": {
+    "imports": [
+      "json",
+      "os",
+      "sys",
+      "datetime"
+    ],
+    "functions": [
+      "quick_start"
+    ],
+    "size": 2900
+  },
+  "realtime_executor.py": {
+    "imports": [
+      "os",
+      "subprocess",
+      "tempfile"
+    ],
+    "functions": [
+      "execute_code"
+    ],
+    "size": 1029
+  },
+  "robotics_controller.py": {
+    "imports": [],
+    "functions": [
+      "send_command",
+      "autonomous_mission"
+    ],
+    "size": 541
+  },
+  "self_healing.py": {
+    "imports": [],
+    "functions": [],
+    "size": 302
+  },
+  "social_learner.py": {
+    "imports": [
+      "json",
+      "os",
+      "re",
+      "datetime",
+      "requests",
+      "bs4"
+    ],
+    "functions": [
+      "__init__",
+      "youtube_trends",
+      "github_trends",
+      "twitter_trends",
+      "stackoverflow_trends",
+      "collect_all",
+      "analyze_and_learn"
+    ],
+    "size": 8462
+  }
+}

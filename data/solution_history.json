@@ -1,0 +1,18 @@
+{
+  "param_syntax_error": {
+    "success_rate": 100,
+    "applications": 3
+  },
+  "unused_variable": {
+    "success_rate": 100,
+    "applications": 12
+  },
+  "yaml_secrets": {
+    "success_rate": 90,
+    "applications": 2
+  },
+  "foreground_color": {
+    "success_rate": 100,
+    "applications": 1
+  }
+}

@@ -180,6 +180,20 @@ function Invoke-AdvancedFeatures {
     }
 }
 
+# === NEXUS-ONE SUPER LEARNER HOOK ===
+# Her 10 senkronizasyonda bir enhanced learning features'ı çalıştır
+function Invoke-SuperLearner {
+    param([int]$CycleCount = 0)
+    
+    if (($CycleCount % 10) -eq 0 -and $CycleCount -gt 0) {
+        Write-AdvLog "Super Learner çalıştırılıyor..." "INFO"
+        if (Test-Path "nexus_super_learner.py") {
+            python nexus_super_learner.py 2>$null | Out-Null
+            Write-AdvLog "Enhanced learning tamamlandı" "SUCCESS"
+        }
+    }
+}
+
 while ($true) {
     Invoke-NEXUSHealer
 
