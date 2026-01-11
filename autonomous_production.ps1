@@ -149,6 +149,8 @@ function Invoke-AutoSync {
 # Main loop
 Write-AdvLog "NEXUS-ONE Advanced Autonomous System başlatıldı" "INFO"
 Write-AdvLog "Interval: $IntervalSeconds saniye" "INFO"
+Write-AdvLog "Advanced Features: Her 5 senkronizasyonda" "INFO"
+$cycleCount = 0
 
 
 # === NEXUS-ONE AUTO HEALER HOOK ===
@@ -159,11 +161,27 @@ function Invoke-NEXUSHealer {
     }
 }
 
+# === NEXUS-ONE ADVANCED FEATURES HOOK ===
+# Her 5 senkronizasyonda bir advanced automation features'ı çalıştır
+function Invoke-AdvancedFeatures {
+    param([int]$CycleCount = 0)
+    
+    if (($CycleCount % 5) -eq 0 -and $CycleCount -gt 0) {
+        Write-AdvLog "Advanced features çalıştırılıyor..." "INFO"
+        if (Test-Path "nexus_advanced_features.py") {
+            python nexus_advanced_features.py 2>$null | Out-Null
+            Write-AdvLog "Advanced features tamamlandı" "SUCCESS"
+        }
+    }
+}
+
 while ($true) {
     Invoke-NEXUSHealer
 
     try {
         Invoke-AutoSync
+        $cycleCount++
+        Invoke-AdvancedFeatures $cycleCount
     }
     catch {
         Write-AdvLog "Kritik hata: $_" "ERROR"

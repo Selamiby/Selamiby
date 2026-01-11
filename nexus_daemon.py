@@ -4,11 +4,12 @@ import time
 from datetime import datetime
 
 
+
 class NexusDaemon:
     def __init__(self):
         self.tasks = []
         self.load_tasks()
-    
+
     def load_tasks(self):
         """Gece görevlerini yükle"""
         self.tasks = [
@@ -17,27 +18,27 @@ class NexusDaemon:
             {"time": "04:00", "action": "crewai", "task": "Yeni özellikler araştır"},
             {"time": "05:00", "action": "stable_diffusion", "task": "Dashboard için görsel üret"},
         ]
-    
+
     def run_scheduled_tasks(self):
         """Zamanlanmış görevleri çalıştır"""
         current_time = datetime.now().strftime("%H:%M")
-        
+
         for task in self.tasks:
             if task["time"] == current_time:
                 print(f"⏰ {task['time']} - {task['action']}: {task['task']}")
                 # Burada gerçek çalıştırma kodları olacak
                 self.execute_task(task)
                 time.sleep(60)  # 1 dakika bekle
-    
+
     def execute_task(self, task):
         """Görevi çalıştır"""
         # Bu kısım hyper_integration.py ile entegre olacak
         print(f"▶️  Çalıştırılıyor: {task}")
-    
+
     def run_forever(self):
         """Sonsuza kadar çalış"""
         print("👁️  NEXUS DAEMON AKTİF - Siz uyurken ben çalışacağım!")
-        
+
         while True:
             try:
                 self.run_scheduled_tasks()
@@ -52,6 +53,7 @@ import os
 # hyper_integration.py dosyasından ana kontrol sınıfını içe aktar
 from hyper_integration import NexusHyperCore
 
+
 class NexusDaemon:
     def __init__(self):
         print("🧠 Nexus Çekirdeği ve modüller yükleniyor...")
@@ -61,7 +63,7 @@ class NexusDaemon:
         # Görevler için bir çalışma alanı oluşturalım
         if not os.path.exists('daemon_projects'):
             os.makedirs('daemon_projects')
-    
+
     def load_tasks(self):
         """Gece görevlerini yükle"""
         self.tasks = [
@@ -70,25 +72,25 @@ class NexusDaemon:
             {"time": "04:00", "action": "crewai", "task": "Yapay zeka alanındaki yeni trendleri araştır ve bir sunum hazırla"},
             {"time": "05:00", "action": "stable_diffusion", "task": "Geleceğin teknolojisi temalı bir konsept sanat oluştur"},
         ]
-    
+
     def run_scheduled_tasks(self):
         """Zamanlanmış görevleri çalıştır"""
         current_time = datetime.now().strftime("%H:%M")
-        
+
         for task in self.tasks:
             if task["time"] == current_time:
                 print(f"⏰ Zamanı geldi! Görev başlatılıyor: {task['action']} - {task['task']}")
                 self.execute_task(task)
                 # Görevin tekrar çalışmasını önlemek için 60 saniye bekle
                 time.sleep(61)
-    
+
     def execute_task(self, task_info):
         """Görevi ilgili modülü kullanarak çalıştırır."""
         action = task_info["action"]
         task_payload = task_info["task"]
-        
+
         print(f"▶️  {action} modülü çalıştırılıyor... Görev: {task_payload}")
-        
+
         try:
             if action == 'autogpt' and 'autogpt' in self.nexus_core.modules:
                 runner = self.nexus_core.modules['autogpt'].get('runner')
@@ -126,7 +128,7 @@ class NexusDaemon:
                     filename = f"generated_image_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
                     image.save(filename)
                 print(f"✅ Görsel '{filename}' olarak kaydedildi.")
-            
+
             else:
                 print(f"⚠️  Modül '{action}' bulunamadı veya çalıştırılamadı.")
 
@@ -136,7 +138,7 @@ class NexusDaemon:
     def run_forever(self):
         """Sonsuza kadar çalış"""
         print("👁️  NEXUS DAEMON AKTİF - Siz uyurken ben çalışacağım!")
-        
+
         while True:
             try:
                 self.run_scheduled_tasks()
