@@ -20,6 +20,7 @@ GAME_PROJECTS_DIR = WORKSPACE / "game_projects"
 LOG_FILE = LOG_DIR / "game_engine.log"
 
 
+
 def log(msg: str):
     ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     line = f"[{ts}] {msg}\n"
@@ -30,6 +31,7 @@ def log(msg: str):
     except Exception:
         pass
     print(line.strip())
+
 
 
 class GameEngineController:
@@ -187,6 +189,7 @@ public class {script_name}
             }
         except Exception as e:
             return {"error": str(e)}
+
 
 
 def demo_game_engine():

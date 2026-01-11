@@ -1,4 +1,74 @@
 {
+  "accelerated_learning.py": {
+    "imports": [
+      "json",
+      "sys",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "log",
+      "__init__",
+      "load_knowledge",
+      "save_knowledge",
+      "load_config",
+      "save_config",
+      "learn_concept",
+      "learn_from_code",
+      "learn_from_web",
+      "learn_from_visual"
+    ],
+    "size": 6458
+  },
+  "code_generator.py": {
+    "imports": [
+      "ast",
+      "json",
+      "os",
+      "subprocess",
+      "sys",
+      "time",
+      "datetime",
+      "pathlib",
+      "sys",
+      "datetime"
+    ],
+    "functions": [
+      "log",
+      "__init__",
+      "load_patterns",
+      "save_patterns",
+      "learn_from_file",
+      "learn_from_workspace",
+      "generate_simple_function",
+      "generate_class",
+      "__init__",
+      "generate_script"
+    ],
+    "size": 8014
+  },
+  "game_engine_controller.py": {
+    "imports": [
+      "json",
+      "os",
+      "subprocess",
+      "sys",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "log",
+      "__init__",
+      "find_unity",
+      "find_unreal",
+      "create_unity_project",
+      "create_unity_script",
+      "open_unity_project",
+      "create_unreal_project",
+      "demo_game_engine"
+    ],
+    "size": 7025
+  },
   "generate_summary_report.py": {
     "imports": [
       "json",
@@ -8,7 +78,7 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7457
+    "size": 7459
   },
   "human_interface_agent.py": {
     "imports": [
@@ -28,7 +98,7 @@
       "open_vscode_workspace",
       "main"
     ],
-    "size": 4010
+    "size": 4024
   },
   "nexus_advanced_automation.py": {
     "imports": [
@@ -309,36 +379,5 @@
       "create_new_language"
     ],
     "size": 16088
-  },
-  "quick_start.py": {
-    "imports": [
-      "json",
-      "os",
-      "sys",
-      "datetime"
-    ],
-    "functions": [
-      "quick_start"
-    ],
-    "size": 2900
-  },
-  "realtime_executor.py": {
-    "imports": [
-      "os",
-      "subprocess",
-      "tempfile"
-    ],
-    "functions": [
-      "execute_code"
-    ],
-    "size": 1029
-  },
-  "robotics_controller.py": {
-    "imports": [],
-    "functions": [
-      "send_command",
-      "autonomous_mission"
-    ],
-    "size": 541
   }
 }
