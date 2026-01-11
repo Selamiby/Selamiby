@@ -101,39 +101,39 @@ class ControlPanel(tk.Tk):
         btn_frame = ttk.Frame(self)
         btn_frame.pack(fill="x", padx=12, pady=6)
 
-        ttk.Button(btn_frame, text="Run Demo", command=self.run_demo).grid(row=0, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Start Agent", command=self.start_agent).grid(row=0, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Stop Agent", command=self.stop_agent).grid(row=0, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Demo Başlat (Notepad+VSCode)", command=self.run_demo).grid(row=0, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Agent Başlat", command=self.start_agent).grid(row=0, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Agent Durdur", command=self.stop_agent).grid(row=0, column=2, padx=6, pady=6, sticky="ew")
 
-        ttk.Button(btn_frame, text="Open VS Code", command=self.open_vscode).grid(row=1, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Open Logs", command=self.open_logs).grid(row=1, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Open Workspace", command=self.open_workspace).grid(row=1, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="VS Code Aç", command=self.open_vscode).grid(row=1, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Logları Aç", command=self.open_logs).grid(row=1, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Projeyi Aç", command=self.open_workspace).grid(row=1, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 2: VS Code actions
-        ttk.Button(btn_frame, text="Open Search UI", command=self.vscode_search_ui).grid(row=2, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Format Python (black)", command=self.format_python).grid(row=2, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Start Task Queue", command=self.start_task_queue).grid(row=2, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="VS Code Search Aç", command=self.vscode_search_ui).grid(row=2, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Python Formatla (black)", command=self.format_python).grid(row=2, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Görev Kuyruğunu Başlat", command=self.start_task_queue).grid(row=2, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 3: Security agent
-        ttk.Button(btn_frame, text="Start Security", command=self.start_security).grid(row=3, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Stop Security", command=self.stop_security).grid(row=3, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Open Security Logs", command=self.open_security_logs).grid(row=3, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Güvenlik Başlat", command=self.start_security).grid(row=3, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Güvenlik Durdur", command=self.stop_security).grid(row=3, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Güvenlik Loglarını Aç", command=self.open_security_logs).grid(row=3, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 4: AI Learning & Automation
-        ttk.Button(btn_frame, text="Web Learning", command=self.start_web_learning).grid(row=4, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Code Generator", command=self.open_code_generator).grid(row=4, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Game Engine", command=self.open_game_engine).grid(row=4, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Web Öğren (Google/YT/GH)", command=self.start_web_learning).grid(row=4, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Kod Üret (AI)", command=self.open_code_generator).grid(row=4, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Oyun Motoru (Unity)", command=self.open_game_engine).grid(row=4, column=2, padx=6, pady=6, sticky="ew")
         
         # Row 5: Self-Learning System (NEW! 🧠)
-        ttk.Button(btn_frame, text="🧠 Start Self-Learning", command=self.start_self_learning, 
-                  style="Accent.TButton").grid(row=5, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="⏹️ Stop Self-Learning", command=self.stop_self_learning).grid(row=5, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="📊 Learning Stats", command=self.show_learning_stats).grid(row=5, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="🧠 Otonom Öğrenmeyi Başlat", command=self.start_self_learning, 
+              style="Accent.TButton").grid(row=5, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="⏹️ Otonom Öğrenmeyi Durdur", command=self.stop_self_learning).grid(row=5, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="📊 Öğrenme İstatistikleri", command=self.show_learning_stats).grid(row=5, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 3: Safe browser automation
         browser_frame = ttk.Frame(self)
         browser_frame.pack(fill="x", padx=12, pady=6)
-        ttk.Label(browser_frame, text="Safe Browser (Whitelist)").grid(row=0, column=0, sticky="w")
+        ttk.Label(browser_frame, text="Güvenli Tarayıcı (Whitelist)").grid(row=0, column=0, sticky="w")
         self.domain_var = tk.StringVar(value="https://github.com/Selamiby/Selamiby")
         domain_box = ttk.Combobox(browser_frame, textvariable=self.domain_var, values=[
             "https://github.com/Selamiby/Selamiby",
@@ -142,7 +142,7 @@ class ControlPanel(tk.Tk):
             "https://www.microsoft.com/"
         ], state="readonly")
         domain_box.grid(row=0, column=1, sticky="ew", padx=6)
-        ttk.Button(browser_frame, text="Open", command=self.open_whitelisted_domain).grid(row=0, column=2, padx=6)
+        ttk.Button(browser_frame, text="Aç", command=self.open_whitelisted_domain).grid(row=0, column=2, padx=6)
         browser_frame.grid_columnconfigure(1, weight=1)
 
         # Learning Rate Control
