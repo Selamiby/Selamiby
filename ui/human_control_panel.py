@@ -93,6 +93,11 @@ class ControlPanel(tk.Tk):
         ttk.Button(btn_frame, text="Stop Security", command=self.stop_security).grid(row=3, column=1, padx=6, pady=6, sticky="ew")
         ttk.Button(btn_frame, text="Open Security Logs", command=self.open_security_logs).grid(row=3, column=2, padx=6, pady=6, sticky="ew")
 
+        # Row 4: AI Learning & Automation
+        ttk.Button(btn_frame, text="Web Learning", command=self.start_web_learning).grid(row=4, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Code Generator", command=self.open_code_generator).grid(row=4, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Game Engine", command=self.open_game_engine).grid(row=4, column=2, padx=6, pady=6, sticky="ew")
+
         # Row 3: Safe browser automation
         browser_frame = ttk.Frame(self)
         browser_frame.pack(fill="x", padx=12, pady=6)
@@ -107,6 +112,18 @@ class ControlPanel(tk.Tk):
         domain_box.grid(row=0, column=1, sticky="ew", padx=6)
         ttk.Button(browser_frame, text="Open", command=self.open_whitelisted_domain).grid(row=0, column=2, padx=6)
         browser_frame.grid_columnconfigure(1, weight=1)
+
+        # Learning Rate Control
+        learning_frame = ttk.LabelFrame(self, text="AI Öğrenme Hızı")
+        learning_frame.pack(fill="x", padx=12, pady=6)
+        self.learning_rate = tk.DoubleVar(value=1.0)
+        ttk.Label(learning_frame, text="Yavaş").pack(side="left", padx=6)
+        learning_slider = ttk.Scale(learning_frame, from_=0.1, to=10.0, variable=self.learning_rate, orient="horizontal")
+        learning_slider.pack(side="left", fill="x", expand=True, padx=6)
+        ttk.Label(learning_frame, text="Hızlı").pack(side="left", padx=6)
+        self.learning_label = ttk.Label(learning_frame, text="1.0x")
+        self.learning_label.pack(side="left", padx=6)
+        learning_slider.bind("<ButtonRelease-1>", self.update_learning_rate)
 
         for i in range(3):
             btn_frame.grid_columnconfigure(i, weight=1)
