@@ -43,12 +43,12 @@ function Write-Dashboard {
     try {
         $totalSize = (Get-ChildItem -Recurse -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum / 1MB
         $pythonCount = (Get-ChildItem -Path . -Filter "*.py" -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count
-        $tsCount = (Get-ChildItem -Path . -Filter "*.ts" -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count
+        $typeScriptCount = (Get-ChildItem -Path . -Filter "*.ts" -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count
         
         Write-Host "║ 📁 PROJECT STRUCTURE" -ForegroundColor Green
         Write-Host "║  Total Size:      $([math]::Round($totalSize, 2)) MB" -ForegroundColor Gray
         Write-Host "║  Python Files:    $pythonCount" -ForegroundColor Gray
-        Write-Host "║  TypeScript Files: $tsCount" -ForegroundColor Gray
+        Write-Host "║  TypeScript Files: $typeScriptCount" -ForegroundColor Gray
         Write-Host "║" -ForegroundColor Cyan
     }
     catch { }

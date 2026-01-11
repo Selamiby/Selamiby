@@ -79,9 +79,10 @@ function Invoke-AutonomousSync {
         }
         
         # 2. Commit (değişiklikleri kaydet)
-        $commitSuccess = Invoke-GitCommit
-        
-        # 3. Push (GitHub'a gönder)
+        if (-not (Invoke-GitCommit)) {
+            Write-AutoLog "Commit başarısız, sonraki döngüde tekrar denenecek" "WARNING"
+            continue
+        }
         if (-not (Invoke-GitPush)) {
             Write-AutoLog "Push başarısız, sonraki döngüde tekrar denenecek" "WARNING"
             continue

@@ -121,10 +121,11 @@ function Invoke-MultiBranchSync {
         
         foreach ($branch in $branches) {
             if (& git rev-parse --verify $branch 2>$null) {
-                $pushJob = Start-Job -ScriptBlock {
+                $pushOutput = Start-Job -ScriptBlock {
                     & git push origin $branch 2>&1
                 }
-                Write-AutoLog "  ✓ $branch senkronize ediliyor... (Job: $($pushJob.Id))" "INFO"
+                $jobId = $pushOutput.Id
+                Write-AutoLog "  ✓ $branch senkronize ediliyor... (Job: $jobId)" "INFO"
                 & git checkout $branch -q 2>$null
                 & git pull origin $branch --allow-unrelated-histories --no-edit 2>$null
             }

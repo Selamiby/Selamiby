@@ -23,7 +23,7 @@ $pidFile = "..\data\pid.txt"
 if (Test-Path $pidFile) {
     $aetherosPid = [int](Get-Content $pidFile)
     if (Get-Process -Id $aetherosPid -ErrorAction SilentlyContinue) {
-        Write-Log "AETHEROS çalışıyor. Güncelleme için durduruluyor..." "WARNING"
+        Write-Log "AETHEROS durduruluyor. PID: $aetherosPid" "WARNING"
         & .\stop.ps1
     }
 }
