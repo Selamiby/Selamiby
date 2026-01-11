@@ -87,7 +87,7 @@ class NEXUSAutoHealer:
         
         for yaml_file in yaml_files:
             try:
-                with open(yaml_file) as f:
+                with open(yaml_file, encoding='utf-8', errors='ignore') as f:
                     content = f.read()
                 
                 # Context access warnings
@@ -125,7 +125,7 @@ class NEXUSAutoHealer:
                 continue
             
             try:
-                with open(ps_file) as f:
+                with open(ps_file, encoding='utf-8', errors='ignore') as f:
                     content = f.read()
                     lines = content.split('\n')
                 
@@ -153,7 +153,7 @@ class NEXUSAutoHealer:
     def fix_yaml_context_warnings(self, file_path: str):
         """YAML context warning'lerini düzelt"""
         try:
-            with open(file_path) as f:
+            with open(file_path, encoding='utf-8', errors='ignore') as f:
                 content = f.read()
             
             # VERCEL_TOKEN fix
@@ -178,7 +178,7 @@ class NEXUSAutoHealer:
                 flags=re.MULTILINE | re.DOTALL
             )
             
-            with open(file_path, 'w') as f:
+            with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             
             self.log(f"YAML düzeltildi: {file_path}", "SUCCESS")
@@ -217,7 +217,7 @@ class NEXUSAutoHealer:
     def add_suppression_to_ps(self, file_path: str):
         """PowerShell dosyasına suppression ekle"""
         try:
-            with open(file_path) as f:
+            with open(file_path, encoding='utf-8', errors='ignore') as f:
                 content = f.read()
             
             # Zaten suppression var mı kontrol et
@@ -235,7 +235,7 @@ class NEXUSAutoHealer:
             
             new_content = '\n'.join(header) + '\n'.join(lines)
             
-            with open(file_path, 'w') as f:
+            with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(new_content)
             
             self.log(f"Suppression eklendi: {file_path}", "SUCCESS")

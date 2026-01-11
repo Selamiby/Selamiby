@@ -67,3 +67,33 @@
 [2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\docs\enterprise-api.ko.yaml: 'charmap' codec can't decode byte 0x9d in position 49: character maps to <undefined>
 [2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\lib\crewai\tests\cassettes\test_crew_kickoff_usage_metrics.yaml: 'charmap' codec can't decode byte 0x90 in position 3677: character maps to <undefined>
 [2026-01-12 00:39:54] [ERROR] YAML hata: C:\Users\selam\NEXUS-ONE\crewAI\lib\crewai\tests\cassettes\test_long_term_memory_with_memory_flag.yaml: 'charmap' codec can't decode byte 0x9d in position 29955: character maps to <undefined>
+[2026-01-12 00:39:56] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: 'charmap' codec can't decode byte 0x90 in position 5118: character maps to <undefined>
+[2026-01-12 00:39:56] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: 'charmap' codec can't decode byte 0x9e in position 3251: character maps to <undefined>
+[2026-01-12 00:39:56] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\autonomous_sync.ps1: 'charmap' codec can't decode byte 0x9e in position 2201: character maps to <undefined>
+[2026-01-12 00:39:56] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1: 'charmap' codec can't decode byte 0x90 in position 517: character maps to <undefined>
+[2026-01-12 00:39:56] [ERROR] PowerShell hata: C:\Users\selam\NEXUS-ONE\nexus_setup.ps1: 'charmap' codec can't decode byte 0x9e in position 1244: character maps to <undefined>
+[2026-01-12 00:39:56] [INFO] Toplam hata: 0
+[2026-01-12 00:39:58] [SUCCESS] GitHub'a commit ve push yapýldý
+[2026-01-12 00:41:36] [INFO] === NEXUS-ONE Otomatik Hata Düzeltme Baþlýyor ===
+[2026-01-12 00:41:45] [WARNING] PowerShell hatalarý bulundu: 7
+[2026-01-12 00:41:45] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-12 00:41:45] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-12 00:41:45] [SUCCESS] Suppression eklendi: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 00:41:45] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 00:41:45] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 00:41:45] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 00:41:45] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1
+[2026-01-12 00:41:45] [SUCCESS] === 7 hata düzeltildi ===
+[2026-01-12 00:41:45] [INFO] === NEXUS-ONE Hata Raporu ===
+[2026-01-12 00:41:45] [INFO] Öðrenilmiþ YAML patterns: 2
+[2026-01-12 00:41:45] [INFO] Öðrenilmiþ PowerShell patterns: 7
+[2026-01-12 00:41:49] [INFO] Toplam hata: 7
+[2026-01-12 00:41:49] [INFO] 
+POWERSHELL Hatalarý:
+[2026-01-12 00:41:49] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: Variable '$pushJob' assigned but never used
+[2026-01-12 00:41:49] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: Variable '$elapsedMs' assigned but never used
+[2026-01-12 00:41:49] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$EnableParallelOps' assigned but never used
+[2026-01-12 00:41:49] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$EnableSmartCommit' assigned but never used
+[2026-01-12 00:41:49] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$pushResult' assigned but never used
+[2026-01-12 00:41:49] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$timestamp' assigned but never used
+[2026-01-12 00:41:49] [WARNING]   - C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1: Variable '$DashboardPort' assigned but never used

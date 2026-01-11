@@ -1,3 +1,6 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 # NEXUS-ONE Advanced Autonomous System - Production Ready
 # Gerçekçi, çalışan, optimize edilmiş sistem
 
@@ -147,7 +150,18 @@ function Invoke-AutoSync {
 Write-AdvLog "NEXUS-ONE Advanced Autonomous System başlatıldı" "INFO"
 Write-AdvLog "Interval: $IntervalSeconds saniye" "INFO"
 
+
+# === NEXUS-ONE AUTO HEALER HOOK ===
+# Her senkronizasyon sonrası hataları kontrol ve düzelt
+function Invoke-NEXUSHealer {
+    if (Test-Path "nexus_auto_healer.py") {
+        python nexus_auto_healer.py 2>$null | Out-Null
+    }
+}
+
 while ($true) {
+    Invoke-NEXUSHealer
+
     try {
         Invoke-AutoSync
     }
