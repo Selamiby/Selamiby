@@ -193,7 +193,8 @@ class ControlPanel(tk.Tk):
             try:
                 cpu = psutil.cpu_percent(interval=0.2)
                 self.cpu_var.set(f"CPU: {cpu:.1f} %")
-            except Exception:
+            except BaseException:
+                # Avoid crashing UI if psutil is interrupted
                 self.cpu_var.set("CPU: n/a")
         else:
             self.cpu_var.set("CPU: n/a")
@@ -245,7 +246,8 @@ class ControlPanel(tk.Tk):
                 cmd = " ".join(p.info.get('cmdline') or [])
                 if 'human_interface_agent.py' in cmd:
                     pids.append(p.info['pid'])
-        except Exception:
+        except BaseException:
+            # KeyboardInterrupt or access issues should not crash the panel
             pass
         return pids
 
