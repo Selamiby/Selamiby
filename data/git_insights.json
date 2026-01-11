@@ -1,19 +1,11 @@
 {
-  "COPILOT_MODE_GUIDE.md": {
+  "SELF_LEARNING_GUIDE.md": {
     "contributors": 1,
     "recent_changes": 1
   },
-  "QUICK_START_COPILOT.md": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "README.md": {
+  "autonomous_learner.ps1": {
     "contributors": 1,
     "recent_changes": 3
-  },
-  "__pycache__/web_navigator.cpython-311.pyc": {
-    "contributors": 1,
-    "recent_changes": 2
   },
   "data/healer_patterns.json": {
     "contributors": 1,
