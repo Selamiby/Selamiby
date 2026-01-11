@@ -13,10 +13,11 @@ import sys
 import time
 import webbrowser
 from pathlib import Path
+import threading
 
 try:
     import tkinter as tk
-    from tkinter import messagebox, ttk
+    from tkinter import messagebox, ttk, scrolledtext
 except Exception as e:
     print("Tkinter not available:", e)
     sys.exit(1)
@@ -25,6 +26,21 @@ try:
     import psutil
 except Exception:
     psutil = None
+
+# Import AI modules directly
+try:
+    sys.path.insert(0, str(Path.cwd()))
+    from web_navigator import WebNavigator
+    from code_generator import CodeGenerator
+    from accelerated_learning import AcceleratedLearning
+    WEB_NAV_AVAILABLE = True
+    CODE_GEN_AVAILABLE = True
+    LEARNING_AVAILABLE = True
+except Exception as e:
+    print(f"AI modules import warning: {e}")
+    WEB_NAV_AVAILABLE = False
+    CODE_GEN_AVAILABLE = False
+    LEARNING_AVAILABLE = False
 
 WORKSPACE = Path.cwd()
 LOG_DIR = WORKSPACE / "nexus_logs"
@@ -46,10 +62,20 @@ RUNNER_PS1 = str(WORKSPACE / "run_human_agent.ps1")
 class ControlPanel(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("NEXUS-ONE Control Panel")
-        self.geometry("520x360")
+        self.title("NEXUS-ONE AI Copilot")
+        self.geometry("720x600")
         if sys.platform == "win32":
             os.system("chcp 65001 > nul")
+        
+        # Initialize AI modules
+        self.web_nav = None
+        self.code_gen = None
+        self.learner = None
+        if CODE_GEN_AVAILABLE:
+            self.code_gen = CodeGenerator()
+        if LEARNING_AVAILABLE:
+            self.learner = AcceleratedLearning()
+        
         self.create_widgets()
         self.after(1000, self.update_status)
 
@@ -134,17 +160,26 @@ class ControlPanel(tk.Tk):
         self.log_text.pack(fill="both", expand=True, padx=12, pady=6)
         self.refresh_logs()
 
-        # Chat controls
-        chat_frame = ttk.LabelFrame(self, text="Chat")
+        # Chat controls - LARGER and more prominent
+        chat_frame = ttk.LabelFrame(self, text="💬 AI Copilot Chat (Sana Komut Ver)")
         chat_frame.pack(fill="both", expand=True, padx=12, pady=6)
-        self.chat_output = tk.Text(chat_frame, height=8, wrap="word")
+        
+        self.chat_output = scrolledtext.ScrolledText(chat_frame, height=15, wrap="word", font=("Consolas", 10))
         self.chat_output.pack(fill="both", expand=True, padx=6, pady=6)
+        self.chat_output.insert(tk.END, "NEXUS AI: Merhaba! Ben senin AI asistanınım. Ne yapmamı istersin?\n\n")
+        self.chat_output.insert(tk.END, "Örnekler:\n")
+        self.chat_output.insert(tk.END, "- 'python machine learning ara' → Google'da arar\n")
+        self.chat_output.insert(tk.END, "- 'kod yaz calculator' → Hesap makinesi kodu üretir\n")
+        self.chat_output.insert(tk.END, "- 'github.com/user/repo öğren' → Repo'yu analiz eder\n")
+        self.chat_output.insert(tk.END, "- 'sistem durumu' → CPU, RAM gösterir\n\n")
+        
         input_row = ttk.Frame(chat_frame)
         input_row.pack(fill="x", padx=6, pady=6)
         self.chat_var = tk.StringVar()
-        chat_entry = ttk.Entry(input_row, textvariable=self.chat_var)
-        chat_entry.pack(side="left", fill="x", expand=True)
-        ttk.Button(input_row, text="Send", command=self.chat_send).pack(side="left", padx=6)
+        chat_entry = ttk.Entry(input_row, textvariable=self.chat_var, font=("Segoe UI", 11))
+        chat_entry.pack(side="left", fill="x", expand=True, padx=(0, 6))
+        chat_entry.bind("<Return>", lambda e: self.chat_send())
+        ttk.Button(input_row, text="➤ Gönder", command=self.chat_send).pack(side="left")
 
     def update_status(self):
         # CPU
@@ -292,15 +327,29 @@ class ControlPanel(tk.Tk):
         except Exception as e:
             messagebox.showerror("Hata", str(e))
 
-    # Chat handling
+    # Chat handling - FULL COPILOT MODE
     def chat_send(self):
         text = (self.chat_var.get() or "").strip()
         if not text:
             return
-        self.chat_output.insert(tk.END, f"You: {text}\n")
+        self.chat_output.insert(tk.END, f"\n🧑 Sen: {text}\n")
+        self.chat_output.see(tk.END)
         self.chat_var.set("")
+        self.update()
+        
+        # Process in thread to avoid UI freeze
+        thread = threading.Thread(target=self._process_command_thread, args=(text,))
+        thread.daemon = True
+        thread.start()
+    
+    def _process_command_thread(self, text):
+        """Process command in background thread"""
         reply = self.process_chat_command(text)
-        self.chat_output.insert(tk.END, f"Agent: {reply}\n\n")
+        self.after(0, lambda: self._show_reply(reply))
+    
+    def _show_reply(self, reply):
+        """Show reply in chat (called from main thread)"""
+        self.chat_output.insert(tk.END, f"🤖 NEXUS: {reply}\n")
         self.chat_output.see(tk.END)
 
     def process_chat_command(self, text: str) -> str:
