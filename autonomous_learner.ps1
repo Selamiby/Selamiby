@@ -38,7 +38,7 @@ function Get-SystemResources {
     $cpu = (Get-Counter '\Processor(_Total)\% Processor Time').CounterSamples.CookedValue
     $mem = (Get-Counter '\Memory\% Committed Bytes In Use').CounterSamples.CookedValue
     return @{
-        CPU = [math]::Round($cpu, 1)
+        CPU    = [math]::Round($cpu, 1)
         Memory = [math]::Round($mem, 1)
     }
 }
@@ -89,7 +89,8 @@ while ($true) {
         
         if ($exitCode -eq 0) {
             Write-Log "✅ Learning cycle completed successfully" "INFO"
-        } else {
+        }
+        else {
             Write-Log "⚠️ Learning cycle exited with code $exitCode" "WARN"
         }
         
@@ -106,12 +107,14 @@ while ($true) {
             if ($updateProcess.ExitCode -eq 0) {
                 Write-Log "✅ Self-update completed" "INFO"
                 $LastSelfUpdateTime = Get-Date
-            } else {
+            }
+            else {
                 Write-Log "⚠️ Self-update failed (code: $($updateProcess.ExitCode))" "WARN"
             }
         }
         
-    } catch {
+    }
+    catch {
         Write-Log "❌ Error in learning cycle: $_" "ERROR"
         Write-Log "Stack trace: $($_.ScriptStackTrace)" "ERROR"
         

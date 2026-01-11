@@ -123,6 +123,12 @@ class ControlPanel(tk.Tk):
         ttk.Button(btn_frame, text="Web Learning", command=self.start_web_learning).grid(row=4, column=0, padx=6, pady=6, sticky="ew")
         ttk.Button(btn_frame, text="Code Generator", command=self.open_code_generator).grid(row=4, column=1, padx=6, pady=6, sticky="ew")
         ttk.Button(btn_frame, text="Game Engine", command=self.open_game_engine).grid(row=4, column=2, padx=6, pady=6, sticky="ew")
+        
+        # Row 5: Self-Learning System (NEW! 🧠)
+        ttk.Button(btn_frame, text="🧠 Start Self-Learning", command=self.start_self_learning, 
+                  style="Accent.TButton").grid(row=5, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="⏹️ Stop Self-Learning", command=self.stop_self_learning).grid(row=5, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="📊 Learning Stats", command=self.show_learning_stats).grid(row=5, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 3: Safe browser automation
         browser_frame = ttk.Frame(self)
