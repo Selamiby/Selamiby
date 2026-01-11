@@ -1,3 +1,6 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 # ============================================================================
 # NEXUS-ONE Advanced Automation Orchestrator
 # Runs all 5 automation features with intelligent scheduling

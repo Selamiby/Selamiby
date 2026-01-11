@@ -22,14 +22,17 @@ function Write-AdvLog {
     param([string]$Message, [string]$Level = "INFO")
     $time = Get-Date -Format "HH:mm:ss"
     $logMsg = "[$time] [$Level] $Message"
-    $colorMap = @{"INFO" = "Cyan"; "SUCCESS" = "Green"; "WARNING" = "Yellow"; "ERROR" = "Red" }
-    $color = $colorMap[$Level]
-    if ($color) {
-        Write-Host $logMsg -ForegroundColor $color
+    
+    # Color mapping with fallback
+    switch ($Level) {
+        "INFO"    { $color = "Cyan" }
+        "SUCCESS" { $color = "Green" }
+        "WARNING" { $color = "Yellow" }
+        "ERROR"   { $color = "Red" }
+        default   { $color = "White" }
     }
-    else {
-        Write-Host $logMsg
-    }
+    
+    Write-Host $logMsg -ForegroundColor $color
     Add-Content $LogPath -Value $logMsg -ErrorAction SilentlyContinue
 }
 
