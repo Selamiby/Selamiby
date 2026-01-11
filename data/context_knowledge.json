@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6458
+    "size": 6464
   },
   "code_generator.py": {
     "imports": [
@@ -45,7 +45,7 @@
       "__init__",
       "generate_script"
     ],
-    "size": 8014
+    "size": 8024
   },
   "game_engine_controller.py": {
     "imports": [
@@ -67,7 +67,7 @@
       "create_unreal_project",
       "demo_game_engine"
     ],
-    "size": 7025
+    "size": 7031
   },
   "generate_summary_report.py": {
     "imports": [
@@ -78,7 +78,7 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7459
+    "size": 7461
   },
   "human_interface_agent.py": {
     "imports": [
@@ -98,7 +98,7 @@
       "open_vscode_workspace",
       "main"
     ],
-    "size": 4024
+    "size": 4038
   },
   "nexus_advanced_automation.py": {
     "imports": [

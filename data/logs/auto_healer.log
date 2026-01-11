@@ -3330,3 +3330,24 @@ POWERSHELL Hatalarý:
 [2026-01-12 02:43:37] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-12 02:43:37] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-12 02:43:41] [SUCCESS] GitHub'a commit ve push yapýldý
+[2026-01-12 02:44:31] [INFO] === NEXUS-ONE Otomatik Hata Düzeltme Baþlýyor ===
+[2026-01-12 02:44:38] [WARNING] PowerShell hatalarý bulundu: 15
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\run_human_agent.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\create_desktop_shortcut.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\run_control_panel.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1
+[2026-01-12 02:44:38] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1
+[2026-01-12 02:44:38] [SUCCESS] === 15 hata düzeltildi ===
+[2026-01-12 02:44:38] [INFO] === NEXUS-ONE Hata Raporu ===
+[2026-01-12 02:44:38] [INFO] Öðrenilmiþ YAML patterns: 4
+[2026-01-12 02:44:38] [INFO] Öðrenilmiþ PowerShell patterns: 1151

@@ -10,14 +10,14 @@ import json
 import os
 import subprocess
 import sys
+import threading
 import time
 import webbrowser
 from pathlib import Path
-import threading
 
 try:
     import tkinter as tk
-    from tkinter import messagebox, ttk, scrolledtext
+    from tkinter import messagebox, scrolledtext, ttk
 except Exception as e:
     print("Tkinter not available:", e)
     sys.exit(1)
@@ -30,9 +30,9 @@ except Exception:
 # Import AI modules directly
 try:
     sys.path.insert(0, str(Path.cwd()))
-    from web_navigator import WebNavigator
-    from code_generator import CodeGenerator
     from accelerated_learning import AcceleratedLearning
+    from code_generator import CodeGenerator
+    from web_navigator import WebNavigator
     WEB_NAV_AVAILABLE = True
     CODE_GEN_AVAILABLE = True
     LEARNING_AVAILABLE = True
