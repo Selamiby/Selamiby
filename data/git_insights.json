@@ -7,19 +7,35 @@
     "contributors": 1,
     "recent_changes": 5
   },
+  "generate_summary_report.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "human_interface_agent.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "nexus_advanced_automation.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "nexus_advanced_features.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "nexus_auto_healer.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
   "nexus_logs/autonomous.log": {
     "contributors": 1,
     "recent_changes": 5
   },
-  "scripts/run_task_queue.ps1": {
+  "nexus_security.py": {
     "contributors": 1,
     "recent_changes": 2
   },
-  "tasks/task_queue.py": {
-    "contributors": 1,
-    "recent_changes": 2
-  },
-  "ui/human_control_panel.py": {
+  "scripts/run_security.ps1": {
     "contributors": 1,
     "recent_changes": 2
   }
