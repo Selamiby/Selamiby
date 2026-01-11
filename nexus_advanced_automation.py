@@ -24,6 +24,7 @@ from typing import Dict, List
 
 
 
+
 def analyze_performance():
     """Proje performansini analiz et"""
     print("\n[1/5] PERFORMANCE MONITORING")
@@ -64,6 +65,7 @@ def analyze_performance():
 
 
 
+
 def format_code():
     """Kod formatlama"""
     print("\n[2/5] INTELLIGENT CODE FORMATTER")
@@ -98,6 +100,7 @@ def format_code():
 
 
 
+
 def generate_tests():
     """Test skeleton olustur"""
     print("\n[3/5] AUTOMATIC TEST COVERAGE")
@@ -122,6 +125,7 @@ def generate_tests():
 # ============================================================================
 # 4. SECURITY VULNERABILITY SCANNER
 # ============================================================================
+
 
 
 
@@ -160,6 +164,7 @@ def scan_security():
 # ============================================================================
 # 5. AUTOMATIC DOCUMENTATION GENERATOR
 # ============================================================================
+
 
 
 
@@ -212,6 +217,7 @@ def generate_docs():
 # ============================================================================
 # MAIN
 # ============================================================================
+
 
 
 

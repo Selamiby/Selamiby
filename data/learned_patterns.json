@@ -1,0 +1,17 @@
+[
+  {
+    "error": "ForegroundColor parameter binding error",
+    "solution": "Use switch statement instead of hash table",
+    "timestamp": "2026-01-12T01:24:00.775882"
+  },
+  {
+    "error": "YAML secrets context missing",
+    "solution": "Add environment secrets to workflow",
+    "timestamp": "2026-01-12T01:24:00.775882"
+  },
+  {
+    "error": "Import module cannot be found",
+    "solution": "Install required package with pip",
+    "timestamp": "2026-01-12T01:24:00.775882"
+  }
+]

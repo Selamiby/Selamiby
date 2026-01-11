@@ -8,7 +8,7 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7442
+    "size": 7445
   },
   "nexus_advanced_automation.py": {
     "imports": [
@@ -28,7 +28,7 @@
       "generate_docs",
       "main"
     ],
-    "size": 6750
+    "size": 6768
   },
   "nexus_advanced_features.py": {
     "imports": [
@@ -47,7 +47,7 @@
       "feature_5_deployment_readiness",
       "main"
     ],
-    "size": 6701
+    "size": 6719
   },
   "nexus_auto_healer.py": {
     "imports": [
@@ -71,7 +71,7 @@
       "fix_yaml_context_warnings",
       "auto_fix_all"
     ],
-    "size": 11255
+    "size": 11261
   },
   "nexus_chat.py": {
     "imports": [
@@ -88,7 +88,7 @@
       "get_chat_summary",
       "start_lightweight_chat"
     ],
-    "size": 4518
+    "size": 4521
   },
   "nexus_daemon.py": {
     "imports": [
@@ -234,11 +234,13 @@
       "feature_2_context_learning",
       "feature_3_git_blame_analysis",
       "feature_4_similarity_detection",
+      "calculate_advanced_similarity",
+      "levenshtein",
       "feature_5_solution_ranking",
       "feature_6_predictive_analysis",
       "run_all_features"
     ],
-    "size": 11022
+    "size": 14667
   },
   "programming_language_master.py": {
     "imports": [
