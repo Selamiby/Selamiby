@@ -1,3 +1,6 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 param(
     [int]$IntervalSeconds = 5
 )
@@ -29,6 +32,7 @@ $proc = [System.Diagnostics.Process]::Start($psi)
 if ($proc -ne $null) {
     $proc.PriorityClass = 'BelowNormal'
     Write-Host "Security Agent started (PID: $($proc.Id))" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "Failed to start Security Agent" -ForegroundColor Red
 }

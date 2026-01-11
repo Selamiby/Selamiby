@@ -6,8 +6,8 @@ NEXUS-ONE Human Control Panel (Windows)
 - Open VS Code workspace and logs folder
 - Run demo (Notepad typing + VS Code)
 """
-import os
 import json
+import os
 import subprocess
 import sys
 import time
@@ -88,6 +88,9 @@ class ControlPanel(tk.Tk):
         ttk.Button(btn_frame, text="Format Python (black)", command=self.format_python).grid(row=2, column=1, padx=6, pady=6, sticky="ew")
         ttk.Button(btn_frame, text="Start Task Queue", command=self.start_task_queue).grid(row=2, column=2, padx=6, pady=6, sticky="ew")
 
+        # Row 3: Security agent
+        ttk.Button(btn_frame, text="Start Security", command=self.start_security).grid(row=3, column=0, padx=6, pady=6, sticky="ew")
+
         # Row 3: Safe browser automation
         browser_frame = ttk.Frame(self)
         browser_frame.pack(fill="x", padx=12, pady=6)
@@ -105,6 +108,7 @@ class ControlPanel(tk.Tk):
 
         for i in range(3):
             btn_frame.grid_columnconfigure(i, weight=1)
+        btn_frame.grid_rowconfigure(3, weight=0)
 
         # Log viewer (tail)
         self.log_text = tk.Text(self, height=10, wrap="word")
@@ -338,6 +342,17 @@ class ControlPanel(tk.Tk):
         try:
             subprocess.Popen(["powershell", "-ExecutionPolicy", "Bypass", "-File", str(runner)])
             messagebox.showinfo("Task Queue", "Görev kuyruğu başlatıldı")
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+
+    def start_security(self):
+        runner = Path(WORKSPACE / "scripts" / "run_security.ps1")
+        if not runner.exists():
+            messagebox.showerror("Hata", "run_security.ps1 bulunamadı")
+            return
+        try:
+            subprocess.Popen(["powershell", "-ExecutionPolicy", "Bypass", "-File", str(runner)])
+            messagebox.showinfo("Security", "Defansif güvenlik ajanı başlatıldı")
         except Exception as e:
             messagebox.showerror("Hata", str(e))
 

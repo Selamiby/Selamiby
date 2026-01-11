@@ -8,12 +8,12 @@ NEXUS-ONE Defensive Security Agent (Windows only)
 
 This agent is defensive-only. It does not perform any offensive actions.
 """
-import os
-import sys
 import json
-import time
+import os
 import shutil
 import subprocess
+import sys
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
