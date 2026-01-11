@@ -500,6 +500,47 @@ class ControlPanel(tk.Tk):
             subprocess.Popen(["notepad", str(sec_log)])
         except Exception as e:
             messagebox.showerror("Hata", str(e))
+    
+    # AI Learning Methods
+    def start_web_learning(self):
+        """Start web learning demo"""
+        try:
+            subprocess.Popen([sys.executable, str(WORKSPACE / "web_navigator.py")])
+            messagebox.showinfo("Web Learning", "Web öğrenme ajanı başlatıldı")
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+    
+    def open_code_generator(self):
+        """Run code generator demo"""
+        try:
+            subprocess.Popen([sys.executable, str(WORKSPACE / "code_generator.py")])
+            messagebox.showinfo("Code Generator", "Kod üretici başlatıldı")
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+    
+    def open_game_engine(self):
+        """Run game engine controller"""
+        try:
+            subprocess.Popen([sys.executable, str(WORKSPACE / "game_engine_controller.py")])
+            messagebox.showinfo("Game Engine", "Oyun motoru kontrolü başlatıldı")
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+    
+    def update_learning_rate(self, event=None):
+        """Update learning rate display and config"""
+        rate = self.learning_rate.get()
+        self.learning_label.config(text=f"{rate:.1f}x")
+        # Update accelerated learning config
+        try:
+            learning_config = DATA_DIR / "learning_config.json"
+            if learning_config.exists():
+                cfg = json.loads(learning_config.read_text(encoding='utf-8'))
+            else:
+                cfg = {}
+            cfg["learning_rate"] = rate
+            learning_config.write_text(json.dumps(cfg, indent=2), encoding='utf-8')
+        except Exception:
+            pass
 
     def refresh_logs(self):
         log_file = LOG_DIR / "human_agent.log"

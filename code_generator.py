@@ -130,7 +130,7 @@ class CodeGenerator:
 '''
         return template
     
-    def generate_class(self, class_name: str, methods: list[str] = None) -> str:
+    def generate_class(self, class_name: str, methods: list[str] | None = None) -> str:
         """Generate a Python class"""
         methods = methods or ["__init__", "run"]
         template = f'''class {class_name}:
@@ -197,7 +197,7 @@ if __name__ == '__main__':
             return script_path
         except Exception as e:
             log(f"generate_script_error: {e}")
-            return None
+            return GENERATED_CODE_DIR / "error.py"
     
     def test_generated_code(self, script_path: Path) -> dict:
         """Test generated code by running it"""
