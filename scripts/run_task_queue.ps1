@@ -1,3 +1,6 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 # Launches the NEXUS-ONE Task Queue with BelowNormal priority
 $ErrorActionPreference = 'Stop'
 

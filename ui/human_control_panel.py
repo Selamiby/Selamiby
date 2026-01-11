@@ -8,6 +8,7 @@ NEXUS-ONE Human Control Panel (Windows)
 """
 import os
 import subprocess
+import webbrowser
 import sys
 import time
 from pathlib import Path
@@ -74,6 +75,26 @@ class ControlPanel(tk.Tk):
         ttk.Button(btn_frame, text="Open VS Code", command=self.open_vscode).grid(row=1, column=0, padx=6, pady=6, sticky="ew")
         ttk.Button(btn_frame, text="Open Logs", command=self.open_logs).grid(row=1, column=1, padx=6, pady=6, sticky="ew")
         ttk.Button(btn_frame, text="Open Workspace", command=self.open_workspace).grid(row=1, column=2, padx=6, pady=6, sticky="ew")
+
+        # Row 2: VS Code actions
+        ttk.Button(btn_frame, text="Open Search UI", command=self.vscode_search_ui).grid(row=2, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Format Python (black)", command=self.format_python).grid(row=2, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Start Task Queue", command=self.start_task_queue).grid(row=2, column=2, padx=6, pady=6, sticky="ew")
+
+        # Row 3: Safe browser automation
+        browser_frame = ttk.Frame(self)
+        browser_frame.pack(fill="x", padx=12, pady=6)
+        ttk.Label(browser_frame, text="Safe Browser (Whitelist)").grid(row=0, column=0, sticky="w")
+        self.domain_var = tk.StringVar(value="https://github.com/Selamiby/Selamiby")
+        domain_box = ttk.Combobox(browser_frame, textvariable=self.domain_var, values=[
+            "https://github.com/Selamiby/Selamiby",
+            "https://docs.python.org/",
+            "https://code.visualstudio.com/",
+            "https://www.microsoft.com/"
+        ], state="readonly")
+        domain_box.grid(row=0, column=1, sticky="ew", padx=6)
+        ttk.Button(browser_frame, text="Open", command=self.open_whitelisted_domain).grid(row=0, column=2, padx=6)
+        browser_frame.grid_columnconfigure(1, weight=1)
 
         for i in range(3):
             btn_frame.grid_columnconfigure(i, weight=1)
@@ -162,6 +183,16 @@ class ControlPanel(tk.Tk):
         except Exception as e:
             messagebox.showerror("Hata", str(e))
 
+    def vscode_search_ui(self):
+        # Opens VS Code and shows Search UI (workbench.action.findInFiles)
+        code_exe = Path(os.environ.get("LocalAppData", "")) / "Programs" / "Microsoft VS Code" / "Code.exe"
+        cmd = [str(code_exe), str(WORKSPACE)] if code_exe.exists() else ["code", str(WORKSPACE)]
+        try:
+            subprocess.Popen(cmd)
+            messagebox.showinfo("VS Code", "Search UI açmak için Ctrl+Shift+F kullanın")
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+
     def open_logs(self):
         try:
             subprocess.Popen(["explorer", str(LOG_DIR)])
@@ -171,6 +202,41 @@ class ControlPanel(tk.Tk):
     def open_workspace(self):
         try:
             subprocess.Popen(["explorer", str(WORKSPACE)])
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+
+    def open_whitelisted_domain(self):
+        url = self.domain_var.get()
+        whitelist = {
+            "https://github.com/Selamiby/Selamiby",
+            "https://docs.python.org/",
+            "https://code.visualstudio.com/",
+            "https://www.microsoft.com/"
+        }
+        if url not in whitelist:
+            messagebox.showwarning("Uyarı", "Domain whitelist dışında")
+            return
+        try:
+            webbrowser.open(url)
+            messagebox.showinfo("Browser", f"Açıldı: {url}")
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+
+    def format_python(self):
+        try:
+            subprocess.Popen([sys.executable, "-m", "black", str(WORKSPACE)])
+            messagebox.showinfo("Format", "Python dosyaları (black) formatlanıyor")
+        except Exception as e:
+            messagebox.showerror("Hata", str(e))
+
+    def start_task_queue(self):
+        runner = Path(WORKSPACE / "scripts" / "run_task_queue.ps1")
+        if not runner.exists():
+            messagebox.showerror("Hata", "run_task_queue.ps1 bulunamadı")
+            return
+        try:
+            subprocess.Popen(["powershell", "-ExecutionPolicy", "Bypass", "-File", str(runner)])
+            messagebox.showinfo("Task Queue", "Görev kuyruğu başlatıldı")
         except Exception as e:
             messagebox.showerror("Hata", str(e))
 
