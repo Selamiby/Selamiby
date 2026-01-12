@@ -13,19 +13,26 @@ for klasor in ["modules", "logs", "data", "generated", "backups"]:
 
 # Modülleri yükle
 print("\n📦 MODÜLLER YÜKLENİYOR...")
+beyin = None
 try:
-    from modules.beyin import Beyin
-    beyin = Beyin()
-    print("✅ Beyin modülü yüklendi")
+    if os.path.exists("modules"):
+        from modules.beyin import Beyin
+        beyin = Beyin()
+        print("✅ Beyin modülü yüklendi")
+    else:
+        print("⚠️  Beyin modülü bulunamadı - devam ediliyor")
 except Exception as e:
-    print(f"❌ Modül yükleme hatası: {e}")
+    print(f"⚠️  Modül yükleme hatası: {e} - devam ediliyor")
 
 # Test görevi
 print("\n🧪 TEST GÖREVİ...")
-karar = beyin.karar_ver("Sistem başlat")
-print(f"Karar: {karar}")
-sonuc = beyin.calistir(karar)
-print(f"Sonuç: {sonuc}")
+if beyin:
+    karar = beyin.karar_ver("Sistem başlat")
+    print(f"Karar: {karar}")
+    sonuc = beyin.calistir(karar)
+    print(f"Sonuç: {sonuc}")
+else:
+    print("⚠️  Beyin modülü yok - test atlanıyor")
 
 # Sürekli çalışma döngüsü
 print("\n👁️  SİSTEM ÇALIŞIYOR... (Ctrl+C ile durdur)")
