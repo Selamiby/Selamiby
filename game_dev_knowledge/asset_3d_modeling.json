@@ -1,0 +1,17 @@
+{
+  "category": "3D Modeling",
+  "topics": [
+    "Blender basics",
+    "Mesh topology",
+    "UV unwrapping",
+    "LODs"
+  ],
+  "learned_at": "2026-01-12T05:23:44.810005",
+  "practical_skills": [
+    "Box modeling: Start with primitive, extrude, subdivide",
+    "Edge flow: Follow anatomy, optimize for deformation",
+    "Topology: Quads preferred, avoid n-gons",
+    "LOD creation: High poly → Mid poly → Low poly",
+    "Tools: Blender 3.6+, Maya, 3ds Max, ZBrush"
+  ]
+}

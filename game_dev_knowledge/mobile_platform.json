@@ -1,0 +1,16 @@
+{
+  "category": "Platform",
+  "topics": [
+    "Android build",
+    "iOS build",
+    "App size (2GB)"
+  ],
+  "learned_at": "2026-01-12T05:23:57.031324",
+  "best_practices": [
+    "Android: Gradle, APK/AAB, Google Play",
+    "iOS: Xcode, IPA, App Store",
+    "App size: 2GB limit, OBB files (Android)",
+    "Permissions: Camera, storage, network",
+    "Testing: Devices, emulators, TestFlight"
+  ]
+}

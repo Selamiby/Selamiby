@@ -1,0 +1,16 @@
+{
+  "system": "Pathfinding",
+  "topics": [
+    "A* algorithm",
+    "NavMesh",
+    "Dynamic obstacles"
+  ],
+  "learned_at": "2026-01-12T05:23:47.964570",
+  "implementation": [
+    "A* algorithm: g(n) + h(n) = f(n), Manhattan/Euclidean",
+    "NavMesh: Walkable surfaces, off-mesh links",
+    "Dynamic obstacles: Recalculate path, local avoidance",
+    "Performance: Path caching, async pathfinding",
+    "Unity: NavMeshAgent, NavMeshObstacle"
+  ]
+}

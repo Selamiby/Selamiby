@@ -1,0 +1,16 @@
+{
+  "category": "Multiplayer",
+  "topics": [
+    "Dedicated servers",
+    "P2P",
+    "Netcode"
+  ],
+  "learned_at": "2026-01-12T05:24:00.567867",
+  "advanced_features": [
+    "Dedicated servers: Authoritative, anti-cheat",
+    "P2P: Peer-to-peer, lower cost",
+    "Netcode: Client prediction, lag compensation",
+    "Matchmaking: ELO, skill-based",
+    "Voice chat: Integration, proximity chat"
+  ]
+}

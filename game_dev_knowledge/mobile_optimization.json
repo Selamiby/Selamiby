@@ -1,0 +1,16 @@
+{
+  "category": "Optimization",
+  "topics": [
+    "Texture compression",
+    "Mesh optimization",
+    "Battery usage"
+  ],
+  "learned_at": "2026-01-12T05:23:55.632066",
+  "best_practices": [
+    "Texture compression: ASTC (Android), PVRTC (iOS)",
+    "Mesh optimization: Low poly, merged meshes",
+    "Battery: Reduce draw calls, GPU overhead",
+    "Memory: Asset bundles, streaming",
+    "Target: 60 FPS on mid-range phones (2019+)"
+  ]
+}

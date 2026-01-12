@@ -1,0 +1,18 @@
+{
+  "engine": "Unity",
+  "topics": [
+    "C# scripting",
+    "Physics",
+    "Animation",
+    "UI",
+    "Networking"
+  ],
+  "learned_at": "2026-01-12T05:23:42.701643",
+  "notes": [
+    "C# scripting: MonoBehaviour, Coroutines, Events",
+    "Physics: Rigidbody, Colliders, Raycasting",
+    "Animation: Animator Controller, Animation Events",
+    "UI: Canvas, EventSystem, UI elements",
+    "Prefabs: Reusable game objects, Prefab variants"
+  ]
+}

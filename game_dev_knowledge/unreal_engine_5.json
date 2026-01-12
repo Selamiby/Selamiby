@@ -1,0 +1,18 @@
+{
+  "engine": "Unreal Engine 5",
+  "topics": [
+    "Blueprints",
+    "C++",
+    "Niagara VFX",
+    "Nanite",
+    "Lumen"
+  ],
+  "learned_at": "2026-01-12T05:23:43.417728",
+  "notes": [
+    "Blueprints: Visual scripting, Event-driven",
+    "C++: UObject, AActor, UActorComponent",
+    "Nanite: Virtualized geometry, LOD automation",
+    "Lumen: Dynamic global illumination",
+    "Metahuman: Realistic character creation"
+  ]
+}

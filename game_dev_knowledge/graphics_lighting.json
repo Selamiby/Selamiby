@@ -1,0 +1,16 @@
+{
+  "category": "Lighting",
+  "topics": [
+    "Real-time lighting",
+    "Baked lighting",
+    "Global illumination"
+  ],
+  "learned_at": "2026-01-12T05:23:50.683300",
+  "techniques": [
+    "Directional light: Sun, parallel rays",
+    "Point light: Bulb, omnidirectional",
+    "Spot light: Flashlight, cone",
+    "Baked lighting: Lightmaps, faster but static",
+    "Global illumination: Indirect lighting, bounce light"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "category": "Shaders",
+  "topics": [
+    "Vertex shaders",
+    "Fragment shaders",
+    "HLSL/GLSL",
+    "Shader Graph"
+  ],
+  "learned_at": "2026-01-12T05:23:50.105844",
+  "techniques": [
+    "Vertex shader: Transform vertices, calculate normals",
+    "Fragment shader: Per-pixel color, lighting",
+    "HLSL/GLSL: Shader languages, syntax",
+    "Shader Graph: Visual shader editor (Unity/UE)",
+    "Common shaders: Toon, Dissolve, Water, Hologram"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "category": "Music",
+  "topics": [
+    "Adaptive music",
+    "Layered music",
+    "Transitions"
+  ],
+  "learned_at": "2026-01-12T05:23:53.586536",
+  "practices": [
+    "Adaptive music: Changes based on gameplay",
+    "Layered music: Add/remove layers dynamically",
+    "Transitions: Crossfade, immediate, quantized",
+    "Music loops: Seamless loop points",
+    "Stems: Separate instrument tracks for mixing"
+  ]
+}

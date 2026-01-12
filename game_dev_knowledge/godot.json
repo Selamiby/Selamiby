@@ -1,0 +1,16 @@
+{
+  "engine": "Godot",
+  "topics": [
+    "GDScript",
+    "2D/3D scenes",
+    "Signals",
+    "Shaders"
+  ],
+  "learned_at": "2026-01-12T05:23:44.078960",
+  "notes": [
+    "GDScript: Python-like syntax, Node-based",
+    "Scenes: Everything is a scene, Scene tree",
+    "Signals: Event system, Decoupled communication",
+    "Lightweight: Small engine size, Fast iteration"
+  ]
+}

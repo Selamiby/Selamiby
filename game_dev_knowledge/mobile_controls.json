@@ -1,0 +1,16 @@
+{
+  "category": "Controls",
+  "topics": [
+    "Touch input",
+    "Gestures",
+    "Virtual joystick"
+  ],
+  "learned_at": "2026-01-12T05:23:56.261383",
+  "best_practices": [
+    "Touch input: Screen space, multi-touch",
+    "Gestures: Swipe, pinch, tap, hold",
+    "Virtual joystick: Fixed/floating position",
+    "UI scaling: Safe area, notch support",
+    "Haptic feedback: Short vibrations for events"
+  ]
+}

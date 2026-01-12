@@ -1,0 +1,16 @@
+{
+  "system": "Perception",
+  "topics": [
+    "Vision cones",
+    "Hearing",
+    "Memory system"
+  ],
+  "learned_at": "2026-01-12T05:23:49.197272",
+  "implementation": [
+    "Vision cone: Field of view, raycast to target",
+    "Hearing: Sound radius, sound types",
+    "Memory system: Last known position, investigation",
+    "Alertness: Calm → Suspicious → Alert → Combat",
+    "Performance: Update perception every N frames"
+  ]
+}

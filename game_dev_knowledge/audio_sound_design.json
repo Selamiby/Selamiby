@@ -1,0 +1,16 @@
+{
+  "category": "Sound Design",
+  "topics": [
+    "SFX creation",
+    "Foley",
+    "Audio middleware"
+  ],
+  "learned_at": "2026-01-12T05:23:52.933283",
+  "practices": [
+    "SFX creation: Foley recording, synthesis",
+    "Audio middleware: FMOD, Wwise integration",
+    "Audio events: Trigger sounds on events",
+    "Randomization: Pitch, volume variation",
+    "Audio file formats: WAV (uncompressed), OGG (compressed)"
+  ]
+}

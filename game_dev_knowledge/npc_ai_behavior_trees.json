@@ -1,0 +1,16 @@
+{
+  "system": "Behavior Trees",
+  "topics": [
+    "Selector/Sequence nodes",
+    "Decorators",
+    "Tasks"
+  ],
+  "learned_at": "2026-01-12T05:23:47.414043",
+  "implementation": [
+    "Composite nodes: Sequence (AND), Selector (OR), Parallel",
+    "Decorator nodes: Inverter, Repeater, Conditional",
+    "Leaf nodes: Actions, Conditions",
+    "Blackboard: Shared data storage",
+    "Example: Patrol → See Player → Chase → Attack"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "category": "Rigging",
+  "topics": [
+    "Skeleton setup",
+    "Weight painting",
+    "IK constraints"
+  ],
+  "learned_at": "2026-01-12T05:23:46.166378",
+  "practical_skills": [
+    "Skeleton creation: Bone hierarchy, naming conventions",
+    "Weight painting: Smooth deformation, influence zones",
+    "IK/FK: Inverse kinematics for legs, FK for spine",
+    "Constraints: Aim, Parent, Track to",
+    "Shape keys: Facial expressions, blend shapes"
+  ]
+}

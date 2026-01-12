@@ -1,0 +1,16 @@
+{
+  "category": "Implementation",
+  "topics": [
+    "FMOD",
+    "Wwise",
+    "Unity Audio Mixer"
+  ],
+  "learned_at": "2026-01-12T05:23:54.136067",
+  "practices": [
+    "FMOD: Event system, parameter control",
+    "Wwise: Actor-mixer hierarchy, game syncs",
+    "Unity Audio Mixer: Groups, effects, snapshots",
+    "3D sound: Distance attenuation, doppler effect",
+    "Performance: Audio pooling, stream vs decompress"
+  ]
+}

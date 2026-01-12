@@ -1,0 +1,16 @@
+{
+  "category": "Monetization",
+  "topics": [
+    "IAP",
+    "Ads",
+    "Rewarded videos"
+  ],
+  "learned_at": "2026-01-12T05:23:57.717490",
+  "best_practices": [
+    "IAP: Consumables, non-consumables, subscriptions",
+    "Ads: Banner, interstitial, rewarded video",
+    "Ad networks: AdMob, Unity Ads, ironSource",
+    "Rewarded videos: Extra lives, coins, boosters",
+    "Balance: Ads vs player experience"
+  ]
+}

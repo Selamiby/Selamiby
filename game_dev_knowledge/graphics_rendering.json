@@ -1,0 +1,16 @@
+{
+  "category": "Rendering",
+  "topics": [
+    "PBR workflow",
+    "Post-processing",
+    "Deferred rendering"
+  ],
+  "learned_at": "2026-01-12T05:23:51.444265",
+  "techniques": [
+    "PBR: Physically based, realistic materials",
+    "Deferred rendering: G-buffer, many lights",
+    "Forward rendering: Simple, transparent objects",
+    "Post-processing: Bloom, DOF, Color grading, AA",
+    "Ray tracing: Realistic reflections, shadows, GI"
+  ]
+}

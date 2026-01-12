@@ -1,0 +1,17 @@
+{
+  "system": "Decision Making",
+  "topics": [
+    "FSM",
+    "GOAP",
+    "Utility AI",
+    "Blackboard"
+  ],
+  "learned_at": "2026-01-12T05:23:48.564964",
+  "implementation": [
+    "FSM: States, Transitions, Events",
+    "GOAP: Goal-oriented, action planning",
+    "Utility AI: Score actions, select highest utility",
+    "Blackboard: Share data between AI components",
+    "Context steering: Vector field, obstacle avoidance"
+  ]
+}

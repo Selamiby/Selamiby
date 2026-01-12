@@ -1,0 +1,16 @@
+{
+  "category": "Spatial Audio",
+  "topics": [
+    "3D sound",
+    "Reverb zones",
+    "Occlusion"
+  ],
+  "learned_at": "2026-01-12T05:23:54.756407",
+  "practices": [
+    "3D sound: Position, distance, attenuation",
+    "Reverb zones: Room acoustics, environment",
+    "Occlusion: Muffled sound behind walls",
+    "HRTF: Head-related transfer, binaural audio",
+    "Ambisonics: 360° spatial audio"
+  ]
+}

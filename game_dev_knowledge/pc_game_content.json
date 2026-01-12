@@ -1,0 +1,16 @@
+{
+  "category": "Content",
+  "topics": [
+    "15GB asset pipeline",
+    "Streaming",
+    "Compression"
+  ],
+  "learned_at": "2026-01-12T05:23:59.271334",
+  "advanced_features": [
+    "15GB content: High-poly models, 4K textures",
+    "Asset streaming: Load on demand, memory mgmt",
+    "Compression: Lossless for quality, lossy for size",
+    "Procedural generation: Reduce asset count",
+    "Modding support: Expose content, Steam Workshop"
+  ]
+}
