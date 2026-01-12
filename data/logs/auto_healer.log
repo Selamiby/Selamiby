@@ -14394,3 +14394,48 @@ POWERSHELL Hatalarý:
 [2026-01-12 06:56:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-12 06:56:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-12 06:56:11] [SUCCESS] GitHub'a commit ve push yapýldý
+[2026-01-12 06:56:59] [INFO] === NEXUS-ONE Otomatik Hata Düzeltme Baþlýyor ===
+[2026-01-12 06:57:03] [WARNING] PowerShell hatalarý bulundu: 18
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\run_human_agent.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\create_desktop_shortcut.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\run_control_panel.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1
+[2026-01-12 06:57:03] [INFO] Suppression zaten var: C:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1
+[2026-01-12 06:57:03] [SUCCESS] === 18 hata düzeltildi ===
+[2026-01-12 06:57:03] [INFO] === NEXUS-ONE Hata Raporu ===
+[2026-01-12 06:57:03] [INFO] Öðrenilmiþ YAML patterns: 40
+[2026-01-12 06:57:03] [INFO] Öðrenilmiþ PowerShell patterns: 5420
+[2026-01-12 06:57:07] [INFO] Toplam hata: 18
+[2026-01-12 06:57:07] [INFO] 
+POWERSHELL Hatalarý:
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: Variable '$elapsedMs' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: Variable '$pushJob' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_learner.ps1: Variable '$LogLevel' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_learner.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_learner.ps1: Variable '$cycleElapsed' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$EnableParallelOps' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$timestamp' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$pushResult' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$EnableSmartCommit' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\monitoring_dashboard.ps1: Variable '$DashboardPort' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1: Variable '$Mode' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\run_human_agent.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1: Variable '$authStatus' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\create_desktop_shortcut.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_control_panel.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$IntervalSeconds' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-12 06:57:07] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
