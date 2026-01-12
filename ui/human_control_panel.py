@@ -187,6 +187,8 @@ class ControlPanel(tk.Tk):
         chat_entry = ttk.Entry(input_row, textvariable=self.chat_var, font=("Segoe UI", 11))
         chat_entry.pack(side="left", fill="x", expand=True, padx=(0, 6))
         chat_entry.bind("<Return>", lambda e: self.chat_send())
+        chat_entry.bind("<KP_Enter>", lambda e: self.chat_send())
+        chat_entry.focus_set()
         ttk.Button(input_row, text="➤ Gönder", command=self.chat_send).pack(side="left")
 
     def update_status(self):
