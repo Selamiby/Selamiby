@@ -1,4 +1,8 @@
 {
+  "data/API_DOCUMENTATION.md": {
+    "contributors": 2,
+    "recent_changes": 3
+  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
@@ -7,8 +11,32 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "nexus_logs/autonomous.log": {
+  "game_dev_knowledge/MASTER_SUMMARY.json": {
     "contributors": 1,
-    "recent_changes": 5
+    "recent_changes": 2
+  },
+  "game_dev_knowledge/asset_3d_modeling.json": {
+    "contributors": 1,
+    "recent_changes": 2
+  },
+  "game_dev_knowledge/asset_animation.json": {
+    "contributors": 1,
+    "recent_changes": 2
+  },
+  "game_dev_knowledge/asset_rigging.json": {
+    "contributors": 1,
+    "recent_changes": 2
+  },
+  "game_dev_knowledge/asset_texturing.json": {
+    "contributors": 1,
+    "recent_changes": 2
+  },
+  "game_dev_knowledge/audio_implementation.json": {
+    "contributors": 1,
+    "recent_changes": 2
+  },
+  "game_dev_knowledge/audio_music.json": {
+    "contributors": 1,
+    "recent_changes": 2
   }
 }
