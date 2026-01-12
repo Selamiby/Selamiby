@@ -154,7 +154,6 @@
   "gpt-engineer/tests/applications/cli/test_collection_consent.py": true,
   "gpt-engineer/tests/applications/cli/test_learning.py": true,
   "gpt-engineer/tests/applications/cli/test_main.py": true,
-  "gpt-engineer/tests/benchmark/test_BenchConfig.py": true,
   "gpt-engineer/tests/core/default/test_disk_execution_env.py": true,
   "gpt-engineer/tests/core/default/test_disk_file_repository.py": true,
   "gpt-engineer/tests/core/default/test_simple_agent.py": true,
@@ -168,5 +167,6 @@
   "gpt-engineer/tests/test_install.py": true,
   "gpt-engineer/tests/test_project_config.py": true,
   "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_components_with_existing_responses": true,
-  "test_advanced_similarity.py::test_comprehensive_matching": true
+  "test_advanced_similarity.py::test_comprehensive_matching": true,
+  "gpt-engineer/tests/benchmark/test_BenchConfig.py::TestBenchConfig": true
 }

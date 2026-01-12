@@ -1,8 +1,8 @@
 {
   "topic": "WebAssembly",
   "domain": "frontend_advanced",
-  "learned_at": "2026-01-12T05:35:32.989270",
-  "cycle": 1,
+  "learned_at": "2026-01-12T05:40:31.579811",
+  "cycle": 56,
   "key_concepts": [
     "WebAssembly fundamentals",
     "WebAssembly architecture",
