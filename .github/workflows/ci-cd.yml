@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [ main, develop ]
   schedule:
-    - cron: '*/15 * * * *'  # Runs every 15 minutes
+    - cron: '*/15 * * * *'
 
 jobs:
   test:
@@ -55,29 +55,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy to Vercel (Frontend)  # yamllint disable-line rule:truthy
-      continue-on-error: true
-      continue-on-error: true
-        if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
+      - name: Deploy to Vercel (Frontend)
+        if: success() && env.VERCEL_TOKEN != ''
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo "Vercel token not configured" && exit 0
-          fi
           npm i -g vercel || true
           cd nexus_web/frontend
-          vercel --prod --token="$VERCEL_TOKEN" 2>/dev/null || echo "Vercel deployment skipped"
+          vercel --prod --token="$VERCEL_TOKEN" 2>/dev/null || echo "Vercel token not configured"
         continue-on-error: true
 
       - name: Deploy backend (placeholder)
-        if: ${{ success() && secrets.DEPLOY_KEY != '' }}
+        if: success() && env.DEPLOY_KEY != ''
         env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
-          if [ -z "$DEPLOY_KEY" ]; then
-            echo "DEPLOY_KEY not configured" && exit 0
-          fi
           echo "Deployment triggered for main branch"
         continue-on-error: true
 
