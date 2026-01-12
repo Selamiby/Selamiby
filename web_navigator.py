@@ -20,8 +20,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from nexus_learning_tracker import record_event
 import nexus_multimodal as mm
+from nexus_learning_tracker import record_event
 
 try:
     from PIL import Image

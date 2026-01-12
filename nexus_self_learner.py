@@ -58,8 +58,8 @@ except ImportError:
     logger.warning("CodeGenerator not available")
 
 try:
-    from web_navigator import WebNavigator
     from nexus_learning_tracker import record_event
+    from web_navigator import WebNavigator
     WEB_NAV_AVAILABLE = True
 except ImportError:
     WEB_NAV_AVAILABLE = False
