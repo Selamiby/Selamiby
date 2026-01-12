@@ -6,7 +6,7 @@
     "Signals",
     "Shaders"
   ],
-  "learned_at": "2026-01-12T05:23:44.078960",
+  "learned_at": "2026-01-12T11:53:26.316890",
   "notes": [
     "GDScript: Python-like syntax, Node-based",
     "Scenes: Everything is a scene, Scene tree",

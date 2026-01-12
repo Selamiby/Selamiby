@@ -6,7 +6,7 @@
     "Ray tracing",
     "High-res textures"
   ],
-  "learned_at": "2026-01-12T05:23:58.569212",
+  "learned_at": "2026-01-12T11:53:38.304828",
   "advanced_features": [
     "DirectX 12: Low-level API, better performance",
     "Vulkan: Cross-platform, explicit control",

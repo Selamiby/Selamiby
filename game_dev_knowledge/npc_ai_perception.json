@@ -5,7 +5,7 @@
     "Hearing",
     "Memory system"
   ],
-  "learned_at": "2026-01-12T05:23:49.197272",
+  "learned_at": "2026-01-12T11:53:30.435874",
   "implementation": [
     "Vision cone: Field of view, raycast to target",
     "Hearing: Sound radius, sound types",

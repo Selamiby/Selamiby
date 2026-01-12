@@ -6,7 +6,7 @@
     "Occlusion culling",
     "LOD"
   ],
-  "learned_at": "2026-01-12T05:23:52.123449",
+  "learned_at": "2026-01-12T11:53:32.659925",
   "techniques": [
     "Draw calls: Batch objects, reduce state changes",
     "Static batching: Static objects together",
