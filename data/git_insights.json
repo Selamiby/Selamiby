@@ -1,11 +1,15 @@
 {
-  "accelerated_learning.py": {
+  ".pytest_cache/v/cache/lastfailed": {
+    "contributors": 1,
+    "recent_changes": 3
+  },
+  "README.md": {
     "contributors": 1,
     "recent_changes": 5
   },
-  "code_generator.py": {
+  "__pycache__/nexus_super_learner.cpython-311.pyc": {
     "contributors": 1,
-    "recent_changes": 5
+    "recent_changes": 2
   },
   "data/healer_patterns.json": {
     "contributors": 1,
@@ -15,28 +19,24 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "game_engine_controller.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "generate_summary_report.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "human_interface_agent.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "nexus_daemon.py": {
-    "contributors": 1,
-    "recent_changes": 4
-  },
   "nexus_logs/autonomous.log": {
     "contributors": 1,
     "recent_changes": 5
   },
-  "nexus_start.py": {
+  "nexus_multimodal.py": {
     "contributors": 1,
     "recent_changes": 2
+  },
+  "nexus_self_learner.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "test_advanced_similarity.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "web_navigator.py": {
+    "contributors": 1,
+    "recent_changes": 5
   }
 }

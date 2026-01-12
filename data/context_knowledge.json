@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6488
+    "size": 6494
   },
   "code_generator.py": {
     "imports": [
@@ -30,8 +30,8 @@
       "time",
       "datetime",
       "pathlib",
-      "sys",
-      "datetime"
+      "nexus_learning_tracker",
+      "sys"
     ],
     "functions": [
       "log",
@@ -45,7 +45,7 @@
       "generate_class",
       "__init__"
     ],
-    "size": 9206
+    "size": 9617
   },
   "game_engine_controller.py": {
     "imports": [
@@ -67,7 +67,7 @@
       "create_unreal_project",
       "demo_game_engine"
     ],
-    "size": 7055
+    "size": 7061
   },
   "generate_summary_report.py": {
     "imports": [
@@ -78,7 +78,7 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7469
+    "size": 7471
   },
   "human_interface_agent.py": {
     "imports": [
@@ -98,7 +98,7 @@
       "open_vscode_workspace",
       "main"
     ],
-    "size": 4094
+    "size": 4108
   },
   "nexus_advanced_automation.py": {
     "imports": [
@@ -241,6 +241,20 @@
     ],
     "size": 7489
   },
+  "nexus_learning_tracker.py": {
+    "imports": [
+      "json",
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "_load_stats",
+      "record_event",
+      "snapshot_stats"
+    ],
+    "size": 2391
+  },
   "nexus_monitor.py": {
     "imports": [
       "json",
@@ -258,6 +272,17 @@
       "generate_report"
     ],
     "size": 3702
+  },
+  "nexus_multimodal.py": {
+    "imports": [
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "analyze_image",
+      "transcribe_audio"
+    ],
+    "size": 2334
   },
   "nexus_one_real.py": {
     "imports": [
@@ -317,10 +342,10 @@
       "add_pattern",
       "add_relationship",
       "get_related_concepts",
-      "get_top_patterns",
-      "__init__"
+      "analyze_audio_file",
+      "get_top_patterns"
     ],
-    "size": 21764
+    "size": 22648
   },
   "nexus_self_updater.py": {
     "imports": [
@@ -357,26 +382,5 @@
     ],
     "functions": [],
     "size": 1049
-  },
-  "NEXUS_SUMMARY.py": {
-    "imports": [],
-    "functions": [],
-    "size": 4104
-  },
-  "nexus_super.py": {
-    "imports": [
-      "os",
-      "sys",
-      "time",
-      "datetime"
-    ],
-    "functions": [
-      "__init__",
-      "calis",
-      "kontrol_et",
-      "karar_ver",
-      "calistir"
-    ],
-    "size": 3722
   }
 }
