@@ -6,9 +6,9 @@ Runs continuously - automatically commits all changes
 NEXUS-ONE controls, COPILOT executes - NO USER QUESTIONS
 """
 
+import logging
 import subprocess
 import time
-import logging
 from datetime import datetime
 from pathlib import Path
 

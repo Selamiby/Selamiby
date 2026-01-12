@@ -1,32 +1,4 @@
 {
-  "accelerated_learning.py": {
-    "contributors": 2,
-    "recent_changes": 5
-  },
-  "autonomous_engine.py": {
-    "contributors": 2,
-    "recent_changes": 4
-  },
-  "code_generator.py": {
-    "contributors": 2,
-    "recent_changes": 5
-  },
-  "copilot_dev_phase.py": {
-    "contributors": 2,
-    "recent_changes": 2
-  },
-  "copilot_nexus_collaboration.py": {
-    "contributors": 2,
-    "recent_changes": 5
-  },
-  "dashboard_creator.py": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "data/context_knowledge.json": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
@@ -35,8 +7,16 @@
     "contributors": 1,
     "recent_changes": 5
   },
+  "nexus_final_protocol.py": {
+    "contributors": 1,
+    "recent_changes": 1
+  },
+  "nexus_git_auto_sync.py": {
+    "contributors": 1,
+    "recent_changes": 1
+  },
   "nexus_logs/autonomous.log": {
-    "contributors": 2,
+    "contributors": 1,
     "recent_changes": 5
   }
 }
