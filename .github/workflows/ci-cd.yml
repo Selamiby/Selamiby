@@ -56,7 +56,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Deploy to Vercel (Frontend)
-        if: success() && env.VERCEL_TOKEN != ''
+        if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
@@ -66,7 +66,7 @@ jobs:
         continue-on-error: true
 
       - name: Deploy backend (placeholder)
-        if: success() && env.DEPLOY_KEY != ''
+        if: ${{ success() && secrets.DEPLOY_KEY != '' }}
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
