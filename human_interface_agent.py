@@ -48,6 +48,7 @@ CPU_SLEEP_SEC = 1.5
 
 
 
+
 def log(event, data=None):
     payload = {
         "time": time.strftime("%Y-%m-%d %H:%M:%S"),
@@ -57,6 +58,7 @@ def log(event, data=None):
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(payload) + "\n")
     print(f"[LOG] {event}: {data or ''}")
+
 
 
 
@@ -101,6 +103,7 @@ def cpu_throttle():
 
 
 
+
 def find_app_paths():
     paths = {}
     # VS Code
@@ -127,6 +130,7 @@ def find_app_paths():
 
 
 
+
 def launch_app(path, args=None):
     cpu_throttle()
     cmd = [path] + (args or [])
@@ -136,6 +140,7 @@ def launch_app(path, args=None):
     except Exception as e:
         log("launch_failed", {"error": str(e), "cmd": cmd})
         return None
+
 
 
 
@@ -205,6 +210,7 @@ def demo_notepad_typing():
 
 
 
+
 def open_vscode_workspace():
     log("open_vscode_workspace")
     paths = find_app_paths()
@@ -216,6 +222,7 @@ def open_vscode_workspace():
     except Exception:
         log("vscode_not_found")
         return False
+
 
 
 
