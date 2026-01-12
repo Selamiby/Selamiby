@@ -57,6 +57,8 @@ def log(msg: str):
 
 class CodeGenerator:
     def __init__(self):
+        DATA_DIR.mkdir(exist_ok=True)
+        LOG_DIR.mkdir(exist_ok=True)
         self.patterns = self.load_patterns()
         GENERATED_CODE_DIR.mkdir(exist_ok=True, parents=True)
         log("code_generator_init")
@@ -137,8 +139,28 @@ class CodeGenerator:
                 continue
             self.learn_from_file(f)
             learned += 1
+        self.save_learning_stats(files_learned=learned)
         log(f"learn_from_workspace files={learned}")
         return learned
+
+    def save_learning_stats(self, files_learned: int):
+        """Persist basic learning stats so UI can report progress"""
+        stats_file = DATA_DIR / "learning_stats.json"
+        try:
+            stats = {}
+            if stats_file.exists():
+                stats = json.loads(stats_file.read_text(encoding="utf-8"))
+
+            stats["sessions"] = int(stats.get("sessions", 0)) + 1
+            stats["files_learned"] = int(stats.get("files_learned", 0)) + files_learned
+            stats["concepts_learned"] = len(self.patterns.get("function_templates", []))
+            stats["patterns_learned"] = len(self.patterns.get("class_templates", []))
+            stats["last_learn_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            stats_file.write_text(json.dumps(stats, indent=2), encoding="utf-8")
+            log(f"learning_stats_updated sessions={stats['sessions']} files_total={stats['files_learned']}")
+        except Exception as e:
+            log(f"learning_stats_error err={e}")
 
     def generate_simple_function(self, func_name: str, description: str = "Auto-generated function") -> str:
         """Generate a simple Python function"""
