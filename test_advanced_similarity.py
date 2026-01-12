@@ -4,8 +4,10 @@ Test Advanced Multi-Algorithm Similarity Detection
 Demonstrates 90%+ accuracy with real error patterns
 """
 
-from nexus_super_learner import EnhancedLearner
 import json
+
+from nexus_super_learner import EnhancedLearner
+
 
 def test_comprehensive_matching():
     """Test with comprehensive real-world error patterns"""

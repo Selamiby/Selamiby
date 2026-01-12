@@ -1,10 +1,12 @@
 #Requires -Version 5.0
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
-# Runs the Human Interface Agent with BelowNormal priority and minimal CPU pressure
+param()
+#Requires -Version 5.0
 [CmdletBinding()]
 param(
     [switch]$Demo
 )
+# Runs the Human Interface Agent with BelowNormal priority and minimal CPU pressure
 
 $ErrorActionPreference = 'Stop'
 
