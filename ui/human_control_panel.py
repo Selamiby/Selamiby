@@ -174,12 +174,12 @@ class ControlPanel(tk.Tk):
         
         self.chat_output = scrolledtext.ScrolledText(chat_frame, height=15, wrap="word", font=("Consolas", 10))
         self.chat_output.pack(fill="both", expand=True, padx=6, pady=6)
-        self.chat_output.insert(tk.END, "NEXUS AI: Merhaba! Ben senin AI asistanınım. Ne yapmamı istersin?\n\n")
-        self.chat_output.insert(tk.END, "Örnekler:\n")
-        self.chat_output.insert(tk.END, "- 'python machine learning ara' → Google'da arar\n")
-        self.chat_output.insert(tk.END, "- 'kod yaz calculator' → Hesap makinesi kodu üretir\n")
-        self.chat_output.insert(tk.END, "- 'github.com/user/repo öğren' → Repo'yu analiz eder\n")
-        self.chat_output.insert(tk.END, "- 'sistem durumu' → CPU, RAM gösterir\n\n")
+        self._append_chat("🤖 NEXUS: Merhaba! Ben senin AI asistanınım. Ne yapmamı istersin?\n\n")
+        self._append_chat("Örnekler:\n")
+        self._append_chat("- 'python machine learning ara' → Google'da arar\n")
+        self._append_chat("- 'kod yaz calculator' → Hesap makinesi kodu üretir\n")
+        self._append_chat("- 'github.com/user/repo öğren' → Repo'yu analiz eder\n")
+        self._append_chat("- 'sistem durumu' → CPU, RAM gösterir\n\n")
         
         input_row = ttk.Frame(chat_frame)
         input_row.pack(fill="x", padx=6, pady=6)
@@ -344,10 +344,10 @@ class ControlPanel(tk.Tk):
         text = (self.chat_var.get() or "").strip()
         if not text:
             return
-        self.chat_output.insert(tk.END, f"\n🧑 Sen: {text}\n")
-        self.chat_output.see(tk.END)
+        self._append_chat(f"\n🧑 Sen: {text}\n")
         self.chat_var.set("")
-        self.update()
+        self._log_chat_event("SEND", text)
+        self.update_idletasks()
         
         # Process in thread to avoid UI freeze
         thread = threading.Thread(target=self._process_command_thread, args=(text,))
@@ -369,12 +369,31 @@ class ControlPanel(tk.Tk):
             except Exception:
                 pass
             reply = f"Komut işlenirken hata oluştu: {e}"
+            self._log_chat_event("ERROR", f"{e}\n{tb}")
         self.after(0, lambda: self._show_reply(reply))
     
     def _show_reply(self, reply):
         """Show reply in chat (called from main thread)"""
-        self.chat_output.insert(tk.END, f"🤖 NEXUS: {reply}\n")
-        self.chat_output.see(tk.END)
+        self._append_chat(f"🤖 NEXUS: {reply}\n")
+
+    def _append_chat(self, text: str):
+        """Safe append to chat box and scroll"""
+        try:
+            self.chat_output.configure(state="normal")
+            self.chat_output.insert(tk.END, text)
+            self.chat_output.see(tk.END)
+        except Exception:
+            pass
+
+    def _log_chat_event(self, kind: str, text: str):
+        """Log chat send/errors for debugging Enter issues"""
+        try:
+            log_file = LOG_DIR / "chat_debug.log"
+            ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            with log_file.open("a", encoding="utf-8") as f:
+                f.write(f"[{ts}] {kind}: {text}\n")
+        except Exception:
+            pass
 
     def process_chat_command(self, text: str) -> str:
         """
