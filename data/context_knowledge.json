@@ -18,7 +18,34 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6518
+    "size": 6524
+  },
+  "autonomous_engine.py": {
+    "imports": [
+      "json",
+      "logging",
+      "os",
+      "subprocess",
+      "sys",
+      "threading",
+      "time",
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "__init__",
+      "is_active",
+      "task_code_improvements",
+      "task_github_sync",
+      "task_learn_from_web",
+      "task_system_health",
+      "task_feature_development",
+      "task_test_and_validate",
+      "run_iteration",
+      "save_stats"
+    ],
+    "size": 9354
   },
   "code_generator.py": {
     "imports": [
@@ -45,7 +72,7 @@
       "generate_class",
       "__init__"
     ],
-    "size": 9657
+    "size": 9667
   },
   "copilot_nexus_collaboration.py": {
     "imports": [
@@ -71,7 +98,7 @@
       "_get_known_issues",
       "_get_best_practices"
     ],
-    "size": 12212
+    "size": 12216
   },
   "game_engine_controller.py": {
     "imports": [
@@ -93,7 +120,7 @@
       "create_unreal_project",
       "demo_game_engine"
     ],
-    "size": 7085
+    "size": 7091
   },
   "generate_summary_report.py": {
     "imports": [
@@ -104,7 +131,7 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7479
+    "size": 7480
   },
   "human_interface_agent.py": {
     "imports": [
@@ -164,6 +191,30 @@
       "main"
     ],
     "size": 6791
+  },
+  "nexus_autonomous_authority.py": {
+    "imports": [
+      "json",
+      "logging",
+      "os",
+      "time",
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "__init__",
+      "to_dict",
+      "__init__",
+      "is_authority_active",
+      "process_copilot_request",
+      "copilot_proposes_feature",
+      "nexus_proposes_feature",
+      "_evaluate_feature",
+      "save_session",
+      "get_status"
+    ],
+    "size": 17226
   },
   "nexus_autonomous_director.py": {
     "imports": [
@@ -363,41 +414,5 @@
       "transcribe_audio"
     ],
     "size": 2334
-  },
-  "nexus_one_real.py": {
-    "imports": [
-      "psutil",
-      "config"
-    ],
-    "functions": [
-      "check_system",
-      "main"
-    ],
-    "size": 811
-  },
-  "nexus_security.py": {
-    "imports": [
-      "json",
-      "os",
-      "shutil",
-      "subprocess",
-      "sys",
-      "time",
-      "datetime",
-      "pathlib"
-    ],
-    "functions": [
-      "log",
-      "load_config",
-      "run_ps",
-      "defender_update_and_quick_scan",
-      "firewall_block_ip",
-      "is_excluded",
-      "cleanup_temp",
-      "cleanup_browser_cache",
-      "cleanup_prefetch",
-      "cleanup_recycle_bin"
-    ],
-    "size": 11692
   }
 }

@@ -1,9 +1,17 @@
 {
-  "AUTONOMOUS_SESSION.txt": {
+  "accelerated_learning.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "autonomous_engine.py": {
     "contributors": 1,
     "recent_changes": 1
   },
-  "__pycache__/web_navigator.cpython-311.pyc": {
+  "code_generator.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "copilot_nexus_collaboration.py": {
     "contributors": 1,
     "recent_changes": 3
   },
@@ -15,16 +23,20 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "nexus_autonomous_director.py": {
+  "game_engine_controller.py": {
     "contributors": 1,
-    "recent_changes": 2
+    "recent_changes": 5
+  },
+  "generate_summary_report.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "nexus_autonomous_authority.py": {
+    "contributors": 1,
+    "recent_changes": 4
   },
   "nexus_logs/autonomous.log": {
     "contributors": 1,
     "recent_changes": 5
-  },
-  "nexus_master_orchestrator.py": {
-    "contributors": 1,
-    "recent_changes": 2
   }
 }
