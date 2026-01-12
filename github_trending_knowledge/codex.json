@@ -1,0 +1,10 @@
+{
+  "name": "codex",
+  "full_name": "openai/codex",
+  "description": "Lightweight coding agent that runs in your terminal",
+  "stars": 55875,
+  "language": "Rust",
+  "topics": [],
+  "url": "https://github.com/openai/codex",
+  "learned_at": "2026-01-12T05:35:54.164645"
+}
