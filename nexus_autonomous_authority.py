@@ -32,7 +32,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - [AUTONOMOUS-AUTHORITY] %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(LOG_DIR / "nexus_authority.log"),
+        logging.FileHandler(LOG_DIR / "nexus_authority.log", encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
