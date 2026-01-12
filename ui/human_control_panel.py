@@ -12,7 +12,9 @@ import subprocess
 import sys
 import threading
 import time
+import traceback
 import webbrowser
+from datetime import datetime
 from pathlib import Path
 
 try:
@@ -925,8 +927,17 @@ if __name__ == "__main__":
     except BaseException as e:
         # Yakalanmayan hataları logla ki pencere neden kapandı görelim
         crash_log = LOG_DIR / "panel_crash.log"
+        tb = "".join(traceback.format_exception(e))
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_entry = f"[{ts}] {e}\n{tb}\n"
         try:
-            crash_log.write_text(str(e), encoding="utf-8")
+            crash_log.parent.mkdir(parents=True, exist_ok=True)
+            with crash_log.open("a", encoding="utf-8") as f:
+                f.write(log_entry)
+        except Exception:
+            pass
+        try:
+            messagebox.showerror("Panel Hatası", f"Pencere beklenmedik şekilde kapandı:\n{e}\nLog: {crash_log}")
         except Exception:
             pass
         print(f"[PANEL CRASH] {e}")
