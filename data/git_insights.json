@@ -1,19 +1,31 @@
 {
   "accelerated_learning.py": {
-    "contributors": 1,
+    "contributors": 2,
     "recent_changes": 5
   },
   "autonomous_engine.py": {
+    "contributors": 2,
+    "recent_changes": 4
+  },
+  "code_generator.py": {
+    "contributors": 2,
+    "recent_changes": 5
+  },
+  "copilot_dev_phase.py": {
+    "contributors": 2,
+    "recent_changes": 2
+  },
+  "copilot_nexus_collaboration.py": {
+    "contributors": 2,
+    "recent_changes": 5
+  },
+  "dashboard_creator.py": {
     "contributors": 1,
     "recent_changes": 1
   },
-  "code_generator.py": {
+  "data/context_knowledge.json": {
     "contributors": 1,
     "recent_changes": 5
-  },
-  "copilot_nexus_collaboration.py": {
-    "contributors": 1,
-    "recent_changes": 3
   },
   "data/healer_patterns.json": {
     "contributors": 1,
@@ -23,20 +35,8 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "game_engine_controller.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "generate_summary_report.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "nexus_autonomous_authority.py": {
-    "contributors": 1,
-    "recent_changes": 4
-  },
   "nexus_logs/autonomous.log": {
-    "contributors": 1,
+    "contributors": 2,
     "recent_changes": 5
   }
 }

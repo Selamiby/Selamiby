@@ -5,15 +5,15 @@ COPILOT AUTONOMOUS DEVELOPMENT PHASE
 Continuous code quality improvements and feature implementations
 """
 
-import os
+import asyncio
 import json
 import logging
-import asyncio
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import List, Dict, Any
+import os
 import subprocess
 import time
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List
 
 WORKSPACE = Path(__file__).parent
 LOG_DIR = WORKSPACE / "nexus_logs"
