@@ -1,4 +1,24 @@
 {
+  "accelerated_learning.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "autonomous_engine.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "code_generator.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "copilot_dev_phase.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "copilot_nexus_collaboration.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
@@ -7,36 +27,8 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "github_trending_knowledge/DeepSeek-R1.json": {
+  "nexus_logs/autonomous.log": {
     "contributors": 1,
-    "recent_changes": 1
-  },
-  "github_trending_knowledge/OpenCut.json": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "github_trending_knowledge/OpenManus.json": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "github_trending_knowledge/claude-code.json": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "github_trending_knowledge/codex.json": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "github_trending_knowledge/gemini-cli.json": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "github_trending_knowledge/n8n-workflows.json": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "github_trending_knowledge/opencode.json": {
-    "contributors": 1,
-    "recent_changes": 1
+    "recent_changes": 5
   }
 }
