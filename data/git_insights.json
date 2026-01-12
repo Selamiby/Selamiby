@@ -1,8 +1,4 @@
 {
-  ".github/workflows/ci-cd.yml": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
