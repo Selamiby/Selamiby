@@ -44,28 +44,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build Docker image
-        if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
         run: |
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo "Vercel token not configured" && exit 0
-          fi
-          npm i -g vercel || true
-          cd nexus_web/frontend
-          vercel --prod --token="$VERCEL_TOKEN" 2>/dev/null || echo "Vercel deployment skipped"
-        continue-on-error: true
+          docker build -t nexus-one:latest .
+          echo "Build completed successfully"
 
-      - name: Deploy backend (placeholder)
-        if: ${{ success() && secrets.DEPLOY_KEY != '' }}
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
-        run: |
-          if [ -z "$DEPLOY_KEY" ]; then
-            echo "DEPLOY_KEY not configured" && exit 0
-          fi
-          echo "Deployment triggered for main branch"
-        continue-on-error: true
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Vercel (Frontend)  # yamllint disable-line rule:truthy
       continue-on-error: true
       continue-on-error: true
         if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
