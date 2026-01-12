@@ -58,9 +58,9 @@ jobs:
     - name: Deploy to Vercel (Frontend)  # yamllint disable-line rule:truthy
       continue-on-error: true
       continue-on-error: true
-      if: success()
+      if: success() && secrets.VERCEL_TOKEN != ''
       # Secrets are safely handled with fallback values
-      env:
+        if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -71,8 +71,8 @@ jobs:
     - name: Deploy to production  # yamllint disable-line rule:truthy
       continue-on-error: true
       continue-on-error: true
-      if: success()
-      env:
+      if: success() && secrets.DEPLOY_KEY != ''
+        if: ${{ success() && secrets.DEPLOY_KEY != '' }}
         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
