@@ -16,7 +16,6 @@ import asyncio
 import json
 import logging
 import os
-import psutil
 import subprocess
 import sys
 import threading
@@ -24,6 +23,8 @@ import time
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+import psutil
 
 # Setup
 WORKSPACE = Path(__file__).parent
