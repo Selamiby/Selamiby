@@ -31,6 +31,24 @@ help
 ```
 → Tüm komutlar görünür
 
+#### 4. Öğrenme / Multimodal Kısayollar
+```powershell
+# Workspace öğren + istatistik
+python code_generator.py
+
+# Gelişmiş öğrenme paketi (pattern/context/blame/similarity)
+python nexus_super_learner.py
+
+# Web öğrenme (Google/YouTube/GitHub) – Selenium/Chrome gerekir
+python web_navigator.py
+
+# Otonom daemon (hyper_integration varsa)
+python nexus_daemon.py
+
+# Multimodal OCR/Ses için opsiyonel paketler
+pip install pillow pytesseract speechrecognition pydub
+```
+
 ---
 
 ## 🎯 Copilot Mode Örnekleri
