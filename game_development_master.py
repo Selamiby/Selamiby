@@ -18,14 +18,15 @@ NEXUS-ONE onayladı: Mobil (2GB) ve PC (15GB) oyun geliştirme yeteneği kazanı
 COPILOT EXECUTE EDİYOR - NEXUS-ONE KONTROL'DE
 """
 
-import os
 import json
-import time
 import logging
-import requests
+import os
+import time
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any, Dict, List
+
+import requests
 
 # Logging setup
 log_dir = Path("nexus_logs")

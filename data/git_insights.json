@@ -1,4 +1,24 @@
 {
+  "accelerated_learning.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "autonomous_engine.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "code_generator.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "copilot_dev_phase.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "copilot_nexus_collaboration.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
@@ -7,12 +27,16 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "nexus_copilot_interaction.py": {
+  "game_dev_knowledge/MASTER_SUMMARY.json": {
     "contributors": 1,
-    "recent_changes": 2
+    "recent_changes": 1
   },
-  "nexus_logs/autonomous.log": {
+  "game_dev_knowledge/asset_3d_modeling.json": {
     "contributors": 1,
-    "recent_changes": 5
+    "recent_changes": 1
+  },
+  "game_dev_knowledge/asset_animation.json": {
+    "contributors": 1,
+    "recent_changes": 1
   }
 }

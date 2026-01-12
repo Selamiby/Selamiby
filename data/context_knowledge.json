@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6548
+    "size": 6554
   },
   "autonomous_engine.py": {
     "imports": [
@@ -45,7 +45,7 @@
       "run_iteration",
       "save_stats"
     ],
-    "size": 9370
+    "size": 9374
   },
   "code_generator.py": {
     "imports": [
@@ -72,7 +72,7 @@
       "generate_class",
       "__init__"
     ],
-    "size": 9707
+    "size": 9717
   },
   "copilot_dev_phase.py": {
     "imports": [
@@ -95,7 +95,7 @@
       "commit_changes",
       "run_autonomously"
     ],
-    "size": 5427
+    "size": 5429
   },
   "copilot_nexus_collaboration.py": {
     "imports": [
@@ -121,7 +121,7 @@
       "_get_known_issues",
       "_get_best_practices"
     ],
-    "size": 12232
+    "size": 12236
   },
   "dashboard_creator.py": {
     "imports": [
@@ -156,6 +156,31 @@
       "implement_performance_monitor"
     ],
     "size": 5571
+  },
+  "game_development_master.py": {
+    "imports": [
+      "os",
+      "json",
+      "time",
+      "logging",
+      "requests",
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "__init__",
+      "learn_game_engines",
+      "learn_asset_creation",
+      "learn_npc_ai",
+      "learn_graphics",
+      "learn_audio",
+      "learn_mobile_game",
+      "learn_pc_game",
+      "_save_knowledge",
+      "generate_summary"
+    ],
+    "size": 26761
   },
   "game_engine_controller.py": {
     "imports": [
@@ -391,32 +416,5 @@
       "main"
     ],
     "size": 7285
-  },
-  "nexus_copilot_real_collaboration.py": {
-    "imports": [
-      "asyncio",
-      "json",
-      "logging",
-      "os",
-      "subprocess",
-      "threading",
-      "time",
-      "datetime",
-      "pathlib",
-      "typing"
-    ],
-    "functions": [
-      "__init__",
-      "should_approve",
-      "is_session_active",
-      "get_remaining_time",
-      "__init__",
-      "set_cpu_guardian",
-      "execute_task",
-      "process_code_quality",
-      "add_new_features",
-      "run_tests"
-    ],
-    "size": 9958
   }
 }
