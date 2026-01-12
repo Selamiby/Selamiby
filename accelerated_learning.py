@@ -95,6 +95,7 @@ LOG_FILE = LOG_DIR / "accelerated_learning.log"
 
 
 
+
 def log(msg: str):
     ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     line = f"[{ts}] {msg}\n"
@@ -105,6 +106,7 @@ def log(msg: str):
     except Exception:
         pass
     print(line.strip())
+
 
 
 
@@ -317,6 +319,7 @@ class AcceleratedLearning:
             "skills": self.knowledge["skills"],
             "learning_rate": self.config["learning_rate"]
         }
+
 
 
 
