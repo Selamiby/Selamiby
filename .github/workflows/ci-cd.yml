@@ -56,25 +56,24 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Deploy to Vercel (Frontend)  # yamllint disable-line rule:truthy
-      continue-on-error: true
-      continue-on-error: true
-      if: success() && secrets.VERCEL_TOKEN != ''
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
+      if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm i -g vercel || true
         cd nexus_web/frontend
         vercel --prod --token=$VERCEL_TOKEN 2>/dev/null || echo "Vercel token not configured"
-
       continue-on-error: true
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
-        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
+
+    - name: Deploy backend (placeholder)
+      if: ${{ success() && secrets.DEPLOY_KEY != '' }}
+      env:
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo "Deployment triggered for main branch"
+      continue-on-error: true
 
   notify:
     needs: [test, build, deploy]
