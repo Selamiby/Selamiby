@@ -4,9 +4,9 @@ SECURITY SCANNER - Find vulnerabilities
 Hiç soru sormuyor, güvenlik taraması yapıyor
 """
 
+import logging
 import re
 from pathlib import Path
-import logging
 
 LOG_DIR = Path(__file__).parent / "nexus_logs"
 LOG_DIR.mkdir(exist_ok=True)
