@@ -5,14 +5,15 @@ NEXUS CPU Guardian - System Resource Protection
 Monitors and limits CPU/RAM usage to prevent system freeze.
 """
 
-import psutil
-import logging
-import time
-import threading
 import json
+import logging
+import threading
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
+
+import psutil
 
 WORKSPACE = Path(__file__).parent
 LOG_DIR = WORKSPACE / "nexus_logs"
