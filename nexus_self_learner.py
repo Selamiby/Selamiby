@@ -28,6 +28,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
+import nexus_multimodal as mm
+
 # Setup
 WORKSPACE = Path(__file__).parent
 DATA_DIR = WORKSPACE / "nexus_data"
@@ -206,6 +208,17 @@ class KnowledgeGraph:
                     queue.append((rel["to"], depth + 1))
         
         return related[:20]  # Limit results
+
+
+    def analyze_audio_file(self, audio_path: Path) -> Dict[str, Any]:
+        """Optional audio analysis using speech_recognition if available."""
+        info = mm.transcribe_audio(audio_path)
+        if info.get("ok"):
+            try:
+                record_event(source="audio", audio_events=1)
+            except Exception:
+                pass
+        return info
     
     def get_top_patterns(self, limit: int = 10) -> List[Dict]:
         """Get most frequently used patterns"""

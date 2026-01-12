@@ -12,6 +12,8 @@ from datetime import datetime
 from difflib import SequenceMatcher
 from pathlib import Path
 
+from nexus_learning_tracker import record_event
+
 
 class EnhancedLearner:
     def __init__(self):
@@ -388,6 +390,15 @@ class EnhancedLearner:
         print("  5. Solution ranking by success rate")
         print("  6. Predictive error analysis")
         print("")
+
+        # Persist stats to global tracker
+        try:
+            pattern_count = 0
+            if self.pattern_db.exists():
+                pattern_count = len(json.loads(self.pattern_db.read_text(encoding="utf-8")))
+            record_event(source="super_learner", patterns_learned=pattern_count)
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":

@@ -20,6 +20,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+from nexus_learning_tracker import record_event
+import nexus_multimodal as mm
+
 try:
     from PIL import Image
 except Exception:
@@ -113,6 +116,14 @@ class WebNavigator:
             path = SCREENSHOT_DIR / name
             self.driver.save_screenshot(str(path))
             log(f"screenshot saved={path.name}")
+            # Optional vision analysis + tracking
+            try:
+                info = mm.analyze_image(path)
+                if info.get("ok"):
+                    record_event(source="vision", vision_events=1)
+                    log(f"vision_analysis size={info.get('size')} ocr_len={len(info.get('ocr_text',''))}")
+            except Exception:
+                pass
             return path
         except Exception as e:
             log(f"screenshot_error: {e}")
@@ -168,6 +179,10 @@ class WebNavigator:
                 "time": datetime.now().isoformat()
             })
             self.save_learning_data()
+            try:
+                record_event(source="web_search", web_sessions=1)
+            except Exception:
+                pass
             
             log(f"search_complete query={query} results={len(top_results)}")
             return {
@@ -215,6 +230,10 @@ class WebNavigator:
                 "time": datetime.now().isoformat()
             })
             self.save_learning_data()
+            try:
+                record_event(source="web_youtube", web_sessions=1, vision_events=len(screenshots))
+            except Exception:
+                pass
             
             log(f"youtube_learning_complete screenshots={len(screenshots)}")
             return {
@@ -260,6 +279,10 @@ class WebNavigator:
                 "time": datetime.now().isoformat()
             })
             self.save_learning_data()
+            try:
+                record_event(source="web_repo", web_sessions=1)
+            except Exception:
+                pass
             
             log(f"code_learning repo={repo_name} files={len(code_links)}")
             return {
