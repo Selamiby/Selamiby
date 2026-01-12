@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6512
+    "size": 6518
   },
   "code_generator.py": {
     "imports": [
@@ -45,7 +45,33 @@
       "generate_class",
       "__init__"
     ],
-    "size": 9647
+    "size": 9657
+  },
+  "copilot_nexus_collaboration.py": {
+    "imports": [
+      "json",
+      "logging",
+      "os",
+      "subprocess",
+      "sys",
+      "time",
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "__init__",
+      "copilot_action",
+      "nexus_learn_from_action",
+      "_extract_knowledge",
+      "_apply_to_knowledge_graph",
+      "nexus_provides_context",
+      "_get_workspace_structure",
+      "_get_recent_patterns",
+      "_get_known_issues",
+      "_get_best_practices"
+    ],
+    "size": 12212
   },
   "game_engine_controller.py": {
     "imports": [
@@ -67,7 +93,7 @@
       "create_unreal_project",
       "demo_game_engine"
     ],
-    "size": 7079
+    "size": 7085
   },
   "generate_summary_report.py": {
     "imports": [
@@ -78,7 +104,7 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7477
+    "size": 7479
   },
   "human_interface_agent.py": {
     "imports": [
@@ -98,7 +124,7 @@
       "open_vscode_workspace",
       "main"
     ],
-    "size": 4150
+    "size": 4157
   },
   "nexus_advanced_automation.py": {
     "imports": [
@@ -138,6 +164,33 @@
       "main"
     ],
     "size": 6791
+  },
+  "nexus_autonomous_director.py": {
+    "imports": [
+      "asyncio",
+      "json",
+      "logging",
+      "os",
+      "subprocess",
+      "sys",
+      "threading",
+      "time",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "__init__",
+      "check_resources",
+      "wait_if_overloaded",
+      "__init__",
+      "is_authorized",
+      "decide",
+      "auto_approve",
+      "get_statistics",
+      "__init__",
+      "copilot_proposes"
+    ],
+    "size": 21550
   },
   "nexus_auto_healer.py": {
     "imports": [
@@ -255,6 +308,33 @@
     ],
     "size": 2391
   },
+  "nexus_master_orchestrator.py": {
+    "imports": [
+      "asyncio",
+      "json",
+      "logging",
+      "multiprocessing",
+      "os",
+      "subprocess",
+      "sys",
+      "threading",
+      "time",
+      "datetime"
+    ],
+    "functions": [
+      "__init__",
+      "initialize_systems",
+      "record_copilot_action",
+      "get_nexus_context",
+      "analyze_workspace",
+      "learn_from_existing_code",
+      "track_social_trends",
+      "improve_existing_code",
+      "run_iteration",
+      "save_metrics"
+    ],
+    "size": 14585
+  },
   "nexus_monitor.py": {
     "imports": [
       "json",
@@ -319,68 +399,5 @@
       "cleanup_recycle_bin"
     ],
     "size": 11692
-  },
-  "nexus_self_learner.py": {
-    "imports": [
-      "ast",
-      "hashlib",
-      "json",
-      "logging",
-      "os",
-      "re",
-      "sys",
-      "time",
-      "datetime",
-      "pathlib"
-    ],
-    "functions": [
-      "__init__",
-      "load_graph",
-      "save_graph",
-      "add_concept",
-      "add_command",
-      "add_pattern",
-      "add_relationship",
-      "get_related_concepts",
-      "analyze_audio_file",
-      "get_top_patterns"
-    ],
-    "size": 22648
-  },
-  "nexus_self_updater.py": {
-    "imports": [
-      "ast",
-      "json",
-      "logging",
-      "os",
-      "re",
-      "shutil",
-      "sys",
-      "datetime",
-      "pathlib",
-      "typing"
-    ],
-    "functions": [
-      "__init__",
-      "load_knowledge",
-      "backup_file",
-      "extract_new_commands",
-      "generate_command_handler_code",
-      "update_control_panel_commands",
-      "integrate_code_patterns",
-      "update_documentation",
-      "self_update_cycle",
-      "get_update_summary"
-    ],
-    "size": 12991
-  },
-  "nexus_start.py": {
-    "imports": [
-      "os",
-      "time",
-      "datetime"
-    ],
-    "functions": [],
-    "size": 1049
   }
 }

@@ -43,14 +43,15 @@ logging.basicConfig(
 logger = logging.getLogger("Copilot-NEXUS")
 
 
+
 class CollaborationEngine:
     """Manages collaboration between GitHub Copilot and NEXUS-ONE"""
-    
+
     def __init__(self):
         self.session_start = datetime.now()
         self.session_id = f"session_{self.session_start.strftime('%Y%m%d_%H%M%S')}"
         self.session_file = COLLAB_DIR / f"{self.session_id}.json"
-        
+
         self.metrics = {
             "session_id": self.session_id,
             "started_at": self.session_start.isoformat(),
@@ -61,9 +62,9 @@ class CollaborationEngine:
             "knowledge_expansions": 0,
             "total_iterations": 0
         }
-        
+
         logger.info(f"🤝 Collaboration Engine Started - Session: {self.session_id}")
-        
+
     def copilot_action(self, action_type: str, details: Dict[str, Any]):
         """
         Record an action taken by GitHub Copilot
@@ -75,13 +76,13 @@ class CollaborationEngine:
             "details": details,
             "learned_by_nexus": False
         }
-        
+
         self.metrics["copilot_actions"].append(action)
         logger.info(f"🤖 Copilot Action: {action_type}")
-        
+
         # Trigger NEXUS learning
         self.nexus_learn_from_action(action)
-        
+
     def nexus_learn_from_action(self, action: Dict):
         """NEXUS learns from Copilot's action"""
         learning = {
@@ -91,14 +92,14 @@ class CollaborationEngine:
             "extracted_knowledge": self._extract_knowledge(action),
             "applied_to_knowledge_graph": False
         }
-        
+
         self.metrics["nexus_learnings"].append(learning)
         self.metrics["knowledge_expansions"] += 1
         logger.info(f"🧠 NEXUS Learning: {action['type']}")
-        
+
         # Apply to knowledge graph
         self._apply_to_knowledge_graph(learning)
-        
+
     def _extract_knowledge(self, action: Dict) -> Dict:
         """Extract learnable knowledge from Copilot action"""
         knowledge = {
@@ -106,9 +107,9 @@ class CollaborationEngine:
             "techniques": [],
             "best_practices": []
         }
-        
+
         details = action.get("details", {})
-        
+
         # Extract from file edits
         if action["type"] == "file_edit":
             if "new_code" in details:
@@ -117,7 +118,7 @@ class CollaborationEngine:
                     "file_type": details.get("file_path", "").split(".")[-1],
                     "context": details.get("explanation", "")
                 })
-        
+
         # Extract from commands
         elif action["type"] == "terminal_command":
             knowledge["techniques"].append({
@@ -125,21 +126,21 @@ class CollaborationEngine:
                 "purpose": details.get("explanation", ""),
                 "success": details.get("success", True)
             })
-            
+
         return knowledge
-    
+
     def _apply_to_knowledge_graph(self, learning: Dict):
         """Apply learning to NEXUS knowledge graph"""
         try:
             kg_file = DATA_DIR / "knowledge_graph" / "knowledge_graph.json"
             kg_file.parent.mkdir(parents=True, exist_ok=True)
-            
+
             if kg_file.exists():
                 with open(kg_file, 'r', encoding='utf-8') as f:
                     kg = json.load(f)
             else:
                 kg = {"concepts": {}, "commands": {}, "code_patterns": {}}
-            
+
             # Add new patterns
             knowledge = learning["extracted_knowledge"]
             for pattern in knowledge.get("patterns", []):
@@ -150,7 +151,7 @@ class CollaborationEngine:
                     "learned_from": "copilot",
                     "timestamp": learning["timestamp"]
                 }
-            
+
             # Add new techniques
             for technique in knowledge.get("techniques", []):
                 cmd_id = technique["command"].split()[0] if technique["command"] else "unknown"
@@ -159,30 +160,30 @@ class CollaborationEngine:
                     "purpose": technique["purpose"],
                     "success_rate": 1.0 if technique["success"] else 0.0
                 }
-            
+
             # Save updated knowledge graph
             with open(kg_file, 'w', encoding='utf-8') as f:
                 json.dump(kg, f, indent=2, ensure_ascii=False)
-            
+
             learning["applied_to_knowledge_graph"] = True
             logger.info("✅ Knowledge applied to graph")
-            
+
         except Exception as e:
             logger.error(f"❌ Failed to apply knowledge: {e}")
-    
+
     def nexus_provides_context(self, query: str) -> Dict:
         """NEXUS provides context to help Copilot make better decisions"""
         logger.info(f"📊 NEXUS providing context for: {query}")
-        
+
         context = {
             "workspace_structure": self._get_workspace_structure(),
             "recent_patterns": self._get_recent_patterns(),
             "known_issues": self._get_known_issues(),
             "best_practices": self._get_best_practices()
         }
-        
+
         return context
-    
+
     def _get_workspace_structure(self) -> Dict:
         """Analyze workspace structure"""
         structure = {
@@ -192,7 +193,7 @@ class CollaborationEngine:
             "directories": len([d for d in WORKSPACE.rglob("*") if d.is_dir()])
         }
         return structure
-    
+
     def _get_recent_patterns(self) -> List[Dict]:
         """Get recently learned patterns"""
         try:
@@ -205,7 +206,7 @@ class CollaborationEngine:
         except:
             pass
         return []
-    
+
     def _get_known_issues(self) -> List[str]:
         """Get known issues from previous sessions"""
         issues = []
@@ -220,7 +221,7 @@ class CollaborationEngine:
         except:
             pass
         return list(set(issues))[-10:]  # Last 10 unique issues
-    
+
     def _get_best_practices(self) -> List[str]:
         """Get accumulated best practices"""
         practices = [
@@ -231,7 +232,7 @@ class CollaborationEngine:
             "Log errors with proper context"
         ]
         return practices
-    
+
     def shared_decision(self, decision_type: str, copilot_input: Any, nexus_input: Any) -> Any:
         """
         Make a shared decision between Copilot and NEXUS
@@ -245,7 +246,7 @@ class CollaborationEngine:
             "final_decision": None,
             "confidence": 0.0
         }
-        
+
         # Simple decision logic (can be enhanced)
         if copilot_input == nexus_input:
             decision["final_decision"] = copilot_input
@@ -255,23 +256,23 @@ class CollaborationEngine:
             # NEXUS has priority for known working patterns
             decision["final_decision"] = copilot_input
             decision["confidence"] = 0.75
-        
+
         self.metrics["shared_decisions"].append(decision)
         logger.info(f"🤝 Shared Decision: {decision_type} -> {decision['final_decision']}")
-        
+
         return decision["final_decision"]
-    
+
     def iterate(self):
         """One iteration of collaborative work"""
         self.metrics["total_iterations"] += 1
-        
+
         logger.info(f"\n{'='*70}")
         logger.info(f"🔄 Iteration {self.metrics['total_iterations']}")
         logger.info(f"{'='*70}")
-        
+
         # Save session metrics
         self.save_session()
-        
+
     def save_session(self):
         """Save session metrics"""
         try:
@@ -279,11 +280,11 @@ class CollaborationEngine:
                 json.dump(self.metrics, f, indent=2, ensure_ascii=False)
         except Exception as e:
             logger.error(f"Failed to save session: {e}")
-    
+
     def get_statistics(self) -> Dict:
         """Get collaboration statistics"""
         duration = (datetime.now() - self.session_start).total_seconds()
-        
+
         stats = {
             "session_duration_seconds": duration,
             "total_copilot_actions": len(self.metrics["copilot_actions"]),
@@ -293,40 +294,41 @@ class CollaborationEngine:
             "iterations": self.metrics["total_iterations"],
             "actions_per_minute": (len(self.metrics["copilot_actions"]) / duration * 60) if duration > 0 else 0
         }
-        
+
         return stats
+
 
 
 def main():
     """Start collaboration engine"""
     print("🤝 GitHub Copilot <-> NEXUS-ONE Collaboration Engine")
     print("=" * 70)
-    
+
     engine = CollaborationEngine()
-    
+
     # Example workflow
     print("\n📋 Collaboration Workflow:")
     print("1. Copilot takes action -> NEXUS learns")
     print("2. NEXUS provides context -> Copilot decides better")
     print("3. Shared decisions -> Combined intelligence")
     print("\n🚀 Ready for 3-hour collaborative session!")
-    
+
     # Keep session alive
     try:
         iteration = 0
         while True:
             iteration += 1
             engine.iterate()
-            
+
             # Display stats every 10 iterations
             if iteration % 10 == 0:
                 stats = engine.get_statistics()
                 print(f"\n📊 Stats: {stats['total_copilot_actions']} actions, "
                       f"{stats['total_nexus_learnings']} learnings, "
                       f"{stats['iterations']} iterations")
-            
+
             time.sleep(30)  # Every 30 seconds
-            
+
     except KeyboardInterrupt:
         print("\n\n🛑 Collaboration session ending...")
         stats = engine.get_statistics()
