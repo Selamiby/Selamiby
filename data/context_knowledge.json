@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6818
+    "size": 6721
   },
   "autonomous_engine.py": {
     "imports": [
@@ -45,7 +45,7 @@
       "run_iteration",
       "save_stats"
     ],
-    "size": 9550
+    "size": 11407
   },
   "code_generator.py": {
     "imports": [
@@ -72,7 +72,7 @@
       "generate_class",
       "__init__"
     ],
-    "size": 10157
+    "size": 9939
   },
   "copilot_dev_phase.py": {
     "imports": [
@@ -95,7 +95,7 @@
       "commit_changes",
       "run_autonomously"
     ],
-    "size": 5517
+    "size": 5449
   },
   "copilot_nexus_collaboration.py": {
     "imports": [
@@ -121,7 +121,7 @@
       "_get_known_issues",
       "_get_best_practices"
     ],
-    "size": 12412
+    "size": 12494
   },
   "dashboard_creator.py": {
     "imports": [
@@ -132,7 +132,7 @@
     "functions": [
       "create_dashboard"
     ],
-    "size": 2943
+    "size": 3185
   },
   "feature_implementor.py": {
     "imports": [
@@ -155,7 +155,7 @@
       "run_tests",
       "implement_performance_monitor"
     ],
-    "size": 5571
+    "size": 5424
   },
   "game_development_master.py": {
     "imports": [
@@ -180,7 +180,7 @@
       "_save_knowledge",
       "generate_summary"
     ],
-    "size": 26762
+    "size": 27889
   },
   "game_engine_controller.py": {
     "imports": [
@@ -202,7 +202,7 @@
       "create_unreal_project",
       "demo_game_engine"
     ],
-    "size": 7094
+    "size": 7198
   },
   "generate_summary_report.py": {
     "imports": [
@@ -213,27 +213,90 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7480
+    "size": 7441
+  },
+  "github_test.py": {
+    "imports": [
+      "os",
+      "requests",
+      "dotenv"
+    ],
+    "functions": [],
+    "size": 4914
   },
   "human_interface_agent.py": {
     "imports": [
-      "os",
-      "sys",
-      "time",
       "json",
+      "os",
       "subprocess",
-      "pathlib"
+      "sys",
+      "threading",
+      "time",
+      "tkinter",
+      "pathlib",
+      "tkinter"
     ],
     "functions": [
+      "process_command",
       "log",
       "cpu_throttle",
       "find_app_paths",
       "launch_app",
       "demo_notepad_typing",
       "open_vscode_workspace",
-      "main"
+      "create_command_window",
+      "execute_task",
+      "task_thread"
     ],
-    "size": 4157
+    "size": 7165
+  },
+  "nexus_ab_tester_config_healer.py": {
+    "imports": [
+      "json",
+      "logging",
+      "random",
+      "time",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "__init__",
+      "create_test",
+      "record_metrics",
+      "determine_winner",
+      "save_results",
+      "__init__",
+      "validate_config",
+      "_check_config",
+      "heal_config",
+      "create_default_config"
+    ],
+    "size": 9108
+  },
+  "nexus_advanced_ai.py": {
+    "imports": [
+      "heapq",
+      "json",
+      "logging",
+      "random",
+      "dataclasses",
+      "enum",
+      "pathlib",
+      "typing"
+    ],
+    "functions": [
+      "__post_init__",
+      "tick",
+      "__init__",
+      "tick",
+      "__init__",
+      "tick",
+      "__init__",
+      "tick",
+      "__init__",
+      "tick"
+    ],
+    "size": 6451
   },
   "nexus_advanced_automation.py": {
     "imports": [
@@ -253,7 +316,7 @@
       "generate_docs",
       "main"
     ],
-    "size": 6840
+    "size": 6830
   },
   "nexus_advanced_features.py": {
     "imports": [
@@ -272,149 +335,85 @@
       "feature_5_deployment_readiness",
       "main"
     ],
-    "size": 6791
+    "size": 6770
   },
-  "nexus_autonomous_authority.py": {
+  "nexus_aggressive_improver.py": {
+    "imports": [
+      "os",
+      "sys",
+      "time",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "__init__",
+      "quick_improve",
+      "run"
+    ],
+    "size": 2799
+  },
+  "nexus_ai_content_generator.py": {
     "imports": [
       "json",
       "logging",
-      "os",
+      "random",
       "time",
-      "datetime",
       "pathlib",
       "typing"
     ],
     "functions": [
       "__init__",
-      "to_dict",
+      "generate_character",
+      "generate_prop",
       "__init__",
-      "is_authority_active",
-      "process_copilot_request",
-      "copilot_proposes_feature",
-      "nexus_proposes_feature",
-      "_evaluate_feature",
-      "save_session",
-      "get_status"
+      "generate_texture",
+      "generate_sprite",
+      "__init__",
+      "generate_music",
+      "generate_sfx",
+      "__init__"
     ],
-    "size": 17226
+    "size": 9533
   },
-  "nexus_autonomous_director.py": {
+  "nexus_ai_content_generator_real.py": {
     "imports": [
-      "asyncio",
       "json",
       "logging",
       "os",
       "subprocess",
-      "sys",
-      "threading",
-      "time",
-      "datetime",
-      "pathlib"
+      "pathlib",
+      "typing",
+      "urllib",
+      "requests"
     ],
     "functions": [
       "__init__",
-      "check_resources",
-      "wait_if_overloaded",
+      "generate_character",
+      "generate_prop",
+      "_create_mock_model",
+      "download_model",
       "__init__",
-      "is_authorized",
-      "decide",
-      "auto_approve",
-      "get_statistics",
-      "__init__",
-      "copilot_proposes"
+      "_check_sd",
+      "generate_texture",
+      "_generate_with_sd",
+      "_create_procedural_texture"
     ],
-    "size": 21550
+    "size": 15894
   },
-  "nexus_auto_healer.py": {
+  "nexus_analytics_dashboard.py": {
     "imports": [
       "json",
-      "os",
-      "re",
-      "subprocess",
+      "sqlite3",
       "datetime",
       "pathlib",
-      "typing"
+      "flask"
     ],
     "functions": [
-      "__init__",
-      "load_patterns",
-      "save_patterns",
-      "log",
-      "get_errors",
-      "parse_errors",
-      "check_yaml_files",
-      "check_powershell_files",
-      "fix_yaml_context_warnings",
-      "auto_fix_all"
+      "dashboard",
+      "analytics",
+      "cohorts",
+      "retention"
     ],
-    "size": 11285
-  },
-  "nexus_batch_200_analysis.py": {
-    "imports": [
-      "ast",
-      "logging",
-      "subprocess",
-      "pathlib"
-    ],
-    "functions": [
-      "get_python_files",
-      "quick_fix",
-      "main"
-    ],
-    "size": 2043
-  },
-  "nexus_batch_analysis_100.py": {
-    "imports": [
-      "ast",
-      "logging",
-      "subprocess",
-      "pathlib"
-    ],
-    "functions": [
-      "get_python_files",
-      "analyze_file",
-      "main"
-    ],
-    "size": 2286
-  },
-  "nexus_chat.py": {
-    "imports": [
-      "asyncio",
-      "sys",
-      "datetime",
-      "typing"
-    ],
-    "functions": [
-      "__init__",
-      "start_chat",
-      "process_message",
-      "run_chat_loop",
-      "get_chat_summary",
-      "start_lightweight_chat"
-    ],
-    "size": 4526
-  },
-  "nexus_copilot_interaction.py": {
-    "imports": [
-      "json",
-      "logging",
-      "subprocess",
-      "time",
-      "datetime",
-      "pathlib"
-    ],
-    "functions": [
-      "__init__",
-      "decide_next_task",
-      "__init__",
-      "execute_task",
-      "_analyze_files",
-      "_find_errors",
-      "_profile_performance",
-      "_scan_security",
-      "_add_feature",
-      "main"
-    ],
-    "size": 7285
+    "size": 4906
   }
 }
