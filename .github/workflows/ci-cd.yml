@@ -58,6 +58,8 @@ jobs:
       - name: Deploy to Vercel (Frontend)  # yamllint disable-line rule:truthy
       continue-on-error: true
       continue-on-error: true
+      continue-on-error: true
+      continue-on-error: true
         if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
