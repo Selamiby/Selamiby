@@ -51,26 +51,12 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: false  # temporarily disabled until secrets are configured
 
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy to Vercel (Frontend)
-        if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          npm i -g vercel || true
-          cd nexus_web/frontend
-          vercel --prod --token="$VERCEL_TOKEN" 2>/dev/null || echo "Vercel token not configured"
-        continue-on-error: true
-
-      - name: Deploy backend (placeholder)
-        if: ${{ success() && secrets.DEPLOY_KEY != '' }}
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-        run: |
-          echo "Deployment triggered for main branch"
+      - name: Deploy skipped (secrets not configured)
+        run: echo "Deploy job disabled; configure secrets and set deploy.if to true to enable."
         continue-on-error: true
 
   notify:
