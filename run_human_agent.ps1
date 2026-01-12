@@ -2,7 +2,6 @@
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
 param()
 #Requires -Version 5.0
-[CmdletBinding()]
 param(
     [switch]$Demo
 )
