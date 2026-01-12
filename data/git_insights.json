@@ -1,9 +1,29 @@
 {
+  "accelerated_learning.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "code_generator.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5
   },
   "data/logs/auto_healer.log": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "game_engine_controller.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "generate_summary_report.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "human_interface_agent.py": {
     "contributors": 1,
     "recent_changes": 5
   },
