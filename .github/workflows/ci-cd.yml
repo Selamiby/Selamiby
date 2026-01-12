@@ -59,8 +59,8 @@ jobs:
       continue-on-error: true
       continue-on-error: true
       if: success() && secrets.VERCEL_TOKEN != ''
-      # Secrets are safely handled with fallback values
-        if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -68,11 +68,9 @@ jobs:
         cd nexus_web/frontend
         vercel --prod --token=$VERCEL_TOKEN 2>/dev/null || echo "Vercel token not configured"
 
-    - name: Deploy to production  # yamllint disable-line rule:truthy
       continue-on-error: true
-      continue-on-error: true
-      if: success() && secrets.DEPLOY_KEY != ''
-        if: ${{ success() && secrets.DEPLOY_KEY != '' }}
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
