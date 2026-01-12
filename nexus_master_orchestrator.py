@@ -130,7 +130,7 @@ class MasterOrchestrator:
         # Self Learner
         if SELF_LEARNER_AVAILABLE:
             try:
-                self.self_learner = SelfLearner(str(WORKSPACE))
+                self.self_learner = SelfLearner(learning_rate=5.0, aggressive=True)
                 logger.info("✅ Self Learner initialized")
             except Exception as e:
                 logger.error(f"❌ Self Learner failed: {e}")
@@ -199,15 +199,16 @@ class MasterOrchestrator:
         
         if self.self_learner:
             try:
-                # Analyze Python files
-                py_files = list(WORKSPACE.rglob("*.py"))[:20]  # First 20 files
+                # Learn from workspace
+                self.self_learner.learn_from_workspace(max_files=20)
                 
-                for py_file in py_files:
-                    try:
-                        self.self_learner.analyze_python_file(str(py_file))
-                        self.metrics["knowledge_items_learned"] += 1
-                    except Exception as e:
-                        logger.warning(f"Failed to analyze {py_file.name}: {e}")
+                # Track learned items
+                kg_stats = self.self_learner.knowledge.graph.get("statistics", {})
+                self.metrics["knowledge_items_learned"] = (
+                    kg_stats.get("total_concepts", 0) +
+                    kg_stats.get("total_commands", 0) +
+                    kg_stats.get("total_patterns", 0)
+                )
                 
                 logger.info(f"✅ Learned from {len(py_files)} Python files")
                 
