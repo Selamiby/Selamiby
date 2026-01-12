@@ -25,129 +25,60 @@ function Write-AdvLog {
     
     # Color mapping with fallback
     switch ($Level) {
-        "INFO"    { $color = "Cyan" }
+        "INFO" { $color = "Cyan" }
         "SUCCESS" { $color = "Green" }
         "WARNING" { $color = "Yellow" }
-        "ERROR"   { $color = "Red" }
-        default   { $color = "White" }
+        "ERROR" { $color = "Red" }
+        default { $color = "White" }
     }
     
     Write-Host $logMsg -ForegroundColor $color
     Add-Content $LogPath -Value $logMsg -ErrorAction SilentlyContinue
 }
 
-# Gerçek git operasyonları
-function Get-GitStatus {
-    $status = & git status --porcelain 2>$null
-    return @($status).Count
-}
-
-function Get-ChangedFiles {
-    $files = & git status --porcelain 2>$null | ForEach-Object { $_.Substring(3) }
-    return $files
-}
-
-function Invoke-GitPull {
-    Write-AdvLog "Git pull başlıyor..." "INFO"
+# Ana senkronizasyon döngüsü
+function Invoke-GitSync {
+    Write-AdvLog "Gelişmiş senkronizasyon (v2) başlatılıyor..." "INFO"
     try {
-        & git fetch origin 2>$null
-        $mergeResult = & git merge origin/main --no-edit 2>&1
+        # v2 script'i çalıştır ve çıktısını yakala
+        $output = & pwsh -File ".\autonomous_sync_v2.ps1" -IntervalSeconds 10 2>&1
+        
         if ($LASTEXITCODE -eq 0) {
-            Write-AdvLog "Pull başarılı" "SUCCESS"
+            Write-AdvLog "v2 senkronizasyonu başarıyla tamamlandı." "SUCCESS"
+            # İsteğe bağlı: v2'den gelen önemli çıktıları logla
+            $output | ForEach-Object { Write-AdvLog "v2: $_" "INFO" }
             return $true
         }
         else {
-            Write-AdvLog "Merge hatası: $mergeResult" "WARNING"
-            # Çakışma çözme
-            & git merge --abort 2>$null
+            Write-AdvLog "v2 senkronizasyonunda hata oluştu." "ERROR"
+            $output | ForEach-Object { Write-AdvLog "v2 Hata: $_" "ERROR" }
             return $false
         }
     }
     catch {
-        Write-AdvLog "Pull hatası: $_" "ERROR"
+        Write-AdvLog "v2 senkronizasyon betiği çalıştırılamadı: $_" "ERROR"
         return $false
     }
 }
 
-function Invoke-SmartCommit {
-    $changeCount = Get-GitStatus
-    if ($changeCount -eq 0) {
-        Write-AdvLog "Değişiklik yok" "INFO"
-        return $false
-    }
-    
-    Write-AdvLog "$changeCount dosya değişti, commit ediliyor..." "INFO"
-    try {
-        & git add . 2>$null
-        $msg = "auto: $(Get-Date -Format 'HH:mm:ss') - $changeCount changed files"
-        & git commit -m $msg 2>$null
-        
-        if ($LASTEXITCODE -eq 0) {
-            Write-AdvLog "Commit başarılı" "SUCCESS"
-            return $true
-        }
-    }
-    catch {
-        Write-AdvLog "Commit hatası: $_" "ERROR"
-    }
-    return $false
-}
+# Gerçekçi otonom görevler
+function Run-AutonomousTasks {
+    # Görev 1: NEXUS-ONE Auto Healer
+    Invoke-NEXUSHealer
 
-function Invoke-GitPush {
-    Write-AdvLog "Push başlıyor..." "INFO"
-    try {
-        $pushResult = & git push origin main 2>&1
-        if ($LASTEXITCODE -eq 0) {
-            Write-AdvLog "Push başarılı" "SUCCESS"
-            return $true
+    # Görev 2: Süper Öğrenici (her 5 döngüde bir)
+    if ($script:LoopCounter % 5 -eq 0) {
+        Write-AdvLog "Super Learner çalıştırılıyor..." "INFO"
+        if ($EnableParallelOps) {
+            Start-Job -ScriptBlock { 
+                # NEXUS-ONE'ın kendisi de öğrensin
+                python.exe nexus_super_learner.py --include-nexus
+            } | Out-Null
         }
         else {
-            Write-AdvLog "Push hatası, force push deneniyor..." "WARNING"
-            & git push origin main --force-with-lease 2>$null
-            if ($LASTEXITCODE -eq 0) {
-                Write-AdvLog "Force push başarılı" "SUCCESS"
-                return $true
-            }
+            python.exe nexus_super_learner.py --include-nexus
         }
-    }
-    catch {
-        Write-AdvLog "Push hatası: $_" "ERROR"
-    }
-    return $false
-}
-
-function Invoke-AutoSync {
-    Write-AdvLog "=== SYNC BAŞLADI ===" "INFO"
-    $retryCount = 0
-    $success = $false
-    
-    while ($retryCount -lt $MaxRetries -and -not $success) {
-        $retryCount++
-        Write-AdvLog "Deneme $retryCount/$MaxRetries" "INFO"
-        
-        if (-not (Invoke-GitPull)) {
-            Write-AdvLog "Pull başarısız, tekrar deneniyor..." "WARNING"
-            Start-Sleep -Seconds 5
-            continue
-        }
-        
-        if (Invoke-SmartCommit) {
-            if (Invoke-GitPush) {
-                $success = $true
-                Write-AdvLog "=== SYNC BAŞARILI ===" "SUCCESS"
-                break
-            }
-        }
-        else {
-            # Commit yapılmadıysa pull yeterli
-            $success = $true
-            Write-AdvLog "=== SYNC BAŞARILI (no changes) ===" "SUCCESS"
-            break
-        }
-    }
-    
-    if (-not $success) {
-        Write-AdvLog "=== SYNC BAŞARIŞIZ ===" "ERROR"
+        Start-Sleep -Seconds 10
     }
 }
 
@@ -157,57 +88,19 @@ Write-AdvLog "Interval: $IntervalSeconds saniye" "INFO"
 Write-AdvLog "Advanced Features: Her 5 senkronizasyonda" "INFO"
 Write-AdvLog "Enhanced Learning: Her 10 senkronizasyonda" "INFO"
 $cycleCount = 0
-
-
-# === NEXUS-ONE AUTO HEALER HOOK ===
-# Her senkronizasyon sonrası hataları kontrol ve düzelt
-function Invoke-NEXUSHealer {
-    if (Test-Path "nexus_auto_healer.py") {
-        python nexus_auto_healer.py 2>$null | Out-Null
-    }
-}
-
-# === NEXUS-ONE ADVANCED FEATURES HOOK ===
-# Her 5 senkronizasyonda bir advanced automation features'ı çalıştır
-function Invoke-AdvancedFeatures {
-    param([int]$CycleCount = 0)
-    
-    if (($CycleCount % 5) -eq 0 -and $CycleCount -gt 0) {
-        Write-AdvLog "Advanced features çalıştırılıyor..." "INFO"
-        if (Test-Path "nexus_advanced_features.py") {
-            python nexus_advanced_features.py 2>$null | Out-Null
-            Write-AdvLog "Advanced features tamamlandı" "SUCCESS"
-        }
-    }
-}
-
-# === NEXUS-ONE SUPER LEARNER HOOK ===
-# Her 10 senkronizasyonda bir enhanced learning features'ı çalıştır
-function Invoke-SuperLearner {
-    param([int]$CycleCount = 0)
-    
-    if (($CycleCount % 10) -eq 0 -and $CycleCount -gt 0) {
-        Write-AdvLog "Super Learner çalıştırılıyor..." "INFO"
-        if (Test-Path "nexus_super_learner.py") {
-            python nexus_super_learner.py 2>$null | Out-Null
-            Write-AdvLog "Enhanced learning tamamlandı" "SUCCESS"
-        }
-    }
-}
+script:LoopCounter = 0
 
 while ($true) {
-    Invoke-NEXUSHealer
-
-    try {
-        Invoke-AutoSync
-        $cycleCount++
-        Invoke-AdvancedFeatures $cycleCount
-        Invoke-SuperLearner $cycleCount
-    }
-    catch {
-        Write-AdvLog "Kritik hata: $_" "ERROR"
-    }
+    $script:LoopCounter++
+    Write-AdvLog "Döngü #$($script:LoopCounter) başlıyor..." "INFO"
     
-    Write-Host ""
+    # 1. Git Senkronizasyonu
+    Invoke-GitSync
+    
+    # 2. Otonom Görevler
+    Run-AutonomousTasks
+    
+    # 3. Bekleme
     Start-Sleep -Seconds $IntervalSeconds
+    Write-Host "---"
 }
