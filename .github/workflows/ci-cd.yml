@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [ main, develop ]
   schedule:
-    - cron: '*/15 * * * *'  # Her 15 dakikada çalış
+    - cron: '*/15 * * * *'  # Her 15 dakikada al
 
 jobs:
   test:
@@ -47,24 +47,21 @@ jobs:
         run: |
           docker build -t nexus-one:latest .
           echo "Build completed successfully"
-        if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    env:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
-      DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ success() && secrets.DEPLOY_KEY != '' }}
+
     steps:
       - uses: actions/checkout@v3
       - name: Deploy to Vercel (Frontend)  # yamllint disable-line rule:truthy
       continue-on-error: true
       continue-on-error: true
-      continue-on-error: true
-      continue-on-error: true
-        if: success() && env.VERCEL_TOKEN != ''
+        if: ${{ success() && secrets.VERCEL_TOKEN != '' }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN || '' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm i -g vercel || true
           cd nexus_web/frontend
@@ -72,7 +69,10 @@ jobs:
         continue-on-error: true
 
       - name: Deploy backend (placeholder)
-        if: success() && env.DEPLOY_KEY != ''
+        if: ${{ success() && secrets.DEPLOY_KEY != '' }}
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY || '' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Deployment triggered for main branch"
         continue-on-error: true
