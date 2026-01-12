@@ -51,6 +51,7 @@ logger = logging.getLogger("CopilotDev")
 
 
 
+
 class CopilotDevEngine:
     """COPILOT's autonomous development engine"""
 
