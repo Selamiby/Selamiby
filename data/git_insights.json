@@ -7,17 +7,9 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "generated_features/data_validator.py": {
+  "nexus_copilot_interaction.py": {
     "contributors": 1,
-    "recent_changes": 1
-  },
-  "generated_features/rate_limiter.py": {
-    "contributors": 1,
-    "recent_changes": 1
-  },
-  "generated_features/smart_caching.py": {
-    "contributors": 1,
-    "recent_changes": 1
+    "recent_changes": 2
   },
   "nexus_logs/autonomous.log": {
     "contributors": 1,

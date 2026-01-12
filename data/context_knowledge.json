@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6542
+    "size": 6548
   },
   "autonomous_engine.py": {
     "imports": [
@@ -45,7 +45,7 @@
       "run_iteration",
       "save_stats"
     ],
-    "size": 9366
+    "size": 9370
   },
   "code_generator.py": {
     "imports": [
@@ -72,7 +72,7 @@
       "generate_class",
       "__init__"
     ],
-    "size": 9697
+    "size": 9707
   },
   "copilot_dev_phase.py": {
     "imports": [
@@ -95,7 +95,7 @@
       "commit_changes",
       "run_autonomously"
     ],
-    "size": 5425
+    "size": 5427
   },
   "copilot_nexus_collaboration.py": {
     "imports": [
@@ -121,7 +121,7 @@
       "_get_known_issues",
       "_get_best_practices"
     ],
-    "size": 12228
+    "size": 12232
   },
   "dashboard_creator.py": {
     "imports": [
@@ -324,6 +324,20 @@
     ],
     "size": 11285
   },
+  "nexus_batch_200_analysis.py": {
+    "imports": [
+      "ast",
+      "logging",
+      "subprocess",
+      "pathlib"
+    ],
+    "functions": [
+      "get_python_files",
+      "quick_fix",
+      "main"
+    ],
+    "size": 2043
+  },
   "nexus_batch_analysis_100.py": {
     "imports": [
       "ast",
@@ -355,6 +369,29 @@
     ],
     "size": 4526
   },
+  "nexus_copilot_interaction.py": {
+    "imports": [
+      "json",
+      "logging",
+      "subprocess",
+      "time",
+      "datetime",
+      "pathlib"
+    ],
+    "functions": [
+      "__init__",
+      "decide_next_task",
+      "__init__",
+      "execute_task",
+      "_analyze_files",
+      "_find_errors",
+      "_profile_performance",
+      "_scan_security",
+      "_add_feature",
+      "main"
+    ],
+    "size": 7285
+  },
   "nexus_copilot_real_collaboration.py": {
     "imports": [
       "asyncio",
@@ -381,47 +418,5 @@
       "run_tests"
     ],
     "size": 9958
-  },
-  "nexus_cpu_guardian.py": {
-    "imports": [
-      "json",
-      "logging",
-      "threading",
-      "time",
-      "datetime",
-      "pathlib",
-      "typing",
-      "psutil"
-    ],
-    "functions": [
-      "__init__",
-      "get_system_stats",
-      "should_throttle",
-      "apply_throttle",
-      "register_process",
-      "unregister_process",
-      "get_status_report",
-      "monitor_loop",
-      "start",
-      "stop"
-    ],
-    "size": 5236
-  },
-  "nexus_daemon.py": {
-    "imports": [
-      "json",
-      "os",
-      "time",
-      "datetime",
-      "hyper_integration"
-    ],
-    "functions": [
-      "__init__",
-      "load_tasks",
-      "run_scheduled_tasks",
-      "execute_task",
-      "run_forever"
-    ],
-    "size": 4683
   }
 }
