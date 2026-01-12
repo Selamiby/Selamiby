@@ -168,5 +168,8 @@
   "gpt-engineer/tests/test_project_config.py": true,
   "AutoGPT/autogpt_platform/autogpt_libs/autogpt_libs/auth/helpers_test.py::test_components_with_existing_responses": true,
   "test_advanced_similarity.py::test_comprehensive_matching": true,
-  "gpt-engineer/tests/benchmark/test_BenchConfig.py::TestBenchConfig": true
+  "gpt-engineer/tests/benchmark/test_BenchConfig.py::TestBenchConfig::test_default_values": true,
+  "gpt-engineer/tests/benchmark/test_BenchConfig.py::TestBenchConfig::test_specific_values": true,
+  "gpt-engineer/tests/benchmark/test_BenchConfig.py::TestBenchConfig::test_from_dict_valid_dict": true,
+  "gpt-engineer/tests/benchmark/test_BenchConfig.py::TestBenchConfig::test_from_toml_invalid_path": true
 }
