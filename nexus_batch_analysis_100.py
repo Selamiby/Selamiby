@@ -5,9 +5,9 @@ Hiç soru sormuyor, hiç beklememiyor, sadece çalışıyor
 """
 
 import ast
+import logging
 import subprocess
 from pathlib import Path
-import logging
 
 LOG_DIR = Path(__file__).parent / "nexus_logs"
 LOG_DIR.mkdir(exist_ok=True)
