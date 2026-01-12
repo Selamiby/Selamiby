@@ -1,43 +1,44 @@
 # NEXUS-ONE API Documentation
 
-**Generated**: 2026-01-12 00:57:23
+**Generated**: 2026-01-12 11:52:34
 
 ## Project Modules
 
 
+### accelerated_learning.py
+**Classes**: AcceleratedLearning
+**Functions**: log, __init__, load_knowledge, save_knowledge, load_config
+
+### autonomous_engine.py
+**Classes**: AutonomousEngine
+**Functions**: __init__, is_active, task_code_improvements, task_github_sync, task_learn_from_web
+
+### code_generator.py
+**Classes**: CodeGenerator, structures, by
+**Functions**: log, __init__, load_patterns, save_patterns, learn_from_file
+
+### copilot_dev_phase.py
+**Classes**: CopilotDevEngine
+**Functions**: __init__, log_activity, find_python_files, improve_code_quality, add_new_features
+
+### copilot_nexus_collaboration.py
+**Classes**: CollaborationEngine
+**Functions**: __init__, copilot_action, nexus_learn_from_action, _extract_knowledge, _apply_to_knowledge_graph
+
+### dashboard_creator.py
+**Functions**: create_dashboard
+
+### feature_implementor.py
+**Classes**: FeatureImplementor, AdvancedErrorTracker, AutoTestRunner, PerformanceMonitor
+**Functions**: __init__, implement_error_tracking, __init__, track_error, get_error_summary
+
+### game_development_master.py
+**Classes**: GameDevMasterLearner
+**Functions**: __init__, learn_game_engines, learn_asset_creation, learn_npc_ai, learn_graphics
+
+### game_engine_controller.py
+**Classes**: GameEngineController
+**Functions**: log, __init__, find_unity, find_unreal, create_unity_project
+
 ### generate_summary_report.py
 **Functions**: generate_summary
-
-### nexus_advanced_automation.py
-**Classes**: bulma
-**Functions**: analyze_performance, format_code, generate_tests, scan_security, generate_docs
-
-### nexus_advanced_features.py
-**Functions**: feature_1_realtime_monitoring, feature_2_git_analysis, feature_3_code_formatter, feature_4_error_prediction, feature_5_deployment_readiness
-
-### nexus_auto_healer.py
-**Classes**: NEXUSAutoHealer
-**Functions**: __init__, load_patterns, save_patterns, log, get_errors
-
-### nexus_chat.py
-**Classes**: ChatAssistant
-**Functions**: __init__, start_chat, process_message, run_chat_loop, get_chat_summary
-
-### nexus_daemon.py
-**Classes**: NexusDaemon, NexusDaemon
-**Functions**: __init__, load_tasks, run_scheduled_tasks, execute_task, run_forever
-
-### nexus_final_touch.py
-**Classes**: SimpleEmotionSolver, SimpleFuturePredictor, SimpleRealtimeExecutor, SimpleRoboticsController, SimpleWebNavigator
-**Functions**: analyze_code_mood, auto_fix_problems, predict_tech_trends, predict_next_language, execute_code
-
-### nexus_learner.py
-**Classes**: NEXUSLearner, NEXUSIntegration
-**Functions**: __init__, load_learning_data, save_learning_data, learn_error_pattern, learn_solution
-
-### nexus_monitor.py
-**Classes**: NexusMonitor
-**Functions**: __init__, load_stats, save_stats, record_sync, get_repo_stats
-
-### nexus_one_real.py
-**Functions**: check_system, main
