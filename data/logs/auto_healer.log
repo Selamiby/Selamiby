@@ -8873,3 +8873,4 @@ POWERSHELL Hatalarý:
 [2026-01-12 04:50:19] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-12 04:50:19] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$IntervalSeconds' assigned but never used
 [2026-01-12 04:50:19] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-12 04:50:24] [SUCCESS] GitHub'a commit ve push yapýldý
