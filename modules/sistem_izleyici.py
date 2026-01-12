@@ -1,6 +1,7 @@
 ﻿# modules/sistem_izleyici.py
 import psutil
 
+
 class SistemIzleyici:
     def calis(self, gorev=""):
         cpu = psutil.cpu_percent()

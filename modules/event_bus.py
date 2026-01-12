@@ -7,6 +7,7 @@ class EventBus:
     """
     Basit pub/sub event bus. Modüller event'e abone olabilir ve event yayınlayabilir.
     """
+
     def __init__(self):
         self.subscribers: Dict[str, List[Callable[[Any], None]]] = defaultdict(list)
 
@@ -17,10 +18,12 @@ class EventBus:
         for callback in self.subscribers[event_type]:
             callback(data)
 
+
 class AsyncMessageQueue:
     """
     Asenkron mesaj kuyruğu. Modüller arası mesajlaşma için kullanılır.
     """
+
     def __init__(self):
         self.queue = asyncio.Queue()
 

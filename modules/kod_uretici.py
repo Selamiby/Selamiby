@@ -6,7 +6,7 @@ from datetime import datetime
 class KodUretici:
     def __init__(self):
         print("💻 KOD ÜRETİCİ MODÜLÜ HAZIR")
-    
+
     def python_kodu_uret(self, aciklama):
         """Python kodu üret"""
         sifir = """# Otomatik üretildi: {tarih}
@@ -17,7 +17,7 @@ print("Bu kod Nexus tarafından üretildi.")
 isim = input("İsminiz: ")
 print(f"Hoş geldin, {isim}!")
 """
-        
+
         hesap = """# Hesap makinesi - {tarih}
 def topla(a, b):
     return a + b
@@ -35,7 +35,7 @@ def bol(a, b):
 print("Toplam:", topla(10, 5))
 print("Fark:", cikar(10, 5))
 """
-        
+
         oyun = """# Basit oyun - {tarih}
 import random
 
@@ -58,9 +58,9 @@ for deneme in range(1, tahmin_hakki + 1):
 else:
     print(f"❌ Bilemedin! Sayı: {tutulan}")
 """
-        
+
         tarih = datetime.now().strftime("%d.%m.%Y %H:%M")
-        
+
         if "merhaba" in aciklama.lower() or "basit" in aciklama.lower():
             kod = sifir.format(tarih=tarih)
             dosya = "merhaba.py"
@@ -73,15 +73,15 @@ else:
         else:
             kod = sifir.format(tarih=tarih)
             dosya = "program.py"
-        
+
         # generated klasörüne kaydet
         os.makedirs("generated", exist_ok=True)
         yol = f"generated/{dosya}"
-        
+
         with open(yol, "w", encoding="utf-8") as f:
             f.write(kod)
-        
+
         return f"✅ Kod üretildi: {dosya} ({len(kod)} karakter)"
-    
+
     def calis(self, gorev=""):
         return self.python_kodu_uret(gorev)

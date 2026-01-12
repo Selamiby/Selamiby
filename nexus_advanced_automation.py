@@ -21,22 +21,6 @@ from typing import Dict, List
 # ============================================================================
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def analyze_performance():
     """Proje performansini analiz et"""
     print("\n[1/5] PERFORMANCE MONITORING")
@@ -49,9 +33,11 @@ def analyze_performance():
     high_complexity = 0
     for py_file in py_files[:20]:
         try:
-            with open(py_file, encoding='utf-8', errors='ignore') as f:
+            with open(py_file, encoding="utf-8", errors="ignore") as f:
                 code = f.read()
-            max_nesting = max([len(line) - len(line.lstrip()) for line in code.split('\n')])
+            max_nesting = max(
+                [len(line) - len(line.lstrip()) for line in code.split("\n")]
+            )
             if max_nesting > 20:
                 high_complexity += 1
         except:
@@ -61,8 +47,7 @@ def analyze_performance():
 
     try:
         commits = subprocess.run(
-            ["git", "rev-list", "--all", "--count"],
-            capture_output=True, text=True
+            ["git", "rev-list", "--all", "--count"], capture_output=True, text=True
         ).stdout.strip()
         print(f"[OK] Git Commits: {commits}")
     except:
@@ -74,22 +59,6 @@ def analyze_performance():
 # ============================================================================
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def format_code():
     """Kod formatlama"""
     print("\n[2/5] INTELLIGENT CODE FORMATTER")
@@ -98,20 +67,22 @@ def format_code():
     py_files = list(Path.cwd().glob("*.py"))[:5]
     for py_file in py_files:
         try:
-            with open(py_file, encoding='utf-8', errors='ignore') as f:
+            with open(py_file, encoding="utf-8", errors="ignore") as f:
                 content = f.read()
 
             # Unused variables tespiti
-            var_decls = re.findall(r'(\w+)\s*=\s*[\w\'\"]', content)
+            var_decls = re.findall(r"(\w+)\s*=\s*[\w\'\"]", content)
             unused = []
 
             for var in var_decls[:10]:
-                usage_count = len(re.findall(rf'\b{var}\b', content)) - 1
-                if usage_count == 0 and not var.startswith('_'):
+                usage_count = len(re.findall(rf"\b{var}\b", content)) - 1
+                if usage_count == 0 and not var.startswith("_"):
                     unused.append(var)
 
             if unused:
-                print(f"[OK] {py_file.name}: Found unused vars - {', '.join(unused[:3])}")
+                print(
+                    f"[OK] {py_file.name}: Found unused vars - {', '.join(unused[:3])}"
+                )
         except:
             pass
 
@@ -119,22 +90,6 @@ def format_code():
 # ============================================================================
 # 3. AUTOMATIC TEST COVERAGE
 # ============================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def generate_tests():
@@ -145,14 +100,16 @@ def generate_tests():
     py_files = list(Path.cwd().glob("*.py"))[:3]
     for py_file in py_files:
         try:
-            with open(py_file, encoding='utf-8', errors='ignore') as f:
+            with open(py_file, encoding="utf-8", errors="ignore") as f:
                 content = f.read()
 
             # Fonksiyon ve class bulma
-            functions = re.findall(r'def\s+(\w+)\s*\(', content)
-            classes = re.findall(r'class\s+(\w+)', content)
+            functions = re.findall(r"def\s+(\w+)\s*\(", content)
+            classes = re.findall(r"class\s+(\w+)", content)
 
-            print(f"[OK] {py_file.name}: {len(classes)} classes, {len(functions)} functions")
+            print(
+                f"[OK] {py_file.name}: {len(classes)} classes, {len(functions)} functions"
+            )
             print(f"  -> Ready to generate test_*.py file")
         except:
             pass
@@ -163,39 +120,23 @@ def generate_tests():
 # ============================================================================
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def scan_security():
     """Guvenlik taramasi"""
     print("\n[4/5] SECURITY VULNERABILITY SCANNER")
     print("-" * 70)
 
     patterns = {
-        'hardcoded_password': r'password\s*=\s*["\'][\w]{4,}["\']',
-        'hardcoded_token': r'token\s*=\s*["\'][\w]{20,}["\']',
-        'sql_concat': r'query\s*=.*\+',
-        'eval_usage': r'\beval\s*\(',
-        'exec_usage': r'\bexec\s*\(',
+        "hardcoded_password": r'password\s*=\s*["\'][\w]{4,}["\']',
+        "hardcoded_token": r'token\s*=\s*["\'][\w]{20,}["\']',
+        "sql_concat": r"query\s*=.*\+",
+        "eval_usage": r"\beval\s*\(",
+        "exec_usage": r"\bexec\s*\(",
     }
 
     issues = []
     for py_file in list(Path.cwd().rglob("*.py"))[:20]:
         try:
-            with open(py_file, encoding='utf-8', errors='ignore') as f:
+            with open(py_file, encoding="utf-8", errors="ignore") as f:
                 content = f.read()
 
             for issue_type, pattern in patterns.items():
@@ -214,22 +155,6 @@ def scan_security():
 # ============================================================================
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def generate_docs():
     """Otomatik dokumentasyon"""
     print("\n[5/5] AUTOMATIC DOCUMENTATION GENERATOR")
@@ -245,15 +170,15 @@ def generate_docs():
 
     py_files = list(Path.cwd().rglob("*.py"))[:10]
     for py_file in py_files:
-        if '__pycache__' in str(py_file):
+        if "__pycache__" in str(py_file):
             continue
 
         try:
-            with open(py_file, encoding='utf-8', errors='ignore') as f:
+            with open(py_file, encoding="utf-8", errors="ignore") as f:
                 content = f.read()
 
-            classes = re.findall(r'class\s+(\w+)', content)
-            functions = re.findall(r'def\s+(\w+)\s*\(', content)
+            classes = re.findall(r"class\s+(\w+)", content)
+            functions = re.findall(r"def\s+(\w+)\s*\(", content)
 
             if classes or functions:
                 docs += f"\n### {py_file.name}\n"
@@ -267,7 +192,7 @@ def generate_docs():
     doc_path = Path.cwd() / "data" / "API_DOCUMENTATION.md"
     doc_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(doc_path, 'w', encoding='utf-8') as f:
+    with open(doc_path, "w", encoding="utf-8") as f:
         f.write(docs)
 
     print(f"[OK] Generated API Documentation")
@@ -277,22 +202,6 @@ def generate_docs():
 # ============================================================================
 # MAIN
 # ============================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def main():

@@ -8,10 +8,7 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000"
-]
+origins = ["http://localhost:3000", "http://127.0.0.1:3000"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,17 +23,20 @@ fake_users_db = {
         "email": "demo@nexus.com",
         "hashed_password": "demo123",
         "invite": "NEXUS2026",
-        "plan": "free"
+        "plan": "free",
     }
 }
+
 
 class User(BaseModel):
     email: str
     plan: str
 
+
 class UserInDB(User):
     hashed_password: str
     invite: str
+
 
 class RegisterRequest(BaseModel):
     email: str
@@ -44,9 +44,11 @@ class RegisterRequest(BaseModel):
     invite: str
     plan: str
 
+
 class LoginRequest(BaseModel):
     email: str
     password: str
+
 
 @app.post("/api/register")
 def register(req: RegisterRequest):
@@ -58,9 +60,10 @@ def register(req: RegisterRequest):
         "email": req.email,
         "hashed_password": req.password,
         "invite": req.invite,
-        "plan": req.plan
+        "plan": req.plan,
     }
     return {"message": f"{req.plan.capitalize()} kayıt başarılı!"}
+
 
 @app.post("/api/login")
 def login(req: LoginRequest):
@@ -69,12 +72,14 @@ def login(req: LoginRequest):
         raise HTTPException(status_code=400, detail="Geçersiz e-posta veya şifre!")
     return {"message": "Giriş başarılı!", "plan": user["plan"]}
 
+
 @app.get("/api/user")
 def get_user(email: str):
     user = fake_users_db.get(email)
     if not user:
         raise HTTPException(status_code=404, detail="Kullanıcı bulunamadı!")
     return {"email": user["email"], "plan": user["plan"]}
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

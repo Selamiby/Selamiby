@@ -17,6 +17,7 @@ beyin = None
 try:
     if os.path.exists("modules"):
         from modules.beyin import Beyin
+
         beyin = Beyin()
         print("✅ Beyin modülü yüklendi")
     else:

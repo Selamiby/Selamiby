@@ -9,13 +9,18 @@ from modules.websocket_manager import WebSocketManager
 
 
 class BackupPipeline:
-    def __init__(self, ws_manager: Optional[WebSocketManager] = None, webhook_manager: Optional[WebhookManager] = None):
+    def __init__(
+        self,
+        ws_manager: Optional[WebSocketManager] = None,
+        webhook_manager: Optional[WebhookManager] = None,
+    ):
         self.ws_manager = ws_manager
         self.webhook_manager = webhook_manager
 
     def notify(self, event: str, data: Dict):
         if self.ws_manager:
             import asyncio
+
             asyncio.create_task(self.ws_manager.broadcast(f"{event}: {data}"))
         if self.webhook_manager:
             self.webhook_manager.notify(event, data)
@@ -35,7 +40,7 @@ class BackupPipeline:
         return {"hashes": hashes}
 
     def compress(self, source_path: str, dest_zip: str) -> Dict:
-        with zipfile.ZipFile(dest_zip, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        with zipfile.ZipFile(dest_zip, "w", zipfile.ZIP_DEFLATED) as zipf:
             for file in Path(source_path).rglob("*"):
                 if file.is_file():
                     zipf.write(file, arcname=file.relative_to(source_path))

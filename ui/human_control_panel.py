@@ -35,6 +35,7 @@ try:
     from accelerated_learning import AcceleratedLearning
     from code_generator import CodeGenerator
     from web_navigator import WebNavigator
+
     WEB_NAV_AVAILABLE = True
     CODE_GEN_AVAILABLE = True
     LEARNING_AVAILABLE = True
@@ -54,12 +55,19 @@ DATA_DIR.mkdir(exist_ok=True)
 CONFIG_FILE = DATA_DIR / "chat_config.json"
 WL_FILE = DATA_DIR / "domain_whitelist.json"
 
-PYTHON = Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Python" / "Python311" / "python.exe"
+PYTHON = (
+    Path(os.environ.get("LOCALAPPDATA", ""))
+    / "Programs"
+    / "Python"
+    / "Python311"
+    / "python.exe"
+)
 PYTHON = str(PYTHON if PYTHON.exists() else sys.executable)
 
 AGENT_SCRIPT = str(WORKSPACE / "human_interface_agent.py")
 RUN_AGENT_PS1 = str(WORKSPACE / "scripts" / "run_control_panel.ps1")
 RUNNER_PS1 = str(WORKSPACE / "run_human_agent.ps1")
+
 
 class ControlPanel(tk.Tk):
     def __init__(self):
@@ -68,7 +76,7 @@ class ControlPanel(tk.Tk):
         self.geometry("720x600")
         if sys.platform == "win32":
             os.system("chcp 65001 > nul")
-        
+
         # Initialize AI modules
         self.web_nav = None
         self.code_gen = None
@@ -77,12 +85,16 @@ class ControlPanel(tk.Tk):
             self.code_gen = CodeGenerator()
         if LEARNING_AVAILABLE:
             self.learner = AcceleratedLearning()
-        
+
         self.create_widgets()
         self.after(1000, self.update_status)
 
     def create_widgets(self):
-        header = ttk.Label(self, text="NEXUS-ONE Human Interface Control", font=("Segoe UI", 12, "bold"))
+        header = ttk.Label(
+            self,
+            text="NEXUS-ONE Human Interface Control",
+            font=("Segoe UI", 12, "bold"),
+        )
         header.pack(pady=10)
 
         # CPU and status frame
@@ -103,48 +115,97 @@ class ControlPanel(tk.Tk):
         btn_frame = ttk.Frame(self)
         btn_frame.pack(fill="x", padx=12, pady=6)
 
-        ttk.Button(btn_frame, text="Demo Başlat (Notepad+VSCode)", command=self.run_demo).grid(row=0, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Agent Başlat", command=self.start_agent).grid(row=0, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Agent Durdur", command=self.stop_agent).grid(row=0, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame, text="Demo Başlat (Notepad+VSCode)", command=self.run_demo
+        ).grid(row=0, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Agent Başlat", command=self.start_agent).grid(
+            row=0, column=1, padx=6, pady=6, sticky="ew"
+        )
+        ttk.Button(btn_frame, text="Agent Durdur", command=self.stop_agent).grid(
+            row=0, column=2, padx=6, pady=6, sticky="ew"
+        )
 
-        ttk.Button(btn_frame, text="VS Code Aç", command=self.open_vscode).grid(row=1, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Logları Aç", command=self.open_logs).grid(row=1, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Projeyi Aç", command=self.open_workspace).grid(row=1, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="VS Code Aç", command=self.open_vscode).grid(
+            row=1, column=0, padx=6, pady=6, sticky="ew"
+        )
+        ttk.Button(btn_frame, text="Logları Aç", command=self.open_logs).grid(
+            row=1, column=1, padx=6, pady=6, sticky="ew"
+        )
+        ttk.Button(btn_frame, text="Projeyi Aç", command=self.open_workspace).grid(
+            row=1, column=2, padx=6, pady=6, sticky="ew"
+        )
 
         # Row 2: VS Code actions
-        ttk.Button(btn_frame, text="VS Code Search Aç", command=self.vscode_search_ui).grid(row=2, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Python Formatla (black)", command=self.format_python).grid(row=2, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Görev Kuyruğunu Başlat", command=self.start_task_queue).grid(row=2, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame, text="VS Code Search Aç", command=self.vscode_search_ui
+        ).grid(row=2, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame, text="Python Formatla (black)", command=self.format_python
+        ).grid(row=2, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame, text="Görev Kuyruğunu Başlat", command=self.start_task_queue
+        ).grid(row=2, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 3: Security agent
-        ttk.Button(btn_frame, text="Güvenlik Başlat", command=self.start_security).grid(row=3, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Güvenlik Durdur", command=self.stop_security).grid(row=3, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Güvenlik Loglarını Aç", command=self.open_security_logs).grid(row=3, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(btn_frame, text="Güvenlik Başlat", command=self.start_security).grid(
+            row=3, column=0, padx=6, pady=6, sticky="ew"
+        )
+        ttk.Button(btn_frame, text="Güvenlik Durdur", command=self.stop_security).grid(
+            row=3, column=1, padx=6, pady=6, sticky="ew"
+        )
+        ttk.Button(
+            btn_frame, text="Güvenlik Loglarını Aç", command=self.open_security_logs
+        ).grid(row=3, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 4: AI Learning & Automation
-        ttk.Button(btn_frame, text="Web Öğren (Google/YT/GH)", command=self.start_web_learning).grid(row=4, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Kod Üret (AI)", command=self.open_code_generator).grid(row=4, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="Oyun Motoru (Unity)", command=self.open_game_engine).grid(row=4, column=2, padx=6, pady=6, sticky="ew")
-        
+        ttk.Button(
+            btn_frame, text="Web Öğren (Google/YT/GH)", command=self.start_web_learning
+        ).grid(row=4, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame, text="Kod Üret (AI)", command=self.open_code_generator
+        ).grid(row=4, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame, text="Oyun Motoru (Unity)", command=self.open_game_engine
+        ).grid(row=4, column=2, padx=6, pady=6, sticky="ew")
+
         # Row 5: Self-Learning System (NEW! 🧠)
-        ttk.Button(btn_frame, text="🧠 Otonom Öğrenmeyi Başlat", command=self.start_self_learning, 
-              style="Accent.TButton").grid(row=5, column=0, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="⏹️ Otonom Öğrenmeyi Durdur", command=self.stop_self_learning).grid(row=5, column=1, padx=6, pady=6, sticky="ew")
-        ttk.Button(btn_frame, text="📊 Öğrenme İstatistikleri", command=self.show_learning_stats).grid(row=5, column=2, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame,
+            text="🧠 Otonom Öğrenmeyi Başlat",
+            command=self.start_self_learning,
+            style="Accent.TButton",
+        ).grid(row=5, column=0, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame, text="⏹️ Otonom Öğrenmeyi Durdur", command=self.stop_self_learning
+        ).grid(row=5, column=1, padx=6, pady=6, sticky="ew")
+        ttk.Button(
+            btn_frame,
+            text="📊 Öğrenme İstatistikleri",
+            command=self.show_learning_stats,
+        ).grid(row=5, column=2, padx=6, pady=6, sticky="ew")
 
         # Row 3: Safe browser automation
         browser_frame = ttk.Frame(self)
         browser_frame.pack(fill="x", padx=12, pady=6)
-        ttk.Label(browser_frame, text="Güvenli Tarayıcı (Whitelist)").grid(row=0, column=0, sticky="w")
+        ttk.Label(browser_frame, text="Güvenli Tarayıcı (Whitelist)").grid(
+            row=0, column=0, sticky="w"
+        )
         self.domain_var = tk.StringVar(value="https://github.com/Selamiby/Selamiby")
-        domain_box = ttk.Combobox(browser_frame, textvariable=self.domain_var, values=[
-            "https://github.com/Selamiby/Selamiby",
-            "https://docs.python.org/",
-            "https://code.visualstudio.com/",
-            "https://www.microsoft.com/"
-        ], state="readonly")
+        domain_box = ttk.Combobox(
+            browser_frame,
+            textvariable=self.domain_var,
+            values=[
+                "https://github.com/Selamiby/Selamiby",
+                "https://docs.python.org/",
+                "https://code.visualstudio.com/",
+                "https://www.microsoft.com/",
+            ],
+            state="readonly",
+        )
         domain_box.grid(row=0, column=1, sticky="ew", padx=6)
-        ttk.Button(browser_frame, text="Aç", command=self.open_whitelisted_domain).grid(row=0, column=2, padx=6)
+        ttk.Button(browser_frame, text="Aç", command=self.open_whitelisted_domain).grid(
+            row=0, column=2, padx=6
+        )
         browser_frame.grid_columnconfigure(1, weight=1)
 
         # Learning Rate Control
@@ -152,7 +213,13 @@ class ControlPanel(tk.Tk):
         learning_frame.pack(fill="x", padx=12, pady=6)
         self.learning_rate = tk.DoubleVar(value=1.0)
         ttk.Label(learning_frame, text="Yavaş").pack(side="left", padx=6)
-        learning_slider = ttk.Scale(learning_frame, from_=0.1, to=10.0, variable=self.learning_rate, orient="horizontal")
+        learning_slider = ttk.Scale(
+            learning_frame,
+            from_=0.1,
+            to=10.0,
+            variable=self.learning_rate,
+            orient="horizontal",
+        )
         learning_slider.pack(side="left", fill="x", expand=True, padx=6)
         ttk.Label(learning_frame, text="Hızlı").pack(side="left", padx=6)
         self.learning_label = ttk.Label(learning_frame, text="1.0x")
@@ -171,20 +238,26 @@ class ControlPanel(tk.Tk):
         # Chat controls - LARGER and more prominent
         chat_frame = ttk.LabelFrame(self, text="💬 AI Copilot Chat (Sana Komut Ver)")
         chat_frame.pack(fill="both", expand=True, padx=12, pady=6)
-        
-        self.chat_output = scrolledtext.ScrolledText(chat_frame, height=15, wrap="word", font=("Consolas", 10))
+
+        self.chat_output = scrolledtext.ScrolledText(
+            chat_frame, height=15, wrap="word", font=("Consolas", 10)
+        )
         self.chat_output.pack(fill="both", expand=True, padx=6, pady=6)
-        self._append_chat("🤖 NEXUS: Merhaba! Ben senin AI asistanınım. Ne yapmamı istersin?\n\n")
+        self._append_chat(
+            "🤖 NEXUS: Merhaba! Ben senin AI asistanınım. Ne yapmamı istersin?\n\n"
+        )
         self._append_chat("Örnekler:\n")
         self._append_chat("- 'python machine learning ara' → Google'da arar\n")
         self._append_chat("- 'kod yaz calculator' → Hesap makinesi kodu üretir\n")
         self._append_chat("- 'github.com/user/repo öğren' → Repo'yu analiz eder\n")
         self._append_chat("- 'sistem durumu' → CPU, RAM gösterir\n\n")
-        
+
         input_row = ttk.Frame(chat_frame)
         input_row.pack(fill="x", padx=6, pady=6)
         self.chat_var = tk.StringVar()
-        chat_entry = ttk.Entry(input_row, textvariable=self.chat_var, font=("Segoe UI", 11))
+        chat_entry = ttk.Entry(
+            input_row, textvariable=self.chat_var, font=("Segoe UI", 11)
+        )
         chat_entry.pack(side="left", fill="x", expand=True, padx=(0, 6))
         chat_entry.bind("<Return>", lambda e: self.chat_send())
         chat_entry.bind("<KP_Enter>", lambda e: self.chat_send())
@@ -246,10 +319,10 @@ class ControlPanel(tk.Tk):
         if not psutil:
             return pids
         try:
-            for p in psutil.process_iter(['pid', 'name', 'cmdline']):
-                cmd = " ".join(p.info.get('cmdline') or [])
-                if 'human_interface_agent.py' in cmd:
-                    pids.append(p.info['pid'])
+            for p in psutil.process_iter(["pid", "name", "cmdline"]):
+                cmd = " ".join(p.info.get("cmdline") or [])
+                if "human_interface_agent.py" in cmd:
+                    pids.append(p.info["pid"])
         except BaseException:
             # KeyboardInterrupt or access issues should not crash the panel
             pass
@@ -266,7 +339,9 @@ class ControlPanel(tk.Tk):
         # Prefer PowerShell runner if exists
         if Path(RUNNER_PS1).exists():
             try:
-                subprocess.Popen(["powershell", "-ExecutionPolicy", "Bypass", "-File", RUNNER_PS1])
+                subprocess.Popen(
+                    ["powershell", "-ExecutionPolicy", "Bypass", "-File", RUNNER_PS1]
+                )
                 messagebox.showinfo("Agent", "Agent başlatıldı (BelowNormal)")
                 return
             except Exception:
@@ -294,8 +369,17 @@ class ControlPanel(tk.Tk):
         messagebox.showinfo("Agent", f"Durdurulan süreçler: {count}")
 
     def open_vscode(self):
-        code_exe = Path(os.environ.get("LocalAppData", "")) / "Programs" / "Microsoft VS Code" / "Code.exe"
-        cmd = [str(code_exe), str(WORKSPACE)] if code_exe.exists() else ["code", str(WORKSPACE)]
+        code_exe = (
+            Path(os.environ.get("LocalAppData", ""))
+            / "Programs"
+            / "Microsoft VS Code"
+            / "Code.exe"
+        )
+        cmd = (
+            [str(code_exe), str(WORKSPACE)]
+            if code_exe.exists()
+            else ["code", str(WORKSPACE)]
+        )
         try:
             subprocess.Popen(cmd)
         except Exception as e:
@@ -303,8 +387,17 @@ class ControlPanel(tk.Tk):
 
     def vscode_search_ui(self):
         # Opens VS Code and shows Search UI (workbench.action.findInFiles)
-        code_exe = Path(os.environ.get("LocalAppData", "")) / "Programs" / "Microsoft VS Code" / "Code.exe"
-        cmd = [str(code_exe), str(WORKSPACE)] if code_exe.exists() else ["code", str(WORKSPACE)]
+        code_exe = (
+            Path(os.environ.get("LocalAppData", ""))
+            / "Programs"
+            / "Microsoft VS Code"
+            / "Code.exe"
+        )
+        cmd = (
+            [str(code_exe), str(WORKSPACE)]
+            if code_exe.exists()
+            else ["code", str(WORKSPACE)]
+        )
         try:
             subprocess.Popen(cmd)
             messagebox.showinfo("VS Code", "Search UI açmak için Ctrl+Shift+F kullanın")
@@ -331,7 +424,10 @@ class ControlPanel(tk.Tk):
             messagebox.showwarning("Uyarı", "Domain whitelist dışında (unsafe OFF)")
             return
         if cfg.get("unsafe_browsing", False) and url not in wl:
-            if not messagebox.askyesno("Onay", f"Unsafe browsing açık. Şu domain açılacak: {url}\nOnaylıyor musun?"):
+            if not messagebox.askyesno(
+                "Onay",
+                f"Unsafe browsing açık. Şu domain açılacak: {url}\nOnaylıyor musun?",
+            ):
                 return
         try:
             webbrowser.open(url)
@@ -352,12 +448,12 @@ class ControlPanel(tk.Tk):
         except Exception:
             pass
         self.update_idletasks()
-        
+
         # Process in thread to avoid UI freeze
         thread = threading.Thread(target=self._process_command_thread, args=(text,))
         thread.daemon = True
         thread.start()
-    
+
     def _process_command_thread(self, text):
         """Process command in background thread"""
         try:
@@ -375,7 +471,7 @@ class ControlPanel(tk.Tk):
             reply = f"Komut işlenirken hata oluştu: {e}"
             self._log_chat_event("ERROR", f"{e}\n{tb}")
         self.after(0, lambda: self._show_reply(reply))
-    
+
     def _show_reply(self, reply):
         """Show reply in chat (called from main thread)"""
         self._append_chat(f"🤖 NEXUS: {reply}\n")
@@ -411,37 +507,44 @@ class ControlPanel(tk.Tk):
         """
         txt = text.lower().strip()
         parts = text.split()
-        
+
         # === AI WEB LEARNING (DIRECT) ===
-        if any(kw in txt for kw in ['ara', 'search', 'google']):
+        if any(kw in txt for kw in ["ara", "search", "google"]):
             query = text
-            for kw in ['ara', 'search', 'google', 'google\'da']:
-                query = query.replace(kw, '').strip()
-            
+            for kw in ["ara", "search", "google", "google'da"]:
+                query = query.replace(kw, "").strip()
+
             if not query:
                 return "Ne aramak istersin? Örnek: 'python machine learning ara'"
-            
+
             if not WEB_NAV_AVAILABLE:
                 return "Web Navigator modülü yüklü değil. pip install selenium"
-            
+
             try:
                 if not self.web_nav:
                     self.web_nav = WebNavigator(headless=False)
                 result = self.web_nav.search_google(query)
-                results_text = "\n".join([f"{i+1}. {r}" for i, r in enumerate(result.get('top_results', [])[:5])])
+                results_text = "\n".join(
+                    [
+                        f"{i+1}. {r}"
+                        for i, r in enumerate(result.get("top_results", [])[:5])
+                    ]
+                )
                 return f"Google araması tamamlandı: '{query}'\n\nİlk 5 sonuç:\n{results_text}\n\nScreenshot kaydedildi."
             except Exception as e:
                 return f"Arama hatası: {e}"
-        
+
         # YouTube learning
-        if 'youtube' in txt and ('öğren' in txt or 'izle' in txt or 'learn' in txt):
-            url = next((p for p in parts if 'youtube.com' in p or 'youtu.be' in p), None)
+        if "youtube" in txt and ("öğren" in txt or "izle" in txt or "learn" in txt):
+            url = next(
+                (p for p in parts if "youtube.com" in p or "youtu.be" in p), None
+            )
             if not url:
                 return "YouTube URL ver. Örnek: 'youtube.com/watch?v=xyz öğren'"
-            
+
             if not WEB_NAV_AVAILABLE:
                 return "Web Navigator modülü yüklü değil."
-            
+
             try:
                 if not self.web_nav:
                     self.web_nav = WebNavigator(headless=False)
@@ -449,16 +552,18 @@ class ControlPanel(tk.Tk):
                 return f"YouTube öğrenme tamamlandı!\nVideo: {result.get('title', 'N/A')}\nScreenshot: {result.get('screenshots', 0)} adet\nSüre: {result.get('duration')}s"
             except Exception as e:
                 return f"YouTube öğrenme hatası: {e}"
-        
+
         # GitHub repo learning
-        if 'github.com' in txt and ('öğren' in txt or 'analiz' in txt or 'learn' in txt):
-            url = next((p for p in parts if 'github.com' in p), None)
+        if "github.com" in txt and (
+            "öğren" in txt or "analiz" in txt or "learn" in txt
+        ):
+            url = next((p for p in parts if "github.com" in p), None)
             if not url:
                 return "GitHub repo URL ver. Örnek: 'github.com/user/repo öğren'"
-            
+
             if not WEB_NAV_AVAILABLE:
                 return "Web Navigator modülü yüklü değil."
-            
+
             try:
                 if not self.web_nav:
                     self.web_nav = WebNavigator(headless=False)
@@ -466,93 +571,121 @@ class ControlPanel(tk.Tk):
                 return f"GitHub repo analizi tamamlandı!\nRepo: {result.get('repo_name', 'N/A')}\nKod dosyaları: {result.get('code_files', 0)} adet"
             except Exception as e:
                 return f"GitHub öğrenme hatası: {e}"
-        
+
         # === AI CODE GENERATION (DIRECT) ===
-        if any(kw in txt for kw in ['kod yaz', 'code generate', 'script yaz', 'program yaz']):
+        if any(
+            kw in txt
+            for kw in ["kod yaz", "code generate", "script yaz", "program yaz"]
+        ):
             script_name = None
             for part in parts:
-                if part not in ['kod', 'yaz', 'code', 'generate', 'script', 'program']:
+                if part not in ["kod", "yaz", "code", "generate", "script", "program"]:
                     script_name = part
                     break
-            
+
             if not script_name:
                 return "Hangi script'i yazayım? Örnek: 'kod yaz calculator'"
-            
+
             if not CODE_GEN_AVAILABLE:
                 return "Code Generator modülü yüklü değil."
-            
+
             try:
                 if not self.code_gen:
                     self.code_gen = CodeGenerator()
-                script_path = self.code_gen.generate_script(script_name, template_type="class")
+                script_path = self.code_gen.generate_script(
+                    script_name, template_type="class"
+                )
                 test_result = self.code_gen.test_generated_code(script_path)
-                
-                if test_result.get('returncode') == 0:
+
+                if test_result.get("returncode") == 0:
                     return f"✅ Kod yazıldı ve test edildi!\nDosya: {script_path.name}\nTest: BAŞARILI\nKonum: {script_path}"
                 else:
                     return f"⚠️ Kod yazıldı ama test hatası:\nDosya: {script_path.name}\nHata: {test_result.get('stderr', 'N/A')[:200]}"
             except Exception as e:
                 return f"Kod yazma hatası: {e}"
-        
+
         # Workspace learning
-        if any(kw in txt for kw in ['workspace öğren', 'projeyi öğren', 'tüm kodları öğren']):
+        if any(
+            kw in txt
+            for kw in ["workspace öğren", "projeyi öğren", "tüm kodları öğren"]
+        ):
             if not CODE_GEN_AVAILABLE:
                 return "Code Generator modülü yüklü değil."
-            
+
             try:
                 if not self.code_gen:
                     self.code_gen = CodeGenerator()
                 count = self.code_gen.learn_from_workspace()
-                funcs = len(self.code_gen.patterns.get('function_templates', []))
-                classes = len(self.code_gen.patterns.get('class_templates', []))
+                funcs = len(self.code_gen.patterns.get("function_templates", []))
+                classes = len(self.code_gen.patterns.get("class_templates", []))
                 return f"📚 Workspace öğrenimi tamamlandı!\nAnaliz edilen dosya: {count}\nÖğrenilen function: {funcs}\nÖğrenilen class: {classes}"
             except Exception as e:
                 return f"Öğrenme hatası: {e}"
-        
+
         # === SECURITY COMMANDS ===
-        if any(kw in txt for kw in ['güvenlik başlat', 'security start', 'start security']):
+        if any(
+            kw in txt for kw in ["güvenlik başlat", "security start", "start security"]
+        ):
             self.start_security()
             return "🛡️ Güvenlik ajanı başlatıldı."
-        
-        if any(kw in txt for kw in ['güvenlik durdur', 'security stop', 'stop security']):
+
+        if any(
+            kw in txt for kw in ["güvenlik durdur", "security stop", "stop security"]
+        ):
             self.stop_security()
             return "🛡️ Güvenlik ajanı durduruldu."
-        
-        if any(kw in txt for kw in ['defender tara', 'virüs tara', 'scan']):
+
+        if any(kw in txt for kw in ["defender tara", "virüs tara", "scan"]):
             try:
-                subprocess.Popen(['powershell', '-Command', 'Start-MpScan -ScanType QuickScan'])
+                subprocess.Popen(
+                    ["powershell", "-Command", "Start-MpScan -ScanType QuickScan"]
+                )
                 return "🔍 Windows Defender taraması başlatıldı."
             except Exception as e:
                 return f"Tarama hatası: {e}"
-        
+
         # === SYSTEM STATUS ===
-        if any(kw in txt for kw in ['sistem durumu', 'system status', 'durum', 'status']):
+        if any(
+            kw in txt for kw in ["sistem durumu", "system status", "durum", "status"]
+        ):
             info = []
             if psutil:
                 info.append(f"CPU: {psutil.cpu_percent(interval=0.5):.1f}%")
                 mem = psutil.virtual_memory()
-                info.append(f"RAM: {mem.percent:.1f}% ({mem.used // (1024**3)}GB / {mem.total // (1024**3)}GB)")
+                info.append(
+                    f"RAM: {mem.percent:.1f}% ({mem.used // (1024**3)}GB / {mem.total // (1024**3)}GB)"
+                )
                 info.append(f"Süreçler: {len(list(psutil.process_iter()))}")
-            
+
             # Add AI skills if available
             if LEARNING_AVAILABLE and self.learner:
                 skills = self.learner.get_skill_levels()
                 info.append(f"\n🧠 AI Becerileri:")
                 info.append(f"  Kod yazma: {skills.get('coding', 0):.1f}/100")
                 info.append(f"  Web gezinme: {skills.get('web_navigation', 0):.1f}/100")
-                info.append(f"  Oyun geliştirme: {skills.get('game_development', 0):.1f}/100")
-            
-            return "📊 Sistem Durumu:\n" + "\n".join(info) if info else "psutil yüklü değil"
-        
+                info.append(
+                    f"  Oyun geliştirme: {skills.get('game_development', 0):.1f}/100"
+                )
+
+            return (
+                "📊 Sistem Durumu:\n" + "\n".join(info)
+                if info
+                else "psutil yüklü değil"
+            )
+
         # === LEARNING RATE CONTROL ===
-        if any(kw in txt for kw in ['öğrenme hızı', 'learning rate', 'hız artır', 'hız azalt']):
+        if any(
+            kw in txt
+            for kw in ["öğrenme hızı", "learning rate", "hız artır", "hız azalt"]
+        ):
             if not LEARNING_AVAILABLE or not self.learner:
                 return "Accelerated Learning modülü yüklü değil."
-            
+
             try:
                 # Extract number from command
                 import re
-                numbers = re.findall(r'\d+\.?\d*', text)
+
+                numbers = re.findall(r"\d+\.?\d*", text)
                 if numbers:
                     factor = float(numbers[0])
                     self.learner.increase_learning_rate(factor)
@@ -560,62 +693,97 @@ class ControlPanel(tk.Tk):
                 return "Hız değeri ver. Örnek: 'öğrenme hızı 5x'"
             except Exception as e:
                 return f"Hız ayarlama hatası: {e}"
-        
+
         # === GAME ENGINE ===
-        if any(kw in txt for kw in ['unity proje', 'unreal proje', 'oyun yap', 'game create']):
+        if any(
+            kw in txt
+            for kw in ["unity proje", "unreal proje", "oyun yap", "game create"]
+        ):
             if not GAME_ENGINE_AVAILABLE:
                 return "Game Engine Controller modülü yüklü değil."
-            
+
             try:
                 from game_engine_controller import GameEngineController
+
                 engine = GameEngineController()
-                
+
                 # Detect project name
                 project_name = "MyGame"
                 for part in parts:
-                    if part not in ['unity', 'unreal', 'proje', 'oyun', 'yap', 'game', 'create']:
+                    if part not in [
+                        "unity",
+                        "unreal",
+                        "proje",
+                        "oyun",
+                        "yap",
+                        "game",
+                        "create",
+                    ]:
                         project_name = part.capitalize()
                         break
-                
-                if 'unity' in txt:
+
+                if "unity" in txt:
                     result = engine.create_unity_project(project_name, template="3D")
                     return f"🎮 Unity projesi oluşturuldu!\nİsim: {project_name}\nKonum: {result.get('project_path', 'N/A')}"
-                elif 'unreal' in txt:
+                elif "unreal" in txt:
                     return "🎮 Unreal Engine desteği yakında eklenecek."
                 else:
-                    return "Hangi engine? 'unity proje MyGame' veya 'unreal proje MyGame'"
+                    return (
+                        "Hangi engine? 'unity proje MyGame' veya 'unreal proje MyGame'"
+                    )
             except Exception as e:
                 return f"Oyun projesi hatası: {e}"
-        
+
         # === SELF-LEARNING COMMANDS (NEW!) ===
-        if any(kw in txt for kw in ['self-learning başlat', 'kendini öğren', 'otonom öğren', 'sürekli öğren']):
+        if any(
+            kw in txt
+            for kw in [
+                "self-learning başlat",
+                "kendini öğren",
+                "otonom öğren",
+                "sürekli öğren",
+            ]
+        ):
             try:
                 # Trigger self-learning via button
                 self.after(100, self.start_self_learning)
                 return "🧠 Self-learning başlatılıyor... 7/24 otonom öğrenme aktif!"
             except Exception as e:
                 return f"Self-learning hatası: {e}"
-        
-        if any(kw in txt for kw in ['learning stats', 'öğrenme istatistik', 'bilgi ağacı', 'knowledge graph']):
+
+        if any(
+            kw in txt
+            for kw in [
+                "learning stats",
+                "öğrenme istatistik",
+                "bilgi ağacı",
+                "knowledge graph",
+            ]
+        ):
             try:
                 # Show stats via button
                 self.after(100, self.show_learning_stats)
                 return "📊 Öğrenme istatistikleri açılıyor..."
             except Exception as e:
                 return f"İstatistik hatası: {e}"
-        
-        if any(kw in txt for kw in ['self-update', 'kendini güncelle', 'yeni komut ekle']):
+
+        if any(
+            kw in txt for kw in ["self-update", "kendini güncelle", "yeni komut ekle"]
+        ):
             try:
                 # Run self-updater
                 import subprocess
-                subprocess.Popen([sys.executable, "nexus_self_updater.py"], 
-                               creationflags=subprocess.CREATE_NEW_CONSOLE)
+
+                subprocess.Popen(
+                    [sys.executable, "nexus_self_updater.py"],
+                    creationflags=subprocess.CREATE_NEW_CONSOLE,
+                )
                 return "🔄 Self-updater çalıştırıldı! Öğrenilen bilgiler koda entegre ediliyor..."
             except Exception as e:
                 return f"Self-update hatası: {e}"
-        
+
         # === GENERAL HELP ===
-        if any(kw in txt for kw in ['help', 'yardım', 'ne yapabilirsin', 'komutlar']):
+        if any(kw in txt for kw in ["help", "yardım", "ne yapabilirsin", "komutlar"]):
             return """🤖 NEXUS-ONE AI Copilot Komutları:
 
 🔍 WEB & LEARNING:
@@ -648,41 +816,53 @@ class ControlPanel(tk.Tk):
 
 Örnek: 'machine learning ara' yaz, direkt sonuçları görürsün!
 🆕 'kendini öğren' yaz, AI sürekli öğrenmeye başlasın!"""
-        
+
         # Unknown command
         return f"❓ Anlamadım: '{text}'\n'help' yaz komutları gör."
-        
+
         # Cleanup commands
-        if any(kw in txt for kw in ['temizlik yap', 'cleanup', 'clean', 'temizle', 'dosya sil']):
+        if any(
+            kw in txt
+            for kw in ["temizlik yap", "cleanup", "clean", "temizle", "dosya sil"]
+        ):
             try:
                 # Trigger cleanup via security agent or direct
                 return "Temizlik başlatıldı (temp klasörleri, 7 gün+). Detaylar security.log'da."
             except Exception as e:
                 return f"Temizlik hatası: {e}"
-        
-        if any(kw in txt for kw in ['tarayıcı', 'browser cache', 'cache temizle']):
+
+        if any(kw in txt for kw in ["tarayıcı", "browser cache", "cache temizle"]):
             return "Tarayıcı cache temizliği için security_config.json'da 'browser_cache_cleanup': true yapın."
-        
+
         # Logs
-        if any(kw in txt for kw in ['log göster', 'show log', 'log aç', 'loglara bak', 'günlük']):
-            if 'security' in txt or 'güvenlik' in txt:
+        if any(
+            kw in txt
+            for kw in ["log göster", "show log", "log aç", "loglara bak", "günlük"]
+        ):
+            if "security" in txt or "güvenlik" in txt:
                 self.open_security_logs()
                 return "Güvenlik logu açıldı (Notepad)."
             else:
                 self.open_logs()
                 return "Log klasörü açıldı."
-        
+
         # VS Code / Formatting
-        if any(kw in txt for kw in ['format', 'kod düzenle', 'python düzenle', 'black']):
+        if any(
+            kw in txt for kw in ["format", "kod düzenle", "python düzenle", "black"]
+        ):
             self.format_python()
             return "Python dosyaları formatlanıyor (black)."
-        
-        if any(kw in txt for kw in ['vscode', 'vs code', 'editör', 'kod aç']):
+
+        if any(kw in txt for kw in ["vscode", "vs code", "editör", "kod aç"]):
             self.open_vscode()
             return "VS Code açılıyor."
-        
+
         # Domain management (existing)
-        if len(parts) >= 2 and parts[0].lower() == "domain" and parts[1].lower() in {"add", "remove"}:
+        if (
+            len(parts) >= 2
+            and parts[0].lower() == "domain"
+            and parts[1].lower() in {"add", "remove"}
+        ):
             action = parts[1].lower()
             url = " ".join(parts[2:]).strip()
             if not url:
@@ -700,7 +880,7 @@ class ControlPanel(tk.Tk):
                 wl = [u for u in wl if u != url]
                 self.save_whitelist(wl)
                 return f"Whitelist'ten çıkarıldı: {url}"
-        
+
         # Unsafe mode
         if parts and parts[0].lower() == "unsafe" and len(parts) >= 2:
             cfg = self.load_config()
@@ -713,28 +893,30 @@ class ControlPanel(tk.Tk):
                 self.save_config(cfg)
                 return "Unsafe browsing: OFF"
             return "Kullanım: unsafe on | unsafe off"
-        
+
         # Open URL
         if parts and parts[0].lower() == "open" and len(parts) >= 2:
             url = " ".join(parts[1:]).strip()
             self.domain_var.set(url)
             self.open_whitelisted_domain()
             return f"Açmaya çalışıldı: {url}"
-        
+
         # Fallback: smart suggestions
         suggestions = []
-        if 'güvenlik' in txt or 'security' in txt:
-            suggestions.append("Güvenlik komutları: 'güvenlik başlat', 'güvenlik durdur', 'defender tara'")
-        if 'log' in txt or 'günlük' in txt:
+        if "güvenlik" in txt or "security" in txt:
+            suggestions.append(
+                "Güvenlik komutları: 'güvenlik başlat', 'güvenlik durdur', 'defender tara'"
+            )
+        if "log" in txt or "günlük" in txt:
             suggestions.append("Log komutları: 'log göster', 'security log göster'")
-        if 'sistem' in txt or 'status' in txt:
+        if "sistem" in txt or "status" in txt:
             suggestions.append("Sistem komutları: 'sistem durumu', 'cpu', 'ram'")
-        if 'temizlik' in txt or 'clean' in txt:
+        if "temizlik" in txt or "clean" in txt:
             suggestions.append("Temizlik komutları: 'temizlik yap', 'tarayıcı temizle'")
-        
+
         if suggestions:
             return "Şunları deneyin:\n" + "\n".join(suggestions)
-        
+
         return "Komutu algılayamadım. 'help' yaz komutları gör."
 
     def format_python(self):
@@ -750,7 +932,9 @@ class ControlPanel(tk.Tk):
             messagebox.showerror("Hata", "run_task_queue.ps1 bulunamadı")
             return
         try:
-            subprocess.Popen(["powershell", "-ExecutionPolicy", "Bypass", "-File", str(runner)])
+            subprocess.Popen(
+                ["powershell", "-ExecutionPolicy", "Bypass", "-File", str(runner)]
+            )
             messagebox.showinfo("Task Queue", "Görev kuyruğu başlatıldı")
         except Exception as e:
             messagebox.showerror("Hata", str(e))
@@ -761,7 +945,9 @@ class ControlPanel(tk.Tk):
             messagebox.showerror("Hata", "run_security.ps1 bulunamadı")
             return
         try:
-            subprocess.Popen(["powershell", "-ExecutionPolicy", "Bypass", "-File", str(runner)])
+            subprocess.Popen(
+                ["powershell", "-ExecutionPolicy", "Bypass", "-File", str(runner)]
+            )
             messagebox.showinfo("Security", "Defansif güvenlik ajanı başlatıldı")
         except Exception as e:
             messagebox.showerror("Hata", str(e))
@@ -772,9 +958,9 @@ class ControlPanel(tk.Tk):
             return
         count = 0
         try:
-            for p in psutil.process_iter(['pid', 'name', 'cmdline']):
-                cmd = " ".join(p.info.get('cmdline') or [])
-                if 'nexus_security.py' in cmd:
+            for p in psutil.process_iter(["pid", "name", "cmdline"]):
+                cmd = " ".join(p.info.get("cmdline") or [])
+                if "nexus_security.py" in cmd:
                     try:
                         p.terminate()
                         count += 1
@@ -793,7 +979,7 @@ class ControlPanel(tk.Tk):
             subprocess.Popen(["notepad", str(sec_log)])
         except Exception as e:
             messagebox.showerror("Hata", str(e))
-    
+
     # AI Learning Methods
     def start_web_learning(self):
         """Start web learning demo"""
@@ -802,7 +988,7 @@ class ControlPanel(tk.Tk):
             messagebox.showinfo("Web Learning", "Web öğrenme ajanı başlatıldı")
         except Exception as e:
             messagebox.showerror("Hata", str(e))
-    
+
     def open_code_generator(self):
         """Run code generator demo"""
         try:
@@ -810,15 +996,17 @@ class ControlPanel(tk.Tk):
             messagebox.showinfo("Code Generator", "Kod üretici başlatıldı")
         except Exception as e:
             messagebox.showerror("Hata", str(e))
-    
+
     def open_game_engine(self):
         """Run game engine controller"""
         try:
-            subprocess.Popen([sys.executable, str(WORKSPACE / "game_engine_controller.py")])
+            subprocess.Popen(
+                [sys.executable, str(WORKSPACE / "game_engine_controller.py")]
+            )
             messagebox.showinfo("Game Engine", "Oyun motoru kontrolü başlatıldı")
         except Exception as e:
             messagebox.showerror("Hata", str(e))
-    
+
     def update_learning_rate(self, event=None):
         """Update learning rate display and config"""
         rate = self.learning_rate.get()
@@ -827,11 +1015,11 @@ class ControlPanel(tk.Tk):
         try:
             learning_config = DATA_DIR / "learning_config.json"
             if learning_config.exists():
-                cfg = json.loads(learning_config.read_text(encoding='utf-8'))
+                cfg = json.loads(learning_config.read_text(encoding="utf-8"))
             else:
                 cfg = {}
             cfg["learning_rate"] = rate
-            learning_config.write_text(json.dumps(cfg, indent=2), encoding='utf-8')
+            learning_config.write_text(json.dumps(cfg, indent=2), encoding="utf-8")
         except Exception:
             pass
 
@@ -848,7 +1036,7 @@ class ControlPanel(tk.Tk):
             self.log_text.insert(tk.END, content)
         except Exception:
             pass
-    
+
     # === SELF-LEARNING SYSTEM (NEW!) ===
     def start_self_learning(self):
         """Start autonomous self-learning background process"""
@@ -858,98 +1046,128 @@ class ControlPanel(tk.Tk):
             if not ps_script.exists():
                 messagebox.showerror("Error", "autonomous_learner.ps1 not found!")
                 return
-            
+
             rate = self.learning_rate.get()
-            
+
             # Start in background
-            subprocess.Popen([
-                "powershell",
-                "-ExecutionPolicy", "Bypass",
-                "-File", str(ps_script),
-                "-LearningRate", str(int(rate)),
-                "-Aggressive", "$true"
-            ], creationflags=subprocess.CREATE_NEW_CONSOLE)
-            
-            messagebox.showinfo("Self-Learning", 
-                              f"🧠 Otonom öğrenme başlatıldı!\n"
-                              f"Hız: {rate:.1f}x\n"
-                              f"Mode: Aggressive\n\n"
-                              f"7/24 çalışacak, workspace'i sürekli öğrenecek!\n"
-                              f"Log: nexus_logs/autonomous_learner.log")
+            subprocess.Popen(
+                [
+                    "powershell",
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-File",
+                    str(ps_script),
+                    "-LearningRate",
+                    str(int(rate)),
+                    "-Aggressive",
+                    "$true",
+                ],
+                creationflags=subprocess.CREATE_NEW_CONSOLE,
+            )
+
+            messagebox.showinfo(
+                "Self-Learning",
+                f"🧠 Otonom öğrenme başlatıldı!\n"
+                f"Hız: {rate:.1f}x\n"
+                f"Mode: Aggressive\n\n"
+                f"7/24 çalışacak, workspace'i sürekli öğrenecek!\n"
+                f"Log: nexus_logs/autonomous_learner.log",
+            )
         except Exception as e:
             messagebox.showerror("Error", f"Self-learning başlatma hatası:\n{e}")
-    
+
     def stop_self_learning(self):
         """Stop autonomous learning processes"""
         try:
             # Find and kill autonomous learner processes
             killed = 0
-            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            for proc in psutil.process_iter(["pid", "name", "cmdline"]):
                 try:
-                    cmdline = ' '.join(proc.info.get('cmdline') or [])
-                    if 'autonomous_learner' in cmdline or 'nexus_self_learner' in cmdline:
+                    cmdline = " ".join(proc.info.get("cmdline") or [])
+                    if (
+                        "autonomous_learner" in cmdline
+                        or "nexus_self_learner" in cmdline
+                    ):
                         proc.kill()
                         killed += 1
                 except Exception:
                     pass
-            
+
             if killed > 0:
-                messagebox.showinfo("Self-Learning", f"⏹️ {killed} öğrenme süreçleri durduruldu.")
+                messagebox.showinfo(
+                    "Self-Learning", f"⏹️ {killed} öğrenme süreçleri durduruldu."
+                )
             else:
                 messagebox.showinfo("Self-Learning", "Aktif öğrenme süreci bulunamadı.")
         except Exception as e:
             messagebox.showerror("Error", f"Durdurma hatası:\n{e}")
-    
+
     def show_learning_stats(self):
         """Show knowledge graph and learning statistics"""
         try:
             stats_file = DATA_DIR / "learning_stats.json"
             knowledge_file = DATA_DIR / "knowledge_graph" / "knowledge_graph.json"
-            
-            stats_text = "📊 NEXUS-ONE Self-Learning İstatistikleri\n" + "="*50 + "\n\n"
-            
+
+            stats_text = (
+                "📊 NEXUS-ONE Self-Learning İstatistikleri\n" + "=" * 50 + "\n\n"
+            )
+
             # Load stats
             if stats_file.exists():
-                stats = json.loads(stats_file.read_text(encoding='utf-8'))
+                stats = json.loads(stats_file.read_text(encoding="utf-8"))
                 stats_text += f"🔄 Öğrenme Oturumları: {stats.get('sessions', 0)}\n"
                 stats_text += f"📁 İşlenen Dosyalar: {stats.get('files_learned', 0)}\n"
-                stats_text += f"💡 Öğrenilen Kavramlar: {stats.get('concepts_learned', 0)}\n"
-                stats_text += f"⚡ Öğrenilen Komutlar: {stats.get('commands_learned', 0)}\n"
-                stats_text += f"🎯 Öğrenilen Patternler: {stats.get('patterns_learned', 0)}\n"
+                stats_text += (
+                    f"💡 Öğrenilen Kavramlar: {stats.get('concepts_learned', 0)}\n"
+                )
+                stats_text += (
+                    f"⚡ Öğrenilen Komutlar: {stats.get('commands_learned', 0)}\n"
+                )
+                stats_text += (
+                    f"🎯 Öğrenilen Patternler: {stats.get('patterns_learned', 0)}\n"
+                )
                 stats_text += f"🌐 Web Oturumları: {stats.get('web_sessions', 0)}\n"
-                last_learn = stats.get('last_learn_time', 'N/A')
+                last_learn = stats.get("last_learn_time", "N/A")
                 stats_text += f"⏰ Son Öğrenme: {last_learn}\n\n"
             else:
                 stats_text += "⚠️ Henüz öğrenme başlamadı.\n\n"
-            
+
             # Load knowledge graph
             if knowledge_file.exists():
-                kg = json.loads(knowledge_file.read_text(encoding='utf-8'))
-                kg_stats = kg.get('statistics', {})
+                kg = json.loads(knowledge_file.read_text(encoding="utf-8"))
+                kg_stats = kg.get("statistics", {})
                 stats_text += "🧠 Bilgi Ağacı (Knowledge Graph):\n"
-                stats_text += f"  • Toplam Kavram: {kg_stats.get('total_concepts', 0)}\n"
+                stats_text += (
+                    f"  • Toplam Kavram: {kg_stats.get('total_concepts', 0)}\n"
+                )
                 stats_text += f"  • Toplam Komut: {kg_stats.get('total_commands', 0)}\n"
-                stats_text += f"  • Toplam Pattern: {kg_stats.get('total_patterns', 0)}\n"
-                stats_text += f"  • Son Güncelleme: {kg_stats.get('last_updated', 'N/A')}\n\n"
-                
+                stats_text += (
+                    f"  • Toplam Pattern: {kg_stats.get('total_patterns', 0)}\n"
+                )
+                stats_text += (
+                    f"  • Son Güncelleme: {kg_stats.get('last_updated', 'N/A')}\n\n"
+                )
+
                 # Show top 5 commands
-                commands = kg.get('commands', {})
+                commands = kg.get("commands", {})
                 if commands:
                     stats_text += "🏆 En Çok Kullanılan Komutlar:\n"
-                    sorted_cmds = sorted(commands.items(), 
-                                       key=lambda x: x[1].get('usage_count', 0), 
-                                       reverse=True)[:5]
+                    sorted_cmds = sorted(
+                        commands.items(),
+                        key=lambda x: x[1].get("usage_count", 0),
+                        reverse=True,
+                    )[:5]
                     for i, (cmd, data) in enumerate(sorted_cmds, 1):
                         stats_text += f"  {i}. {cmd} ({data.get('usage_count', 0)}x)\n"
             else:
                 stats_text += "⚠️ Knowledge graph henüz oluşmadı.\n"
-            
-            stats_text += "\n" + "="*50 + "\n"
+
+            stats_text += "\n" + "=" * 50 + "\n"
             stats_text += "💡 Self-Learning çalışıyorsa sürekli güncellenir!"
-            
+
             # Show in messagebox (or could open in new window)
             messagebox.showinfo("Learning Statistics", stats_text)
-            
+
         except Exception as e:
             messagebox.showerror("Error", f"İstatistik okuma hatası:\n{e}")
 
@@ -957,6 +1175,7 @@ class ControlPanel(tk.Tk):
 def main():
     app = ControlPanel()
     app.mainloop()
+
 
 if __name__ == "__main__":
     try:
@@ -974,7 +1193,10 @@ if __name__ == "__main__":
         except Exception:
             pass
         try:
-            messagebox.showerror("Panel Hatası", f"Pencere beklenmedik şekilde kapandı:\n{e}\nLog: {crash_log}")
+            messagebox.showerror(
+                "Panel Hatası",
+                f"Pencere beklenmedik şekilde kapandı:\n{e}\nLog: {crash_log}",
+            )
         except Exception:
             pass
         print(f"[PANEL CRASH] {e}")

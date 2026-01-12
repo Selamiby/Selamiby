@@ -37,11 +37,13 @@ def analyze_image(path: Path) -> Dict[str, Any]:
             return info
 
         img = Image.open(path)
-        info.update({
-            "ok": True,
-            "size": img.size,
-            "mode": img.mode,
-        })
+        info.update(
+            {
+                "ok": True,
+                "size": img.size,
+                "mode": img.mode,
+            }
+        )
 
         if pytesseract:
             try:
@@ -83,4 +85,5 @@ def transcribe_audio(path: Path) -> Dict[str, Any]:
 
 if __name__ == "__main__":
     from pprint import pprint
+
     print("Multimodal utils ready. Run analyze_image(Path) or transcribe_audio(Path)")

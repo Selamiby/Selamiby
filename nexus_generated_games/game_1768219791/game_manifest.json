@@ -1,0 +1,3782 @@
+{
+  "game_id": "game_1768219791",
+  "title": "Chronicles Quest",
+  "platform": "mobile",
+  "target_size_gb": 2.0,
+  "actual_size_gb": 2.0,
+  "game_dir": "nexus_generated_games\\game_1768219791",
+  "created_at": "2026-01-12T15:09:52.022360",
+  "concept": {
+    "title": "Chronicles Quest",
+    "genre": "rpg",
+    "complexity": "complex",
+    "target_size_gb": 2.0,
+    "platform": "mobile",
+    "style": "pixel_art",
+    "target_audience": "core_gamers",
+    "monetization": [
+      "ads",
+      "iap"
+    ],
+    "features": [
+      "singleplayer",
+      "achievements",
+      "leaderboard",
+      "multiplayer",
+      "cloud_save",
+      "social",
+      "character_progression",
+      "inventory",
+      "quests",
+      "skill_tree"
+    ]
+  },
+  "story": {
+    "title": "Chronicles Quest",
+    "genre": "rpg",
+    "premise": "Eski bir kahin, karanlık lordun dönüşünü kehanet eder. Sen son kahramansın.",
+    "acts": [
+      "Köyün yıkıldı, intikam yemini ettin",
+      "Antik silahı bulmak için yolculuk",
+      "Karanlık lordla final savaşı"
+    ],
+    "ending": "Dünya kurtuldu, sen efsane oldun",
+    "characters": [
+      {
+        "name": "Hero",
+        "role": "protagonist",
+        "personality": "brave"
+      },
+      {
+        "name": "Villain",
+        "role": "antagonist",
+        "personality": "evil"
+      },
+      {
+        "name": "Mentor",
+        "role": "support",
+        "personality": "wise"
+      },
+      {
+        "name": "Merchant",
+        "role": "npc",
+        "personality": "greedy"
+      }
+    ],
+    "dialogues": [
+      "Merhaba yabancı! Bu tehlikeli bir yer.",
+      "Efsaneye göre antik silah kayıp tapınakta.",
+      "Dikkatli ol, düşmanlar her yerde!",
+      "Başardın! İşte ödülün.",
+      "Bu daha başlangıç..."
+    ],
+    "quests": [
+      {
+        "id": "quest_1",
+        "type": "escort",
+        "title": "Escort Quest 1",
+        "description": "Complete the escort objective",
+        "reward_gold": 100,
+        "reward_xp": 50
+      },
+      {
+        "id": "quest_2",
+        "type": "kill",
+        "title": "Kill Quest 2",
+        "description": "Complete the kill objective",
+        "reward_gold": 200,
+        "reward_xp": 100
+      },
+      {
+        "id": "quest_3",
+        "type": "explore",
+        "title": "Explore Quest 3",
+        "description": "Complete the explore objective",
+        "reward_gold": 300,
+        "reward_xp": 150
+      },
+      {
+        "id": "quest_4",
+        "type": "kill",
+        "title": "Kill Quest 4",
+        "description": "Complete the kill objective",
+        "reward_gold": 400,
+        "reward_xp": 200
+      },
+      {
+        "id": "quest_5",
+        "type": "defend",
+        "title": "Defend Quest 5",
+        "description": "Complete the defend objective",
+        "reward_gold": 500,
+        "reward_xp": 250
+      },
+      {
+        "id": "quest_6",
+        "type": "explore",
+        "title": "Explore Quest 6",
+        "description": "Complete the explore objective",
+        "reward_gold": 600,
+        "reward_xp": 300
+      },
+      {
+        "id": "quest_7",
+        "type": "defend",
+        "title": "Defend Quest 7",
+        "description": "Complete the defend objective",
+        "reward_gold": 700,
+        "reward_xp": 350
+      },
+      {
+        "id": "quest_8",
+        "type": "defend",
+        "title": "Defend Quest 8",
+        "description": "Complete the defend objective",
+        "reward_gold": 800,
+        "reward_xp": 400
+      },
+      {
+        "id": "quest_9",
+        "type": "explore",
+        "title": "Explore Quest 9",
+        "description": "Complete the explore objective",
+        "reward_gold": 900,
+        "reward_xp": 450
+      },
+      {
+        "id": "quest_10",
+        "type": "kill",
+        "title": "Kill Quest 10",
+        "description": "Complete the kill objective",
+        "reward_gold": 1000,
+        "reward_xp": 500
+      },
+      {
+        "id": "quest_11",
+        "type": "collect",
+        "title": "Collect Quest 11",
+        "description": "Complete the collect objective",
+        "reward_gold": 1100,
+        "reward_xp": 550
+      },
+      {
+        "id": "quest_12",
+        "type": "escort",
+        "title": "Escort Quest 12",
+        "description": "Complete the escort objective",
+        "reward_gold": 1200,
+        "reward_xp": 600
+      },
+      {
+        "id": "quest_13",
+        "type": "kill",
+        "title": "Kill Quest 13",
+        "description": "Complete the kill objective",
+        "reward_gold": 1300,
+        "reward_xp": 650
+      },
+      {
+        "id": "quest_14",
+        "type": "defend",
+        "title": "Defend Quest 14",
+        "description": "Complete the defend objective",
+        "reward_gold": 1400,
+        "reward_xp": 700
+      },
+      {
+        "id": "quest_15",
+        "type": "explore",
+        "title": "Explore Quest 15",
+        "description": "Complete the explore objective",
+        "reward_gold": 1500,
+        "reward_xp": 750
+      },
+      {
+        "id": "quest_16",
+        "type": "explore",
+        "title": "Explore Quest 16",
+        "description": "Complete the explore objective",
+        "reward_gold": 1600,
+        "reward_xp": 800
+      },
+      {
+        "id": "quest_17",
+        "type": "defend",
+        "title": "Defend Quest 17",
+        "description": "Complete the defend objective",
+        "reward_gold": 1700,
+        "reward_xp": 850
+      },
+      {
+        "id": "quest_18",
+        "type": "defend",
+        "title": "Defend Quest 18",
+        "description": "Complete the defend objective",
+        "reward_gold": 1800,
+        "reward_xp": 900
+      },
+      {
+        "id": "quest_19",
+        "type": "defend",
+        "title": "Defend Quest 19",
+        "description": "Complete the defend objective",
+        "reward_gold": 1900,
+        "reward_xp": 950
+      },
+      {
+        "id": "quest_20",
+        "type": "collect",
+        "title": "Collect Quest 20",
+        "description": "Complete the collect objective",
+        "reward_gold": 2000,
+        "reward_xp": 1000
+      },
+      {
+        "id": "quest_21",
+        "type": "kill",
+        "title": "Kill Quest 21",
+        "description": "Complete the kill objective",
+        "reward_gold": 2100,
+        "reward_xp": 1050
+      },
+      {
+        "id": "quest_22",
+        "type": "explore",
+        "title": "Explore Quest 22",
+        "description": "Complete the explore objective",
+        "reward_gold": 2200,
+        "reward_xp": 1100
+      },
+      {
+        "id": "quest_23",
+        "type": "collect",
+        "title": "Collect Quest 23",
+        "description": "Complete the collect objective",
+        "reward_gold": 2300,
+        "reward_xp": 1150
+      },
+      {
+        "id": "quest_24",
+        "type": "escort",
+        "title": "Escort Quest 24",
+        "description": "Complete the escort objective",
+        "reward_gold": 2400,
+        "reward_xp": 1200
+      },
+      {
+        "id": "quest_25",
+        "type": "escort",
+        "title": "Escort Quest 25",
+        "description": "Complete the escort objective",
+        "reward_gold": 2500,
+        "reward_xp": 1250
+      },
+      {
+        "id": "quest_26",
+        "type": "escort",
+        "title": "Escort Quest 26",
+        "description": "Complete the escort objective",
+        "reward_gold": 2600,
+        "reward_xp": 1300
+      },
+      {
+        "id": "quest_27",
+        "type": "kill",
+        "title": "Kill Quest 27",
+        "description": "Complete the kill objective",
+        "reward_gold": 2700,
+        "reward_xp": 1350
+      },
+      {
+        "id": "quest_28",
+        "type": "defend",
+        "title": "Defend Quest 28",
+        "description": "Complete the defend objective",
+        "reward_gold": 2800,
+        "reward_xp": 1400
+      },
+      {
+        "id": "quest_29",
+        "type": "kill",
+        "title": "Kill Quest 29",
+        "description": "Complete the kill objective",
+        "reward_gold": 2900,
+        "reward_xp": 1450
+      },
+      {
+        "id": "quest_30",
+        "type": "kill",
+        "title": "Kill Quest 30",
+        "description": "Complete the kill objective",
+        "reward_gold": 3000,
+        "reward_xp": 1500
+      }
+    ]
+  },
+  "assets_3d": {
+    "characters": [
+      {
+        "id": "char_0",
+        "type": "enemy",
+        "poly_count": 13755,
+        "size_mb": 7.339348783933601
+      },
+      {
+        "id": "char_1",
+        "type": "npc",
+        "poly_count": 7423,
+        "size_mb": 3.1798161706957404
+      },
+      {
+        "id": "char_2",
+        "type": "hero",
+        "poly_count": 5888,
+        "size_mb": 7.167955744684762
+      },
+      {
+        "id": "char_3",
+        "type": "enemy",
+        "poly_count": 10243,
+        "size_mb": 2.6403497316182065
+      },
+      {
+        "id": "char_4",
+        "type": "enemy",
+        "poly_count": 10813,
+        "size_mb": 7.078960755220399
+      },
+      {
+        "id": "char_5",
+        "type": "enemy",
+        "poly_count": 12152,
+        "size_mb": 5.7134607779939195
+      },
+      {
+        "id": "char_6",
+        "type": "hero",
+        "poly_count": 3302,
+        "size_mb": 4.651712659263229
+      },
+      {
+        "id": "char_7",
+        "type": "npc",
+        "poly_count": 5657,
+        "size_mb": 4.935094201715107
+      },
+      {
+        "id": "char_8",
+        "type": "npc",
+        "poly_count": 5980,
+        "size_mb": 6.147990144646952
+      },
+      {
+        "id": "char_9",
+        "type": "npc",
+        "poly_count": 7663,
+        "size_mb": 6.803974907858154
+      },
+      {
+        "id": "char_10",
+        "type": "enemy",
+        "poly_count": 4368,
+        "size_mb": 6.674708197731622
+      },
+      {
+        "id": "char_11",
+        "type": "hero",
+        "poly_count": 7481,
+        "size_mb": 4.59434160032922
+      },
+      {
+        "id": "char_12",
+        "type": "npc",
+        "poly_count": 4920,
+        "size_mb": 2.7682348930037106
+      },
+      {
+        "id": "char_13",
+        "type": "npc",
+        "poly_count": 5355,
+        "size_mb": 2.4700396740216135
+      },
+      {
+        "id": "char_14",
+        "type": "enemy",
+        "poly_count": 5699,
+        "size_mb": 3.68541857377525
+      },
+      {
+        "id": "char_15",
+        "type": "npc",
+        "poly_count": 10277,
+        "size_mb": 5.04337807076446
+      },
+      {
+        "id": "char_16",
+        "type": "enemy",
+        "poly_count": 13292,
+        "size_mb": 6.832590086306284
+      },
+      {
+        "id": "char_17",
+        "type": "npc",
+        "poly_count": 6953,
+        "size_mb": 3.392402477336425
+      },
+      {
+        "id": "char_18",
+        "type": "enemy",
+        "poly_count": 12727,
+        "size_mb": 3.6831528959972726
+      },
+      {
+        "id": "char_19",
+        "type": "npc",
+        "poly_count": 5112,
+        "size_mb": 5.965332801921021
+      }
+    ],
+    "props": [
+      {
+        "id": "prop_0",
+        "type": "item",
+        "poly_count": 1057,
+        "size_mb": 0.9169395284360713
+      },
+      {
+        "id": "prop_1",
+        "type": "furniture",
+        "poly_count": 2991,
+        "size_mb": 1.3598908667148732
+      },
+      {
+        "id": "prop_2",
+        "type": "furniture",
+        "poly_count": 2562,
+        "size_mb": 1.3097625025377073
+      },
+      {
+        "id": "prop_3",
+        "type": "furniture",
+        "poly_count": 2186,
+        "size_mb": 2.6344647572517332
+      },
+      {
+        "id": "prop_4",
+        "type": "weapon",
+        "poly_count": 2901,
+        "size_mb": 1.7211064145367079
+      },
+      {
+        "id": "prop_5",
+        "type": "item",
+        "poly_count": 597,
+        "size_mb": 2.8434890730894677
+      },
+      {
+        "id": "prop_6",
+        "type": "furniture",
+        "poly_count": 1909,
+        "size_mb": 2.3021566727671114
+      },
+      {
+        "id": "prop_7",
+        "type": "weapon",
+        "poly_count": 1888,
+        "size_mb": 2.4827943607345277
+      },
+      {
+        "id": "prop_8",
+        "type": "weapon",
+        "poly_count": 1760,
+        "size_mb": 2.9277993501073927
+      },
+      {
+        "id": "prop_9",
+        "type": "weapon",
+        "poly_count": 909,
+        "size_mb": 2.739776628900611
+      },
+      {
+        "id": "prop_10",
+        "type": "weapon",
+        "poly_count": 1192,
+        "size_mb": 1.1052362501087192
+      },
+      {
+        "id": "prop_11",
+        "type": "weapon",
+        "poly_count": 2791,
+        "size_mb": 1.0858546530692048
+      },
+      {
+        "id": "prop_12",
+        "type": "weapon",
+        "poly_count": 1676,
+        "size_mb": 2.5354579439909926
+      },
+      {
+        "id": "prop_13",
+        "type": "weapon",
+        "poly_count": 2906,
+        "size_mb": 1.8216520328073367
+      },
+      {
+        "id": "prop_14",
+        "type": "furniture",
+        "poly_count": 2930,
+        "size_mb": 0.5241153935104876
+      },
+      {
+        "id": "prop_15",
+        "type": "furniture",
+        "poly_count": 670,
+        "size_mb": 0.5463923391759204
+      },
+      {
+        "id": "prop_16",
+        "type": "weapon",
+        "poly_count": 2468,
+        "size_mb": 1.6956396478373006
+      },
+      {
+        "id": "prop_17",
+        "type": "weapon",
+        "poly_count": 646,
+        "size_mb": 1.05390905156596
+      },
+      {
+        "id": "prop_18",
+        "type": "furniture",
+        "poly_count": 2517,
+        "size_mb": 0.6690592999527751
+      },
+      {
+        "id": "prop_19",
+        "type": "weapon",
+        "poly_count": 1729,
+        "size_mb": 0.5745616921749184
+      },
+      {
+        "id": "prop_20",
+        "type": "weapon",
+        "poly_count": 1836,
+        "size_mb": 2.436168335000666
+      },
+      {
+        "id": "prop_21",
+        "type": "furniture",
+        "poly_count": 2573,
+        "size_mb": 2.257902764708702
+      },
+      {
+        "id": "prop_22",
+        "type": "item",
+        "poly_count": 2356,
+        "size_mb": 2.4860609035753773
+      },
+      {
+        "id": "prop_23",
+        "type": "furniture",
+        "poly_count": 2880,
+        "size_mb": 0.7874719793826175
+      },
+      {
+        "id": "prop_24",
+        "type": "item",
+        "poly_count": 1643,
+        "size_mb": 2.183145086499469
+      },
+      {
+        "id": "prop_25",
+        "type": "furniture",
+        "poly_count": 1758,
+        "size_mb": 1.814169521260026
+      },
+      {
+        "id": "prop_26",
+        "type": "weapon",
+        "poly_count": 2441,
+        "size_mb": 1.7504867198143432
+      },
+      {
+        "id": "prop_27",
+        "type": "furniture",
+        "poly_count": 1232,
+        "size_mb": 2.712379818930591
+      },
+      {
+        "id": "prop_28",
+        "type": "furniture",
+        "poly_count": 1678,
+        "size_mb": 1.1635948454512366
+      },
+      {
+        "id": "prop_29",
+        "type": "furniture",
+        "poly_count": 755,
+        "size_mb": 2.6772558973295455
+      },
+      {
+        "id": "prop_30",
+        "type": "weapon",
+        "poly_count": 641,
+        "size_mb": 0.7207703179779832
+      },
+      {
+        "id": "prop_31",
+        "type": "furniture",
+        "poly_count": 506,
+        "size_mb": 0.5194375979723715
+      },
+      {
+        "id": "prop_32",
+        "type": "furniture",
+        "poly_count": 680,
+        "size_mb": 1.9253730592198608
+      },
+      {
+        "id": "prop_33",
+        "type": "item",
+        "poly_count": 1650,
+        "size_mb": 2.5913483630009293
+      },
+      {
+        "id": "prop_34",
+        "type": "weapon",
+        "poly_count": 539,
+        "size_mb": 0.7275889463930852
+      },
+      {
+        "id": "prop_35",
+        "type": "weapon",
+        "poly_count": 576,
+        "size_mb": 1.0713196056606775
+      },
+      {
+        "id": "prop_36",
+        "type": "furniture",
+        "poly_count": 820,
+        "size_mb": 1.3311752447274872
+      },
+      {
+        "id": "prop_37",
+        "type": "weapon",
+        "poly_count": 2686,
+        "size_mb": 1.578126117664755
+      },
+      {
+        "id": "prop_38",
+        "type": "weapon",
+        "poly_count": 1850,
+        "size_mb": 2.816084314369158
+      },
+      {
+        "id": "prop_39",
+        "type": "furniture",
+        "poly_count": 1911,
+        "size_mb": 1.9537730147353511
+      },
+      {
+        "id": "prop_40",
+        "type": "item",
+        "poly_count": 2947,
+        "size_mb": 1.0561035980120674
+      },
+      {
+        "id": "prop_41",
+        "type": "furniture",
+        "poly_count": 1548,
+        "size_mb": 1.9044743196466183
+      },
+      {
+        "id": "prop_42",
+        "type": "item",
+        "poly_count": 1315,
+        "size_mb": 0.9592100508918215
+      },
+      {
+        "id": "prop_43",
+        "type": "item",
+        "poly_count": 1461,
+        "size_mb": 1.8764028657829859
+      },
+      {
+        "id": "prop_44",
+        "type": "furniture",
+        "poly_count": 967,
+        "size_mb": 2.2435041571655723
+      },
+      {
+        "id": "prop_45",
+        "type": "weapon",
+        "poly_count": 1401,
+        "size_mb": 2.094376347679905
+      },
+      {
+        "id": "prop_46",
+        "type": "item",
+        "poly_count": 847,
+        "size_mb": 1.7621878995743494
+      },
+      {
+        "id": "prop_47",
+        "type": "item",
+        "poly_count": 1363,
+        "size_mb": 1.8991290775728085
+      },
+      {
+        "id": "prop_48",
+        "type": "item",
+        "poly_count": 2142,
+        "size_mb": 1.5858463277904038
+      },
+      {
+        "id": "prop_49",
+        "type": "item",
+        "poly_count": 1322,
+        "size_mb": 0.8229580805640803
+      },
+      {
+        "id": "prop_50",
+        "type": "weapon",
+        "poly_count": 2578,
+        "size_mb": 2.884697020475487
+      },
+      {
+        "id": "prop_51",
+        "type": "furniture",
+        "poly_count": 1305,
+        "size_mb": 1.809744583901797
+      },
+      {
+        "id": "prop_52",
+        "type": "weapon",
+        "poly_count": 2343,
+        "size_mb": 0.9854502135850497
+      },
+      {
+        "id": "prop_53",
+        "type": "item",
+        "poly_count": 2952,
+        "size_mb": 2.372953755478375
+      },
+      {
+        "id": "prop_54",
+        "type": "furniture",
+        "poly_count": 1024,
+        "size_mb": 1.171588376396842
+      },
+      {
+        "id": "prop_55",
+        "type": "furniture",
+        "poly_count": 1864,
+        "size_mb": 2.0557315874862256
+      },
+      {
+        "id": "prop_56",
+        "type": "weapon",
+        "poly_count": 2098,
+        "size_mb": 1.448446551277025
+      },
+      {
+        "id": "prop_57",
+        "type": "weapon",
+        "poly_count": 2130,
+        "size_mb": 2.5887034702972826
+      },
+      {
+        "id": "prop_58",
+        "type": "weapon",
+        "poly_count": 1731,
+        "size_mb": 2.597188545464021
+      },
+      {
+        "id": "prop_59",
+        "type": "weapon",
+        "poly_count": 807,
+        "size_mb": 2.7287481969383487
+      },
+      {
+        "id": "prop_60",
+        "type": "item",
+        "poly_count": 2683,
+        "size_mb": 1.010180311230319
+      },
+      {
+        "id": "prop_61",
+        "type": "furniture",
+        "poly_count": 1394,
+        "size_mb": 1.7249257985930075
+      },
+      {
+        "id": "prop_62",
+        "type": "furniture",
+        "poly_count": 1645,
+        "size_mb": 2.5134272219513725
+      },
+      {
+        "id": "prop_63",
+        "type": "furniture",
+        "poly_count": 572,
+        "size_mb": 1.8485525137251144
+      },
+      {
+        "id": "prop_64",
+        "type": "furniture",
+        "poly_count": 2998,
+        "size_mb": 0.5411269446349266
+      },
+      {
+        "id": "prop_65",
+        "type": "furniture",
+        "poly_count": 867,
+        "size_mb": 2.914386259853956
+      },
+      {
+        "id": "prop_66",
+        "type": "weapon",
+        "poly_count": 1416,
+        "size_mb": 2.898324786792244
+      },
+      {
+        "id": "prop_67",
+        "type": "furniture",
+        "poly_count": 2392,
+        "size_mb": 2.9576580119888267
+      },
+      {
+        "id": "prop_68",
+        "type": "item",
+        "poly_count": 1303,
+        "size_mb": 2.534097030606528
+      },
+      {
+        "id": "prop_69",
+        "type": "furniture",
+        "poly_count": 2281,
+        "size_mb": 1.965025069670167
+      },
+      {
+        "id": "prop_70",
+        "type": "weapon",
+        "poly_count": 2915,
+        "size_mb": 2.5282739363671958
+      },
+      {
+        "id": "prop_71",
+        "type": "item",
+        "poly_count": 1037,
+        "size_mb": 0.8035909917479507
+      },
+      {
+        "id": "prop_72",
+        "type": "item",
+        "poly_count": 1791,
+        "size_mb": 1.8155771046201186
+      },
+      {
+        "id": "prop_73",
+        "type": "weapon",
+        "poly_count": 2096,
+        "size_mb": 2.070303795222663
+      },
+      {
+        "id": "prop_74",
+        "type": "weapon",
+        "poly_count": 531,
+        "size_mb": 2.162995512039952
+      },
+      {
+        "id": "prop_75",
+        "type": "furniture",
+        "poly_count": 1398,
+        "size_mb": 2.175086817713354
+      },
+      {
+        "id": "prop_76",
+        "type": "item",
+        "poly_count": 2244,
+        "size_mb": 2.548504250442556
+      },
+      {
+        "id": "prop_77",
+        "type": "furniture",
+        "poly_count": 2398,
+        "size_mb": 1.5733695623543396
+      },
+      {
+        "id": "prop_78",
+        "type": "weapon",
+        "poly_count": 2496,
+        "size_mb": 0.9696652162351787
+      },
+      {
+        "id": "prop_79",
+        "type": "item",
+        "poly_count": 2442,
+        "size_mb": 0.6049996679577475
+      },
+      {
+        "id": "prop_80",
+        "type": "weapon",
+        "poly_count": 576,
+        "size_mb": 0.6209510758483456
+      },
+      {
+        "id": "prop_81",
+        "type": "item",
+        "poly_count": 1265,
+        "size_mb": 0.8306889290291654
+      },
+      {
+        "id": "prop_82",
+        "type": "item",
+        "poly_count": 2674,
+        "size_mb": 1.1468832375481104
+      },
+      {
+        "id": "prop_83",
+        "type": "weapon",
+        "poly_count": 2293,
+        "size_mb": 1.181971030966579
+      },
+      {
+        "id": "prop_84",
+        "type": "furniture",
+        "poly_count": 1099,
+        "size_mb": 0.7621179160920648
+      },
+      {
+        "id": "prop_85",
+        "type": "weapon",
+        "poly_count": 2475,
+        "size_mb": 1.1665069349851964
+      },
+      {
+        "id": "prop_86",
+        "type": "furniture",
+        "poly_count": 2882,
+        "size_mb": 1.4927833899277414
+      },
+      {
+        "id": "prop_87",
+        "type": "weapon",
+        "poly_count": 1981,
+        "size_mb": 2.4255174320653996
+      },
+      {
+        "id": "prop_88",
+        "type": "furniture",
+        "poly_count": 1722,
+        "size_mb": 1.651782901153178
+      },
+      {
+        "id": "prop_89",
+        "type": "item",
+        "poly_count": 2841,
+        "size_mb": 0.7319750068478446
+      },
+      {
+        "id": "prop_90",
+        "type": "item",
+        "poly_count": 2414,
+        "size_mb": 0.7024309890432117
+      },
+      {
+        "id": "prop_91",
+        "type": "item",
+        "poly_count": 2002,
+        "size_mb": 1.177132449169021
+      },
+      {
+        "id": "prop_92",
+        "type": "item",
+        "poly_count": 961,
+        "size_mb": 1.0249832426238652
+      },
+      {
+        "id": "prop_93",
+        "type": "furniture",
+        "poly_count": 1475,
+        "size_mb": 1.614608468372984
+      },
+      {
+        "id": "prop_94",
+        "type": "weapon",
+        "poly_count": 1518,
+        "size_mb": 1.605026994046416
+      },
+      {
+        "id": "prop_95",
+        "type": "item",
+        "poly_count": 2033,
+        "size_mb": 2.2299194249988634
+      },
+      {
+        "id": "prop_96",
+        "type": "weapon",
+        "poly_count": 1136,
+        "size_mb": 1.500677777261891
+      },
+      {
+        "id": "prop_97",
+        "type": "weapon",
+        "poly_count": 887,
+        "size_mb": 1.0982722882086264
+      },
+      {
+        "id": "prop_98",
+        "type": "item",
+        "poly_count": 708,
+        "size_mb": 2.773094382107446
+      },
+      {
+        "id": "prop_99",
+        "type": "furniture",
+        "poly_count": 1972,
+        "size_mb": 2.9207009047583936
+      }
+    ],
+    "buildings": [
+      {
+        "id": "building_0",
+        "type": "shop",
+        "poly_count": 17967,
+        "size_mb": 7.282298017610451
+      },
+      {
+        "id": "building_1",
+        "type": "tower",
+        "poly_count": 30823,
+        "size_mb": 5.251333339072535
+      },
+      {
+        "id": "building_2",
+        "type": "house",
+        "poly_count": 12943,
+        "size_mb": 14.708684837313049
+      },
+      {
+        "id": "building_3",
+        "type": "shop",
+        "poly_count": 17055,
+        "size_mb": 17.488157480793916
+      },
+      {
+        "id": "building_4",
+        "type": "tower",
+        "poly_count": 34852,
+        "size_mb": 17.604947550034872
+      },
+      {
+        "id": "building_5",
+        "type": "house",
+        "poly_count": 15014,
+        "size_mb": 16.543204560314777
+      },
+      {
+        "id": "building_6",
+        "type": "shop",
+        "poly_count": 41928,
+        "size_mb": 10.359036948811585
+      },
+      {
+        "id": "building_7",
+        "type": "tower",
+        "poly_count": 16597,
+        "size_mb": 15.033145007204388
+      },
+      {
+        "id": "building_8",
+        "type": "shop",
+        "poly_count": 25854,
+        "size_mb": 13.61193302330596
+      },
+      {
+        "id": "building_9",
+        "type": "house",
+        "poly_count": 21464,
+        "size_mb": 13.443682894840947
+      }
+    ],
+    "total_poly_count": 0
+  },
+  "textures": {
+    "textures": [
+      {
+        "id": "tex_0",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 3.8949529399689435
+      },
+      {
+        "id": "tex_1",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 5.513148062968929
+      },
+      {
+        "id": "tex_2",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 11.865082791594997
+      },
+      {
+        "id": "tex_3",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 2.349695744114067
+      },
+      {
+        "id": "tex_4",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 3.3581230377945195
+      },
+      {
+        "id": "tex_5",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 14.41615146610451
+      },
+      {
+        "id": "tex_6",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 3.279261997657185
+      },
+      {
+        "id": "tex_7",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 5.184539737059814
+      },
+      {
+        "id": "tex_8",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 10.432661800537558
+      },
+      {
+        "id": "tex_9",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 2.4146802215408956
+      },
+      {
+        "id": "tex_10",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 11.008730783141758
+      },
+      {
+        "id": "tex_11",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 10.622009230203052
+      },
+      {
+        "id": "tex_12",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 13.113424995312087
+      },
+      {
+        "id": "tex_13",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 9.109729643609576
+      },
+      {
+        "id": "tex_14",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 8.448822143620536
+      },
+      {
+        "id": "tex_15",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 4.6518576377308225
+      },
+      {
+        "id": "tex_16",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 14.075161116273941
+      },
+      {
+        "id": "tex_17",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 8.19508305669574
+      },
+      {
+        "id": "tex_18",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 4.724507417371013
+      },
+      {
+        "id": "tex_19",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 4.118675546109211
+      },
+      {
+        "id": "tex_20",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 2.8075990648674707
+      },
+      {
+        "id": "tex_21",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 14.410263891719373
+      },
+      {
+        "id": "tex_22",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 2.481597355343857
+      },
+      {
+        "id": "tex_23",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 4.57597388394496
+      },
+      {
+        "id": "tex_24",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 9.578670047708208
+      },
+      {
+        "id": "tex_25",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 8.031817769087356
+      },
+      {
+        "id": "tex_26",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 15.47786367573259
+      },
+      {
+        "id": "tex_27",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 2.6917729540001085
+      },
+      {
+        "id": "tex_28",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 9.786065852468628
+      },
+      {
+        "id": "tex_29",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 7.808563704656501
+      },
+      {
+        "id": "tex_30",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 15.329565499949211
+      },
+      {
+        "id": "tex_31",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 11.255424976828259
+      },
+      {
+        "id": "tex_32",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 9.011038863189377
+      },
+      {
+        "id": "tex_33",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 5.924982192486907
+      },
+      {
+        "id": "tex_34",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 15.893589012824382
+      },
+      {
+        "id": "tex_35",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 14.92042117496679
+      },
+      {
+        "id": "tex_36",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 4.205710546521489
+      },
+      {
+        "id": "tex_37",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 8.47994763605399
+      },
+      {
+        "id": "tex_38",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 8.821123907690236
+      },
+      {
+        "id": "tex_39",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 3.749952364536607
+      },
+      {
+        "id": "tex_40",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 9.487834273068284
+      },
+      {
+        "id": "tex_41",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 12.585669571435366
+      },
+      {
+        "id": "tex_42",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 13.001172611212008
+      },
+      {
+        "id": "tex_43",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 12.423043587396869
+      },
+      {
+        "id": "tex_44",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 13.03813795982392
+      },
+      {
+        "id": "tex_45",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 9.93751700066315
+      },
+      {
+        "id": "tex_46",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 13.790745609205596
+      },
+      {
+        "id": "tex_47",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 11.203617120380756
+      },
+      {
+        "id": "tex_48",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 4.388011816304234
+      },
+      {
+        "id": "tex_49",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 10.119985906437478
+      },
+      {
+        "id": "tex_50",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 8.440981318571382
+      },
+      {
+        "id": "tex_51",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 9.370228009780856
+      },
+      {
+        "id": "tex_52",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 3.9117463384412274
+      },
+      {
+        "id": "tex_53",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 8.168728566359517
+      },
+      {
+        "id": "tex_54",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 9.618302628581787
+      },
+      {
+        "id": "tex_55",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 4.257633887322928
+      },
+      {
+        "id": "tex_56",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 8.291633349029798
+      },
+      {
+        "id": "tex_57",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 5.1430630468365806
+      },
+      {
+        "id": "tex_58",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 10.520294608641162
+      },
+      {
+        "id": "tex_59",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 4.475194938323867
+      },
+      {
+        "id": "tex_60",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 4.18828648193592
+      },
+      {
+        "id": "tex_61",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 11.604363904323346
+      },
+      {
+        "id": "tex_62",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 2.676955297246038
+      },
+      {
+        "id": "tex_63",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 8.32823372837558
+      },
+      {
+        "id": "tex_64",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 6.516736181496939
+      },
+      {
+        "id": "tex_65",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 14.21315089851755
+      },
+      {
+        "id": "tex_66",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 6.1370955453452165
+      },
+      {
+        "id": "tex_67",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 10.221853691060407
+      },
+      {
+        "id": "tex_68",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 13.899306907560481
+      },
+      {
+        "id": "tex_69",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 3.84525741756306
+      },
+      {
+        "id": "tex_70",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 14.151294957510059
+      },
+      {
+        "id": "tex_71",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 9.618563992550829
+      },
+      {
+        "id": "tex_72",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 12.35528829768481
+      },
+      {
+        "id": "tex_73",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 12.406947566525854
+      },
+      {
+        "id": "tex_74",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 8.316395460863186
+      },
+      {
+        "id": "tex_75",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 10.2109810241051
+      },
+      {
+        "id": "tex_76",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 11.586286881560456
+      },
+      {
+        "id": "tex_77",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 14.160244656384608
+      },
+      {
+        "id": "tex_78",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 5.3939046012560805
+      },
+      {
+        "id": "tex_79",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 13.139118847236494
+      },
+      {
+        "id": "tex_80",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 3.6941482151301877
+      },
+      {
+        "id": "tex_81",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 13.597084889166753
+      },
+      {
+        "id": "tex_82",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 8.104777678733846
+      },
+      {
+        "id": "tex_83",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 11.445501321578655
+      },
+      {
+        "id": "tex_84",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 2.523201825272019
+      },
+      {
+        "id": "tex_85",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 5.765657784361753
+      },
+      {
+        "id": "tex_86",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 11.161875352002019
+      },
+      {
+        "id": "tex_87",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 13.213638224163224
+      },
+      {
+        "id": "tex_88",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 13.483312311005985
+      },
+      {
+        "id": "tex_89",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 11.508392010973537
+      },
+      {
+        "id": "tex_90",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 13.115727753610036
+      },
+      {
+        "id": "tex_91",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 10.398920514327461
+      },
+      {
+        "id": "tex_92",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 5.012320833813384
+      },
+      {
+        "id": "tex_93",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 2.605699468719432
+      },
+      {
+        "id": "tex_94",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 7.209401679190816
+      },
+      {
+        "id": "tex_95",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 9.051298041455262
+      },
+      {
+        "id": "tex_96",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 10.260402834174332
+      },
+      {
+        "id": "tex_97",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 3.6021030682585002
+      },
+      {
+        "id": "tex_98",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 3.443390812015492
+      },
+      {
+        "id": "tex_99",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 2.206404933312382
+      },
+      {
+        "id": "tex_100",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 14.10852968982672
+      },
+      {
+        "id": "tex_101",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 13.02670569561285
+      },
+      {
+        "id": "tex_102",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 9.38438121650082
+      },
+      {
+        "id": "tex_103",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 15.252612678089047
+      },
+      {
+        "id": "tex_104",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 7.521854789370372
+      },
+      {
+        "id": "tex_105",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 13.54202762974846
+      },
+      {
+        "id": "tex_106",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 12.517847320995413
+      },
+      {
+        "id": "tex_107",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 5.423224719940457
+      },
+      {
+        "id": "tex_108",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 4.320233468213213
+      },
+      {
+        "id": "tex_109",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 4.977531771147341
+      },
+      {
+        "id": "tex_110",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 8.406462019717207
+      },
+      {
+        "id": "tex_111",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 6.5248654173389316
+      },
+      {
+        "id": "tex_112",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 13.574466163179526
+      },
+      {
+        "id": "tex_113",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 5.263143384155006
+      },
+      {
+        "id": "tex_114",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 14.753275000850422
+      },
+      {
+        "id": "tex_115",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 2.4847280349727088
+      },
+      {
+        "id": "tex_116",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 3.660056179337503
+      },
+      {
+        "id": "tex_117",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 12.691664278671787
+      },
+      {
+        "id": "tex_118",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 7.403609355308541
+      },
+      {
+        "id": "tex_119",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 7.565011656510254
+      },
+      {
+        "id": "tex_120",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 5.70492488127058
+      },
+      {
+        "id": "tex_121",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 14.226461963667816
+      },
+      {
+        "id": "tex_122",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 4.379248774077606
+      },
+      {
+        "id": "tex_123",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 9.04225744479809
+      },
+      {
+        "id": "tex_124",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 7.26820271988674
+      },
+      {
+        "id": "tex_125",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 11.876307755820301
+      },
+      {
+        "id": "tex_126",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 3.581428990600527
+      },
+      {
+        "id": "tex_127",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 7.109687348635038
+      },
+      {
+        "id": "tex_128",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 2.5729419900078874
+      },
+      {
+        "id": "tex_129",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 5.954471766131851
+      },
+      {
+        "id": "tex_130",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 14.750383249885616
+      },
+      {
+        "id": "tex_131",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 8.358912120066298
+      },
+      {
+        "id": "tex_132",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 7.554297432243516
+      },
+      {
+        "id": "tex_133",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 8.188768162546534
+      },
+      {
+        "id": "tex_134",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 9.856287411079911
+      },
+      {
+        "id": "tex_135",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 15.080086471814745
+      },
+      {
+        "id": "tex_136",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 12.719621130728196
+      },
+      {
+        "id": "tex_137",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 13.171710165437993
+      },
+      {
+        "id": "tex_138",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 9.849920607850244
+      },
+      {
+        "id": "tex_139",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 3.0496166764136428
+      },
+      {
+        "id": "tex_140",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 7.379909961563215
+      },
+      {
+        "id": "tex_141",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 5.926643470386373
+      },
+      {
+        "id": "tex_142",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 6.684218255606227
+      },
+      {
+        "id": "tex_143",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 14.863066060342861
+      },
+      {
+        "id": "tex_144",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 13.617201626475447
+      },
+      {
+        "id": "tex_145",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 15.072148945981173
+      },
+      {
+        "id": "tex_146",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 2.9877904372932202
+      },
+      {
+        "id": "tex_147",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 12.32547160987181
+      },
+      {
+        "id": "tex_148",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 5.112068387183363
+      },
+      {
+        "id": "tex_149",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 12.41555465109407
+      },
+      {
+        "id": "tex_150",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 3.4544074648301786
+      },
+      {
+        "id": "tex_151",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 15.254524509067279
+      },
+      {
+        "id": "tex_152",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 14.776177482919916
+      },
+      {
+        "id": "tex_153",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 6.788320410613496
+      },
+      {
+        "id": "tex_154",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 10.306610872535023
+      },
+      {
+        "id": "tex_155",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 9.738304287788853
+      },
+      {
+        "id": "tex_156",
+        "type": "specular",
+        "resolution": "2048x2048",
+        "size_mb": 10.669280893274872
+      },
+      {
+        "id": "tex_157",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 15.996785550457973
+      },
+      {
+        "id": "tex_158",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 10.747192561596052
+      },
+      {
+        "id": "tex_159",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 13.3959854371171
+      },
+      {
+        "id": "tex_160",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 9.04934324975892
+      },
+      {
+        "id": "tex_161",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 8.191343226686087
+      },
+      {
+        "id": "tex_162",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 2.383794209725627
+      },
+      {
+        "id": "tex_163",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 9.873481216210948
+      },
+      {
+        "id": "tex_164",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 2.4388361392450646
+      },
+      {
+        "id": "tex_165",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 13.34853650956434
+      },
+      {
+        "id": "tex_166",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 4.493755248151267
+      },
+      {
+        "id": "tex_167",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 4.076706174662249
+      },
+      {
+        "id": "tex_168",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 10.31264317674169
+      },
+      {
+        "id": "tex_169",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 6.949073909123466
+      },
+      {
+        "id": "tex_170",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 13.598585292044472
+      },
+      {
+        "id": "tex_171",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 3.808695915039896
+      },
+      {
+        "id": "tex_172",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 7.491780781799122
+      },
+      {
+        "id": "tex_173",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 4.749912613806582
+      },
+      {
+        "id": "tex_174",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 11.392567200005892
+      },
+      {
+        "id": "tex_175",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 2.58109202035088
+      },
+      {
+        "id": "tex_176",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 2.3966795332574637
+      },
+      {
+        "id": "tex_177",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 8.819507727129064
+      },
+      {
+        "id": "tex_178",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 11.855306123795586
+      },
+      {
+        "id": "tex_179",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 11.271578638591564
+      },
+      {
+        "id": "tex_180",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 5.519591011187249
+      },
+      {
+        "id": "tex_181",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 11.817846467977514
+      },
+      {
+        "id": "tex_182",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 13.206306562268415
+      },
+      {
+        "id": "tex_183",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 4.694677694158503
+      },
+      {
+        "id": "tex_184",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 7.37657531387578
+      },
+      {
+        "id": "tex_185",
+        "type": "ao",
+        "resolution": "2048x2048",
+        "size_mb": 8.059345302690325
+      },
+      {
+        "id": "tex_186",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 4.146021673763971
+      },
+      {
+        "id": "tex_187",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 2.361034787251577
+      },
+      {
+        "id": "tex_188",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 8.662195328144703
+      },
+      {
+        "id": "tex_189",
+        "type": "diffuse",
+        "resolution": "1024x1024",
+        "size_mb": 4.38570552350296
+      },
+      {
+        "id": "tex_190",
+        "type": "diffuse",
+        "resolution": "2048x2048",
+        "size_mb": 11.604613909962325
+      },
+      {
+        "id": "tex_191",
+        "type": "normal",
+        "resolution": "1024x1024",
+        "size_mb": 2.8197102655338613
+      },
+      {
+        "id": "tex_192",
+        "type": "specular",
+        "resolution": "1024x1024",
+        "size_mb": 2.0938212834478533
+      },
+      {
+        "id": "tex_193",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 9.115881041883974
+      },
+      {
+        "id": "tex_194",
+        "type": "normal",
+        "resolution": "4096x4096",
+        "size_mb": 11.344988334005635
+      },
+      {
+        "id": "tex_195",
+        "type": "diffuse",
+        "resolution": "4096x4096",
+        "size_mb": 5.6551329920119
+      },
+      {
+        "id": "tex_196",
+        "type": "ao",
+        "resolution": "1024x1024",
+        "size_mb": 5.166008022848789
+      },
+      {
+        "id": "tex_197",
+        "type": "normal",
+        "resolution": "2048x2048",
+        "size_mb": 15.132603126149526
+      },
+      {
+        "id": "tex_198",
+        "type": "ao",
+        "resolution": "4096x4096",
+        "size_mb": 6.355816903018881
+      },
+      {
+        "id": "tex_199",
+        "type": "specular",
+        "resolution": "4096x4096",
+        "size_mb": 11.672648658244928
+      }
+    ],
+    "total_count": 200
+  },
+  "animations": {
+    "animations": [
+      {
+        "character_id": "char_0",
+        "animation": "idle",
+        "duration_sec": 1.9241923770490692,
+        "fps": 30
+      },
+      {
+        "character_id": "char_0",
+        "animation": "walk",
+        "duration_sec": 1.3853728417805202,
+        "fps": 30
+      },
+      {
+        "character_id": "char_0",
+        "animation": "run",
+        "duration_sec": 1.156586361476236,
+        "fps": 30
+      },
+      {
+        "character_id": "char_0",
+        "animation": "jump",
+        "duration_sec": 2.3565042228487614,
+        "fps": 30
+      },
+      {
+        "character_id": "char_0",
+        "animation": "attack",
+        "duration_sec": 2.8881350447401375,
+        "fps": 30
+      },
+      {
+        "character_id": "char_0",
+        "animation": "die",
+        "duration_sec": 0.678305271537893,
+        "fps": 30
+      },
+      {
+        "character_id": "char_1",
+        "animation": "idle",
+        "duration_sec": 2.2484478565138835,
+        "fps": 30
+      },
+      {
+        "character_id": "char_1",
+        "animation": "walk",
+        "duration_sec": 2.4648849545476015,
+        "fps": 30
+      },
+      {
+        "character_id": "char_1",
+        "animation": "run",
+        "duration_sec": 1.584892773787338,
+        "fps": 30
+      },
+      {
+        "character_id": "char_1",
+        "animation": "jump",
+        "duration_sec": 1.246134065414045,
+        "fps": 30
+      },
+      {
+        "character_id": "char_1",
+        "animation": "attack",
+        "duration_sec": 1.6319997341515329,
+        "fps": 30
+      },
+      {
+        "character_id": "char_1",
+        "animation": "die",
+        "duration_sec": 1.9322074115416847,
+        "fps": 30
+      },
+      {
+        "character_id": "char_2",
+        "animation": "idle",
+        "duration_sec": 0.9680738400851131,
+        "fps": 30
+      },
+      {
+        "character_id": "char_2",
+        "animation": "walk",
+        "duration_sec": 2.767206748388938,
+        "fps": 30
+      },
+      {
+        "character_id": "char_2",
+        "animation": "run",
+        "duration_sec": 2.814962072805443,
+        "fps": 30
+      },
+      {
+        "character_id": "char_2",
+        "animation": "jump",
+        "duration_sec": 1.6004288060246763,
+        "fps": 30
+      },
+      {
+        "character_id": "char_2",
+        "animation": "attack",
+        "duration_sec": 1.2959578700189867,
+        "fps": 30
+      },
+      {
+        "character_id": "char_2",
+        "animation": "die",
+        "duration_sec": 0.576481384089929,
+        "fps": 30
+      },
+      {
+        "character_id": "char_3",
+        "animation": "idle",
+        "duration_sec": 0.6120116247145142,
+        "fps": 30
+      },
+      {
+        "character_id": "char_3",
+        "animation": "walk",
+        "duration_sec": 1.0482281248742034,
+        "fps": 30
+      },
+      {
+        "character_id": "char_3",
+        "animation": "run",
+        "duration_sec": 1.9551553244624957,
+        "fps": 30
+      },
+      {
+        "character_id": "char_3",
+        "animation": "jump",
+        "duration_sec": 0.6172126196034845,
+        "fps": 30
+      },
+      {
+        "character_id": "char_3",
+        "animation": "attack",
+        "duration_sec": 2.4880901175811774,
+        "fps": 30
+      },
+      {
+        "character_id": "char_3",
+        "animation": "die",
+        "duration_sec": 1.781902179528835,
+        "fps": 30
+      },
+      {
+        "character_id": "char_4",
+        "animation": "idle",
+        "duration_sec": 1.8577992018703915,
+        "fps": 30
+      },
+      {
+        "character_id": "char_4",
+        "animation": "walk",
+        "duration_sec": 1.9329976866676628,
+        "fps": 30
+      },
+      {
+        "character_id": "char_4",
+        "animation": "run",
+        "duration_sec": 2.8057101811491507,
+        "fps": 30
+      },
+      {
+        "character_id": "char_4",
+        "animation": "jump",
+        "duration_sec": 2.1985415628115628,
+        "fps": 30
+      },
+      {
+        "character_id": "char_4",
+        "animation": "attack",
+        "duration_sec": 1.4170716693513765,
+        "fps": 30
+      },
+      {
+        "character_id": "char_4",
+        "animation": "die",
+        "duration_sec": 1.0401437532633622,
+        "fps": 30
+      },
+      {
+        "character_id": "char_5",
+        "animation": "idle",
+        "duration_sec": 1.1815262519574943,
+        "fps": 30
+      },
+      {
+        "character_id": "char_5",
+        "animation": "walk",
+        "duration_sec": 0.6559116426462254,
+        "fps": 30
+      },
+      {
+        "character_id": "char_5",
+        "animation": "run",
+        "duration_sec": 2.050909120728681,
+        "fps": 30
+      },
+      {
+        "character_id": "char_5",
+        "animation": "jump",
+        "duration_sec": 0.743942308216018,
+        "fps": 30
+      },
+      {
+        "character_id": "char_5",
+        "animation": "attack",
+        "duration_sec": 2.6699302454091014,
+        "fps": 30
+      },
+      {
+        "character_id": "char_5",
+        "animation": "die",
+        "duration_sec": 1.4657294839768202,
+        "fps": 30
+      },
+      {
+        "character_id": "char_6",
+        "animation": "idle",
+        "duration_sec": 0.9732214424308673,
+        "fps": 30
+      },
+      {
+        "character_id": "char_6",
+        "animation": "walk",
+        "duration_sec": 1.6489838687768927,
+        "fps": 30
+      },
+      {
+        "character_id": "char_6",
+        "animation": "run",
+        "duration_sec": 2.5916128372765086,
+        "fps": 30
+      },
+      {
+        "character_id": "char_6",
+        "animation": "jump",
+        "duration_sec": 1.08907294903105,
+        "fps": 30
+      },
+      {
+        "character_id": "char_6",
+        "animation": "attack",
+        "duration_sec": 1.1099829779511465,
+        "fps": 30
+      },
+      {
+        "character_id": "char_6",
+        "animation": "die",
+        "duration_sec": 0.9321778959212328,
+        "fps": 30
+      },
+      {
+        "character_id": "char_7",
+        "animation": "idle",
+        "duration_sec": 2.105943084515141,
+        "fps": 30
+      },
+      {
+        "character_id": "char_7",
+        "animation": "walk",
+        "duration_sec": 1.1662967150597456,
+        "fps": 30
+      },
+      {
+        "character_id": "char_7",
+        "animation": "run",
+        "duration_sec": 2.14402825076248,
+        "fps": 30
+      },
+      {
+        "character_id": "char_7",
+        "animation": "jump",
+        "duration_sec": 1.7789589621088335,
+        "fps": 30
+      },
+      {
+        "character_id": "char_7",
+        "animation": "attack",
+        "duration_sec": 1.551903904682955,
+        "fps": 30
+      },
+      {
+        "character_id": "char_7",
+        "animation": "die",
+        "duration_sec": 2.364441173854397,
+        "fps": 30
+      },
+      {
+        "character_id": "char_8",
+        "animation": "idle",
+        "duration_sec": 1.8646159135303393,
+        "fps": 30
+      },
+      {
+        "character_id": "char_8",
+        "animation": "walk",
+        "duration_sec": 2.887011491160243,
+        "fps": 30
+      },
+      {
+        "character_id": "char_8",
+        "animation": "run",
+        "duration_sec": 2.7747956894491947,
+        "fps": 30
+      },
+      {
+        "character_id": "char_8",
+        "animation": "jump",
+        "duration_sec": 1.1119138909483015,
+        "fps": 30
+      },
+      {
+        "character_id": "char_8",
+        "animation": "attack",
+        "duration_sec": 2.9714405643833874,
+        "fps": 30
+      },
+      {
+        "character_id": "char_8",
+        "animation": "die",
+        "duration_sec": 0.6728857363061631,
+        "fps": 30
+      },
+      {
+        "character_id": "char_9",
+        "animation": "idle",
+        "duration_sec": 1.1038456348661683,
+        "fps": 30
+      },
+      {
+        "character_id": "char_9",
+        "animation": "walk",
+        "duration_sec": 2.3168728068559874,
+        "fps": 30
+      },
+      {
+        "character_id": "char_9",
+        "animation": "run",
+        "duration_sec": 0.765279887894942,
+        "fps": 30
+      },
+      {
+        "character_id": "char_9",
+        "animation": "jump",
+        "duration_sec": 1.5267152086646283,
+        "fps": 30
+      },
+      {
+        "character_id": "char_9",
+        "animation": "attack",
+        "duration_sec": 2.959579418288408,
+        "fps": 30
+      },
+      {
+        "character_id": "char_9",
+        "animation": "die",
+        "duration_sec": 2.083957491048893,
+        "fps": 30
+      },
+      {
+        "character_id": "char_10",
+        "animation": "idle",
+        "duration_sec": 1.9871946718487998,
+        "fps": 30
+      },
+      {
+        "character_id": "char_10",
+        "animation": "walk",
+        "duration_sec": 0.8778520584803585,
+        "fps": 30
+      },
+      {
+        "character_id": "char_10",
+        "animation": "run",
+        "duration_sec": 1.8227441247115408,
+        "fps": 30
+      },
+      {
+        "character_id": "char_10",
+        "animation": "jump",
+        "duration_sec": 2.218538004988458,
+        "fps": 30
+      },
+      {
+        "character_id": "char_10",
+        "animation": "attack",
+        "duration_sec": 2.109017106541538,
+        "fps": 30
+      },
+      {
+        "character_id": "char_10",
+        "animation": "die",
+        "duration_sec": 2.378702078918253,
+        "fps": 30
+      },
+      {
+        "character_id": "char_11",
+        "animation": "idle",
+        "duration_sec": 1.123262239648486,
+        "fps": 30
+      },
+      {
+        "character_id": "char_11",
+        "animation": "walk",
+        "duration_sec": 1.1663679669791536,
+        "fps": 30
+      },
+      {
+        "character_id": "char_11",
+        "animation": "run",
+        "duration_sec": 2.1809238881674355,
+        "fps": 30
+      },
+      {
+        "character_id": "char_11",
+        "animation": "jump",
+        "duration_sec": 1.9337769107880505,
+        "fps": 30
+      },
+      {
+        "character_id": "char_11",
+        "animation": "attack",
+        "duration_sec": 2.7095699618081897,
+        "fps": 30
+      },
+      {
+        "character_id": "char_11",
+        "animation": "die",
+        "duration_sec": 2.0633592299294246,
+        "fps": 30
+      },
+      {
+        "character_id": "char_12",
+        "animation": "idle",
+        "duration_sec": 2.575814914419644,
+        "fps": 30
+      },
+      {
+        "character_id": "char_12",
+        "animation": "walk",
+        "duration_sec": 0.9175382766855631,
+        "fps": 30
+      },
+      {
+        "character_id": "char_12",
+        "animation": "run",
+        "duration_sec": 0.7644225510100495,
+        "fps": 30
+      },
+      {
+        "character_id": "char_12",
+        "animation": "jump",
+        "duration_sec": 2.6941998980476503,
+        "fps": 30
+      },
+      {
+        "character_id": "char_12",
+        "animation": "attack",
+        "duration_sec": 2.0132750634439445,
+        "fps": 30
+      },
+      {
+        "character_id": "char_12",
+        "animation": "die",
+        "duration_sec": 1.5300606216153434,
+        "fps": 30
+      },
+      {
+        "character_id": "char_13",
+        "animation": "idle",
+        "duration_sec": 1.345768223924921,
+        "fps": 30
+      },
+      {
+        "character_id": "char_13",
+        "animation": "walk",
+        "duration_sec": 1.8397349419960158,
+        "fps": 30
+      },
+      {
+        "character_id": "char_13",
+        "animation": "run",
+        "duration_sec": 1.1112057983110295,
+        "fps": 30
+      },
+      {
+        "character_id": "char_13",
+        "animation": "jump",
+        "duration_sec": 1.0008205565278625,
+        "fps": 30
+      },
+      {
+        "character_id": "char_13",
+        "animation": "attack",
+        "duration_sec": 2.8514186922155114,
+        "fps": 30
+      },
+      {
+        "character_id": "char_13",
+        "animation": "die",
+        "duration_sec": 0.6302808765421609,
+        "fps": 30
+      },
+      {
+        "character_id": "char_14",
+        "animation": "idle",
+        "duration_sec": 0.7467392569646696,
+        "fps": 30
+      },
+      {
+        "character_id": "char_14",
+        "animation": "walk",
+        "duration_sec": 2.4541071683642723,
+        "fps": 30
+      },
+      {
+        "character_id": "char_14",
+        "animation": "run",
+        "duration_sec": 0.954475663886432,
+        "fps": 30
+      },
+      {
+        "character_id": "char_14",
+        "animation": "jump",
+        "duration_sec": 2.5936831619965686,
+        "fps": 30
+      },
+      {
+        "character_id": "char_14",
+        "animation": "attack",
+        "duration_sec": 0.9846486227935622,
+        "fps": 30
+      },
+      {
+        "character_id": "char_14",
+        "animation": "die",
+        "duration_sec": 1.7711642429820906,
+        "fps": 30
+      },
+      {
+        "character_id": "char_15",
+        "animation": "idle",
+        "duration_sec": 1.667019269807732,
+        "fps": 30
+      },
+      {
+        "character_id": "char_15",
+        "animation": "walk",
+        "duration_sec": 1.6537614949935127,
+        "fps": 30
+      },
+      {
+        "character_id": "char_15",
+        "animation": "run",
+        "duration_sec": 2.2213271700338626,
+        "fps": 30
+      },
+      {
+        "character_id": "char_15",
+        "animation": "jump",
+        "duration_sec": 1.6328770021893555,
+        "fps": 30
+      },
+      {
+        "character_id": "char_15",
+        "animation": "attack",
+        "duration_sec": 2.710686306454689,
+        "fps": 30
+      },
+      {
+        "character_id": "char_15",
+        "animation": "die",
+        "duration_sec": 0.884593315296192,
+        "fps": 30
+      },
+      {
+        "character_id": "char_16",
+        "animation": "idle",
+        "duration_sec": 0.8844483229417108,
+        "fps": 30
+      },
+      {
+        "character_id": "char_16",
+        "animation": "walk",
+        "duration_sec": 2.001571400602422,
+        "fps": 30
+      },
+      {
+        "character_id": "char_16",
+        "animation": "run",
+        "duration_sec": 1.3060886485967935,
+        "fps": 30
+      },
+      {
+        "character_id": "char_16",
+        "animation": "jump",
+        "duration_sec": 0.9751812497199676,
+        "fps": 30
+      },
+      {
+        "character_id": "char_16",
+        "animation": "attack",
+        "duration_sec": 2.9150691913026474,
+        "fps": 30
+      },
+      {
+        "character_id": "char_16",
+        "animation": "die",
+        "duration_sec": 1.9378287545624722,
+        "fps": 30
+      },
+      {
+        "character_id": "char_17",
+        "animation": "idle",
+        "duration_sec": 1.59947252450513,
+        "fps": 30
+      },
+      {
+        "character_id": "char_17",
+        "animation": "walk",
+        "duration_sec": 2.3628570187069706,
+        "fps": 30
+      },
+      {
+        "character_id": "char_17",
+        "animation": "run",
+        "duration_sec": 0.7531595792545158,
+        "fps": 30
+      },
+      {
+        "character_id": "char_17",
+        "animation": "jump",
+        "duration_sec": 0.9355349134598072,
+        "fps": 30
+      },
+      {
+        "character_id": "char_17",
+        "animation": "attack",
+        "duration_sec": 2.0243031156545648,
+        "fps": 30
+      },
+      {
+        "character_id": "char_17",
+        "animation": "die",
+        "duration_sec": 1.948467502072416,
+        "fps": 30
+      },
+      {
+        "character_id": "char_18",
+        "animation": "idle",
+        "duration_sec": 1.482406469507323,
+        "fps": 30
+      },
+      {
+        "character_id": "char_18",
+        "animation": "walk",
+        "duration_sec": 2.3612879269336684,
+        "fps": 30
+      },
+      {
+        "character_id": "char_18",
+        "animation": "run",
+        "duration_sec": 2.0060544910455054,
+        "fps": 30
+      },
+      {
+        "character_id": "char_18",
+        "animation": "jump",
+        "duration_sec": 1.4617836456840003,
+        "fps": 30
+      },
+      {
+        "character_id": "char_18",
+        "animation": "attack",
+        "duration_sec": 1.7070464515280588,
+        "fps": 30
+      },
+      {
+        "character_id": "char_18",
+        "animation": "die",
+        "duration_sec": 0.5374747164270406,
+        "fps": 30
+      },
+      {
+        "character_id": "char_19",
+        "animation": "idle",
+        "duration_sec": 2.478550961943073,
+        "fps": 30
+      },
+      {
+        "character_id": "char_19",
+        "animation": "walk",
+        "duration_sec": 2.4285748633662165,
+        "fps": 30
+      },
+      {
+        "character_id": "char_19",
+        "animation": "run",
+        "duration_sec": 1.6121686304476834,
+        "fps": 30
+      },
+      {
+        "character_id": "char_19",
+        "animation": "jump",
+        "duration_sec": 2.8872440634029286,
+        "fps": 30
+      },
+      {
+        "character_id": "char_19",
+        "animation": "attack",
+        "duration_sec": 0.7632417694599065,
+        "fps": 30
+      },
+      {
+        "character_id": "char_19",
+        "animation": "die",
+        "duration_sec": 1.4560683183488063,
+        "fps": 30
+      }
+    ],
+    "total_count": 120
+  },
+  "audio": {
+    "music_tracks": [
+      {
+        "id": "music_0",
+        "type": "battle",
+        "duration_sec": 83,
+        "size_mb": 5.538876424382773
+      },
+      {
+        "id": "music_1",
+        "type": "ambient",
+        "duration_sec": 122,
+        "size_mb": 3.1493936229002384
+      },
+      {
+        "id": "music_2",
+        "type": "ambient",
+        "duration_sec": 79,
+        "size_mb": 4.1344952824481
+      }
+    ],
+    "sound_effects": [
+      {
+        "id": "sfx_0",
+        "type": "ambient",
+        "duration_sec": 1.1336018413912108,
+        "size_mb": 0.21005240980703654
+      },
+      {
+        "id": "sfx_1",
+        "type": "footstep",
+        "duration_sec": 1.8252852075742512,
+        "size_mb": 0.4042225112365878
+      },
+      {
+        "id": "sfx_2",
+        "type": "ui",
+        "duration_sec": 1.076950957896276,
+        "size_mb": 0.16367530140984804
+      },
+      {
+        "id": "sfx_3",
+        "type": "footstep",
+        "duration_sec": 1.1915481943863087,
+        "size_mb": 0.1382739889170501
+      },
+      {
+        "id": "sfx_4",
+        "type": "ambient",
+        "duration_sec": 0.9760941062255297,
+        "size_mb": 0.15968566855807215
+      },
+      {
+        "id": "sfx_5",
+        "type": "weapon",
+        "duration_sec": 1.8358856197848334,
+        "size_mb": 0.14538530019974114
+      },
+      {
+        "id": "sfx_6",
+        "type": "ui",
+        "duration_sec": 0.7751480799247097,
+        "size_mb": 0.23502340141326844
+      },
+      {
+        "id": "sfx_7",
+        "type": "ui",
+        "duration_sec": 1.3640542318020785,
+        "size_mb": 0.42528675891781187
+      },
+      {
+        "id": "sfx_8",
+        "type": "footstep",
+        "duration_sec": 1.026307985393231,
+        "size_mb": 0.267318031933631
+      },
+      {
+        "id": "sfx_9",
+        "type": "weapon",
+        "duration_sec": 0.3976378278293087,
+        "size_mb": 0.29189813857798697
+      },
+      {
+        "id": "sfx_10",
+        "type": "ambient",
+        "duration_sec": 1.438966612838649,
+        "size_mb": 0.11763028227210004
+      },
+      {
+        "id": "sfx_11",
+        "type": "footstep",
+        "duration_sec": 1.5065287271150722,
+        "size_mb": 0.15673486870680772
+      },
+      {
+        "id": "sfx_12",
+        "type": "ambient",
+        "duration_sec": 0.8218817491711439,
+        "size_mb": 0.2028199399259413
+      },
+      {
+        "id": "sfx_13",
+        "type": "ambient",
+        "duration_sec": 0.3824735096442422,
+        "size_mb": 0.16888569444637297
+      },
+      {
+        "id": "sfx_14",
+        "type": "weapon",
+        "duration_sec": 0.680238851688725,
+        "size_mb": 0.2214106555730187
+      },
+      {
+        "id": "sfx_15",
+        "type": "weapon",
+        "duration_sec": 1.238776264504328,
+        "size_mb": 0.42613911486793643
+      },
+      {
+        "id": "sfx_16",
+        "type": "weapon",
+        "duration_sec": 0.9544094910500844,
+        "size_mb": 0.49479429096037164
+      },
+      {
+        "id": "sfx_17",
+        "type": "ambient",
+        "duration_sec": 1.8286254532402249,
+        "size_mb": 0.3323828866238192
+      },
+      {
+        "id": "sfx_18",
+        "type": "footstep",
+        "duration_sec": 0.9803027886304752,
+        "size_mb": 0.33509048198888736
+      },
+      {
+        "id": "sfx_19",
+        "type": "ui",
+        "duration_sec": 1.9789268705146827,
+        "size_mb": 0.1182466860255802
+      },
+      {
+        "id": "sfx_20",
+        "type": "ui",
+        "duration_sec": 0.681186831020404,
+        "size_mb": 0.40781597104874645
+      },
+      {
+        "id": "sfx_21",
+        "type": "weapon",
+        "duration_sec": 1.400706866261535,
+        "size_mb": 0.23593857622207712
+      },
+      {
+        "id": "sfx_22",
+        "type": "ambient",
+        "duration_sec": 0.40494367649672236,
+        "size_mb": 0.2849473961781216
+      },
+      {
+        "id": "sfx_23",
+        "type": "weapon",
+        "duration_sec": 0.9728971351034243,
+        "size_mb": 0.2530898545458101
+      },
+      {
+        "id": "sfx_24",
+        "type": "ambient",
+        "duration_sec": 1.9220559751318071,
+        "size_mb": 0.48283978410391704
+      },
+      {
+        "id": "sfx_25",
+        "type": "footstep",
+        "duration_sec": 1.3286794415166883,
+        "size_mb": 0.4281523015855012
+      },
+      {
+        "id": "sfx_26",
+        "type": "ambient",
+        "duration_sec": 0.43105166585497845,
+        "size_mb": 0.13562045319329782
+      },
+      {
+        "id": "sfx_27",
+        "type": "footstep",
+        "duration_sec": 1.3705887540735306,
+        "size_mb": 0.2808194732132052
+      },
+      {
+        "id": "sfx_28",
+        "type": "ambient",
+        "duration_sec": 0.5720414340078799,
+        "size_mb": 0.17250909629795236
+      },
+      {
+        "id": "sfx_29",
+        "type": "weapon",
+        "duration_sec": 0.8309587848423248,
+        "size_mb": 0.3271225994841177
+      },
+      {
+        "id": "sfx_30",
+        "type": "ambient",
+        "duration_sec": 0.9401139191996015,
+        "size_mb": 0.3336296431772663
+      },
+      {
+        "id": "sfx_31",
+        "type": "ambient",
+        "duration_sec": 0.5101949538926644,
+        "size_mb": 0.44941798506981967
+      },
+      {
+        "id": "sfx_32",
+        "type": "ambient",
+        "duration_sec": 1.6728337820819643,
+        "size_mb": 0.3726405951881139
+      },
+      {
+        "id": "sfx_33",
+        "type": "weapon",
+        "duration_sec": 1.7384861970115544,
+        "size_mb": 0.3428039521417206
+      },
+      {
+        "id": "sfx_34",
+        "type": "ambient",
+        "duration_sec": 0.7160495156367859,
+        "size_mb": 0.4762004702630417
+      },
+      {
+        "id": "sfx_35",
+        "type": "footstep",
+        "duration_sec": 1.5019285001541463,
+        "size_mb": 0.22966528797618158
+      },
+      {
+        "id": "sfx_36",
+        "type": "footstep",
+        "duration_sec": 0.9602888698302279,
+        "size_mb": 0.2084469097273702
+      },
+      {
+        "id": "sfx_37",
+        "type": "ui",
+        "duration_sec": 1.5365820427178316,
+        "size_mb": 0.1794137176276797
+      },
+      {
+        "id": "sfx_38",
+        "type": "ambient",
+        "duration_sec": 1.0720332034821358,
+        "size_mb": 0.24948912499581094
+      },
+      {
+        "id": "sfx_39",
+        "type": "weapon",
+        "duration_sec": 1.9949605718973467,
+        "size_mb": 0.4197730998478064
+      },
+      {
+        "id": "sfx_40",
+        "type": "ui",
+        "duration_sec": 1.933997898152663,
+        "size_mb": 0.1616401378424638
+      },
+      {
+        "id": "sfx_41",
+        "type": "ambient",
+        "duration_sec": 0.9318963185725493,
+        "size_mb": 0.26127584988852726
+      },
+      {
+        "id": "sfx_42",
+        "type": "ambient",
+        "duration_sec": 0.32104255053680597,
+        "size_mb": 0.31027093815266094
+      },
+      {
+        "id": "sfx_43",
+        "type": "footstep",
+        "duration_sec": 0.25521481348564407,
+        "size_mb": 0.2847356936566533
+      },
+      {
+        "id": "sfx_44",
+        "type": "ambient",
+        "duration_sec": 0.3939692941030485,
+        "size_mb": 0.33292502686203723
+      },
+      {
+        "id": "sfx_45",
+        "type": "footstep",
+        "duration_sec": 1.4846893729575616,
+        "size_mb": 0.10301025686667309
+      },
+      {
+        "id": "sfx_46",
+        "type": "ui",
+        "duration_sec": 1.7842149464203874,
+        "size_mb": 0.35592770244466865
+      },
+      {
+        "id": "sfx_47",
+        "type": "footstep",
+        "duration_sec": 1.112348848844374,
+        "size_mb": 0.14466718020773586
+      },
+      {
+        "id": "sfx_48",
+        "type": "weapon",
+        "duration_sec": 0.3758574435002611,
+        "size_mb": 0.4264538961019869
+      },
+      {
+        "id": "sfx_49",
+        "type": "ui",
+        "duration_sec": 0.6469836025494542,
+        "size_mb": 0.40526516933528556
+      },
+      {
+        "id": "sfx_50",
+        "type": "ui",
+        "duration_sec": 0.9419421361770717,
+        "size_mb": 0.33964349103657826
+      },
+      {
+        "id": "sfx_51",
+        "type": "footstep",
+        "duration_sec": 0.2762473407162681,
+        "size_mb": 0.29717199020051555
+      },
+      {
+        "id": "sfx_52",
+        "type": "ui",
+        "duration_sec": 1.9145552646521722,
+        "size_mb": 0.2901047196830618
+      },
+      {
+        "id": "sfx_53",
+        "type": "ui",
+        "duration_sec": 0.9922684017312371,
+        "size_mb": 0.25499281218900993
+      },
+      {
+        "id": "sfx_54",
+        "type": "ui",
+        "duration_sec": 1.571755693101564,
+        "size_mb": 0.3785797668380383
+      },
+      {
+        "id": "sfx_55",
+        "type": "weapon",
+        "duration_sec": 0.5385381716453992,
+        "size_mb": 0.20160577132459423
+      },
+      {
+        "id": "sfx_56",
+        "type": "ambient",
+        "duration_sec": 1.6816123938455538,
+        "size_mb": 0.2979498259995842
+      },
+      {
+        "id": "sfx_57",
+        "type": "ambient",
+        "duration_sec": 1.0877831426931963,
+        "size_mb": 0.1556329394010647
+      },
+      {
+        "id": "sfx_58",
+        "type": "weapon",
+        "duration_sec": 1.1998697822441768,
+        "size_mb": 0.15860186680920832
+      },
+      {
+        "id": "sfx_59",
+        "type": "footstep",
+        "duration_sec": 1.4311190334695414,
+        "size_mb": 0.469123900463018
+      },
+      {
+        "id": "sfx_60",
+        "type": "weapon",
+        "duration_sec": 0.970721836151321,
+        "size_mb": 0.48893409110832386
+      },
+      {
+        "id": "sfx_61",
+        "type": "ui",
+        "duration_sec": 1.9443815166371128,
+        "size_mb": 0.30078297378357416
+      },
+      {
+        "id": "sfx_62",
+        "type": "ui",
+        "duration_sec": 1.2694671816223342,
+        "size_mb": 0.18836240883748184
+      },
+      {
+        "id": "sfx_63",
+        "type": "footstep",
+        "duration_sec": 1.0539513519071215,
+        "size_mb": 0.18722577403195972
+      },
+      {
+        "id": "sfx_64",
+        "type": "ambient",
+        "duration_sec": 1.208332142483976,
+        "size_mb": 0.26798819061167733
+      },
+      {
+        "id": "sfx_65",
+        "type": "weapon",
+        "duration_sec": 1.7494047697448118,
+        "size_mb": 0.10611338406086337
+      },
+      {
+        "id": "sfx_66",
+        "type": "ambient",
+        "duration_sec": 0.9886249074018423,
+        "size_mb": 0.10314502526000774
+      },
+      {
+        "id": "sfx_67",
+        "type": "ambient",
+        "duration_sec": 1.5899347419327035,
+        "size_mb": 0.3947169597699375
+      },
+      {
+        "id": "sfx_68",
+        "type": "ui",
+        "duration_sec": 1.1499883678468885,
+        "size_mb": 0.40488208349589816
+      },
+      {
+        "id": "sfx_69",
+        "type": "footstep",
+        "duration_sec": 1.7674143369079174,
+        "size_mb": 0.24956721320014577
+      },
+      {
+        "id": "sfx_70",
+        "type": "weapon",
+        "duration_sec": 1.7985436724820607,
+        "size_mb": 0.37448739071113313
+      },
+      {
+        "id": "sfx_71",
+        "type": "ui",
+        "duration_sec": 0.8618626758547183,
+        "size_mb": 0.19747656402704244
+      },
+      {
+        "id": "sfx_72",
+        "type": "weapon",
+        "duration_sec": 1.5440632118152253,
+        "size_mb": 0.2384268932586271
+      },
+      {
+        "id": "sfx_73",
+        "type": "footstep",
+        "duration_sec": 0.3414566681573681,
+        "size_mb": 0.17337401990651963
+      },
+      {
+        "id": "sfx_74",
+        "type": "footstep",
+        "duration_sec": 0.9117686617496741,
+        "size_mb": 0.38796755065838806
+      },
+      {
+        "id": "sfx_75",
+        "type": "ui",
+        "duration_sec": 0.8151317990742326,
+        "size_mb": 0.47114550601372207
+      },
+      {
+        "id": "sfx_76",
+        "type": "ambient",
+        "duration_sec": 0.269253434800572,
+        "size_mb": 0.4102049483461656
+      },
+      {
+        "id": "sfx_77",
+        "type": "ui",
+        "duration_sec": 0.4565351382451691,
+        "size_mb": 0.29263215444343565
+      },
+      {
+        "id": "sfx_78",
+        "type": "ambient",
+        "duration_sec": 0.40579198672588224,
+        "size_mb": 0.2705066411108335
+      },
+      {
+        "id": "sfx_79",
+        "type": "ui",
+        "duration_sec": 1.043973992264609,
+        "size_mb": 0.48363789283907266
+      },
+      {
+        "id": "sfx_80",
+        "type": "ambient",
+        "duration_sec": 1.5642452314895439,
+        "size_mb": 0.49071346586316433
+      },
+      {
+        "id": "sfx_81",
+        "type": "ui",
+        "duration_sec": 1.6971113878395743,
+        "size_mb": 0.13856354385921274
+      },
+      {
+        "id": "sfx_82",
+        "type": "ui",
+        "duration_sec": 0.602353392979696,
+        "size_mb": 0.3603628601510982
+      },
+      {
+        "id": "sfx_83",
+        "type": "ui",
+        "duration_sec": 0.7820348018199934,
+        "size_mb": 0.18826356772243302
+      },
+      {
+        "id": "sfx_84",
+        "type": "weapon",
+        "duration_sec": 1.7041255919682243,
+        "size_mb": 0.40074019705120945
+      },
+      {
+        "id": "sfx_85",
+        "type": "footstep",
+        "duration_sec": 0.6133695855279672,
+        "size_mb": 0.3891771691204584
+      },
+      {
+        "id": "sfx_86",
+        "type": "ambient",
+        "duration_sec": 0.7781297306103141,
+        "size_mb": 0.38516457917566194
+      },
+      {
+        "id": "sfx_87",
+        "type": "ambient",
+        "duration_sec": 1.0041873051375352,
+        "size_mb": 0.11197584798471688
+      },
+      {
+        "id": "sfx_88",
+        "type": "ambient",
+        "duration_sec": 1.0315487918250204,
+        "size_mb": 0.3786675811947695
+      },
+      {
+        "id": "sfx_89",
+        "type": "ui",
+        "duration_sec": 0.7196334246134597,
+        "size_mb": 0.22136035453399783
+      },
+      {
+        "id": "sfx_90",
+        "type": "ui",
+        "duration_sec": 1.8573676107007524,
+        "size_mb": 0.22514599285428646
+      },
+      {
+        "id": "sfx_91",
+        "type": "ui",
+        "duration_sec": 0.9271416178732927,
+        "size_mb": 0.4068149292224841
+      },
+      {
+        "id": "sfx_92",
+        "type": "weapon",
+        "duration_sec": 0.2943956614056895,
+        "size_mb": 0.38052476487827935
+      },
+      {
+        "id": "sfx_93",
+        "type": "weapon",
+        "duration_sec": 1.0956372117496038,
+        "size_mb": 0.3225610484124809
+      },
+      {
+        "id": "sfx_94",
+        "type": "weapon",
+        "duration_sec": 0.42367937772323583,
+        "size_mb": 0.48600397570383447
+      },
+      {
+        "id": "sfx_95",
+        "type": "weapon",
+        "duration_sec": 0.543802258482467,
+        "size_mb": 0.19167010261307685
+      },
+      {
+        "id": "sfx_96",
+        "type": "ambient",
+        "duration_sec": 1.3193799868944274,
+        "size_mb": 0.37513869066560834
+      },
+      {
+        "id": "sfx_97",
+        "type": "ui",
+        "duration_sec": 1.5791295267890937,
+        "size_mb": 0.2665546698456228
+      },
+      {
+        "id": "sfx_98",
+        "type": "ui",
+        "duration_sec": 1.0762983500466612,
+        "size_mb": 0.26631319095126427
+      },
+      {
+        "id": "sfx_99",
+        "type": "ambient",
+        "duration_sec": 0.26943125640127547,
+        "size_mb": 0.3531704897613094
+      }
+    ]
+  },
+  "game_code": {
+    "engine": "Unity",
+    "language": "C#",
+    "scripts": {
+      "player_controller": "PlayerController.cs",
+      "game_manager": "GameManager.cs",
+      "ui_manager": "UIManager.cs",
+      "audio_manager": "AudioManager.cs",
+      "network_manager": "NetworkManager.cs"
+    },
+    "total_lines": 15344,
+    "files_count": 185
+  },
+  "levels": {
+    "levels": [
+      {
+        "id": "level_1",
+        "name": "Level 1",
+        "difficulty": "easy",
+        "size_mb": 111.12555454347462,
+        "enemies": 47,
+        "collectibles": 79
+      },
+      {
+        "id": "level_2",
+        "name": "Level 2",
+        "difficulty": "easy",
+        "size_mb": 91.549681873259,
+        "enemies": 7,
+        "collectibles": 95
+      },
+      {
+        "id": "level_3",
+        "name": "Level 3",
+        "difficulty": "easy",
+        "size_mb": 65.646864218215,
+        "enemies": 28,
+        "collectibles": 91
+      },
+      {
+        "id": "level_4",
+        "name": "Level 4",
+        "difficulty": "medium",
+        "size_mb": 112.23510023029428,
+        "enemies": 10,
+        "collectibles": 92
+      },
+      {
+        "id": "level_5",
+        "name": "Level 5",
+        "difficulty": "medium",
+        "size_mb": 77.88956090793447,
+        "enemies": 34,
+        "collectibles": 49
+      },
+      {
+        "id": "level_6",
+        "name": "Level 6",
+        "difficulty": "medium",
+        "size_mb": 95.30847609761423,
+        "enemies": 23,
+        "collectibles": 53
+      },
+      {
+        "id": "level_7",
+        "name": "Level 7",
+        "difficulty": "medium",
+        "size_mb": 106.96481750578438,
+        "enemies": 27,
+        "collectibles": 94
+      },
+      {
+        "id": "level_8",
+        "name": "Level 8",
+        "difficulty": "hard",
+        "size_mb": 139.26600369038562,
+        "enemies": 20,
+        "collectibles": 95
+      },
+      {
+        "id": "level_9",
+        "name": "Level 9",
+        "difficulty": "hard",
+        "size_mb": 187.8742450652159,
+        "enemies": 8,
+        "collectibles": 15
+      },
+      {
+        "id": "level_10",
+        "name": "Level 10",
+        "difficulty": "hard",
+        "size_mb": 102.92661945358027,
+        "enemies": 13,
+        "collectibles": 45
+      }
+    ],
+    "total_count": 10
+  },
+  "build": {
+    "platform": "mobile",
+    "size_gb": 2.0,
+    "quality_score": 74,
+    "build_time_minutes": 20,
+    "output_files": {
+      "apk": "nexus_generated_games\\game_1768219791/Chronicles Quest.apk",
+      "aab": "nexus_generated_games\\game_1768219791/Chronicles Quest.aab",
+      "ipa": "nexus_generated_games\\game_1768219791/Chronicles Quest.ipa"
+    },
+    "commercial_ready": true,
+    "store_ready": true
+  },
+  "commercial_ready": true,
+  "play_store_ready": true,
+  "steam_ready": false,
+  "playable": true,
+  "monetization": [
+    "ads",
+    "iap",
+    "premium"
+  ],
+  "quality_score": 74,
+  "automation_level": "100%",
+  "human_involvement": "0%"
+}

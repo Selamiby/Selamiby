@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "flags": {
+    "new_ui": true,
+    "reduced_fx": false,
+    "double_rewards": false,
+    "experimental_netcode": false
+  }
+}

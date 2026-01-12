@@ -4,7 +4,8 @@ NEXUS-ONE Otomatik Hata Düzeltme Sistem Özeti
 Proje hatalarının otomatik olarak tespit ve düzeltilme raporu
 """
 
-print("""
+print(
+    """
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                    NEXUS-ONE OTOMATIK HATA DÜZELTME SİSTEMİ               ║
 ║                          Proje Özet Raporu                                ║
@@ -129,4 +130,5 @@ Deployment Pipeline: Hazır ✅
 ═══════════════════════════════════════════════════════════════════════════════
                     NEXUS-ONE SİSTEMİ TAMAMEN FONKSIYONEL
 ═══════════════════════════════════════════════════════════════════════════════
-""")
+"""
+)

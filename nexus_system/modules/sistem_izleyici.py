@@ -7,18 +7,18 @@ import psutil
 class SistemIzleyici:
     def __init__(self):
         self.log = []
-    
+
     def calis(self, komut=""):
         durum = {
             "cpu": psutil.cpu_percent(),
             "ram": psutil.virtual_memory().percent,
-            "disk": psutil.disk_usage('/').percent,
+            "disk": psutil.disk_usage("/").percent,
             "islemler": len(psutil.pids()),
-            "zaman": time.time()
+            "zaman": time.time(),
         }
-        
+
         self.log.append(durum)
-        
+
         # Kaynak sınırlarını kontrol et
         if durum["cpu"] > 80:
             return "⚠️ CPU yüksek! Yavaşlatılıyor..."

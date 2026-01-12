@@ -8,16 +8,14 @@ from typing import List
 
 
 class FileOrganizer:
-    CATEGORY_MAP = {
-        'txt': ['txt'],
-        'log': ['log'],
-        'other': []
-    }
+    CATEGORY_MAP = {"txt": ["txt"], "log": ["log"], "other": []}
+
     def generate_report(self, path: str):
         """Belirtilen dizindeki dosyaları kategori bazında raporlar."""
         from collections import defaultdict
 
         import humanize
+
         p = Path(path)
         report = {"categories": {}}
         ext_map = {}

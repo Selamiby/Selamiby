@@ -8,6 +8,7 @@ class WebSocketManager:
     """
     WebSocket bağlantılarını ve yayınlarını yönetir.
     """
+
     def __init__(self):
         self.active_connections: List[WebSocket] = []
 

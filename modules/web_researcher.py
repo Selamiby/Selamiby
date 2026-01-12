@@ -1,6 +1,7 @@
 """
 Otonom Web Araştırmacı - Akıllı İnternet Araştırma Ajanı
 """
+
 import asyncio
 import json
 import re
@@ -18,6 +19,7 @@ from bs4 import BeautifulSoup
 @dataclass
 class ResearchResult:
     """Araştırma sonucu"""
+
     query: str
     source: str
     title: str
@@ -33,15 +35,17 @@ class WebResearcher:
 
     def __init__(self):
         self.session = requests.Session()
-        self.session.headers.update({
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.5",
-            "Accept-Encoding": "gzip, deflate",
-            "DNT": "1",
-            "Connection": "keep-alive",
-            "Upgrade-Insecure-Requests": "1",
-        })
+        self.session.headers.update(
+            {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.5",
+                "Accept-Encoding": "gzip, deflate",
+                "DNT": "1",
+                "Connection": "keep-alive",
+                "Upgrade-Insecure-Requests": "1",
+            }
+        )
 
         self.search_engines = {
             "duckduckgo": "https://duckduckgo.com/html/?q=",
@@ -52,7 +56,9 @@ class WebResearcher:
 
         self.research_history: List[Dict[str, Any]] = []
 
-    def search_web(self, query: str, engine: str = "duckduckgo", max_results: int = 10) -> List[Dict]:
+    def search_web(
+        self, query: str, engine: str = "duckduckgo", max_results: int = 10
+    ) -> List[Dict]:
         """Web'de arama yap"""
         if engine not in self.search_engines:
             engine = "duckduckgo"
@@ -100,7 +106,11 @@ class WebResearcher:
                             {
                                 "title": title.get_text(strip=True),
                                 "url": link["href"],
-                                "snippet": snippet.get_text(strip=True)[:200] if snippet else "",
+                                "snippet": (
+                                    snippet.get_text(strip=True)[:200]
+                                    if snippet
+                                    else ""
+                                ),
                                 "engine": engine,
                             }
                         )
@@ -157,13 +167,17 @@ class WebResearcher:
 
             if not content:
                 paragraphs = soup.find_all("p")
-                content = " ".join([p.get_text(strip=True) for p in paragraphs[:10]])[:5000]
+                content = " ".join([p.get_text(strip=True) for p in paragraphs[:10]])[
+                    :5000
+                ]
 
             links = []
             for link in soup.find_all("a", href=True)[:20]:
                 full_url = urljoin(url, link["href"])
                 if urlparse(full_url).netloc:
-                    links.append({"text": link.get_text(strip=True)[:100], "url": full_url})
+                    links.append(
+                        {"text": link.get_text(strip=True)[:100], "url": full_url}
+                    )
 
             images = []
             for img in soup.find_all("img", src=True)[:10]:
@@ -186,7 +200,11 @@ class WebResearcher:
             }
 
         except Exception as e:
-            return {"url": url, "error": str(e), "timestamp": datetime.now().isoformat()}
+            return {
+                "url": url,
+                "error": str(e),
+                "timestamp": datetime.now().isoformat(),
+            }
 
     async def async_fetch_multiple(self, urls: List[str]) -> List[Dict]:
         """Birden fazla URL'yi asenkron getir"""
@@ -204,13 +222,17 @@ class WebResearcher:
     async def _async_fetch_url(self, session: aiohttp.ClientSession, url: str) -> Dict:
         """Asenkron URL fetch"""
         try:
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
+            async with session.get(
+                url, timeout=aiohttp.ClientTimeout(total=10)
+            ) as response:
                 text = await response.text()
                 soup = BeautifulSoup(text, "html.parser")
                 title = soup.title.string if soup.title else ""
 
                 paragraphs = soup.find_all("p")
-                content = " ".join([p.get_text(strip=True) for p in paragraphs[:5]])[:1000]
+                content = " ".join([p.get_text(strip=True) for p in paragraphs[:5]])[
+                    :1000
+                ]
 
                 return {
                     "url": url,
@@ -221,7 +243,11 @@ class WebResearcher:
                 }
 
         except Exception as e:
-            return {"url": url, "error": str(e), "timestamp": datetime.now().isoformat()}
+            return {
+                "url": url,
+                "error": str(e),
+                "timestamp": datetime.now().isoformat(),
+            }
 
     def research_topic(self, topic: str, depth: int = 1) -> List[ResearchResult]:
         """Konu araştırması yap"""

@@ -29,12 +29,12 @@ class NEXUSLearner:
                 "solutions": [],
                 "success_rate": 0.0,
                 "total_fixes": 0,
-                "last_learned": None
+                "last_learned": None,
             }
 
     def save_learning_data(self):
         """Öğrenilmiş verileri kaydet"""
-        with open(self.learning_file, 'w') as f:
+        with open(self.learning_file, "w") as f:
             json.dump(self.learning_data, f, indent=2)
 
     def learn_error_pattern(self, file_path: str, error: str, solution: str):
@@ -44,16 +44,19 @@ class NEXUSLearner:
             "error": error,
             "solution": solution,
             "learned_at": datetime.now().isoformat(),
-            "applied_count": 0
+            "applied_count": 0,
         }
-        
+
         # Aynı pattern önceden öğrenildi mi kontrol et
         for existing in self.learning_data["error_patterns"]:
-            if existing["error"] == error and existing["file_type"] == pattern["file_type"]:
+            if (
+                existing["error"] == error
+                and existing["file_type"] == pattern["file_type"]
+            ):
                 existing["applied_count"] += 1
                 self.save_learning_data()
                 return
-        
+
         self.learning_data["error_patterns"].append(pattern)
         self.save_learning_data()
         print(f"✓ Yeni pattern öğrenildi: {error} ({Path(file_path).suffix})")
@@ -65,9 +68,9 @@ class NEXUSLearner:
             "file_type": file_type,
             "solution": solution,
             "effectiveness": 100,
-            "learned_at": datetime.now().isoformat()
+            "learned_at": datetime.now().isoformat(),
         }
-        
+
         self.learning_data["solutions"].append(solution_data)
         self.learning_data["total_fixes"] += 1
         self.save_learning_data()
@@ -81,8 +84,11 @@ class NEXUSLearner:
 
     def get_learned_solutions(self, error_type: str, file_type: str) -> List[Dict]:
         """Öğrenilmiş çözümleri al"""
-        return [s for s in self.learning_data["solutions"] 
-                if s["error_type"] == error_type and s["file_type"] == file_type]
+        return [
+            s
+            for s in self.learning_data["solutions"]
+            if s["error_type"] == error_type and s["file_type"] == file_type
+        ]
 
     def get_learning_summary(self) -> str:
         """Öğrenme özetini al"""
@@ -91,18 +97,20 @@ class NEXUSLearner:
         summary += f"Başarı Oranı: {self.learning_data['success_rate']:.1f}%\n"
         summary += f"Öğrenilmiş Patterns: {len(self.learning_data['error_patterns'])}\n"
         summary += f"Bilinen Çözümler: {len(self.learning_data['solutions'])}\n"
-        
+
         if self.learning_data["error_patterns"]:
             summary += "\nÖğrenilmiş Hata Tipleri:\n"
             for pattern in self.learning_data["error_patterns"]:
-                summary += f"  - {pattern['error']}: {pattern['applied_count']} kez çözüldü\n"
-        
+                summary += (
+                    f"  - {pattern['error']}: {pattern['applied_count']} kez çözüldü\n"
+                )
+
         return summary
 
 
 class NEXUSIntegration:
     """NEXUS-ONE Sistemine Hata Düzelticiyi Entegre Et"""
-    
+
     def __init__(self, workspace_root: str):
         self.workspace = Path(workspace_root)
         self.learner = NEXUSLearner(workspace_root)
@@ -111,14 +119,14 @@ class NEXUSIntegration:
         """Otonom sistemle entegre et"""
         # autonomous_production.ps1'e hook ekle
         ps_script = self.workspace / "autonomous_production.ps1"
-        
+
         if ps_script.exists():
-            with open(ps_script, encoding='utf-8', errors='ignore') as f:
+            with open(ps_script, encoding="utf-8", errors="ignore") as f:
                 content = f.read()
-            
+
             # Hook zaten var mı kontrol et
             if "nexus_auto_healer" not in content:
-                hook = '''
+                hook = """
 # === NEXUS-ONE AUTO HEALER HOOK ===
 # Her senkronizasyon sonrası hataları kontrol ve düzelt
 function Invoke-NEXUSHealer {
@@ -126,27 +134,27 @@ function Invoke-NEXUSHealer {
         python nexus_auto_healer.py 2>$null | Out-Null
     }
 }
-'''
+"""
                 # Main loop'ın başına ekle
                 new_content = content.replace(
                     "while ($true) {",
-                    hook + "\nwhile ($true) {\n    Invoke-NEXUSHealer\n"
+                    hook + "\nwhile ($true) {\n    Invoke-NEXUSHealer\n",
                 )
-                
-                with open(ps_script, 'w', encoding='utf-8') as f:
+
+                with open(ps_script, "w", encoding="utf-8") as f:
                     f.write(new_content)
-                
+
                 print("✓ Hata düzeltici otonom sisteme entegre edildi")
                 return True
-        
+
         return False
 
     def create_learning_dashboard(self):
         """Öğrenme panosunu oluştur"""
         dashboard = self.workspace / "NEXUS_LEARNING.md"
-        
+
         summary = self.learner.get_learning_summary()
-        
+
         content = f"""# NEXUS-ONE Otomatik Hata Düzeltme Sistemi
 
 ## 🧠 Öğrenme İstatistikleri
@@ -156,7 +164,7 @@ function Invoke-NEXUSHealer {
 ## 📊 Öğrenilmiş Patterns
 
 """
-        
+
         for pattern in self.learner.learning_data["error_patterns"]:
             content += f"""
 ### {pattern['error_type']} ({pattern['file_type']})
@@ -166,10 +174,10 @@ function Invoke-NEXUSHealer {
 - **Öğrenildi**: {pattern['learned_at']}
 
 """
-        
-        with open(dashboard, 'w', encoding='utf-8') as f:
+
+        with open(dashboard, "w", encoding="utf-8") as f:
             f.write(content)
-        
+
         print(f"✓ Öğrenme panosu oluşturuldu: {dashboard}")
 
     def auto_commit_learning(self):
@@ -178,17 +186,17 @@ function Invoke-NEXUSHealer {
             subprocess.run(
                 ["git", "add", "data/nexus_learning.json", "NEXUS_LEARNING.md"],
                 cwd=self.workspace,
-                capture_output=True
+                capture_output=True,
             )
             subprocess.run(
                 ["git", "commit", "-m", "learn: NEXUS-ONE Otomatik Öğrenme Güncelleme"],
                 cwd=self.workspace,
-                capture_output=True
+                capture_output=True,
             )
             subprocess.run(
                 ["git", "push", "origin", "main"],
                 cwd=self.workspace,
-                capture_output=True
+                capture_output=True,
             )
             print("✓ Öğrenme verileri GitHub'a gönderildi")
             return True
@@ -200,19 +208,19 @@ function Invoke-NEXUSHealer {
 def main():
     """NEXUS-ONE Öğrenme Sistemi Başlat"""
     workspace = Path.cwd()
-    
+
     # Entegrasyonu oluştur
     nexus = NEXUSIntegration(str(workspace))
-    
+
     # Otonom sisteme entegre et
     nexus.integrate_with_autonomous_system()
-    
+
     # Öğrenme panosunu oluştur
     nexus.create_learning_dashboard()
-    
+
     # Öğrenme verilerini commit et
     nexus.auto_commit_learning()
-    
+
     # Özeti göster
     print("\n" + nexus.learner.get_learning_summary())
 

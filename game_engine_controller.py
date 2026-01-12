@@ -20,64 +20,16 @@ GAME_PROJECTS_DIR = WORKSPACE / "game_projects"
 LOG_FILE = LOG_DIR / "game_engine.log"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def log(msg: str):
-    ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{ts}] {msg}\n"
     try:
         LOG_DIR.mkdir(exist_ok=True)
-        with LOG_FILE.open('a', encoding='utf-8') as f:
+        with LOG_FILE.open("a", encoding="utf-8") as f:
             f.write(line)
     except Exception:
         pass
     print(line.strip())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class GameEngineController:
@@ -91,7 +43,10 @@ class GameEngineController:
         """Find Unity installation"""
         possible_paths = [
             Path("C:/Program Files/Unity/Hub/Editor"),
-            Path(os.environ.get('ProgramFiles', 'C:/Program Files')) / "Unity" / "Hub" / "Editor"
+            Path(os.environ.get("ProgramFiles", "C:/Program Files"))
+            / "Unity"
+            / "Hub"
+            / "Editor",
         ]
         for base in possible_paths:
             if base.exists():
@@ -106,8 +61,12 @@ class GameEngineController:
     def find_unreal(self) -> Path | None:
         """Find Unreal Engine installation"""
         possible_paths = [
-            Path("C:/Program Files/Epic Games/UE_5.3/Engine/Binaries/Win64/UnrealEditor.exe"),
-            Path("C:/Program Files/Epic Games/UE_5.2/Engine/Binaries/Win64/UnrealEditor.exe"),
+            Path(
+                "C:/Program Files/Epic Games/UE_5.3/Engine/Binaries/Win64/UnrealEditor.exe"
+            ),
+            Path(
+                "C:/Program Files/Epic Games/UE_5.2/Engine/Binaries/Win64/UnrealEditor.exe"
+            ),
         ]
         for p in possible_paths:
             if p.exists():
@@ -130,8 +89,10 @@ class GameEngineController:
                 str(self.unity_path),
                 "-quit",
                 "-batchmode",
-                "-createProject", str(project_path),
-                "-logFile", str(LOG_DIR / f"unity_create_{project_name}.log")
+                "-createProject",
+                str(project_path),
+                "-logFile",
+                str(LOG_DIR / f"unity_create_{project_name}.log"),
             ]
 
             log(f"unity_create_project name={project_name} template={template}")
@@ -148,7 +109,9 @@ class GameEngineController:
             log(f"unity_create_error: {e}")
             return {"error": str(e)}
 
-    def create_unity_script(self, project_name: str, script_name: str, script_type: str = "MonoBehaviour") -> dict:
+    def create_unity_script(
+        self, project_name: str, script_name: str, script_type: str = "MonoBehaviour"
+    ) -> dict:
         """Create C# script in Unity project"""
         project_path = GAME_PROJECTS_DIR / f"Unity_{project_name}"
         if not project_path.exists():
@@ -160,7 +123,7 @@ class GameEngineController:
         script_file = scripts_dir / f"{script_name}.cs"
 
         if script_type == "MonoBehaviour":
-            code = f'''using UnityEngine;
+            code = f"""using UnityEngine;
 
 public class {script_name} : MonoBehaviour
 {{
@@ -176,9 +139,9 @@ public class {script_name} : MonoBehaviour
         // TODO: Add your logic here
     }}
 }}
-'''
+"""
         else:
-            code = f'''using UnityEngine;
+            code = f"""using UnityEngine;
 
 public class {script_name}
 {{
@@ -188,10 +151,10 @@ public class {script_name}
         Debug.Log("{script_name} running");
     }}
 }}
-'''
+"""
 
         try:
-            script_file.write_text(code, encoding='utf-8')
+            script_file.write_text(code, encoding="utf-8")
             log(f"unity_script_created script={script_name} project={project_name}")
             return {"success": True, "path": str(script_file)}
         except Exception as e:
@@ -231,34 +194,10 @@ public class {script_name}
             return {
                 "success": True,
                 "path": str(project_path),
-                "note": "Use Unreal Editor to fully initialize project"
+                "note": "Use Unreal Editor to fully initialize project",
             }
         except Exception as e:
             return {"error": str(e)}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def demo_game_engine():
@@ -271,10 +210,13 @@ def demo_game_engine():
         print(f"Project creation: {result}")
 
         if result.get("success"):
-            script_result = controller.create_unity_script("NexusDemo", "PlayerController", "MonoBehaviour")
+            script_result = controller.create_unity_script(
+                "NexusDemo", "PlayerController", "MonoBehaviour"
+            )
             print(f"Script creation: {script_result}")
     else:
         print("Unity not found. Install Unity Hub and Unity Editor.")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo_game_engine()

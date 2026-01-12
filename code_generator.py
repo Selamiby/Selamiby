@@ -25,260 +25,16 @@ GENERATED_CODE_DIR = WORKSPACE / "generated"
 LOG_FILE = LOG_DIR / "code_generator.log"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def log(msg: str):
-    ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{ts}] {msg}\n"
     try:
         LOG_DIR.mkdir(exist_ok=True)
-        with LOG_FILE.open('a', encoding='utf-8') as f:
+        with LOG_FILE.open("a", encoding="utf-8") as f:
             f.write(line)
     except Exception:
         pass
     print(line.strip())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class CodeGenerator:
@@ -292,29 +48,31 @@ class CodeGenerator:
     def load_patterns(self):
         try:
             if CODE_PATTERNS.exists():
-                return json.loads(CODE_PATTERNS.read_text(encoding='utf-8'))
+                return json.loads(CODE_PATTERNS.read_text(encoding="utf-8"))
         except Exception:
             pass
         return {
             "function_templates": [],
             "class_templates": [],
             "common_imports": [],
-            "design_patterns": []
+            "design_patterns": [],
         }
 
     def save_patterns(self):
         try:
-            CODE_PATTERNS.write_text(json.dumps(self.patterns, indent=2), encoding='utf-8')
+            CODE_PATTERNS.write_text(
+                json.dumps(self.patterns, indent=2), encoding="utf-8"
+            )
         except Exception as e:
             log(f"save_patterns_error: {e}")
 
     def learn_from_file(self, file_path: Path):
         """Analyze Python file and learn patterns"""
-        if not file_path.exists() or file_path.suffix != '.py':
+        if not file_path.exists() or file_path.suffix != ".py":
             return
 
         try:
-            source = file_path.read_text(encoding='utf-8')
+            source = file_path.read_text(encoding="utf-8")
             tree = ast.parse(source)
 
             # Extract imports
@@ -325,7 +83,10 @@ class CodeGenerator:
                         if imp not in self.patterns["common_imports"]:
                             self.patterns["common_imports"].append(imp)
                 elif isinstance(node, ast.ImportFrom):
-                    if node.module and node.module not in self.patterns["common_imports"]:
+                    if (
+                        node.module
+                        and node.module not in self.patterns["common_imports"]
+                    ):
                         self.patterns["common_imports"].append(node.module)
 
                 # Extract function signatures
@@ -334,25 +95,34 @@ class CodeGenerator:
                         "name": node.name,
                         "args": [arg.arg for arg in node.args.args],
                         "docstring": ast.get_docstring(node),
-                        "learned_from": str(file_path)
+                        "learned_from": str(file_path),
                     }
                     # Avoid duplicates
-                    if not any(f["name"] == node.name for f in self.patterns["function_templates"]):
+                    if not any(
+                        f["name"] == node.name
+                        for f in self.patterns["function_templates"]
+                    ):
                         self.patterns["function_templates"].append(func_info)
 
                 # Extract class structures
                 elif isinstance(node, ast.ClassDef):
                     class_info = {
                         "name": node.name,
-                        "methods": [m.name for m in node.body if isinstance(m, ast.FunctionDef)],
+                        "methods": [
+                            m.name for m in node.body if isinstance(m, ast.FunctionDef)
+                        ],
                         "docstring": ast.get_docstring(node),
-                        "learned_from": str(file_path)
+                        "learned_from": str(file_path),
                     }
-                    if not any(c["name"] == node.name for c in self.patterns["class_templates"]):
+                    if not any(
+                        c["name"] == node.name for c in self.patterns["class_templates"]
+                    ):
                         self.patterns["class_templates"].append(class_info)
 
             self.save_patterns()
-            log(f"learned_from_file file={file_path.name} functions={len(self.patterns['function_templates'])} classes={len(self.patterns['class_templates'])}")
+            log(
+                f"learned_from_file file={file_path.name} functions={len(self.patterns['function_templates'])} classes={len(self.patterns['class_templates'])}"
+            )
         except Exception as e:
             log(f"learn_from_file_error file={file_path} err={e}")
 
@@ -384,7 +154,9 @@ class CodeGenerator:
             stats["last_learn_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             stats_file.write_text(json.dumps(stats, indent=2), encoding="utf-8")
-            log(f"learning_stats_updated sessions={stats['sessions']} files_total={stats['files_learned']}")
+            log(
+                f"learning_stats_updated sessions={stats['sessions']} files_total={stats['files_learned']}"
+            )
         except Exception as e:
             log(f"learning_stats_error err={e}")
 
@@ -399,7 +171,9 @@ class CodeGenerator:
         except Exception:
             pass
 
-    def generate_simple_function(self, func_name: str, description: str = "Auto-generated function") -> str:
+    def generate_simple_function(
+        self, func_name: str, description: str = "Auto-generated function"
+    ) -> str:
         """Generate a simple Python function"""
         template = f'''def {func_name}():
     """
@@ -444,128 +218,6 @@ import sys
 from datetime import datetime
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def main():
     print(f"{{script_name}} started at {{datetime.now()}}")
     # TODO: Add your logic here
@@ -586,128 +238,6 @@ from datetime import datetime
 {self.generate_class(script_name.replace('_', ' ').title().replace(' ', ''), ["process", "run"])}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def main():
     obj = {script_name.replace('_', ' ').title().replace(' ', '')}()
     obj.run()
@@ -719,8 +249,10 @@ if __name__ == '__main__':
             code = self.generate_simple_function("main", f"{script_name} main function")
 
         try:
-            script_path.write_text(code, encoding='utf-8')
-            log(f"generated_script name={script_name} type={template_type} path={script_path}")
+            script_path.write_text(code, encoding="utf-8")
+            log(
+                f"generated_script name={script_name} type={template_type} path={script_path}"
+            )
             return script_path
         except Exception as e:
             log(f"generate_script_error: {e}")
@@ -736,140 +268,18 @@ if __name__ == '__main__':
                 [sys.executable, str(script_path)],
                 capture_output=True,
                 text=True,
-                timeout=5
+                timeout=5,
             )
             log(f"test_code path={script_path.name} rc={result.returncode}")
             return {
                 "returncode": result.returncode,
                 "stdout": result.stdout[:1000],
-                "stderr": result.stderr[:1000]
+                "stderr": result.stderr[:1000],
             }
         except subprocess.TimeoutExpired:
             return {"error": "Timeout"}
         except Exception as e:
             return {"error": str(e)}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def demo_code_generation():
@@ -886,5 +296,6 @@ def demo_code_generation():
         result = gen.test_generated_code(script)
         print(f"Test result: {result}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo_code_generation()

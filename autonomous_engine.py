@@ -32,112 +32,12 @@ LOG_DIR.mkdir(exist_ok=True)
 # Suppress emoji issues, log to file only
 logging.basicConfig(
     level=logging.INFO,
-    format='[%(asctime)s] %(levelname)s - %(message)s',
+    format="[%(asctime)s] %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "autonomous_engine.log", encoding='utf-8'),
-    ]
+        logging.FileHandler(LOG_DIR / "autonomous_engine.log", encoding="utf-8"),
+    ],
 )
 logger = logging.getLogger("AutonomousEngine")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class AutonomousEngine:
@@ -156,16 +56,16 @@ class AutonomousEngine:
             "features_added": 0,
             "errors_prevented": 0,
             "tests_passed": 0,
-            "github_syncs": 0
+            "github_syncs": 0,
         }
 
-        logger.info("="*70)
+        logger.info("=" * 70)
         logger.info("NEXUS-ONE + COPILOT AUTONOMOUS ENGINE STARTED")
-        logger.info("="*70)
+        logger.info("=" * 70)
         logger.info(f"Duration: 5 hours (until {self.end_time.strftime('%H:%M:%S')})")
         logger.info("Mode: FULL AUTONOMOUS")
         logger.info("Authority: NEXUS-ONE")
-        logger.info("="*70)
+        logger.info("=" * 70)
 
     def is_active(self) -> bool:
         """Check if still in autonomous mode"""
@@ -180,7 +80,7 @@ class AutonomousEngine:
 
         for py_file in py_files:
             try:
-                with open(py_file, 'r', encoding='utf-8', errors='ignore') as f:
+                with open(py_file, "r", encoding="utf-8", errors="ignore") as f:
                     code = f.read()
 
                 # Detect improvement opportunities
@@ -211,7 +111,7 @@ class AutonomousEngine:
                 cwd=str(WORKSPACE),
                 capture_output=True,
                 text=True,
-                timeout=10
+                timeout=10,
             )
 
             if result.returncode == 0:
@@ -261,7 +161,7 @@ class AutonomousEngine:
             "caching_layer",
             "monitoring_dashboard",
             "auto_commit_system",
-            "knowledge_cache"
+            "knowledge_cache",
         ]
 
         feature = features[self.stats["iterations"] % len(features)]
@@ -280,7 +180,7 @@ class AutonomousEngine:
                 result = subprocess.run(
                     ["python", "-m", "py_compile", str(py_file)],
                     capture_output=True,
-                    timeout=5
+                    timeout=5,
                 )
                 if result.returncode == 0:
                     self.stats["tests_passed"] += 1
@@ -297,9 +197,9 @@ class AutonomousEngine:
 
         remaining = (self.end_time - datetime.now()).total_seconds() / 60
 
-        logger.info(f"\n" + "="*70)
+        logger.info(f"\n" + "=" * 70)
         logger.info(f"ITERATION {iteration} | Remaining: {remaining:.0f} min")
-        logger.info("="*70)
+        logger.info("=" * 70)
 
         # Rotate through tasks
         tasks = [
@@ -308,7 +208,7 @@ class AutonomousEngine:
             self.task_github_sync,
             self.task_system_health,
             self.task_feature_development,
-            self.task_test_and_validate
+            self.task_test_and_validate,
         ]
 
         task_idx = (iteration - 1) % len(tasks)
@@ -329,10 +229,12 @@ class AutonomousEngine:
         stats_file.parent.mkdir(parents=True, exist_ok=True)
 
         self.stats["last_update"] = datetime.now().isoformat()
-        self.stats["uptime_minutes"] = (datetime.now() - self.start_time).total_seconds() / 60
+        self.stats["uptime_minutes"] = (
+            datetime.now() - self.start_time
+        ).total_seconds() / 60
 
         try:
-            with open(stats_file, 'w', encoding='utf-8') as f:
+            with open(stats_file, "w", encoding="utf-8") as f:
                 json.dump(self.stats, f, indent=2)
         except Exception as e:
             logger.error(f"Failed to save stats: {e}")
@@ -341,9 +243,9 @@ class AutonomousEngine:
         """Print final statistics"""
         duration = (datetime.now() - self.start_time).total_seconds() / 60
 
-        logger.info("\n" + "="*70)
+        logger.info("\n" + "=" * 70)
         logger.info("AUTONOMOUS SESSION COMPLETE")
-        logger.info("="*70)
+        logger.info("=" * 70)
         logger.info(f"Duration: {duration:.1f} minutes")
         logger.info(f"Iterations: {self.stats['iterations']}")
         logger.info(f"Code Improvements: {self.stats['code_improvements']}")
@@ -352,7 +254,7 @@ class AutonomousEngine:
         logger.info(f"Tests Passed: {self.stats['tests_passed']}")
         logger.info(f"GitHub Syncs: {self.stats['github_syncs']}")
         logger.info(f"Errors Prevented: {self.stats['errors_prevented']}")
-        logger.info("="*70)
+        logger.info("=" * 70)
 
     def run(self):
         """Main loop"""
@@ -381,114 +283,56 @@ class AutonomousEngine:
         self.save_stats()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def process_command(command_text: str):
+    """
+    Processes a single command received from the human interface.
+    This function acts as the bridge between the GUI and the engine's capabilities.
+    """
+    logger.info(f"Received command from Human Interface: '{command_text}'")
+    print(f"[ENGINE] Processing command: {command_text}")
+
+    # Create an instance of the engine to access its tasks
+    engine = AutonomousEngine()
+
+    # Simple command parsing
+    command_lower = command_text.lower()
+
+    # Acknowledge the command is being processed
+    # In a real scenario, this would trigger complex actions.
+    # For now, we'll map commands to existing tasks to prove the connection.
+
+    if "improve" in command_lower or "code" in command_lower:
+        engine.task_code_improvements()
+    elif "sync" in command_lower or "github" in command_lower:
+        engine.task_github_sync()
+    elif "learn" in command_lower or "web" in command_lower:
+        engine.task_learn_from_web()
+    elif "health" in command_lower or "system" in command_lower:
+        engine.task_system_health()
+    elif "feature" in command_lower or "develop" in command_lower:
+        engine.task_feature_development()
+    elif "test" in command_lower or "validate" in command_lower:
+        engine.task_test_and_validate()
+    else:
+        logger.warning(f"Unknown command: '{command_text}'. No specific task mapped.")
+        print(f"[ENGINE] Command not recognized. Logging for future development.")
+        # Log it for future learning
+        with open(LOG_DIR / "unrecognized_commands.log", "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now().isoformat()} - {command_text}\n")
+
+    # For this direct command-response model, we don't need the 5-hour loop.
+    # The original `main` function can be kept for pure autonomous mode later.
+    print(f"[ENGINE] Finished processing command: {command_text}")
 
 
 def main():
-    """Entry point"""
-    print("\n" + "="*70)
-    print("NEXUS-ONE + COPILOT AUTONOMOUS ENGINE")
-    print("="*70)
-    print("Full autonomous development until user returns")
-    print("All authority granted to NEXUS-ONE")
-    print("="*70 + "\n")
+    """Entry point for original autonomous loop mode."""
+    print("\n" + "=" * 70)
+    print("NEXUS-ONE + COPILOT AUTONOMOUS ENGINE (AUTONOMOUS MODE)")
+    print("=" * 70)
+    print("This mode runs a continuous 5-hour development cycle.")
+    print("To issue single commands, please use the human_interface_agent.py GUI.")
+    print("=" * 70 + "\n")
 
     engine = AutonomousEngine()
     engine.run()

@@ -2,20 +2,11 @@
 NEXUS-ONE Chat Assistant
 Lightweight background chat interface - Low CPU usage
 """
+
 import asyncio
 import sys
 from datetime import datetime
 from typing import Optional
-
-
-
-
-
-
-
-
-
-
 
 
 class ChatAssistant:
@@ -31,18 +22,18 @@ class ChatAssistant:
     def start_chat(self):
         """Sohbeti başlat"""
         self.running = True
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("💬 NEXUS-ONE CHAT ASSISTANT")
-        print("="*60)
+        print("=" * 60)
         print("Merhaba! Ben NEXUS-ONE Chat Asistanı.")
         print("Sana her zaman yardımcı olmaya hazırım.")
         print("('exit' veya 'quit' yazarak çıkabilirsin)")
-        print("="*60 + "\n")
+        print("=" * 60 + "\n")
 
     async def process_message(self, user_input: str) -> str:
         """Mesajı işle (hafif işlem)"""
 
-        if user_input.lower() in ['exit', 'quit', 'çık']:
+        if user_input.lower() in ["exit", "quit", "çık"]:
             self.running = False
             return "👋 Hoşça kalın!"
 
@@ -88,15 +79,17 @@ class ChatAssistant:
                 print(f"🤖 NEXUS: {response}\n")
 
                 # Chat geçmişine ekle
-                self.chat_history.append({
-                    "time": datetime.now().isoformat(),
-                    "user": user_input,
-                    "nexus": response
-                })
+                self.chat_history.append(
+                    {
+                        "time": datetime.now().isoformat(),
+                        "user": user_input,
+                        "nexus": response,
+                    }
+                )
 
                 # Bellek optimizasyonu
                 if len(self.chat_history) > self.max_history:
-                    self.chat_history = self.chat_history[-self.max_history:]
+                    self.chat_history = self.chat_history[-self.max_history :]
 
             except KeyboardInterrupt:
                 print("\n⚠️ Sohbet kesildi.")
@@ -111,8 +104,9 @@ class ChatAssistant:
         return {
             "total_messages": len(self.chat_history),
             "start_time": self.chat_history[0]["time"] if self.chat_history else None,
-            "last_message": self.chat_history[-1] if self.chat_history else None
+            "last_message": self.chat_history[-1] if self.chat_history else None,
         }
+
 
 async def start_lightweight_chat():
     """Hafif sohbeti başlat"""
@@ -122,18 +116,20 @@ async def start_lightweight_chat():
     # Özet göster
     summary = chat.get_chat_summary()
     if summary["total_messages"] > 0:
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("📊 Sohbet Özeti")
-        print("="*60)
+        print("=" * 60)
         print(f"📝 Toplam Mesaj: {summary['total_messages']}")
         print(f"⏰ Başlama Saati: {summary['start_time'][:19]}")
-        print("="*60 + "\n")
+        print("=" * 60 + "\n")
+
 
 if __name__ == "__main__":
     try:
         # Windows encoding fix
         if sys.platform == "win32":
             import os
+
             os.system("chcp 65001 > nul")
 
         # Start chat
@@ -144,4 +140,5 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"🚨 Error: {e}")
         import traceback
+
         traceback.print_exc()

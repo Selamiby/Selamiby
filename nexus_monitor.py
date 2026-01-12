@@ -14,7 +14,7 @@ class NexusMonitor:
         self.stats_file = self.log_dir / "stats.json"
         self.log_dir.mkdir(exist_ok=True)
         self.load_stats()
-    
+
     def load_stats(self):
         """Load existing statistics"""
         if self.stats_file.exists():
@@ -27,14 +27,14 @@ class NexusMonitor:
                 "failed_syncs": 0,
                 "total_commits": 0,
                 "total_pushes": 0,
-                "uptime_hours": 0
+                "uptime_hours": 0,
             }
-    
+
     def save_stats(self):
         """Save statistics to file"""
-        with open(self.stats_file, 'w') as f:
+        with open(self.stats_file, "w") as f:
             json.dump(self.stats, f, indent=2)
-    
+
     def record_sync(self, success=True):
         """Record sync operation"""
         self.stats["total_syncs"] += 1
@@ -43,41 +43,40 @@ class NexusMonitor:
         else:
             self.stats["failed_syncs"] += 1
         self.save_stats()
-    
+
     def get_repo_stats(self):
         """Get real repository statistics"""
         try:
             # Total commits
             commits = subprocess.run(
-                ["git", "rev-list", "--count", "HEAD"],
-                capture_output=True, text=True
+                ["git", "rev-list", "--count", "HEAD"], capture_output=True, text=True
             ).stdout.strip()
-            
+
             # Branch count
-            branches = subprocess.run(
-                ["git", "branch", "-a"],
-                capture_output=True, text=True
-            ).stdout.strip().split('\n')
-            
+            branches = (
+                subprocess.run(["git", "branch", "-a"], capture_output=True, text=True)
+                .stdout.strip()
+                .split("\n")
+            )
+
             # Current status
             status = subprocess.run(
-                ["git", "status", "--porcelain"],
-                capture_output=True, text=True
+                ["git", "status", "--porcelain"], capture_output=True, text=True
             ).stdout.strip()
-            
+
             return {
                 "total_commits": int(commits) if commits else 0,
                 "branch_count": len([b for b in branches if b.strip()]),
-                "changed_files": len(status.split('\n')) if status else 0,
-                "last_sync": datetime.now().isoformat()
+                "changed_files": len(status.split("\n")) if status else 0,
+                "last_sync": datetime.now().isoformat(),
             }
         except Exception as e:
             return {"error": str(e)}
-    
+
     def generate_report(self):
         """Generate monitoring report"""
         repo_stats = self.get_repo_stats()
-        
+
         report = f"""
 ╔══════════════════════════════════════════════════════════════════════╗
 ║                    NEXUS-ONE SYSTEM REPORT                          ║
@@ -106,11 +105,12 @@ class NexusMonitor:
 """
         return report
 
+
 if __name__ == "__main__":
     monitor = NexusMonitor()
     print(monitor.generate_report())
-    
+
     # Log the report
-    with open(monitor.log_dir / "reports.log", 'a', encoding='utf-8') as f:
+    with open(monitor.log_dir / "reports.log", "a", encoding="utf-8") as f:
         f.write(monitor.generate_report())
-        f.write("\n" + "="*70 + "\n")
+        f.write("\n" + "=" * 70 + "\n")

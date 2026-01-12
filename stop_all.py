@@ -4,7 +4,8 @@ import signal
 
 import psutil
 
-PID_FILE = '.nexus_pids.json'
+PID_FILE = ".nexus_pids.json"
+
 
 def stop_all():
     """PID dosyasında kayıtlı tüm süreçleri durdurur."""
@@ -13,7 +14,7 @@ def stop_all():
         print("⚠️ PID dosyası bulunamadı. Çalışan süreç yok veya manuel durdurulmuş.")
         return
 
-    with open(PID_FILE, 'r') as f:
+    with open(PID_FILE, "r") as f:
         try:
             pids = json.load(f)
         except json.JSONDecodeError:
@@ -38,6 +39,7 @@ def stop_all():
     # PID dosyasını temizle
     os.remove(PID_FILE)
     print("✅ Tüm Nexus süreçleri durduruldu.")
+
 
 if __name__ == "__main__":
     stop_all()

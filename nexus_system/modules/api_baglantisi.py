@@ -10,7 +10,7 @@ class APIBaglantisi:
             return self.haber_getir()
         else:
             return self.internet_kontrol()
-    
+
     def hava_durumu(self, sehir="Istanbul"):
         try:
             # Örnek API (gerçek API key gerekli)
@@ -28,9 +28,10 @@ class APIBaglantisi:
         haberler = [
             "Yapay zeka teknolojisi hızla gelişmeye devam ediyor.",
             "Yeni nesil kuantum bilgisayarlar için önemli bir adım atıldı.",
-            "Otonom araçlar şehir içi test sürüşlerine başladı."
+            "Otonom araçlar şehir içi test sürüşlerine başladı.",
         ]
         import random
+
         return f"📰 Günün haberi: {random.choice(haberler)}"
 
     def internet_kontrol(self):

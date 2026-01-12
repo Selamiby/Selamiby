@@ -34,7 +34,7 @@ def log(event, data=None):
     payload = {
         "time": time.strftime("%Y-%m-%d %H:%M:%S"),
         "event": event,
-        "data": data or {}
+        "data": data or {},
     }
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(payload) + "\n")
@@ -53,16 +53,8 @@ def cpu_ok():
 def default_queue():
     return {
         "tasks": [
-            {
-                "name": "human_agent_demo",
-                "type": "once",
-                "at": int(time.time()) + 120
-            },
-            {
-                "name": "format_python",
-                "type": "interval",
-                "every_sec": 1800
-            }
+            {"name": "human_agent_demo", "type": "once", "at": int(time.time()) + 120},
+            {"name": "format_python", "type": "interval", "every_sec": 1800},
         ]
     }
 
@@ -79,7 +71,13 @@ def load_queue():
 
 def run_human_agent_demo():
     log("run_human_agent_demo")
-    py = Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Python" / "Python311" / "python.exe"
+    py = (
+        Path(os.environ.get("LOCALAPPDATA", ""))
+        / "Programs"
+        / "Python"
+        / "Python311"
+        / "python.exe"
+    )
     py = str(py if py.exists() else sys.executable)
     script = str(WORKSPACE / "human_interface_agent.py")
     try:
@@ -90,16 +88,23 @@ def run_human_agent_demo():
 
 def run_format_python():
     log("run_format_python")
-    py = Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Python" / "Python311" / "python.exe"
+    py = (
+        Path(os.environ.get("LOCALAPPDATA", ""))
+        / "Programs"
+        / "Python"
+        / "Python311"
+        / "python.exe"
+    )
     py = str(py if py.exists() else sys.executable)
     try:
         subprocess.Popen([py, "-m", "black", str(WORKSPACE)])
     except Exception as e:
         log("format_python_error", {"error": str(e)})
 
+
 TASK_HANDLERS = {
     "human_agent_demo": run_human_agent_demo,
-    "format_python": run_format_python
+    "format_python": run_format_python,
 }
 
 
@@ -121,11 +126,13 @@ class Scheduler:
                 typ = t.get("type")
                 if name not in TASK_HANDLERS:
                     continue
-                if typ == "once" and now >= int(t.get("at", now+999999)):
+                if typ == "once" and now >= int(t.get("at", now + 999999)):
                     try:
                         TASK_HANDLERS[name]()
                         self.queue["tasks"].remove(t)
-                        QUEUE_FILE.write_text(json.dumps(self.queue, indent=2), encoding="utf-8")
+                        QUEUE_FILE.write_text(
+                            json.dumps(self.queue, indent=2), encoding="utf-8"
+                        )
                         log("task_once_run", {"name": name})
                     except Exception as e:
                         log("task_once_error", {"name": name, "error": str(e)})
@@ -149,6 +156,7 @@ def main():
         sched.loop()
     except KeyboardInterrupt:
         sched.stop_flag = True
+
 
 if __name__ == "__main__":
     main()

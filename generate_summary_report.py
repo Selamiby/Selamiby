@@ -9,45 +9,6 @@ from datetime import datetime
 from pathlib import Path
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def generate_summary():
     report = f"""
 ================================================================================
@@ -258,7 +219,7 @@ Restart System:
     # Save report to file
     report_file = Path("data/AUTOMATION_SUMMARY.txt")
     report_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(report_file, 'w', encoding='utf-8', errors='replace') as f:
+    with open(report_file, "w", encoding="utf-8", errors="replace") as f:
         f.write(report)
 
     print(f"\nReport saved to: {report_file}")

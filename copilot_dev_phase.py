@@ -21,111 +21,13 @@ LOG_DIR.mkdir(exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
-    format='[%(asctime)s] %(levelname)s - %(message)s',
+    format="[%(asctime)s] %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "copilot_dev.log", encoding='utf-8'),
-        logging.StreamHandler()
-    ]
+        logging.FileHandler(LOG_DIR / "copilot_dev.log", encoding="utf-8"),
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger("CopilotDev")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class CopilotDevEngine:
@@ -158,12 +60,12 @@ class CopilotDevEngine:
             "type_hints": 0,
             "docstrings": 0,
             "unused_imports": 0,
-            "formatting": 0
+            "formatting": 0,
         }
 
         for py_file in python_files[:10]:  # Process first 10 files
             try:
-                with open(py_file, 'r', encoding='utf-8') as f:
+                with open(py_file, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 # Track improvements opportunities
@@ -185,16 +87,16 @@ class CopilotDevEngine:
         features_to_add = [
             {
                 "name": "Advanced Error Tracking",
-                "description": "Real-time error detection and categorization"
+                "description": "Real-time error detection and categorization",
             },
             {
                 "name": "Automated Testing Suite",
-                "description": "Auto-generate and run unit tests"
+                "description": "Auto-generate and run unit tests",
             },
             {
                 "name": "Performance Monitor",
-                "description": "Track CPU, RAM, and execution time"
-            }
+                "description": "Track CPU, RAM, and execution time",
+            },
         ]
 
         for feature in features_to_add:
@@ -207,10 +109,7 @@ class CopilotDevEngine:
         try:
             os.chdir(WORKSPACE)
             result = subprocess.run(
-                ["git", "add", "."],
-                capture_output=True,
-                text=True,
-                timeout=10
+                ["git", "add", "."], capture_output=True, text=True, timeout=10
             )
             self.log_activity("GIT", f"Git add completed: {result.returncode}")
         except Exception as e:
@@ -220,7 +119,9 @@ class CopilotDevEngine:
         """Main autonomous operation loop"""
         self.log_activity("START", "=" * 70)
         self.log_activity("START", "COPILOT AUTONOMOUS DEVELOPMENT PHASE STARTED")
-        self.log_activity("START", f"Duration: 5 hours (until {self.end_time.strftime('%H:%M:%S')})")
+        self.log_activity(
+            "START", f"Duration: 5 hours (until {self.end_time.strftime('%H:%M:%S')})"
+        )
         self.log_activity("START", "=" * 70)
 
         iteration = 0
@@ -241,7 +142,10 @@ class CopilotDevEngine:
             time.sleep(2)
 
             # Status report
-            self.log_activity("STATUS", f"Improvements: {len(self.improvements_made)}, Features: {len(self.features_added)}, Bugs Fixed: {len(self.bugs_fixed)}")
+            self.log_activity(
+                "STATUS",
+                f"Improvements: {len(self.improvements_made)}, Features: {len(self.features_added)}, Bugs Fixed: {len(self.bugs_fixed)}",
+            )
 
             # Wait before next iteration
             logger.info(f"Next iteration in 30 seconds...")

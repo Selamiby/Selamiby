@@ -34,115 +34,13 @@ LOG_DIR.mkdir(exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - [%(levelname)s] %(name)s - %(message)s',
+    format="%(asctime)s - [%(levelname)s] %(name)s - %(message)s",
     handlers=[
         logging.FileHandler(LOG_DIR / "collaboration.log"),
-        logging.StreamHandler()
-    ]
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger("Copilot-NEXUS")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class CollaborationEngine:
@@ -161,7 +59,7 @@ class CollaborationEngine:
             "shared_decisions": [],
             "code_improvements": 0,
             "knowledge_expansions": 0,
-            "total_iterations": 0
+            "total_iterations": 0,
         }
 
         logger.info(f"🤝 Collaboration Engine Started - Session: {self.session_id}")
@@ -175,7 +73,7 @@ class CollaborationEngine:
             "timestamp": datetime.now().isoformat(),
             "type": action_type,
             "details": details,
-            "learned_by_nexus": False
+            "learned_by_nexus": False,
         }
 
         self.metrics["copilot_actions"].append(action)
@@ -191,7 +89,7 @@ class CollaborationEngine:
             "source": "copilot_action",
             "action_type": action["type"],
             "extracted_knowledge": self._extract_knowledge(action),
-            "applied_to_knowledge_graph": False
+            "applied_to_knowledge_graph": False,
         }
 
         self.metrics["nexus_learnings"].append(learning)
@@ -203,30 +101,30 @@ class CollaborationEngine:
 
     def _extract_knowledge(self, action: Dict) -> Dict:
         """Extract learnable knowledge from Copilot action"""
-        knowledge = {
-            "patterns": [],
-            "techniques": [],
-            "best_practices": []
-        }
+        knowledge = {"patterns": [], "techniques": [], "best_practices": []}
 
         details = action.get("details", {})
 
         # Extract from file edits
         if action["type"] == "file_edit":
             if "new_code" in details:
-                knowledge["patterns"].append({
-                    "code_snippet": details.get("new_code", "")[:200],
-                    "file_type": details.get("file_path", "").split(".")[-1],
-                    "context": details.get("explanation", "")
-                })
+                knowledge["patterns"].append(
+                    {
+                        "code_snippet": details.get("new_code", "")[:200],
+                        "file_type": details.get("file_path", "").split(".")[-1],
+                        "context": details.get("explanation", ""),
+                    }
+                )
 
         # Extract from commands
         elif action["type"] == "terminal_command":
-            knowledge["techniques"].append({
-                "command": details.get("command", ""),
-                "purpose": details.get("explanation", ""),
-                "success": details.get("success", True)
-            })
+            knowledge["techniques"].append(
+                {
+                    "command": details.get("command", ""),
+                    "purpose": details.get("explanation", ""),
+                    "success": details.get("success", True),
+                }
+            )
 
         return knowledge
 
@@ -237,7 +135,7 @@ class CollaborationEngine:
             kg_file.parent.mkdir(parents=True, exist_ok=True)
 
             if kg_file.exists():
-                with open(kg_file, 'r', encoding='utf-8') as f:
+                with open(kg_file, "r", encoding="utf-8") as f:
                     kg = json.load(f)
             else:
                 kg = {"concepts": {}, "commands": {}, "code_patterns": {}}
@@ -250,20 +148,24 @@ class CollaborationEngine:
                     "code": pattern["code_snippet"],
                     "file_type": pattern["file_type"],
                     "learned_from": "copilot",
-                    "timestamp": learning["timestamp"]
+                    "timestamp": learning["timestamp"],
                 }
 
             # Add new techniques
             for technique in knowledge.get("techniques", []):
-                cmd_id = technique["command"].split()[0] if technique["command"] else "unknown"
+                cmd_id = (
+                    technique["command"].split()[0]
+                    if technique["command"]
+                    else "unknown"
+                )
                 kg.setdefault("commands", {})[cmd_id] = {
                     "command": technique["command"],
                     "purpose": technique["purpose"],
-                    "success_rate": 1.0 if technique["success"] else 0.0
+                    "success_rate": 1.0 if technique["success"] else 0.0,
                 }
 
             # Save updated knowledge graph
-            with open(kg_file, 'w', encoding='utf-8') as f:
+            with open(kg_file, "w", encoding="utf-8") as f:
                 json.dump(kg, f, indent=2, ensure_ascii=False)
 
             learning["applied_to_knowledge_graph"] = True
@@ -280,7 +182,7 @@ class CollaborationEngine:
             "workspace_structure": self._get_workspace_structure(),
             "recent_patterns": self._get_recent_patterns(),
             "known_issues": self._get_known_issues(),
-            "best_practices": self._get_best_practices()
+            "best_practices": self._get_best_practices(),
         }
 
         return context
@@ -291,7 +193,7 @@ class CollaborationEngine:
             "python_files": len(list(WORKSPACE.rglob("*.py"))),
             "markdown_files": len(list(WORKSPACE.rglob("*.md"))),
             "powershell_files": len(list(WORKSPACE.rglob("*.ps1"))),
-            "directories": len([d for d in WORKSPACE.rglob("*") if d.is_dir()])
+            "directories": len([d for d in WORKSPACE.rglob("*") if d.is_dir()]),
         }
         return structure
 
@@ -300,7 +202,7 @@ class CollaborationEngine:
         try:
             kg_file = DATA_DIR / "knowledge_graph" / "knowledge_graph.json"
             if kg_file.exists():
-                with open(kg_file, 'r', encoding='utf-8') as f:
+                with open(kg_file, "r", encoding="utf-8") as f:
                     kg = json.load(f)
                 patterns = kg.get("code_patterns", {})
                 return [{"id": k, **v} for k, v in list(patterns.items())[-5:]]
@@ -313,7 +215,7 @@ class CollaborationEngine:
         issues = []
         try:
             for session_file in COLLAB_DIR.glob("session_*.json"):
-                with open(session_file, 'r', encoding='utf-8') as f:
+                with open(session_file, "r", encoding="utf-8") as f:
                     session = json.load(f)
                     # Extract failed actions
                     for action in session.get("copilot_actions", []):
@@ -330,11 +232,13 @@ class CollaborationEngine:
             "Add type hints for better code clarity",
             "Write docstrings for all functions",
             "Use pathlib for file operations",
-            "Log errors with proper context"
+            "Log errors with proper context",
         ]
         return practices
 
-    def shared_decision(self, decision_type: str, copilot_input: Any, nexus_input: Any) -> Any:
+    def shared_decision(
+        self, decision_type: str, copilot_input: Any, nexus_input: Any
+    ) -> Any:
         """
         Make a shared decision between Copilot and NEXUS
         Combines insights from both systems
@@ -345,7 +249,7 @@ class CollaborationEngine:
             "copilot_recommendation": copilot_input,
             "nexus_recommendation": nexus_input,
             "final_decision": None,
-            "confidence": 0.0
+            "confidence": 0.0,
         }
 
         # Simple decision logic (can be enhanced)
@@ -359,7 +263,9 @@ class CollaborationEngine:
             decision["confidence"] = 0.75
 
         self.metrics["shared_decisions"].append(decision)
-        logger.info(f"🤝 Shared Decision: {decision_type} -> {decision['final_decision']}")
+        logger.info(
+            f"🤝 Shared Decision: {decision_type} -> {decision['final_decision']}"
+        )
 
         return decision["final_decision"]
 
@@ -377,7 +283,7 @@ class CollaborationEngine:
     def save_session(self):
         """Save session metrics"""
         try:
-            with open(self.session_file, 'w', encoding='utf-8') as f:
+            with open(self.session_file, "w", encoding="utf-8") as f:
                 json.dump(self.metrics, f, indent=2, ensure_ascii=False)
         except Exception as e:
             logger.error(f"Failed to save session: {e}")
@@ -393,112 +299,14 @@ class CollaborationEngine:
             "shared_decisions_made": len(self.metrics["shared_decisions"]),
             "knowledge_expansions": self.metrics["knowledge_expansions"],
             "iterations": self.metrics["total_iterations"],
-            "actions_per_minute": (len(self.metrics["copilot_actions"]) / duration * 60) if duration > 0 else 0
+            "actions_per_minute": (
+                (len(self.metrics["copilot_actions"]) / duration * 60)
+                if duration > 0
+                else 0
+            ),
         }
 
         return stats
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def main():
@@ -525,9 +333,11 @@ def main():
             # Display stats every 10 iterations
             if iteration % 10 == 0:
                 stats = engine.get_statistics()
-                print(f"\n📊 Stats: {stats['total_copilot_actions']} actions, "
-                      f"{stats['total_nexus_learnings']} learnings, "
-                      f"{stats['iterations']} iterations")
+                print(
+                    f"\n📊 Stats: {stats['total_copilot_actions']} actions, "
+                    f"{stats['total_nexus_learnings']} learnings, "
+                    f"{stats['iterations']} iterations"
+                )
 
             time.sleep(30)  # Every 30 seconds
 

@@ -7,7 +7,7 @@ import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from modules.file_organizer import FileOrganizer
 
 
@@ -41,6 +41,7 @@ class TestFileOrganizer(unittest.TestCase):
             self.test_dir.rmdir()
         except Exception:
             pass
+
 
 if __name__ == "__main__":
     unittest.main()

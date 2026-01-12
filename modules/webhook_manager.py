@@ -7,6 +7,7 @@ class WebhookManager:
     """
     Webhook kayıt ve tetikleme altyapısı.
     """
+
     def __init__(self):
         self.webhooks: List[str] = []
 

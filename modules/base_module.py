@@ -6,6 +6,7 @@ class BaseModule:
     Tüm modüller için temel arayüz.
     Yaşam döngüsü: Initialization → Configuration → Dependency Resolution → Startup → Running State → Shutdown
     """
+
     def __init__(self):
         self.initialized = False
         self.configured = False
@@ -48,7 +49,7 @@ class BaseModule:
             "configured": self.configured,
             "dependencies_resolved": self.dependencies_resolved,
             "running": self.running,
-            "shutdown": self.shutdown
+            "shutdown": self.shutdown,
         }
 
     def handle_command(self, command: str, params: Dict) -> Dict:

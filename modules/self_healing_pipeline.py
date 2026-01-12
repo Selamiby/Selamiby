@@ -2,23 +2,36 @@ from typing import Dict, List, Optional
 
 
 class SelfHealingPipeline:
-    def __init__(self, ws_manager: Optional[object] = None, webhook_manager: Optional[object] = None):
+    def __init__(
+        self,
+        ws_manager: Optional[object] = None,
+        webhook_manager: Optional[object] = None,
+    ):
         self.ws_manager = ws_manager
         self.webhook_manager = webhook_manager
         self.rules = [
             {"pattern": "disk_full", "action": self.cleanup_disk},
-            {"pattern": "service_down", "action": self.restart_service}
+            {"pattern": "service_down", "action": self.restart_service},
         ]
         self.learning_log: List[Dict] = []
 
     def notify(self, event: str, data: Dict):
-        if self.ws_manager and hasattr(self.ws_manager, "broadcast") and callable(getattr(self.ws_manager, "broadcast", None)):
+        if (
+            self.ws_manager
+            and hasattr(self.ws_manager, "broadcast")
+            and callable(getattr(self.ws_manager, "broadcast", None))
+        ):
             try:
                 import asyncio
+
                 asyncio.create_task(self.ws_manager.broadcast(f"{event}: {data}"))  # type: ignore
             except Exception:
                 pass
-        if self.webhook_manager and hasattr(self.webhook_manager, "notify") and callable(getattr(self.webhook_manager, "notify", None)):
+        if (
+            self.webhook_manager
+            and hasattr(self.webhook_manager, "notify")
+            and callable(getattr(self.webhook_manager, "notify", None))
+        ):
             try:
                 self.webhook_manager.notify(event, data)  # type: ignore
             except Exception:
@@ -52,7 +65,9 @@ class SelfHealingPipeline:
         return results
 
     def verify(self, system_state: Dict) -> bool:
-        ok = system_state.get("disk_usage", 0) < 95 and system_state.get("service_running", True)
+        ok = system_state.get("disk_usage", 0) < 95 and system_state.get(
+            "service_running", True
+        )
         self.notify("verification", {"ok": ok})
         return ok
 
@@ -61,7 +76,7 @@ class SelfHealingPipeline:
         return {"success": True}
 
     def create_self_repair_script(self) -> str:
-        script = '''#!/usr/bin/env python3
+        script = """#!/usr/bin/env python3
 import os
 import sys
 import shutil
@@ -116,14 +131,15 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
+"""
         return script
 
     def save_self_repair_script(self, script: str) -> str:
         import os
         from pathlib import Path
-        script_path = Path(getattr(self, 'project_root', Path.cwd())) / "self_repair.py"
-        script_path.write_text(script, encoding='utf-8')
+
+        script_path = Path(getattr(self, "project_root", Path.cwd())) / "self_repair.py"
+        script_path.write_text(script, encoding="utf-8")
         try:
             script_path.chmod(0o755)
         except Exception:
@@ -144,7 +160,9 @@ if __name__ == "__main__":
         self.learn(issues, actions, verified)
 
     def learn(self, issues: List[str], actions: List[Dict], verified: bool):
-        self.learning_log.append({"issues": issues, "actions": actions, "verified": verified})
+        self.learning_log.append(
+            {"issues": issues, "actions": actions, "verified": verified}
+        )
         self.notify("learning", {"log_size": len(self.learning_log)})
         self.notify("learning", {"log_size": len(self.learning_log)})
         self.notify("learning", {"log_size": len(self.learning_log)})

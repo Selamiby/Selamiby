@@ -8,7 +8,11 @@ from modules.websocket_manager import WebSocketManager
 
 
 class SystemMonitorPipeline:
-    def __init__(self, ws_manager: Optional[WebSocketManager] = None, webhook_manager: Optional[WebhookManager] = None):
+    def __init__(
+        self,
+        ws_manager: Optional[WebSocketManager] = None,
+        webhook_manager: Optional[WebhookManager] = None,
+    ):
         self.ws_manager = ws_manager
         self.webhook_manager = webhook_manager
         self.thresholds = {"cpu": 90, "memory": 90, "disk": 90}  # Varsayılan eşikler
@@ -16,6 +20,7 @@ class SystemMonitorPipeline:
     def notify(self, event: str, data: Dict):
         if self.ws_manager:
             import asyncio
+
             asyncio.create_task(self.ws_manager.broadcast(f"{event}: {data}"))
         if self.webhook_manager:
             self.webhook_manager.notify(event, data)
@@ -24,8 +29,8 @@ class SystemMonitorPipeline:
         metrics = {
             "cpu": psutil.cpu_percent(),
             "memory": psutil.virtual_memory().percent,
-            "disk": psutil.disk_usage('/').percent,
-            "timestamp": time.time()
+            "disk": psutil.disk_usage("/").percent,
+            "timestamp": time.time(),
         }
         self.notify("metrics_collected", metrics)
         return metrics

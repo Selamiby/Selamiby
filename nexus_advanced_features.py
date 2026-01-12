@@ -15,23 +15,6 @@ from datetime import datetime
 from pathlib import Path
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def feature_1_realtime_monitoring():
     """Real-time Repository Monitoring Dashboard"""
     print("\n[1] REAL-TIME MONITORING DASHBOARD")
@@ -39,10 +22,12 @@ def feature_1_realtime_monitoring():
 
     try:
         # Git statistics
-        commits = subprocess.run(["git", "rev-list", "--all", "--count"],
-                                capture_output=True, text=True).stdout.strip()
-        branches = subprocess.run(["git", "branch", "-a"],
-                                 capture_output=True, text=True).stdout.count('\n')
+        commits = subprocess.run(
+            ["git", "rev-list", "--all", "--count"], capture_output=True, text=True
+        ).stdout.strip()
+        branches = subprocess.run(
+            ["git", "branch", "-a"], capture_output=True, text=True
+        ).stdout.count("\n")
 
         # File statistics
         py_files = len(list(Path.cwd().rglob("*.py")))
@@ -51,8 +36,9 @@ def feature_1_realtime_monitoring():
         json_files = len(list(Path.cwd().rglob("*.json")))
 
         # Repository size
-        repo_size = subprocess.run(["git", "rev-parse", "--git-dir"],
-                                  capture_output=True, text=True).stdout.strip()
+        repo_size = subprocess.run(
+            ["git", "rev-parse", "--git-dir"], capture_output=True, text=True
+        ).stdout.strip()
         git_dir = Path(repo_size) / "objects"
 
         print(f"[Monitoring Dashboard]")
@@ -68,23 +54,6 @@ def feature_1_realtime_monitoring():
         print(f"[Error] Monitoring failed: {e}")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def feature_2_git_analysis():
     """Intelligent Git History Analysis"""
     print("\n[2] GIT HISTORY ANALYSIS")
@@ -92,10 +61,13 @@ def feature_2_git_analysis():
 
     try:
         # Get commit authors
-        authors = subprocess.run(
-            ["git", "log", "--pretty=format:%an"],
-            capture_output=True, text=True
-        ).stdout.strip().split('\n')
+        authors = (
+            subprocess.run(
+                ["git", "log", "--pretty=format:%an"], capture_output=True, text=True
+            )
+            .stdout.strip()
+            .split("\n")
+        )
 
         author_counts = defaultdict(int)
         for author in authors:
@@ -103,14 +75,19 @@ def feature_2_git_analysis():
                 author_counts[author] += 1
 
         print(f"[Commit Authors]")
-        for author, count in sorted(author_counts.items(), key=lambda x: x[1], reverse=True)[:5]:
+        for author, count in sorted(
+            author_counts.items(), key=lambda x: x[1], reverse=True
+        )[:5]:
             print(f"  {author}: {count} commits")
 
         # Most recent commits
-        recent = subprocess.run(
-            ["git", "log", "-10", "--oneline"],
-            capture_output=True, text=True
-        ).stdout.strip().split('\n')
+        recent = (
+            subprocess.run(
+                ["git", "log", "-10", "--oneline"], capture_output=True, text=True
+            )
+            .stdout.strip()
+            .split("\n")
+        )
 
         print(f"\n[Recent Commits]")
         for commit in recent[:5]:
@@ -118,23 +95,6 @@ def feature_2_git_analysis():
 
     except Exception as e:
         print(f"[Error] Git analysis failed: {e}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def feature_3_code_formatter():
@@ -150,18 +110,18 @@ def feature_3_code_formatter():
 
         for py_file in py_files:
             try:
-                with open(py_file, encoding='utf-8', errors='ignore') as f:
+                with open(py_file, encoding="utf-8", errors="ignore") as f:
                     content = f.read()
 
                 # Fix 1: Remove trailing whitespace
-                fixed = re.sub(r'[ \t]+$', '', content, flags=re.MULTILINE)
+                fixed = re.sub(r"[ \t]+$", "", content, flags=re.MULTILINE)
 
                 # Fix 2: Ensure two newlines before functions/classes
-                fixed = re.sub(r'\ndef ', '\n\ndef ', fixed)
-                fixed = re.sub(r'\nclass ', '\n\nclass ', fixed)
+                fixed = re.sub(r"\ndef ", "\n\ndef ", fixed)
+                fixed = re.sub(r"\nclass ", "\n\nclass ", fixed)
 
                 if fixed != content:
-                    with open(py_file, 'w', encoding='utf-8') as f:
+                    with open(py_file, "w", encoding="utf-8") as f:
                         f.write(fixed)
                     total_fixed += 1
                     print(f"[OK] {py_file.name}: Auto-fixed formatting")
@@ -172,23 +132,6 @@ def feature_3_code_formatter():
 
     except Exception as e:
         print(f"[Error] Code formatting failed: {e}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def feature_4_error_prediction():
@@ -203,11 +146,11 @@ def feature_4_error_prediction():
     try:
         # Check for common Python issues
         patterns = {
-            'bare_except': r'except\s*:',
-            'print_statements': r'print\s*\(',
-            'long_lines': r'^.{100,}$',
-            'todo_comments': r'#.*TODO|#.*FIXME',
-            'placeholder_names': r'def\s+(foo|bar|test|xxx)\s*\(',
+            "bare_except": r"except\s*:",
+            "print_statements": r"print\s*\(",
+            "long_lines": r"^.{100,}$",
+            "todo_comments": r"#.*TODO|#.*FIXME",
+            "placeholder_names": r"def\s+(foo|bar|test|xxx)\s*\(",
         }
 
         py_files = list(Path.cwd().rglob("*.py"))[:10]
@@ -216,7 +159,7 @@ def feature_4_error_prediction():
 
         for py_file in py_files:
             try:
-                with open(py_file, encoding='utf-8', errors='ignore') as f:
+                with open(py_file, encoding="utf-8", errors="ignore") as f:
                     lines = f.readlines()
 
                 for line_num, line in enumerate(lines, 1):
@@ -234,35 +177,18 @@ def feature_4_error_prediction():
         print(f"[Error] Error prediction failed: {e}")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def feature_5_deployment_readiness():
     """Deployment Readiness Check"""
     print("\n[5] DEPLOYMENT READINESS CHECK")
     print("-" * 70)
 
     checks = {
-        'Git repository': lambda: Path('.git').exists(),
-        'GitHub Actions': lambda: Path('.github/workflows').exists(),
-        'Requirements file': lambda: any(Path('.').glob('requirements*.txt')),
-        'README': lambda: Path('README.md').exists(),
-        'License': lambda: Path('LICENSE').exists(),
-        'Gitignore': lambda: Path('.gitignore').exists(),
+        "Git repository": lambda: Path(".git").exists(),
+        "GitHub Actions": lambda: Path(".github/workflows").exists(),
+        "Requirements file": lambda: any(Path(".").glob("requirements*.txt")),
+        "README": lambda: Path("README.md").exists(),
+        "License": lambda: Path("LICENSE").exists(),
+        "Gitignore": lambda: Path(".gitignore").exists(),
     }
 
     passed = 0
@@ -277,23 +203,6 @@ def feature_5_deployment_readiness():
             print(f"  [ERROR] {check_name}")
 
     print(f"\n[Result] {passed}/{len(checks)} deployment requirements met")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def main():

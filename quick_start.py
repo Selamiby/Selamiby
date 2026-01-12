@@ -20,7 +20,7 @@ def quick_start():
         "python": sys.version.split()[0],
         "directory": os.getcwd(),
         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "files_in_dir": len([f for f in os.listdir() if os.path.isfile(f)])
+        "files_in_dir": len([f for f in os.listdir() if os.path.isfile(f)]),
     }
 
     print("\n📊 System Information:")
@@ -43,11 +43,11 @@ def quick_start():
         try:
             cmd = input("\nquick> ").strip().lower()
 
-            if cmd in ['exit', 'quit', 'q']:
+            if cmd in ["exit", "quit", "q"]:
                 print("\n👋 Goodbye!")
                 break
 
-            elif cmd == 'ls':
+            elif cmd == "ls":
                 files = os.listdir()
                 for f in files[:20]:
                     if os.path.isfile(f):
@@ -55,23 +55,25 @@ def quick_start():
                     else:
                         print(f"  📁 {f}/")
 
-            elif cmd == 'info':
+            elif cmd == "info":
                 print(json.dumps(info, indent=2))
 
-            elif cmd == 'create':
+            elif cmd == "create":
                 filename = f"nexus_test_{int(datetime.now().timestamp())}.txt"
-                with open(filename, 'w') as f:
+                with open(filename, "w") as f:
                     f.write(f"NEXUS-ONE Test File\nCreated: {datetime.now()}")
                 print(f"✅ Created: {filename}")
 
-            elif cmd == 'help':
-                print("""
+            elif cmd == "help":
+                print(
+                    """
   Available commands:
   - ls: List files
   - info: Show system info
   - create: Create test file
   - exit: Quit NEXUS-ONE
-                """)
+                """
+                )
 
             elif cmd:
                 print(f"❌ Unknown command: {cmd}")
@@ -88,15 +90,17 @@ if __name__ == "__main__":
     if sys.platform == "win32":
         os.system("chcp 65001 > nul")
 
-    print(r"""
+    print(
+        r"""
     ╔╗╔╦╗╔╦╗╔═╗╦ ╦╔═╗  ╔═╗╔╗╔╔═╗╔╦╗
-    ║║║║║ ║║╠═╝║ ║╚═╗  ║ ║║║║╚═╗ ║ 
-    ╝╚╝╩╩═╝╩╩  ╚═╝╚═╝  ╚═╝╝╚╝╚═╝ ╩ 
+    ║║║║║ ║║╠═╝║ ║╚═╗  ║ ║║║║╚═╗ ║
+    ╝╚╝╩╩═╝╩╩  ╚═╝╚═╝  ╚═╝╝╚╝╚═╝ ╩
 
     ╔══════════════════════════════════════╗
     ║     NEXUS-ONE Quick Start v1.0      ║
     ║     Minimal AI Interface            ║
     ╚══════════════════════════════════════╝
-    """)
+    """
+    )
 
     quick_start()
