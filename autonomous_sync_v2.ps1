@@ -18,9 +18,9 @@ function Invoke-AdvancedSync {
         & git fetch origin 2>$null
         Write-AutoLog "✓ Fetch" "SUCCESS"
         
-        # 2. Merge
-        & git merge origin/main --allow-unrelated-histories --no-edit 2>$null
-        Write-AutoLog "✓ Merge" "SUCCESS"
+        # 2. Pull with Rebase
+        & git pull --rebase origin main --allow-unrelated-histories --no-edit 2>$null
+        Write-AutoLog "✓ Pull/Rebase" "SUCCESS"
         
         # 3. Smart Diff
         $status = & git status --porcelain
@@ -40,20 +40,30 @@ function Invoke-AdvancedSync {
         }
         
         if ($changes.Count -gt 0) {
-            Write-AutoLog "Değişiklikler: $($changes.Count)" "PERF"
+            Write-AutoLog "Değişiklikler: $($changes.Count)" "INFO"
             
             # 4. Commit
             & git add . 2>$null
-            $msg = "Auto: $(Get-Date -Format 'HH:mm:ss')"
+            $msg = "Auto-Sync: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
             & git commit -m $msg 2>$null
             Write-AutoLog "✓ Commit" "SUCCESS"
             
-            # 5. Push (parallel)
-            & git push origin main 2>$null
-            Write-AutoLog "✓ Push" "SUCCESS"
+            # 5. Push with lease (safer force push)
+            $pushResult = & git push origin main 2>&1
+            if ($LASTEXITCODE -ne 0) {
+                Write-AutoLog "Normal push başarısız, force-with-lease denenecek. Hata: $pushResult" "WARNING"
+                & git push --force-with-lease origin main
+                if ($LASTEXITCODE -eq 0) {
+                    Write-AutoLog "✓ Push (force-with-lease)" "SUCCESS"
+                } else {
+                    Write-AutoLog "Force-with-lease push da başarısız oldu." "ERROR"
+                }
+            } else {
+                Write-AutoLog "✓ Push" "SUCCESS"
+            }
         }
         else {
-            Write-AutoLog "Değişiklik yok" "WARNING"
+            Write-AutoLog "Değişiklik yok" "INFO"
         }
         
         return $true
