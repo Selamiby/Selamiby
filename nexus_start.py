@@ -1,18 +1,18 @@
-﻿# nexus_start.py - BAST BAŞLANGIÇ
+﻿# nexus_start.py - FAST START
 import os
 import time
 from datetime import datetime
 
-print("🚀 NEXUS SSTEM BAŞLATILIYOR...")
+print("🚀 NEXUS SİSTEM BAŞLATILIYOR...")
 print(f"Tarih: {datetime.now()}")
 
 # Klasörleri oluştur
-for klasor in ['modules', 'logs', 'data', 'generated', 'backups']:
+for klasor in ["modules", "logs", "data", "generated", "backups"]:
     os.makedirs(klasor, exist_ok=True)
     print(f"✅ {klasor} klasörü hazır")
 
 # Modülleri yükle
-print("\n📦 MODÜLLER YÜKLENYOR...")
+print("\n📦 MODÜLLER YÜKLENİYOR...")
 try:
     from modules.beyin import Beyin
     beyin = Beyin()
@@ -21,14 +21,14 @@ except Exception as e:
     print(f"❌ Modül yükleme hatası: {e}")
 
 # Test görevi
-print("\n🧪 TEST GÖREV...")
+print("\n🧪 TEST GÖREVİ...")
 karar = beyin.karar_ver("Sistem başlat")
 print(f"Karar: {karar}")
 sonuc = beyin.calistir(karar)
 print(f"Sonuç: {sonuc}")
 
 # Sürekli çalışma döngüsü
-print("\n👁️  SSTEM ÇALIŞIYOR... (Ctrl+C ile durdur)")
+print("\n👁️  SİSTEM ÇALIŞIYOR... (Ctrl+C ile durdur)")
 sayac = 0
 try:
     while True:

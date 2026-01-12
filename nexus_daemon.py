@@ -1,52 +1,5 @@
-# nexus_daemon.py
 import json
 import time
-from datetime import datetime
-
-
-
-class NexusDaemon:
-    def __init__(self):
-        self.tasks = []
-        self.load_tasks()
-
-    def load_tasks(self):
-        """Gece görevlerini yükle"""
-        self.tasks = [
-            {"time": "02:00", "action": "autogpt", "task": "Sistem optimizasyonu"},
-            {"time": "03:00", "action": "gpt_engineer", "task": "Backup script'i yaz"},
-            {"time": "04:00", "action": "crewai", "task": "Yeni özellikler araştır"},
-            {"time": "05:00", "action": "stable_diffusion", "task": "Dashboard için görsel üret"},
-        ]
-
-    def run_scheduled_tasks(self):
-        """Zamanlanmış görevleri çalıştır"""
-        current_time = datetime.now().strftime("%H:%M")
-
-        for task in self.tasks:
-            if task["time"] == current_time:
-                print(f"⏰ {task['time']} - {task['action']}: {task['task']}")
-                # Burada gerçek çalıştırma kodları olacak
-                self.execute_task(task)
-                time.sleep(60)  # 1 dakika bekle
-
-    def execute_task(self, task):
-        """Görevi çalıştır"""
-        # Bu kısım hyper_integration.py ile entegre olacak
-        print(f"▶️  Çalıştırılıyor: {task}")
-
-    def run_forever(self):
-        """Sonsuza kadar çalış"""
-        print("👁️  NEXUS DAEMON AKTİF - Siz uyurken ben çalışacağım!")
-
-        while True:
-            try:
-                self.run_scheduled_tasks()
-                time.sleep(30)  # 30 saniyede bir kontrol et
-            except KeyboardInterrupt:
-                # nexus_daemon.py
-import time
-import json
 from datetime import datetime
 import os
 
@@ -150,13 +103,6 @@ class NexusDaemon:
                 print(f"⚠️ DAEMON ANA DÖNGÜ HATASI: {e}")
                 time.sleep(60)
 
-if __name__ == "__main__":
-    daemon = NexusDaemon()
-    daemon.run_forever()
-                break
-            except Exception as e:
-                print(f"⚠️  Hata: {e}")
-                time.sleep(60)
 
 if __name__ == "__main__":
     daemon = NexusDaemon()

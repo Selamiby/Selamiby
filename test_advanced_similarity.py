@@ -153,35 +153,35 @@ def test_comprehensive_matching():
                 return False
             
             semantic_score = 1.0 if has_synonym_match(error_lower, pattern_lower) else 0.0
-            
-                # Algorithm 7: N-gram similarity (trigrams)
-                def get_ngrams(text, n=3):
-                    return set([text[i:i+n] for i in range(len(text)-n+1)])
-            
-                ngrams1 = get_ngrams(error_lower)
-                ngrams2 = get_ngrams(pattern_lower)
-                if ngrams1 and ngrams2:
-                    ngram_score = len(ngrams1 & ngrams2) / len(ngrams1 | ngrams2)
-                else:
-                    ngram_score = 0
-            
-                # Semantic boost: if key terms match, boost the score
-                key_terms = ['foreground', 'color', 'yaml', 'secret', 'import', 'module', 'parse', 'param', 'git', 'auth', 'python', 'syntax', 'file', 'path']
-                matching_terms = sum(1 for term in key_terms if term in error_lower and term in pattern_lower)
-                semantic_boost = min(0.2, matching_terms * 0.05)  # Up to 20% boost
-            
-                # Optimized weighted combination (7 algorithms + boost)
-                base_score = (
-                    seq_score * 0.15 +       # Character similarity
-                    jaccard * 0.20 +         # Word overlap
-                    lev_score * 0.10 +       # Edit distance
-                    kw_score * 0.10 +        # Keyword presence
-                    token_score * 0.25 +     # Order-independent (most important)
-                    ngram_score * 0.10 +     # Character patterns
-                    semantic_score * 0.10    # Synonym matching
-                )
-            
-                final_score = min(1.0, base_score + semantic_boost)
+
+            # Algorithm 7: N-gram similarity (trigrams)
+            def get_ngrams(text, n=3):
+                return set([text[i:i+n] for i in range(len(text)-n+1)])
+
+            ngrams1 = get_ngrams(error_lower)
+            ngrams2 = get_ngrams(pattern_lower)
+            if ngrams1 and ngrams2:
+                ngram_score = len(ngrams1 & ngrams2) / len(ngrams1 | ngrams2)
+            else:
+                ngram_score = 0
+
+            # Semantic boost: if key terms match, boost the score
+            key_terms = ['foreground', 'color', 'yaml', 'secret', 'import', 'module', 'parse', 'param', 'git', 'auth', 'python', 'syntax', 'file', 'path']
+            matching_terms = sum(1 for term in key_terms if term in error_lower and term in pattern_lower)
+            semantic_boost = min(0.2, matching_terms * 0.05)  # Up to 20% boost
+
+            # Optimized weighted combination (7 algorithms + boost)
+            base_score = (
+                seq_score * 0.15 +       # Character similarity
+                jaccard * 0.20 +         # Word overlap
+                lev_score * 0.10 +       # Edit distance
+                kw_score * 0.10 +        # Keyword presence
+                token_score * 0.25 +     # Order-independent (most important)
+                ngram_score * 0.10 +     # Character patterns
+                semantic_score * 0.10    # Synonym matching
+            )
+
+            final_score = min(1.0, base_score + semantic_boost)
 
             if final_score > best_score:
                 best_score = final_score
