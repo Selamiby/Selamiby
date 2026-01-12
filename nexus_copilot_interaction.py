@@ -7,11 +7,11 @@ NO user questions - only NEXUS decisions
 """
 
 import json
-import time
-import subprocess
-from pathlib import Path
-from datetime import datetime
 import logging
+import subprocess
+import time
+from datetime import datetime
+from pathlib import Path
 
 WORKSPACE = Path(__file__).parent
 LOG_DIR = WORKSPACE / "nexus_logs"
