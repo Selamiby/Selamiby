@@ -1,8 +1,8 @@
 {
   "topic": "Arduino",
   "domain": "robotics_iot",
-  "learned_at": "2026-01-12T05:31:06.115914",
-  "cycle": 1,
+  "learned_at": "2026-01-12T05:31:50.346636",
+  "cycle": 12,
   "key_concepts": [
     "Arduino fundamentals",
     "Arduino architecture",
