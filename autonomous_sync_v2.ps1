@@ -55,10 +55,12 @@ function Invoke-AdvancedSync {
                 & git push --force-with-lease origin main
                 if ($LASTEXITCODE -eq 0) {
                     Write-AutoLog "✓ Push (force-with-lease)" "SUCCESS"
-                } else {
+                }
+                else {
                     Write-AutoLog "Force-with-lease push da başarısız oldu." "ERROR"
                 }
-            } else {
+            }
+            else {
                 Write-AutoLog "✓ Push" "SUCCESS"
             }
         }
