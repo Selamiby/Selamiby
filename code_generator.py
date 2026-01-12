@@ -15,6 +15,8 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+from nexus_learning_tracker import record_event
+
 WORKSPACE = Path.cwd()
 DATA_DIR = WORKSPACE / "nexus_data"
 LOG_DIR = WORKSPACE / "nexus_logs"
@@ -163,6 +165,17 @@ class CodeGenerator:
             log(f"learning_stats_updated sessions={stats['sessions']} files_total={stats['files_learned']}")
         except Exception as e:
             log(f"learning_stats_error err={e}")
+
+        # Mirror to global tracker
+        try:
+            record_event(
+                source="code_generator",
+                files_learned=files_learned,
+                concepts_learned=stats.get("concepts_learned", 0),
+                patterns_learned=stats.get("patterns_learned", 0),
+            )
+        except Exception:
+            pass
 
     def generate_simple_function(self, func_name: str, description: str = "Auto-generated function") -> str:
         """Generate a simple Python function"""

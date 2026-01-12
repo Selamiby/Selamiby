@@ -57,6 +57,7 @@ except ImportError:
 
 try:
     from web_navigator import WebNavigator
+    from nexus_learning_tracker import record_event
     WEB_NAV_AVAILABLE = True
 except ImportError:
     WEB_NAV_AVAILABLE = False
@@ -102,6 +103,17 @@ class KnowledgeGraph:
         self.graph_file.write_text(json.dumps(self.graph, indent=2, ensure_ascii=False), encoding='utf-8')
         logger.info(f"Knowledge graph saved: {self.graph['statistics']['total_concepts']} concepts, "
                    f"{self.graph['statistics']['total_commands']} commands")
+
+        # Mirror stats to global tracker
+        try:
+            record_event(
+                source="self_learner",
+                concepts_learned=self.graph["statistics"].get("total_concepts", 0),
+                commands_learned=self.graph["statistics"].get("total_commands", 0),
+                patterns_learned=self.graph["statistics"].get("total_patterns", 0),
+            )
+        except Exception:
+            pass
     
     def add_concept(self, name: str, description: str, examples: List[str] = None, related: List[str] = None):
         """Add or update a concept"""
