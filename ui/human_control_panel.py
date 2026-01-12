@@ -354,7 +354,19 @@ class ControlPanel(tk.Tk):
     
     def _process_command_thread(self, text):
         """Process command in background thread"""
-        reply = self.process_chat_command(text)
+        try:
+            reply = self.process_chat_command(text)
+        except BaseException as e:
+            # Prevent silent thread crashes; surface error to chat
+            tb = "".join(traceback.format_exception(e))
+            crash_log = LOG_DIR / "panel_crash.log"
+            try:
+                with crash_log.open("a", encoding="utf-8") as f:
+                    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    f.write(f"[CHAT ERROR {ts}] {e}\n{tb}\n")
+            except Exception:
+                pass
+            reply = f"Komut işlenirken hata oluştu: {e}"
         self.after(0, lambda: self._show_reply(reply))
     
     def _show_reply(self, reply):
