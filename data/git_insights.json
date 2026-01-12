@@ -27,12 +27,16 @@
     "contributors": 1,
     "recent_changes": 5
   },
+  "nexus_daemon.py": {
+    "contributors": 1,
+    "recent_changes": 4
+  },
   "nexus_logs/autonomous.log": {
     "contributors": 1,
     "recent_changes": 5
   },
-  "ui/human_control_panel.py": {
+  "nexus_start.py": {
     "contributors": 1,
-    "recent_changes": 5
+    "recent_changes": 2
   }
 }

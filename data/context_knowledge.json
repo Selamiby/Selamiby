@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6482
+    "size": 6488
   },
   "code_generator.py": {
     "imports": [
@@ -40,12 +40,12 @@
       "save_patterns",
       "learn_from_file",
       "learn_from_workspace",
+      "save_learning_stats",
       "generate_simple_function",
       "generate_class",
-      "__init__",
-      "generate_script"
+      "__init__"
     ],
-    "size": 8054
+    "size": 9206
   },
   "game_engine_controller.py": {
     "imports": [
@@ -67,7 +67,7 @@
       "create_unreal_project",
       "demo_game_engine"
     ],
-    "size": 7049
+    "size": 7055
   },
   "generate_summary_report.py": {
     "imports": [
@@ -78,7 +78,7 @@
     "functions": [
       "generate_summary"
     ],
-    "size": 7467
+    "size": 7469
   },
   "human_interface_agent.py": {
     "imports": [
@@ -98,7 +98,7 @@
       "open_vscode_workspace",
       "main"
     ],
-    "size": 4080
+    "size": 4094
   },
   "nexus_advanced_automation.py": {
     "imports": [
@@ -183,12 +183,9 @@
   "nexus_daemon.py": {
     "imports": [
       "json",
-      "time",
-      "datetime",
-      "time",
-      "json",
-      "datetime",
       "os",
+      "time",
+      "datetime",
       "hyper_integration"
     ],
     "functions": [
@@ -196,14 +193,9 @@
       "load_tasks",
       "run_scheduled_tasks",
       "execute_task",
-      "run_forever",
-      "__init__",
-      "load_tasks",
-      "run_scheduled_tasks",
-      "execute_task",
       "run_forever"
     ],
-    "size": 6468
+    "size": 4683
   },
   "nexus_final_touch.py": {
     "imports": [
