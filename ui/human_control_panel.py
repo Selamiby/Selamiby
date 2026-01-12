@@ -347,6 +347,10 @@ class ControlPanel(tk.Tk):
         self._append_chat(f"\n🧑 Sen: {text}\n")
         self.chat_var.set("")
         self._log_chat_event("SEND", text)
+        try:
+            print(f"[CHAT SEND] {text}")
+        except Exception:
+            pass
         self.update_idletasks()
         
         # Process in thread to avoid UI freeze
