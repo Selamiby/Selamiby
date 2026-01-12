@@ -8,9 +8,9 @@ param()
 
 param(
     [int]$LearningRate = 5,
-    [switch]$Aggressive = $true,
+    [switch]$Aggressive,
     [int]$CycleDuration = 3600,  # 1 hour per cycle (then restart)
-    [switch]$EnableSelfUpdate = $true,
+    [switch]$EnableSelfUpdate,
     [int]$UpdateInterval = 86400,  # Self-update every 24 hours
     [string]$LogLevel = "INFO"
 )
