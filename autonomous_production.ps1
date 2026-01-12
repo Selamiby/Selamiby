@@ -41,11 +41,10 @@ function Invoke-GitSync {
     Write-AdvLog "Gelişmiş senkronizasyon (v2) başlatılıyor..." "INFO"
     try {
         # v2 script'i çalıştır ve çıktısını yakala
-        $output = & pwsh -File ".\autonomous_sync_v2.ps1" -IntervalSeconds 10 2>&1
+        $output = & powershell -File ".\autonomous_sync_v2.ps1" -IntervalSeconds 10 2>&1
         
         if ($LASTEXITCODE -eq 0) {
             Write-AdvLog "v2 senkronizasyonu başarıyla tamamlandı." "SUCCESS"
-            # İsteğe bağlı: v2'den gelen önemli çıktıları logla
             $output | ForEach-Object { Write-AdvLog "v2: $_" "INFO" }
             return $true
         }
@@ -61,34 +60,59 @@ function Invoke-GitSync {
     }
 }
 
-# Gerçekçi otonom görevler
-function Run-AutonomousTasks {
-    # Görev 1: NEXUS-ONE Auto Healer
-    Invoke-NEXUSHealer
-
-    # Görev 2: Süper Öğrenici (her 5 döngüde bir)
-    if ($script:LoopCounter % 5 -eq 0) {
-        Write-AdvLog "Super Learner çalıştırılıyor..." "INFO"
-        if ($EnableParallelOps) {
-            Start-Job -ScriptBlock { 
-                # NEXUS-ONE'ın kendisi de öğrensin
-                python.exe nexus_super_learner.py --include-nexus
-            } | Out-Null
-        }
-        else {
-            python.exe nexus_super_learner.py --include-nexus
-        }
-        Start-Sleep -Seconds 10
+# === NEXUS-ONE AUTO HEALER HOOK ===
+function Invoke-NEXUSHealer {
+    if (Test-Path "nexus_auto_healer.py") {
+        Write-AdvLog "NEXUS Auto Healer çalıştırılıyor..." "INFO"
+        python.exe nexus_auto_healer.py 2>$null | Out-Null
     }
 }
 
-# Main loop
-Write-AdvLog "NEXUS-ONE Advanced Autonomous System başlatıldı" "INFO"
+# === NEXUS-ONE ADVANCED FEATURES HOOK ===
+function Invoke-AdvancedFeatures {
+    param([int]$CycleCount)
+    if (($CycleCount % 5) -eq 0 -and $CycleCount -gt 0) {
+        Write-AdvLog "Advanced features çalıştırılıyor..." "INFO"
+        if (Test-Path "nexus_advanced_features.py") {
+            python.exe nexus_advanced_features.py 2>$null | Out-Null
+            Write-AdvLog "Advanced features tamamlandı" "SUCCESS"
+        }
+    }
+}
+
+# === NEXUS-ONE SUPER LEARNER HOOK ===
+function Invoke-SuperLearner {
+    param([int]$CycleCount)
+    if (($CycleCount % 10) -eq 0 -and $CycleCount -gt 0) {
+        Write-AdvLog "Super Learner çalıştırılıyor..." "INFO"
+        if (Test-Path "nexus_super_learner.py") {
+            # NEXUS-ONE'ın kendisi de öğrensin
+            python.exe nexus_super_learner.py --include-nexus 2>$null | Out-Null
+            Write-AdvLog "Enhanced learning tamamlandı" "SUCCESS"
+        }
+    }
+}
+
+# Gerçekçi otonom görevler
+function Invoke-AutonomousTasks {
+    param([int]$CycleCount)
+    
+    Write-AdvLog "Otonom görevler başlıyor..." "INFO"
+    
+    # Görev 1: NEXUS-ONE Auto Healer
+    Invoke-NEXUSHealer
+    
+    # Görev 2: Gelişmiş Özellikler
+    Invoke-AdvancedFeatures -CycleCount $CycleCount
+    
+    # Görev 3: Süper Öğrenici
+    Invoke-SuperLearner -CycleCount $CycleCount
+}
+
+# Ana Kontrol Döngüsü
+Write-AdvLog "NEXUS-ONE Otonom Üretim Sistemi Başlatıldı" "SUCCESS"
 Write-AdvLog "Interval: $IntervalSeconds saniye" "INFO"
-Write-AdvLog "Advanced Features: Her 5 senkronizasyonda" "INFO"
-Write-AdvLog "Enhanced Learning: Her 10 senkronizasyonda" "INFO"
-$cycleCount = 0
-script:LoopCounter = 0
+$script:LoopCounter = 0
 
 while ($true) {
     $script:LoopCounter++
@@ -98,9 +122,10 @@ while ($true) {
     Invoke-GitSync
     
     # 2. Otonom Görevler
-    Run-AutonomousTasks
+    Invoke-AutonomousTasks -CycleCount $script:LoopCounter
     
     # 3. Bekleme
+    Write-AdvLog "Döngü tamamlandı. $IntervalSeconds saniye bekleniyor." "INFO"
     Start-Sleep -Seconds $IntervalSeconds
     Write-Host "---"
 }
