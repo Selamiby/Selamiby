@@ -424,12 +424,12 @@ class InfiniteLearner:
             # Kaydetme İşlemleri
             safe_topic = _safe_topic_name(topic)
             module_file = self.modules_dir / f"{domain}_{safe_topic}.py"
-            
+
             try:
                 self.modules_dir.mkdir(parents=True, exist_ok=True)
                 with open(module_file, "w", encoding="utf-8") as f:
                     f.write(clean_code)
-                
+
                 # Günlüğe (Journal) Yaz
                 with open(self.journal_path, "a", encoding="utf-8") as f:
                     f.write(f"\n\n## 📘 {datetime.now().strftime('%Y-%m-%d %H:%M')} - {topic}\n")
@@ -444,7 +444,7 @@ class InfiniteLearner:
 
                 # JSON Metadata
                 knowledge = {
-                    "topic": topic, "domain": domain, 
+                    "topic": topic, "domain": domain,
                     "summary": summary_text,
                     "learned_at": datetime.now().isoformat()
                 }
@@ -459,7 +459,7 @@ class InfiniteLearner:
                 self.learned_topics.add(topic_key)
 
                 logger.info(f"✅ MODÜL + ANALİZ TAMAMLANDI: {topic}")
-            
+
             except Exception as e:
                 logger.error(f"❌ Kayıt hatası: {e}")
                 continue
