@@ -82,8 +82,25 @@ class InfiniteLearner:
         self.is_running = True
         self.domain_stats: Dict[str, int] = {d: 0 for d in []}
 
-        # SINIR SIZ ÖĞRENME ALANLARI
+        # SINIRSIZ ÖĞRENME ALANLARI - DERİN ZEKA ODAKLI
         self.learning_domains = {
+            "autonomous_ai_agents": [
+                "AutoGPT Architecture",
+                "BabyAGI Logic",
+                "CrewAI Multi-Agent Systems",
+                "Agentic Workflows",
+                "Self-Correction Loops",
+                "Memory Management (RAG)",
+                "Task Decomposition Strategies"
+            ],
+            "advanced_reasoning_models": [
+                "Chain of Thought Prompting",
+                "Tree of Thoughts Reasoning",
+                "ReAct Framework",
+                "RLHF (Reinforcement Learning from Human Feedback)",
+                "Quantization (GGUF, AWQ)",
+                "LoRA Fine-tuning"
+            ],
             "programming_languages": [
                 "C# (.NET)",
                 "C++",
@@ -92,12 +109,9 @@ class InfiniteLearner:
                 "Kotlin",
                 "Swift",
                 "TypeScript",
-                "Dart",
-                "Scala",
-                "Elixir",
-                "Haskell",
                 "Julia",
-                "Mojo (Modular)",
+                "Mojo (Modular AI Infrastructure)"
+            ],
                 "CUDA (C++)",
                 "R",
                 "Scala",
