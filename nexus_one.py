@@ -9,6 +9,7 @@ from pathlib import Path
 import psutil
 
 from config.config import get_config, setup_directories
+from nexus_brain import NexusBrain
 
 # Setup logging
 LOG_DIR = Path(__file__).parent / "nexus_logs"

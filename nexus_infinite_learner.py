@@ -314,8 +314,7 @@ class InfiniteLearner:
         logger.info(f"📚 GERÇEK ÖĞRENME DÖNGÜSÜ #{self.learning_cycles + 1}: {domain_name}")
         logger.info(f"{'='*80}")
 
-        api_key = os.getenv("OPENAI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-        
+        brain = NexusBrain()
         learned_count = 0
         for topic in topics[:3]:  # Hız ve kalite dengesi için 3 topic
             if not self.is_running:
@@ -325,31 +324,25 @@ class InfiniteLearner:
             if topic_key in self.learned_topics:
                 continue
 
-            logger.info(f"🎯 {topic} gerçek dünyadan araştırılıyor...")
+            logger.info(f"🎯 {topic} derin araştırılıyor (AI Brain Powered)...")
+
+            # AI Brain ile derinlemesine bilgi al
+            knowledge_content = brain.think(
+                f"{topic} hakkında teknik detaylar, avantajlar ve örnek bir kod bloğu içeren kapsamlı bir analiz yap. "
+                "Cevabı teknik bir dille ve NEXUS-ONE entegrasyonuna uygun şekilde ver.",
+                "Sen kıdemli bir yazılım mimarı ve yapay zeka uzmanısın."
+            )
 
             knowledge = {
                 "topic": topic,
                 "domain": domain,
                 "learned_at": datetime.now().isoformat(),
                 "cycle": self.learning_cycles + 1,
-                "mastery_level": "Expert",
-                "real_code_snippet": "",
-                "implementation_guide": ""
+                "mastery_level": "Expert (Deep Intelligence)",
+                "details": knowledge_content,
+                "real_code_snippet": self._get_real_code(topic),
+                "implementation_guide": f"NEXUS-ONE için {topic} derin entegrasyon stratejisi."
             }
-
-            # Eğer API key varsa gerçek bilgi çek, yoksa derin sentetik bilgi üret
-            if api_key:
-                try:
-                    # Burada normalde bir LLM çağrısı yapılır. 
-                    # Ancak terminalde çalışırken aksamaması için "Synthetic-Real" 
-                    # içerik üreten gelişmiş bir motor kullanıyoruz.
-                    knowledge["real_code_snippet"] = self._get_real_code(topic)
-                    knowledge["implementation_guide"] = f"NEXUS-ONE için {topic} entegrasyon stratejisi."
-                except:
-                    pass
-            else:
-                knowledge["real_code_snippet"] = self._get_real_code(topic)
-                knowledge["implementation_guide"] = f"NEXUS-ONE için {topic} yerel optimizasyon planı."
 
             # Bilgiyi kaydet
             file_name = f"{domain}_{_safe_topic_name(topic)}.json"
@@ -410,14 +403,30 @@ class InfiniteLearner:
         """Sürekli öğrenme döngüsü - DURMAZ!"""
         logger.info("\n" + "🚀" * 40)
         logger.info("🔥 SINIR SIZ SÜREKLI ÖĞRENME BAŞLIYOR - NON-STOP!")
+        logger.info("� MOD: DERİN ZEKA & GERÇEK ZAMANLI ARAŞTIRMA")
         logger.info("🚀" * 40 + "\n")
 
-        while self.is_running:
-            # Her domain'den rastgele seç ve öğren
-            domain = random.choice(list(self.learning_domains.keys()))
-            topics = self.learning_domains[domain]
+        brain = NexusBrain()
 
+        while self.is_running:
             try:
+                # 1. Brain'e ne öğrenmemiz gerektiğini sor (Derin Zeka)
+                suggestion = brain.think(
+                    "Piyasadaki en son yapay zeka ve yazılım trendlerini düşün. NEXUS-ONE şu an ne öğrenmeli? "
+                    "Tek bir konu başlığı ve kategori döndür. Format: 'Kategori: Konu'",
+                    "Sen NEXUS-ONE'ın stratejik planlama birimisin."
+                )
+
+                if "Kategori:" in suggestion:
+                    parts = suggestion.split(":")
+                    domain = parts[0].strip().lower().replace(" ", "_")
+                    topic = parts[1].strip()
+                    topics = [topic]
+                else:
+                    # Fallback to random
+                    domain = random.choice(list(self.learning_domains.keys()))
+                    topics = self.learning_domains[domain]
+
                 learned = self.learn_from_domain(domain, topics)
                 self.learning_cycles += 1
 
@@ -434,8 +443,8 @@ class InfiniteLearner:
                 self._touch_heartbeat()
                 self._save_learned_topics()
 
-                # Low-impact loop for older hardware: 15 seconds pause
-                time.sleep(15)
+                # Pause to save CPU
+                time.sleep(20)
 
             except Exception as e:
                 logger.error(f"❌ Öğrenme hatası: {e}")
