@@ -23,7 +23,7 @@ def update_learned_languages(language_name: str):
     Updates the learned_languages.json file with a new language.
     """
     json_path = Path.cwd() / "learned_languages.json"
-    
+
     try:
         # Read existing data
         if json_path.exists() and os.path.getsize(json_path) > 0:
@@ -31,7 +31,7 @@ def update_learned_languages(language_name: str):
                 languages = json.load(f)
         else:
             languages = []
-            
+
         # Check if language already exists
         if any(lang['name'].lower() == language_name.lower() for lang in languages):
             print(f"'{language_name}' zaten öğrenilmiş diller listesinde.")
@@ -44,11 +44,11 @@ def update_learned_languages(language_name: str):
             "source": "SuperLearner"
         }
         languages.append(new_lang)
-        
+
         # Write data back to file
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(languages, f, indent=4, ensure_ascii=False)
-        
+
         print(f"YENİ DİL ÖĞRENİLDİ: '{language_name}' kayıt defterine eklendi.")
 
     except Exception as e:
@@ -74,7 +74,7 @@ class EnhancedLearner:
         """
         print("\n[X/X] YENİ DİL ÖĞRENME MODÜLÜ - Dosya Analizi")
         print("-" * 70)
-        
+
         # Simulate learning based on file extensions
         extension_to_language = {
             ".py": "Python",
@@ -89,7 +89,7 @@ class EnhancedLearner:
             ".html": "HTML",
             ".css": "CSS"
         }
-        
+
         # Find all files and simulate learning
         for ext, lang_name in extension_to_language.items():
             if list(self.workspace.glob(f'**/*{ext}')):
@@ -512,11 +512,11 @@ class EnhancedLearner:
 
 if __name__ == "__main__":
     learner = EnhancedLearner()
-    
+
     # Run the new language learning module first
     learner.learn_new_language_from_files()
 
     # Run all existing features
     learner.run_all_features()
-    
+
     print("\nNEXUS-ONE Gelişmiş Öğrenme Sistemi tüm görevleri tamamladı.")
