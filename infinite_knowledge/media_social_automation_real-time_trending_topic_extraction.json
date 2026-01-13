@@ -1,8 +1,6 @@
 {
   "topic": "Real-time Trending Topic Extraction",
   "domain": "media_social_automation",
-  "module_path": "nexus_modules\\media_social_automation_real-time_trending_topic_extraction.py",
-  "learned_at": "2026-01-14T00:42:05.460284",
-  "status": "Verified",
-  "code_preview": "import tweepy\nfrom textblob import TextBlob\nfrom collections import defaultdict\nimport nltk\nfrom nltk.corpus import stopwords\nfrom nltk.tokenize import word_tokenize, sent_tokenize\nimport heapq\nfrom datetime import datetime, timedelta\n\nclass Tweety:\n    def __init__(self, consumer_key, consumer_secr"
+  "summary": "**Ger\u00e7ek Zamanl\u0131 Trending Konu \u00c7\u0131kar\u0131m\u0131 Analizi**\n\u00d6zet:\nNEXUS-ONE b\u00fcnyesindeki Ger\u00e7ek Zamanl\u0131 Trending Konu \u00c7\u0131kar\u0131m\u0131 (Real-time Trending Topic Extraction) mod\u00fcl\u00fc, sosyal medya ve internet \u00fczerindeki verilerin ger\u00e7ek zamanl\u0131 olarak analiz edilmesini sa\u011flar. Bu analiz, g\u00fcncel trendleri h\u0131zl\u0131 bir \u015fekilde belirleyerek sistem kullan\u0131c\u0131lar\u0131n\u0131n ilgili ve g\u00fcncel konular hakk\u0131nda bilgi sahibi olmas\u0131n\u0131 sa\u011flar. Mod\u00fcl\u00fcn performans\u0131 ve h\u0131z\u0131, NEXUS-ONE'un veri i\u015fleme ve analiz \ub2a5isini \u00f6nemli \u00f6l\u00e7\u00fcde art\u0131r\u0131r.\nTeknik Katk\u0131:\n* Veri i\u015fleme h\u0131z\u0131n\u0131 t\u0103ngatarak ger\u00e7ek zamanl\u0131 analiz imkan\u0131 sa\u011flar\n* Do\u011fal dil i\u015fleme (NLP) teknolojisini kullanarak metinlerden anlaml\u0131 bilgiler \u00e7\u0131kar\u0131r\n* Makine \u00f6\u011frenimi algoritmalar\u0131n\u0131 entegre ederek modelin s\u00fcrekli \u00f6\u011frenmesini ve iyile\u015ftirilmesini m\u00fcmk\u00fcn k\u0131lar",
+  "learned_at": "2026-01-14T02:29:49.629191"
 }
