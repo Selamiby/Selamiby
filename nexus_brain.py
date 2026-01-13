@@ -128,6 +128,8 @@ class NexusBrain:
         except Exception as e:
             logger.error(f"Tavily Search Error: {e}")
             return []
+
+    def _call_openai(self, prompt, system_prompt):
         try:
             url = "https://api.openai.com/v1/chat/completions"
             headers = {"Authorization": f"Bearer {self.openai_key}", "Content-Type": "application/json"}
