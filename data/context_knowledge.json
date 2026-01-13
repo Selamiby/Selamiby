@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6727
+    "size": 6724
   },
   "autonomous_engine.py": {
     "imports": [
@@ -45,7 +45,7 @@
       "run_iteration",
       "save_stats"
     ],
-    "size": 11416
+    "size": 11413
   },
   "code_generator.py": {
     "imports": [
