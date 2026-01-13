@@ -306,6 +306,15 @@ class InfiniteLearner:
                 "Performance Optimization",
                 "Scalability Patterns",
             ],
+            "media_social_automation": [
+                "YouTube Data API v3",
+                "Automated Video Analysis",
+                "Social Media Trend Scraping",
+                "Content Generation Pipelines",
+                "FFmpeg Programmatic Editing",
+                "Automated Subtitle Generation",
+                "Engagement Analytics"
+            ],
         }
 
         self.current_capabilities = []
