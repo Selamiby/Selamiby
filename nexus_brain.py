@@ -55,7 +55,7 @@ class NexusBrain:
             url = "https://api.groq.com/openai/v1/chat/completions"
             headers = {"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"}
             data = {
-                "model": "llama3-70b-8192",
+                "model": "llama-3.3-70b-versatile",
                 "messages": [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": prompt}
@@ -115,7 +115,6 @@ class NexusBrain:
 
     def _call_gemini(self, prompt, system_prompt):
         try:
-            # En güncel ve çalışan model ismi ve versiyonu
             url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={self.gemini_key}"
             headers = {"Content-Type": "application/json"}
             data = {
@@ -123,21 +122,15 @@ class NexusBrain:
                     "parts": [{"text": f"System: {system_prompt}\nUser: {prompt}"}]
                 }]
             }
-            # Doğrudan Groq'u önceliklendirerek bu sorunu aşabiliriz ama Gemini'yi düzeltelim
             response = requests.post(url, headers=headers, json=data)
             json_res = response.json()
-            if 'candidates' in json_res:
+            if 'candidates' in json_res and len(json_res['candidates']) > 0:
                 return json_res['candidates'][0]['content']['parts'][0]['text']
             
-            # Fallback: Eğer Gemini hata verirse OpenAI kullan (anahtarın geçerli olduğunu biliyoruz)
-            if self.openai_key and self.openai_key != "...":
-                logger.info("⚠️ Gemini hatası, OpenAI'a geçiliyor...")
-                return self._call_openai(prompt, system_prompt)
-
-            logger.error(f"Gemini ve Fallback API Hatası: {json_res}")
+            logger.error(f"Gemini API Error: {json_res}")
             return None
         except Exception as e:
-            logger.error(f"Brain Think Error: {e}")
+            logger.error(f"Gemini Call Error: {e}")
             return None
 
     def search_internet(self, query: str):
