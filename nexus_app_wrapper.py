@@ -1,4 +1,5 @@
 import os
+import socket
 import subprocess
 import sys
 import time
@@ -6,30 +7,39 @@ import time
 import webview
 
 
+def is_port_in_use(port):
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        return s.connect_ex(('localhost', port)) == 0
+
 def start_nexus_app():
-    # 1. Dashboard'un arka planda çalıştığından emin ol
-    print("🚀 NEXUS-ONE Motoru çalıştırılıyor...")
-    # Streamlit'i arka planda başlat
-    subprocess.Popen(
-        ["streamlit", "run", "nexus_dashboard_v2.py", "--server.port", "8501", "--server.headless", "true"],
-        creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0
-    )
+    print("🚀 NEXUS-ONE Motoru kontrol ediliyor...")
     
-    # Dashboard'un ayağa kalkması için kısa bir süre bekle
-    time.sleep(5)
+    # Port 8501 dolu değilse başlat
+    if not is_port_in_use(8501):
+        print("⚡ Dashboard başlatılıyor...")
+        subprocess.Popen(
+            ["streamlit", "run", "nexus_dashboard_v2.py", "--server.port", "8501", "--server.headless", "true"],
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0
+        )
+        time.sleep(5)
+    else:
+        print("✅ Dashboard zaten çalışıyor (Port 8501).")
+
+    print("🖥️  Masaüstü penceresi açılıyor...")
     
-    # 2. Gerçek bir Windows Penceresi oluştur
-    print("🖥️  Arayüz yükleniyor...")
-    window = webview.create_window(
-        'NEXUS-ONE Advanced OS', 
-        'http://localhost:8501',
-        width=1280,
-        height=800,
-        resizable=True,
-        confirm_close=True
-    )
-    
-    webview.start()
+    try:
+        window = webview.create_window(
+            'NEXUS-ONE Advanced OS', 
+            'http://localhost:8501',
+            width=1280,
+            height=800,
+            resizable=True
+        )
+        # gui='edgechromium' zorlaması Windows için en iyi seçenektir
+        webview.start(gui='edgechromium')
+    except Exception as e:
+        print(f"❌ Pencere hatası: {e}")
+        webview.start()
 
 if __name__ == '__main__':
     start_nexus_app()
