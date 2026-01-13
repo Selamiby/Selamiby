@@ -1,10 +1,11 @@
-import os
 import json
 import logging
-import requests
+import os
 from pathlib import Path
-from dotenv import load_dotenv
+
 import fal_client
+import requests
+from dotenv import load_dotenv
 
 load_dotenv()
 
