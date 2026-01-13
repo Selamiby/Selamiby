@@ -1,13 +1,13 @@
 {
-  "accelerated_learning.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "code_generator.py": {
+  "autonomous_engine.py": {
     "contributors": 1,
     "recent_changes": 5
   },
   "copilot_dev_phase.py": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "copilot_nexus_collaboration.py": {
     "contributors": 1,
     "recent_changes": 5
   },
