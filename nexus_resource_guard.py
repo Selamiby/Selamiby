@@ -41,7 +41,7 @@ class ResourceGuard:
     def monitor(self):
         logger.info(f"Düşük Donanım Modu Aktif. CPU Limiti: %{self.cpu_limit}")
         logger.info("Gereksiz indeksleme ve ağır animasyonlar kısıtlandı.")
-        
+
         counter = 0
         git_counter = 0
         while self.running:
@@ -49,14 +49,14 @@ class ResourceGuard:
                 # Get system-wide CPU usage
                 total_cpu = psutil.cpu_percent(interval=1)
                 ram_usage = psutil.virtual_memory().percent
-                
+
                 # Update status for "Remote" tracking
                 self.update_status(total_cpu, ram_usage)
-                
+
                 if total_cpu > self.cpu_limit:
                     logger.warning(f"Kritik CPU Kullanımı: %{total_cpu}! Müdahale ediliyor...")
                     self.take_action()
-                
+
                 # Storage cleanup every 10 cycles (approx 2 minutes)
                 counter += 1
                 if counter >= 12:
@@ -86,7 +86,7 @@ class ResourceGuard:
         try:
             # Add all
             subprocess.run(["git", "add", "."], cwd=WORKSPACE, check=True, capture_output=True)
-            
+
             # Check if there are changes to commit
             status = subprocess.run(["git", "status", "--porcelain"], cwd=WORKSPACE, capture_output=True, text=True).stdout
             if status:
@@ -118,14 +118,14 @@ class ResourceGuard:
         """Automatically cleans up logs and caches to save space"""
         logger.info("🔻 Otomatik depolama temizliği başlatılıyor...")
         cleaned_size = 0
-        
+
         # Paths to clean
         targets = [
             WORKSPACE / "nexus_logs",
             WORKSPACE / "__pycache__",
             Path(os.environ.get('TEMP', ''))
         ]
-        
+
         for target in targets:
             if target.exists():
                 for item in target.glob("*"):
@@ -139,7 +139,7 @@ class ResourceGuard:
                             cleaned_size += file_size
                     except:
                         continue
-        
+
         if cleaned_size > 0:
             logger.info(f"🧹 Temizlik tamamlandı: {cleaned_size / (1024*1024):.2f} MB alan açıldı.")
 
@@ -157,29 +157,29 @@ class ResourceGuard:
 
         # Sort by CPU usage
         processes.sort(key=lambda x: x.cpu_percent(), reverse=True)
-        
+
         for p in processes:
             try:
                 name = p.info['name']
                 pid = p.info['pid']
                 usage = p.cpu_percent()
-                
+
                 logger.info(f"⚡ YAVAŞLATILIYOR: {name} (PID: {pid}) - CPU: %{usage}")
-                
+
                 # Set to Lowest priority (Idle)
                 if os.name == 'nt': # Windows
                     p.nice(psutil.IDLE_PRIORITY_CLASS)
                 else:
                     p.nice(19)
-                
+
                 logger.info(f"✅ {name} düşük önceliğe çekildi. Kapatılmadı, sadece işlemciyi yorması engellendi.")
-                
+
                 # Optional: Suspend briefly to cool down CPU
                 p.suspend()
                 time.sleep(2)
                 p.resume()
-                
-                break 
+
+                break
             except Exception as e:
                 logger.error(f"Müdahale hatası: {e}")
 
