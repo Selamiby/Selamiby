@@ -109,30 +109,29 @@ class NexusBrain:
 
     def _call_gemini(self, prompt, system_prompt):
         try:
-            # v1beta yerine v1 kullanarak ve model ismini düzelterek tekrar deniyoruz
-            url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={self.gemini_key}"
+            # En güncel ve çalışan model ismi ve versiyonu
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={self.gemini_key}"
             headers = {"Content-Type": "application/json"}
             data = {
                 "contents": [{
                     "parts": [{"text": f"System: {system_prompt}\nUser: {prompt}"}]
                 }]
             }
+            # Doğrudan Groq'u önceliklendirerek bu sorunu aşabiliriz ama Gemini'yi düzeltelim
             response = requests.post(url, headers=headers, json=data)
             json_res = response.json()
             if 'candidates' in json_res:
                 return json_res['candidates'][0]['content']['parts'][0]['text']
             
-            # Eğer hata verirse v1beta ile gemini-1.5-flash-latest dene
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={self.gemini_key}"
-            response = requests.post(url, headers=headers, json=data)
-            json_res = response.json()
-            if 'candidates' in json_res:
-                return json_res['candidates'][0]['content']['parts'][0]['text']
+            # Fallback: Eğer Gemini hata verirse OpenAI kullan (anahtarın geçerli olduğunu biliyoruz)
+            if self.openai_key and self.openai_key != "...":
+                logger.info("⚠️ Gemini hatası, OpenAI'a geçiliyor...")
+                return self._call_openai(prompt, system_prompt)
 
-            logger.error(f"Gemini API Response Error: {json_res}")
+            logger.error(f"Gemini ve Fallback API Hatası: {json_res}")
             return None
         except Exception as e:
-            logger.error(f"Gemini API Error: {e}")
+            logger.error(f"Brain Think Error: {e}")
             return None
 
     def search_internet(self, query: str):

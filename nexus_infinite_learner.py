@@ -417,13 +417,13 @@ class InfiniteLearner:
                     "Sen NEXUS-ONE'ın stratejik planlama birimisin."
                 )
 
-                if "Kategori:" in suggestion:
+                if suggestion and "Kategori:" in suggestion:
                     parts = suggestion.split(":")
                     domain = parts[0].strip().lower().replace(" ", "_")
                     topic = parts[1].strip()
                     topics = [topic]
                 else:
-                    # Fallback to random
+                    # Fallback to random if suggestion is None or invalid
                     domain = random.choice(list(self.learning_domains.keys()))
                     topics = self.learning_domains[domain]
 
