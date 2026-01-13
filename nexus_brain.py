@@ -29,7 +29,7 @@ class NexusBrain:
 
     def think(self, prompt: str, system_prompt: str = "You are NEXUS-ONE, an advanced autonomous AI."):
         """Decides which model to use based on availability and task."""
-        
+
         # 1. Try Anthropic (Claude) - Highest Priority if available
         if self.anthropic_key and self.anthropic_key != "..." and anthropic:
             result = self._call_anthropic(prompt, system_prompt)
@@ -39,12 +39,12 @@ class NexusBrain:
         if self.groq_key and self.groq_key != "...":
             result = self._call_groq(prompt, system_prompt)
             if result: return result
-        
+
         # 2. Try Gemini (Deep Analysis)
         if self.gemini_key and self.gemini_key != "...":
             return self._call_gemini(prompt, system_prompt)
 
-        # 3. Try OpenAI 
+        # 3. Try OpenAI
         if self.openai_key and self.openai_key != "...":
             return self._call_openai(prompt, system_prompt)
 
@@ -91,7 +91,7 @@ class NexusBrain:
                                     "description": "The city and state, e.g. San Francisco, CA"
                                 },
                                 "action": {
-                                    "type": "string", 
+                                    "type": "string",
                                     "description": "NEXUS-ONE otonom eylem komutu"
                                 }
                             },
@@ -127,7 +127,7 @@ class NexusBrain:
         tavily_key = os.getenv("TAVILY_API_KEY")
         if not tavily_key or tavily_key == "...":
             return "Search unavailable: API Key missing."
-        
+
         try:
             url = "https://api.tavily.com/search"
             data = {"api_key": tavily_key, "query": query, "search_depth": "advanced"}
