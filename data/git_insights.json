@@ -3,19 +3,7 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "autonomous_production.ps1": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "autonomous_sync_v2.ps1": {
-    "contributors": 2,
-    "recent_changes": 5
-  },
   "code_generator.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
-  "copilot_dev_phase.py": {
     "contributors": 1,
     "recent_changes": 5
   },
