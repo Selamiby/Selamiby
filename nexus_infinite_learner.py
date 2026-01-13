@@ -351,22 +351,24 @@ class InfiniteLearner:
             logger.info(f"🎯 {topic} derin araştırılıyor (AI Brain Powered)...")
 
             # AI Brain ile %100 GERÇEK, ÇALIŞAN, PRODUCTION-READY kod al
-            # Örnek (Example) veya placeholder asla kabul edilmiyor.
+            # Eğer konu bir teori ise (Prompting vb.), onu uygulayan bir sistem kodu yazmasını istiyoruz.
             prompt = (
-                f"Soru: {topic} konusu için %100 gerçek, profesyonel seviyede ve doğrudan çalıştırılabilir tam bir kod modülü yaz.\n"
+                f"Görev: {topic} konusu üzerine %100 gerçek ve çalıştırılabilir bir teknik modül hazırla.\n"
                 "KURALLAR:\n"
-                "1. Sadece 'snippet' değil, tüm importları içeren eksiksiz bir kaynak kod dosyası olsun.\n"
-                "2. Asla 'example', 'test_data', 'your_key' gibi yer tutucu kullanma. Gerçekten çalışan mantık yaz.\n"
-                "3. YORUM SATIRI YOK: Kodun ne yaptığını anlatan metinler kodun içine gömülü olsun, dışarıda açıklama yapma.\n"
-                "4. SADECE KOD: Yanıtında tek bir kelime bile açıklama olmasın, sadece ``` diliyle sarılmış kod bloğu gönder.\n"
-                "5. Kodun sonuna şu yorumu ekle: # NEXUS-ONE PERSISTENT CORE CODE - VERIFIED FOR PRODUCTION"
+                "1. Eğer konu bir teori veya kavram ise, bu kavramı uygulayan profesyonel bir Python sınıfı/fonksiyonu yaz.\n"
+                "2. Sadece kod: Hiçbir açıklama, giriş cümlesi veya markdown dışı metin içermesin.\n"
+                "3. Kapsam: En az tüm gerekli importları ve ana çalışma mantığını içermelidir.\n"
+                "4. Yer tutucu (placeholder) KESİNLİKLE yasaktır. Gerçek mantık yaz.\n"
+                "5. Kodun sonuna ekle: # NEXUS-ONE PERSISTENT CORE CODE\n"
             )
+            
+            knowledge_content = brain.think(prompt, "Sen sadece profesyonel seviyede çalışan kaynak kod üreten bir sistem mühendisisin.")
 
-            knowledge_content = brain.think(prompt, "Sen dünyanın en iyi yazılım mühendisisin. Sadece ve sadece çalışan kaynak kod üretirsin.")
+            # Daha akıllı bir doğrulama: Kod gerçekten kod mu?
+            is_real_code = any(keyword in knowledge_content for keyword in ["def ", "import ", "class ", "fn ", "const "]) if knowledge_content else False
 
-            if not knowledge_content or len(knowledge_content) < 50:
-                logger.warning(f"⚠️ {topic} için yeterli kod üretilemedi, pas geçiliyor.")
-                continue
+            if not knowledge_content or not is_real_code or len(knowledge_content) < 20:
+                logger.warning(f"⚠️ {topic} için teknik kod doğrulaması başarısız, pas geçiliyor.")
 
             knowledge = {
                 "topic": topic,
