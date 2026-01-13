@@ -150,6 +150,8 @@ class NexusBrain:
             return []
 
     def _call_openai(self, prompt, system_prompt):
+        if not self.openai_key or self.openai_key == "...":
+            return None
         try:
             url = "https://api.openai.com/v1/chat/completions"
             headers = {"Authorization": f"Bearer {self.openai_key}", "Content-Type": "application/json"}
@@ -161,8 +163,14 @@ class NexusBrain:
                 ]
             }
             response = requests.post(url, headers=headers, json=data)
-            return response.json()['choices'][0]['message']['content']
-        except:
+            res_json = response.json()
+            if 'choices' in res_json:
+                return res_json['choices'][0]['message']['content']
+            else:
+                logger.error(f"OpenAI API error response: {res_json}")
+                return None
+        except Exception as e:
+            logger.error(f"OpenAI Call Error: {e}")
             return None
 
 if __name__ == "__main__":
