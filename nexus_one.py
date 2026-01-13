@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 import psutil
+
 from config.config import get_config, setup_directories
 
 # Setup logging
@@ -31,6 +32,16 @@ class NexusOneCore:
         self.workspace = Path(__file__).parent
         self.processes = {}
         setup_directories()
+        
+        # Define all managed subsystems
+        self.subsystems = {
+            "ResourceGuard": "nexus_resource_guard.py",
+            "LearningEngine": "nexus_infinite_learner.py",
+            "EvolutionEngine": "nexus_continuous_improver.py",
+            "AutoHealer": "nexus_auto_healer.py",
+            "GitSync": "nexus_git_auto_sync.py",
+            "APIServer": "nexus_api_server.py"
+        }
         logger.info("🚀 NEXUS-ONE: Advanced Autonomous AI Core initialized.")
 
     def start_subsystem(self, name: str, script_name: str):
@@ -59,19 +70,10 @@ class NexusOneCore:
         """Orchestrates the entire autonomous cycle."""
         logger.info("✨ NEXUS-ONE is evolving to Advanced Autonomy...")
         
-        # 1. Start Safeguards First (Resource Guard)
-        self.start_subsystem("ResourceGuard", "nexus_resource_guard.py")
-        time.sleep(2) # Give it time to stabilize
-
-        # 2. Start Learning Engine (Infinite Learner)
-        self.start_subsystem("LearningEngine", "nexus_infinite_learner.py")
-
-        # 3. Start Evolution Engine (Continuous Improver)
-        self.start_subsystem("EvolutionEngine", "nexus_continuous_improver.py")
-
-        # 4. Start Health/Sync (Auto Healer & Git Sync)
-        # Note: Auto Healer can be periodic, merged into Improver or started separate
-        self.start_subsystem("AutoHealer", "nexus_auto_healer.py")
+        # Initial launch of all systems
+        for name, script in self.subsystems.items():
+            self.start_subsystem(name, script)
+            time.sleep(2) # Staggered launch
 
         logger.info("🌟 ALL SYSTEMS REAL & AUTONOMOUS. Nexus-One is now fully independent.")
         
@@ -80,17 +82,16 @@ class NexusOneCore:
                 # Core monitoring loop
                 cpu = psutil.cpu_percent(interval=5)
                 active_count = sum(1 for p in self.processes.values() if p.poll() is None)
-                logger.info(f"💓 Core Heartbeat - Active Subsystems: {active_count}/{len(self.processes)} | CPU: {cpu}%")
+                knowledge_count = len(list(self.workspace.glob("infinite_knowledge/*.json")))
+                logger.info(f"💓 Core Heartbeat - Active Subsystems: {active_count}/{len(self.subsystems)} | Knowledge: {knowledge_count} topics | CPU: {cpu}%")
                 
-                # If any critical system died, restart it
+                # If any system died, restart it
                 for name, proc in self.processes.items():
                     if proc.poll() is not None:
                         logger.warning(f"⚠️ {name} has stopped. Restarting...")
-                        if name == "ResourceGuard": self.start_subsystem(name, "nexus_resource_guard.py")
-                        elif name == "LearningEngine": self.start_subsystem(name, "nexus_infinite_learner.py")
-                        elif name == "EvolutionEngine": self.start_subsystem(name, "nexus_continuous_improver.py")
+                        self.start_subsystem(name, self.subsystems[name])
                 
-                time.sleep(60) # Central tick is slow to save CPU
+                time.sleep(30) # Tick every 30 seconds
         except KeyboardInterrupt:
             logger.info("🛑 Shutting down Nexus-One Core...")
             for p in self.processes.values(): p.terminate()
