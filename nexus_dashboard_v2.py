@@ -10,8 +10,17 @@ import streamlit as st
 from streamlit_ace import st_ace
 from streamlit_agraph import Config, Edge, Node, agraph
 
+from nexus_brain import NexusBrain
+
 # Page Config
 st.set_page_config(page_title="NEXUS-ONE Command Center v3", layout="wide", page_icon="🧠")
+
+# Brain Instance
+brain = NexusBrain()
+
+# Session State for Chat
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
 # Paths
 WORKSPACE = Path(os.getcwd())
@@ -41,10 +50,11 @@ with st.sidebar:
         st.success("Talimat sisteme iletildi.")
 
 # Main Navigation
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "📊 Dashboard", 
     "🕸️ Neural Net", 
     "📝 Code Editor", 
+    "💬 Sohbet",
     "💻 Terminal", 
     "📂 System Logs"
 ])
@@ -139,8 +149,29 @@ with tab3:
                 file_path.write_text(new_code, encoding="utf-8")
                 st.success(f"{selected_file} güncellendi ve otonom sisteme işlendi!")
 
-# Tab 4: Terminal
+# Tab 4: Sohbet
 with tab4:
+    st.header("💬 NEXUS-ONE Sohbet")
+    
+    # History
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    # Input
+    if prompt := st.chat_input("NEXUS-ONE ile konuş..."):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        with st.chat_message("assistant"):
+            with st.spinner("Düşünüyorum..."):
+                response = brain.think(prompt)
+                st.markdown(response)
+                st.session_state.messages.append({"role": "assistant", "content": response})
+
+# Tab 5: Terminal
+with tab5:
     st.header("💻 Otonom Terminal")
     cmd = st.text_input("Komut Çalıştır (PowerShell):", placeholder="dir, python nexus_one.py, etc...")
     if st.button("Çalıştır"):
@@ -153,8 +184,8 @@ with tab4:
         except Exception as e:
             st.error(f"Hata: {e}")
 
-# Tab 5: System Logs
-with tab5:
+# Tab 6: System Logs
+with tab6:
     st.header("📂 Log İzleyici")
     log_files = sorted(list(LOGS_DIR.glob("*.log")) + list(LOGS_DIR.glob("*.txt")), key=os.path.getmtime, reverse=True)
     selected_log = st.selectbox("Log Dosyası Seç:", [f.name for f in log_files])
