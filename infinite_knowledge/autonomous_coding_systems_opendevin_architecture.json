@@ -1,10 +1,6 @@
 {
   "topic": "OpenDevin Architecture",
   "domain": "autonomous_coding_systems",
-  "learned_at": "2026-01-14T00:27:15.446969",
-  "cycle": 13,
-  "mastery_level": "Production-Ready-Code",
-  "real_code_content": null,
-  "verification_status": "Verified by NEXUS-BRAIN",
-  "implementation_guide": "Bu dosya doğrudan 'exec()' veya import ile NEXUS-ONE'a entegre edilebilir."
+  "summary": "**OpenDevin Mimarisi: NEXUS-ONE'a Yeni Bir Boyut**\nOpenDevin mimarisi, NEXUS-ONE'\u0131n yapay zeka ve \u00f6\u011frenme kabiliyetlerini daha da geli\u015ftirmek i\u00e7in tasarlanan bir mod\u00fcld\u00fcr. Bu mimari, b\u00fcy\u00fck \u00f6l\u00e7ekli veri i\u015fleme ve analizi i\u00e7in \u00f6zel olarak tasarlanm\u0131\u015f olup, NEXUS-ONE'\u0131n bilgi i\u015flem ve analiz kabiliyetlerini \u00f6nemli \u00f6l\u00e7\u00fcde art\u0131r\u0131r. OpenDevin mimarisi ile birlikte NEXUS-ONE, daha komplex sorunlara \u00e7\u00f6z\u00fcm \u00fcretme ve daha do\u011fru \u00f6ng\u00f6r\u00fclerde bulunma yetene\u011fine sahip olacakt\u0131r.\n\n* **Geli\u015fmi\u015f Veri \u0130\u015fleme**: OpenDevin mimarisi, b\u00fcy\u00fck \u00f6l\u00e7ekli veri k\u00fcmelerini h\u0131zl\u0131 ve efektif bir \u015fekilde i\u015fleyerek, NEXUS-ONE'\u0131n veri analiz yetene\u011fini \u00f6nemli \u00f6l\u00e7\u00fcde art\u0131r\u0131r.\n* **\u00d6\u011frenme ve Uyum Kabiliyeti**: Bu mimari, NEXUS-ONE'\u0131n \u00f6\u011frenme ve uyum kabiliyetini geli\u015ftirerek, yeni veri ve deneyimlere g\u00f6re kendisi d\u00fczenleme ve\u6539\u5584 yapmas\u0131na olanak tan\u0131r.\n* **Esneklik ve \u00d6l\u00e7eklenebilirlik**: OpenDevin mimarisi, NEXUS-ONE'\u0131n farkl\u0131 tipo ve b\u00fcy\u00fckl\u00fckteki veri k\u00fcmeleriyle \u00e7al\u0131\u015fabilmesini sa\u011flar, bu da sistemin daha esnek ve \u00f6l\u00e7eklenebilir olmas\u0131n\u0131 sa\u011flar.",
+  "learned_at": "2026-01-14T02:25:37.454996"
 }
