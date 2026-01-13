@@ -8,9 +8,9 @@ from nexus_brain import NexusBrain
 def test_api_keys():
     load_dotenv()
     brain = NexusBrain()
-    
+
     print("--- NEXUS-ONE API KEY TEST MERKEZİ ---")
-    
+
     # 1. OpenAI Test
     print("\n[1] OpenAI Test Ediliyor...")
     openai_res = brain._call_openai("Merhaba!", "Test asistanı.")
