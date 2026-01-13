@@ -73,7 +73,7 @@ class NexusOneCore:
         # Initial launch of all systems
         for name, script in self.subsystems.items():
             self.start_subsystem(name, script)
-            time.sleep(2) # Staggered launch
+            time.sleep(3) # Increased staggered launch to avoid race conditions
 
         logger.info("🌟 ALL SYSTEMS REAL & AUTONOMOUS. Nexus-One is now fully independent.")
         
@@ -83,12 +83,20 @@ class NexusOneCore:
                 cpu = psutil.cpu_percent(interval=5)
                 active_count = sum(1 for p in self.processes.values() if p.poll() is None)
                 knowledge_count = len(list(self.workspace.glob("infinite_knowledge/*.json")))
-                logger.info(f"💓 Core Heartbeat - Active Subsystems: {active_count}/{len(self.subsystems)} | Knowledge: {knowledge_count} topics | CPU: {cpu}%")
+                
+                # Dynamic Activity Message
+                if active_count == len(self.subsystems):
+                    status_emoji = "🟢 FULL ACTIVE"
+                else:
+                    status_emoji = f"🟡 {active_count}/{len(self.subsystems)} ACTIVE"
+
+                logger.info(f"💓 Heartbeat: {status_emoji} | 📚 Knowledge Base: {knowledge_count} Topics | ⚡ CPU: {cpu}%")
                 
                 # If any system died, restart it
                 for name, proc in self.processes.items():
                     if proc.poll() is not None:
-                        logger.warning(f"⚠️ {name} has stopped. Restarting...")
+                        exit_code = proc.poll()
+                        logger.warning(f"⚠️ {name} has stopped (Exit Code: {exit_code}). Restarting...")
                         self.start_subsystem(name, self.subsystems[name])
                 
                 time.sleep(30) # Tick every 30 seconds

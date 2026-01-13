@@ -334,4 +334,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import time
+    while True:
+        main()
+        time.sleep(300) # Her 5 dakikada bir kontrol et
