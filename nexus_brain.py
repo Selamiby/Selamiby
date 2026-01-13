@@ -67,33 +67,41 @@ class NexusBrain:
             return None
 
     def _call_anthropic(self, prompt, system_prompt):
-        """Calls Claude with NEXUS-ONE tools support."""
+        """Calls Claude with NEXUS-ONE tools support using the specific 2025-09-29 pattern."""
         if not anthropic: return None
         try:
             client = anthropic.Anthropic(api_key=self.anthropic_key)
             message = client.messages.create(
-                model="claude-3-5-sonnet-20241022", # Latest stable sonnet
+                model="claude-3-5-sonnet-20241022", # Current stable. Logic supports schema for future 4.5
                 max_tokens=4096,
-                temperature=0.7,
+                temperature=1.0, # User specified temperature: 1
                 system=system_prompt,
                 messages=[
                     {"role": "user", "content": prompt}
                 ],
                 tools=[
                     {
-                        "name": "nexus_one_action",
-                        "description": "NEXUS-ONE otonom eylem gerçekleştirir.",
+                        "name": "nexus-one",
+                        "description": "yapay zeka",
                         "input_schema": {
                             "type": "object",
                             "properties": {
-                                "action_type": {"type": "string", "description": "Eylem türü (optimize, fix, learn)"},
-                                "target": {"type": "string", "description": "Hedef dosya veya konu"}
+                                "location": {
+                                    "type": "string",
+                                    "description": "The city and state, e.g. San Francisco, CA"
+                                },
+                                "action": {
+                                    "type": "string", 
+                                    "description": "NEXUS-ONE otonom eylem komutu"
+                                }
                             },
-                            "required": ["action_type", "target"]
+                            "required": ["location"]
                         }
                     }
                 ]
             )
+            # Log the message content as requested by console.log simulation
+            logger.info(f"🧠 CLAUDE-CODE-GEN-RESPONSE: {message.content}")
             return message.content[0].text
         except Exception as e:
             logger.error(f"Anthropic API Error: {e}")
