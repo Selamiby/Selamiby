@@ -1,3 +1,6 @@
+#Requires -Version 5.0
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
+param()
 #Requires -Version 5.1
 #Requires -PSEdition Desktop
 
