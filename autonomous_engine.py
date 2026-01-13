@@ -80,13 +80,13 @@ class AutonomousEngine:
 
         for py_file in py_files:
             if py_file.name == Path(__file__).name: continue # Don't edit self while running
-            
+
             try:
                 with open(py_file, "r", encoding="utf-8", errors="ignore") as f:
                     code = f.read()
 
                 original_code = code
-                
+
                 # 1. Fix bare excepts
                 if "except:" in code:
                     code = code.replace("except:", "except Exception as e:")
@@ -117,23 +117,23 @@ class AutonomousEngine:
     def task_apply_knowledge(self):
         """Apply learned knowledge from 'infinite_knowledge' to the project REAL files."""
         logger.info("\n[TASK] Real Knowledge Implementation")
-        
+
         knowledge_dir = WORKSPACE / "infinite_knowledge"
         if not knowledge_dir.exists(): return False
-            
+
         knowledge_files = list(knowledge_dir.glob("*.json"))
         if not knowledge_files: return False
-            
+
         # En son öğrenilen 5 bilgiden birini seç (daha güncel olması için)
         k_file = sorted(knowledge_files, key=os.path.getmtime)[-1]
-        
+
         try:
             with open(k_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            
+
             code_snippet = data.get("real_code_snippet")
             topic = data.get("topic", "General")
-            
+
             if not code_snippet:
                 logger.info(f"  No code snippet for {topic}, skipping implementation.")
                 return False
@@ -141,25 +141,25 @@ class AutonomousEngine:
             # Gerçek bir dosya oluştur veya güncelle
             safe_name = topic.lower().replace(" ", "_").replace("#", "sharp").replace("+", "plus")
             impl_file = WORKSPACE / f"nexus_generated_{safe_name}.py"
-            
+
             # Eğer dile göre uzantı değişecekse (otonom karar)
             if "Mojo" in topic: impl_file = WORKSPACE / f"nexus_core_{safe_name}.mojo"
             elif "C#" in topic: impl_file = WORKSPACE / f"nexus_core_{safe_name}.cs"
-            
+
             with open(impl_file, "w", encoding="utf-8") as f:
                 f.write(f"# NEXUS-ONE AUTONOMOUSLY GENERATED COMPONENT\n")
                 f.write(f"# Topic: {topic}\n")
                 f.write(f"# Implementation Date: {datetime.now()}\n\n")
                 f.write(code_snippet)
-                
+
             logger.info(f"  🚀 REAL IMPLEMENTATION: {impl_file.name} created based on {topic} knowledge.")
-            
+
             # Bridge file güncelleme (Gerçek entegrasyon)
             bridge_file = WORKSPACE / "nexus_core_bridge.py"
             if not bridge_file.exists():
                 with open(bridge_file, "w", encoding="utf-8") as bf:
                     bf.write("# NEXUS-ONE CORE KNOWLEDGE BRIDGE\nimport importlib\n\nmodules = []\n")
-            
+
             module_name = impl_file.stem
             with open(bridge_file, "a", encoding="utf-8") as bf:
                 bf.write(f"import {module_name}\nmodules.append({module_name})\n")
@@ -168,7 +168,7 @@ class AutonomousEngine:
             # Evolution log kaydı
             with open(WORKSPACE / "nexus_evolution.py", "a", encoding="utf-8") as ev:
                 ev.write(f"\n# [{datetime.now()}] NEXUS evolved with {topic} module: {impl_file.name}\n")
-                
+
             self.stats["features_added"] += 1
             return True
         except Exception as e:
