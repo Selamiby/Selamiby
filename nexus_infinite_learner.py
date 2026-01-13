@@ -73,6 +73,8 @@ class InfiniteLearner:
     def __init__(self):
         self.knowledge_base = Path("infinite_knowledge")
         self.knowledge_base.mkdir(exist_ok=True)
+        self.modules_dir = Path("nexus_modules")
+        self.modules_dir.mkdir(exist_ok=True)
 
         self.metrics_path = Path("nexus_logs") / "learner_metrics.json"
         self.heartbeat_path = Path("nexus_logs") / "learner_heartbeat.txt"
