@@ -84,8 +84,8 @@ class ResourceGuard:
 
         logger.info("📤 Uzaktan depolama senkronizasyonu başlatılıyor...")
         try:
-            # Add all
-            subprocess.run(["git", "add", "."], cwd=WORKSPACE, check=True, capture_output=True)
+            # Add all except .env
+            subprocess.run(["git", "add", ".", ":!.env"], cwd=WORKSPACE, check=True, capture_output=True)
 
             # Check if there are changes to commit
             status = subprocess.run(["git", "status", "--porcelain"], cwd=WORKSPACE, capture_output=True, text=True).stdout

@@ -42,15 +42,15 @@ class AutonomousGitSync:
 
         while time.time() < end_time:
             try:
-                # Add all changes
+                # Add all changes EXCEPT .env
                 result = subprocess.run(
-                    ["git", "add", "."], cwd=WORKSPACE, capture_output=True, text=True
+                    ["git", "add", ".", ":!.env"], cwd=WORKSPACE, capture_output=True, text=True
                 )
 
                 if result.returncode != 0:
                     logger.warning(f"Git add failed: {result.stderr}")
                 else:
-                    logger.info("✅ Git add completed")
+                    logger.info("✅ Git add completed (protected .env)")
 
                 # Check for changes
                 status_result = subprocess.run(
@@ -87,15 +87,15 @@ class AutonomousGitSync:
                 else:
                     logger.info("⏭️  No changes to commit")
 
-                # Wait 60 seconds before next commit
+                # Wait 120 seconds before next commit (Gentle Mode)
                 logger.info(
-                    f"⏳ Waiting 60 seconds... (Total commits: {self.commit_count})"
+                    f"⏳ Waiting 120 seconds... (Total commits: {self.commit_count})"
                 )
-                time.sleep(60)
+                time.sleep(120)
 
             except Exception as e:
                 logger.error(f"❌ Error in commit loop: {e}")
-                time.sleep(60)
+                time.sleep(120)
 
         logger.info(f"✅ GIT SYNC COMPLETE - Total commits: {self.commit_count}")
 

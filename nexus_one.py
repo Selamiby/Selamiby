@@ -98,6 +98,8 @@ class NexusOneCore:
 
                 # Strategic Intelligence update every 5 cycles
                 if cycle_count % 5 == 0:
+                    logger.info("🧠 Brain is thinking about the next step...")
+                    time.sleep(5) # Give it some room to breathe
                     intelligence = brain.think(
                         f"Current System State: {active_count}/{len(self.subsystems)} systems active, {knowledge_count} topics learned. "
                         "Give a 1-sentence strategic focus for the next hour.",

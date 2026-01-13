@@ -337,4 +337,5 @@ if __name__ == "__main__":
     import time
     while True:
         main()
+        time.sleep(300) # Wait 5 minutes between healing cycles to save CPU
         time.sleep(300) # Her 5 dakikada bir kontrol et
