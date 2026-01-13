@@ -1,80 +1,61 @@
 import os
-import json
-import requests
-from bs4 import BeautifulSoup
-from googleapiclient.discovery import build
+import re
+from datetime import datetime
+from typing import Dict, List
+from dataclasses import dataclass
+from urllib.parse import urlparse
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
-class VideoMetadataOptimizer:
-    def __init__(self, api_key, youtube_channel_id):
+@dataclass
+class VideoMetadata:
+    title: str
+    description: str
+    tags: List[str]
+    thumbnail: str
+
+class VideoOptimizer:
+    def __init__(self, video_url: str, api_key: str):
+        self.video_url = video_url
         self.api_key = api_key
-        self.youtube_channel_id = youtube_channel_id
-        self.youtube = build('youtube', 'v3', developerKey=self.api_key)
+        self.driver = webdriver.Chrome()
 
-    def get_video_ids(self):
-        request = self.youtube.search().list(
-            part="id,snippet",
-            channelId=self.youtube_channel_id,
-            maxResults=50
-        )
-        response = request.execute()
-        video_ids = [item['id']['videoId'] for item in response['items']]
-        return video_ids
-
-    def get_video_metadata(self, video_id):
-        request = self.youtube.videos().list(
-            part="id,snippet,contentDetails",
-            id=video_id
-        )
-        response = request.execute()
-        metadata = response['items'][0]
-        return metadata
-
-    def optimize_video_metadata(self, video_id, metadata):
-        title = metadata['snippet']['title']
-        description = metadata['snippet']['description']
-        tags = metadata['snippet'].get('tags', [])
-        keywords = [word.strip() for word in title.split()]
-        keywords.extend([word.strip() for word in description.split()])
-        keywords.extend(tags)
-        keywords = list(set(keywords))
-        metadata['snippet']['tags'] = keywords
-        request = self.youtube.videos().update(
-            part="snippet",
-            body=metadata
-        )
-        response = request.execute()
-        return response
-
-    def scrape_video_transcript(self, video_id):
-        url = f"https://www.youtube.com/watch?v={video_id}"
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        transcript = soup.find('div', {'id': 'transcript'})
-        if transcript:
-            return transcript.text.strip()
-        else:
+    def extract_video_metadata(self) -> VideoMetadata:
+        try:
+            self.driver.get(self.video_url)
+            title = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//h1[@id='title']"))).text
+            description = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//meta[@name='description']"))).get_attribute("content")
+            tags = re.findall(r'\b\w+\b', description)
+            thumbnail = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//meta[@property='og:image']"))).get_attribute("content")
+            return VideoMetadata(title, description, tags, thumbnail)
+        except TimeoutException:
             return None
 
-    def optimize_video_transcript(self, video_id, transcript):
-        if transcript:
-            keywords = [word.strip() for word in transcript.split()]
-            keywords = list(set(keywords))
-            return keywords
-        else:
-            return None
+    def optimize_video_metadata(self, metadata: VideoMetadata) -> Dict:
+        optimized_metadata = {
+            "title": metadata.title + " | " + self.api_key,
+            "description": metadata.description + " " + self.api_key,
+            "tags": metadata.tags + [self.api_key],
+            "thumbnail": metadata.thumbnail
+        }
+        return optimized_metadata
+
+    def update_video_metadata(self, optimized_metadata: Dict):
+        # update video metadata using API
+        print(optimized_metadata)
 
 def main():
+    video_url = "https://www.example.com/video"
     api_key = "YOUR_API_KEY"
-    youtube_channel_id = "YOUR_CHANNEL_ID"
-    optimizer = VideoMetadataOptimizer(api_key, youtube_channel_id)
-    video_ids = optimizer.get_video_ids()
-    for video_id in video_ids:
-        metadata = optimizer.get_video_metadata(video_id)
-        optimized_metadata = optimizer.optimize_video_metadata(video_id, metadata)
-        transcript = optimizer.scrape_video_transcript(video_id)
-        optimized_transcript = optimizer.optimize_video_transcript(video_id, transcript)
-        print(f"Optimized video {video_id} metadata and transcript")
+    optimizer = VideoOptimizer(video_url, api_key)
+    metadata = optimizer.extract_video_metadata()
+    if metadata:
+        optimized_metadata = optimizer.optimize_video_metadata(metadata)
+        optimizer.update_video_metadata(optimized_metadata)
 
 if __name__ == "__main__":
     main()
-# NEXUS-ONE CORE MODULE - PRODUCTION READY
+# NEXUS-ONE CORE MODULE

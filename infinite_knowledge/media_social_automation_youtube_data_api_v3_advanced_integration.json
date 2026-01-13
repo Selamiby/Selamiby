@@ -1,8 +1,6 @@
 {
   "topic": "YouTube Data API v3 Advanced Integration",
   "domain": "media_social_automation",
-  "module_path": "nexus_modules\\media_social_automation_youtube_data_api_v3_advanced_integration.py",
-  "learned_at": "2026-01-14T00:41:57.777382",
-  "status": "Verified",
-  "code_preview": "import os\nimport json\nfrom googleapiclient.discovery import build\n\nclass YouTubeDataAPI:\n    def __init__(self, api_key):\n        self.api_key = api_key\n        self.youtube = build('youtube', 'v3', developerKey=self.api_key)\n\n    def get_channel_info(self, channel_id):\n        request = self.youtub"
+  "summary": "# YouTube Data API v3 Advanced Integration\n\u00d6zet: \nYouTube Data API v3 Advanced Integration, NEXUS-ONE i\u00e7in g\u00fc\u00e7l\u00fc bir entegrasyon mod\u00fcl\u00fcd\u00fcr. Bu mod\u00fcl, YouTube'dan veri \u00e7ekme ve i\u015fleme yeteneklerini \u00f6nemli \u00f6l\u00e7\u00fcde geli\u015ftirir. NEXUS-ONE, bu mod\u00fcl sayesinde daha derinlemesine YouTube analizleri sunabilir ve daha g\u00fc\u00e7l\u00fc bir sosyal medya y\u00f6netim arac\u0131 haline gelebilir.\n\nTeknik Katk\u0131:\n* Geli\u015fmi\u015f API entegrasyonu sayesinde y\u00fcksek hacimli veri i\u015fleme yetene\u011fi sa\u011flar\n* Videolar, kanallar ve yorumlar hakk\u0131nda ayr\u0131nt\u0131l\u0131 bilgiler al\u0131nmas\u0131 m\u00fcmk\u00fcnd\u00fcr\n* Ger\u00e7ek zamanl\u0131 veri \u00e7ekme ve analiz imkan\u0131 sunar\n* Kullan\u0131c\u0131lar i\u00e7in daha do\u011fru ve g\u00fcncel YouTube analizleri sunabilir\n* NEXUS-ONE'un sosyal medya y\u00f6netim ve analiz kabiliyetlerini geni\u015fletir",
+  "learned_at": "2026-01-14T02:29:37.375937"
 }
