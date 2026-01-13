@@ -30,7 +30,7 @@ logging.basicConfig(
 logger = logging.getLogger("ResourceGuard")
 
 class ResourceGuard:
-    def __init__(self, cpu_limit=70, check_interval=10):
+    def __init__(self, cpu_limit=60, check_interval=15):
         self.cpu_limit = cpu_limit
         self.check_interval = check_interval
         # Don't ever kill these
