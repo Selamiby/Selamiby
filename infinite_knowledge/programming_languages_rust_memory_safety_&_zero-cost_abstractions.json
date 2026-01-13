@@ -1,10 +1,6 @@
 {
   "topic": "Rust (Memory Safety & Zero-cost Abstractions)",
   "domain": "programming_languages",
-  "learned_at": "2026-01-14T00:35:11.573439",
-  "cycle": 34,
-  "mastery_level": "Production-Ready-Code",
-  "real_code_content": null,
-  "verification_status": "Verified by NEXUS-BRAIN",
-  "implementation_guide": "Bu dosya doğrudan 'exec()' veya import ile NEXUS-ONE'a entegre edilebilir."
+  "summary": "# Rust: Bellek G\u00fcvenli\u011fi ve S\u0131f\u0131r Maliyetli Soyutlamalar\n\nRust programlama dili, bellek g\u00fcvenli\u011fi ve performans konusunda \u00f6nemli avantajlar sunan bir dildir. Bu mod\u00fcl, Rust'\u0131n s\u0131f\u0131r maliyetli soyutlamalar ve strong bellek g\u00fcvenlik \u00f6zellikleri hakk\u0131nda derinlemesine bilgi sa\u011flamakta ve bunlar\u0131 NEXUS-ONE'a entegre etmenin yollar\u0131n\u0131 ara\u015ft\u0131r\u0131yor. D\u00edky bu \u00f6zelliklere, Rust, sistem programlamas\u0131ndan web geli\u015ftirmeye kadar bir\u00e7ok alanda kullan\u0131labiliyor ve y\u00fcksek performansl\u0131, g\u00fcvenli uygulamalar geli\u015ftirmek i\u00e7in ideal bir se\u00e7im oluyor.\n\n## Teknik Katk\u0131:\n* **Bellek G\u00fcvenli\u011fi**: Rust, ownership ve borrowing mekanizmalar\u0131 sayesinde bellek g\u00fcvenli\u011fini sa\u011fl\u0131yor ve null pointer dereferanslar\u0131, data yar\u0131\u015fmas\u0131 gibi sorunlar\u0131 \u00f6nleniyor.\n* **S\u0131f\u0131r Maliyetli Soyutlamalar**: Rust'\u0131n soyutlama mekanizmalar\u0131, derleme zaman\u0131nda optimize edilebiliyor, bu sayede performans kayb\u0131 ya\u015famadan y\u00fcksek seviyeli soyutlama yap\u0131labilmesini sa\u011fl\u0131yor.\n* **Paralel Programlama**: Rust, g\u00fcvenli paralel programlama olanaklar\u0131 sunuyor, bu sayede geli\u015ftiricilerin y\u00fcksek performansl\u0131, \u00e7ok \u00e7ekirdekli sistemlerden yararlanmas\u0131n\u0131 kolayla\u015ft\u0131r\u0131yor.\n* **Cross-Platform Geli\u015ftirme**: Rust, bir\u00e7ok platformda derlenebiliyor ve worked edilmesi kolay bir ekosisteme sahip, bu reason geli\u015ftiricilerin farkl\u0131 ortamlarda \u00e7al\u0131\u015fmas\u0131na imkan tan\u0131yor.\n* **G\u00fcvenlik**: Rust, g\u00fcvenli kod geli\u015ftirme i\u00e7in bir dizi \u00f6zellik sunuyor,\u00f6rne\u011fin veri i\u015flemlerinde hatalar\u0131 \u00f6nleyen ve kod kalitesini y\u00fckselten mekanizmalar i\u00e7eriyor.",
+  "learned_at": "2026-01-14T02:22:56.354740"
 }
