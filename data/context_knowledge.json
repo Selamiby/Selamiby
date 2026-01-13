@@ -18,7 +18,7 @@
       "learn_from_web",
       "learn_from_visual"
     ],
-    "size": 6724
+    "size": 6727
   },
   "autonomous_engine.py": {
     "imports": [
@@ -45,7 +45,7 @@
       "run_iteration",
       "save_stats"
     ],
-    "size": 11413
+    "size": 11407
   },
   "code_generator.py": {
     "imports": [
@@ -121,7 +121,7 @@
       "_get_known_issues",
       "_get_best_practices"
     ],
-    "size": 12498
+    "size": 12494
   },
   "dashboard_creator.py": {
     "imports": [
