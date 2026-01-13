@@ -351,7 +351,7 @@ class InfiniteLearner:
                 "4. SADECE KOD: Yanıtında tek bir kelime bile açıklama olmasın, sadece ``` diliyle sarılmış kod bloğu gönder.\n"
                 "5. Kodun sonuna şu yorumu ekle: # NEXUS-ONE PERSISTENT CORE CODE - VERIFIED FOR PRODUCTION"
             )
-            
+
             knowledge_content = brain.think(prompt, "Sen dünyanın en iyi yazılım mühendisisin. Sadece ve sadece çalışan kaynak kod üretirsin.")
 
             if not knowledge_content or len(knowledge_content) < 50:
@@ -457,7 +457,7 @@ class InfiniteLearner:
                     topics = self.learning_domains[domain]
 
                 learned = self.learn_from_domain(domain, topics)
-                
+
                 # Her döngüde başarıyı garanti et
                 self.learning_cycles += 1
 
