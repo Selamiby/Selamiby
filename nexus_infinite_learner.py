@@ -81,7 +81,7 @@ class InfiniteLearner:
         self.total_topics_learned = 0
         self.capabilities_gained = []
         self.is_running = True
-        self.domain_stats: Dict[str, int] = {d: 0 for d in []}
+        self.domain_stats: Dict[str, int] = {}
 
         # SINIRSIZ ÖĞRENME ALANLARI - DERİN ZEKA ODAKLI
         self.learning_domains = {
@@ -111,13 +111,12 @@ class InfiniteLearner:
                 "Swift",
                 "TypeScript",
                 "Julia",
-                "Mojo (Modular AI Infrastructure)"
-            ],
+                "Mojo (Modular AI Infrastructure)",
                 "CUDA (C++)",
                 "R",
                 "Scala",
                 "Assembly",
-                "WebAssembly",
+                "WebAssembly"
             ],
             "pc_control_automation": [
                 "Windows API (Win32/User32)",
@@ -326,11 +325,12 @@ class InfiniteLearner:
 
             logger.info(f"🎯 {topic} derin araştırılıyor (AI Brain Powered)...")
 
-            # AI Brain ile derinlemesine bilgi al
+            # AI Brain ile gerçek dünyadan çalışan, üretim seviyesinde kod blokları al
             knowledge_content = brain.think(
-                f"{topic} hakkında teknik detaylar, avantajlar ve örnek bir kod bloğu içeren kapsamlı bir analiz yap. "
-                "Cevabı teknik bir dille ve NEXUS-ONE entegrasyonuna uygun şekilde ver.",
-                "Sen kıdemli bir yazılım mimarı ve yapay zeka uzmanısın."
+                f"{topic} hakkında sadece teorik bilgi değil, doğrudan bir projede kullanılabilecek, "
+                "kapsamlı, hatasız ve 'production-ready' (üretim seviyesi) gerçek bir Python/JS/TS/Mojo/Rust kodu hazırla. "
+                "İçinde 'Generic' veya 'Example' ifadeleri olmasın. Doğrudan çalışan bir çözüm sağla.",
+                "Sen dünyanın en iyi yazılım mühendisisin ve sadece gerçek, fonksiyonel kod yazarsın."
             )
 
             knowledge = {
@@ -338,10 +338,10 @@ class InfiniteLearner:
                 "domain": domain,
                 "learned_at": datetime.now().isoformat(),
                 "cycle": self.learning_cycles + 1,
-                "mastery_level": "Expert (Deep Intelligence)",
+                "mastery_level": "Production Ready",
                 "details": knowledge_content,
-                "real_code_snippet": self._get_real_code(topic),
-                "implementation_guide": f"NEXUS-ONE için {topic} derin entegrasyon stratejisi."
+                "real_code_content": knowledge_content, # İçeriği doğrudan kod olarak kullanacağız
+                "implementation_guide": f"NEXUS-ONE Core entegrasyonu için doğrudan kopyalanıp çalıştırılabilir {topic} modülü."
             }
 
             # Bilgiyi kaydet
