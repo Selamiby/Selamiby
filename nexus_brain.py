@@ -126,7 +126,7 @@ class NexusBrain:
             json_res = response.json()
             if 'candidates' in json_res and len(json_res['candidates']) > 0:
                 return json_res['candidates'][0]['content']['parts'][0]['text']
-            
+
             logger.error(f"Gemini API Error: {json_res}")
             return None
         except Exception as e:
