@@ -58,7 +58,7 @@ if HAS_PYQT:
     class ResourceMonitorThread(QThread):
         """Sistem kaynaklarını arka planda izleyen thread"""
         stats_updated = pyqtSignal(dict)
-        
+
         def run(self):
             while True:
                 cpu = psutil.cpu_percent(interval=1)
@@ -80,11 +80,11 @@ if HAS_PYQT:
             super().__init__()
             self.setWindowTitle("NEXUS-ONE UNIFIED COMMAND CENTER")
             self.resize(1100, 750)
-            
+
             # Setup AI
             self.ai_mode = "KNOWLEDGE_BASE"
             self._init_ai()
-            
+
             self.init_ui()
             self.start_monitoring()
 
@@ -111,7 +111,7 @@ else:
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         main_layout = QVBoxLayout(central_widget)
-        
+
         # Üst Panel: Sistem Durumu
         status_bar = QHBoxLayout()
         self.cpu_label = QLabel("CPU: 0%")
@@ -122,7 +122,7 @@ else:
         self.ram_bar.setMaximumWidth(200)
         self.mode_label = QLabel(f"AI MODE: {self.ai_mode}")
         self.mode_label.setStyleSheet("color: #00ff00; font-weight: bold;")
-        
+
         status_bar.addWidget(self.cpu_label)
         status_bar.addWidget(self.cpu_bar)
         status_bar.addSpacing(20)
@@ -130,22 +130,22 @@ else:
         status_bar.addWidget(self.ram_bar)
         status_bar.addStretch()
         status_bar.addWidget(self.mode_label)
-        
+
         main_layout.addLayout(status_bar)
-        
+
         # Orta Panel: Tab'lar
         self.tabs = QTabWidget()
         main_layout.addWidget(self.tabs)
-        
+
         # Tab 1: AI Chat & Command
         self.chat_tab = QWidget()
         chat_layout = QVBoxLayout(self.chat_tab)
-        
+
         self.chat_display = QTextEdit()
         self.chat_display.setReadOnly(True)
         self.chat_display.setStyleSheet("background-color: #1e1e1e; color: #d4d4d4; font-family: 'Consolas';")
         self.chat_display.append("🤖 <b>NEXUS-ONE:</b> Merkezi Komuta Sistemine Hoş Geldiniz. Tüm sistemler aktif ve emrinizde.")
-        
+
         input_layout = QHBoxLayout()
         self.chat_input = QLineEdit()
         self.chat_input.setPlaceholderText("Komut veya soru yazın...")
@@ -153,14 +153,14 @@ else:
         self.send_btn = QPushButton("GÖNDER")
         self.send_btn.clicked.connect(self.send_chat)
         self.send_btn.setStyleSheet("background-color: #007acc; color: white; font-weight: bold;")
-        
+
         input_layout.addWidget(self.chat_input)
         input_layout.addWidget(self.send_btn)
-        
+
         chat_layout.addWidget(self.chat_display)
         chat_layout.addLayout(input_layout)
         self.tabs.addTab(self.chat_tab, "💬 AI CHAT & COMMAND")
-        
+
         # Tab 2: Otonom Günlük (Live Logs)
         self.log_tab = QWidget()
         log_layout = QVBoxLayout(self.log_tab)
@@ -169,11 +169,11 @@ else:
         self.log_display.setStyleSheet("background-color: #000000; color: #00ff00; font-family: 'Consolas';")
         log_layout.addWidget(self.log_display)
         self.tabs.addTab(self.log_tab, "📜 LIVE LOGS")
-        
+
         # Tab 3: Sistem Kontrol (Quick Actions)
         self.control_tab = QWidget()
         control_layout = QVBoxLayout(self.control_tab)
-        
+
         btns_grid = QHBoxLayout()
         actions = [
             ("KOD İYİLEŞTİR", "improve code"),
@@ -182,13 +182,13 @@ else:
             ("YENİ OYUN ÜRET", "create game"),
             ("BELLEK TEMİZLE", "clean memory")
         ]
-        
+
         for name, cmd in actions:
             btn = QPushButton(name)
             btn.setMinimumHeight(60)
             btn.clicked.connect(lambda ch, c=cmd: self.quick_command(c))
             btns_grid.addWidget(btn)
-        
+
         control_layout.addLayout(btns_grid)
         control_layout.addStretch()
         self.tabs.addTab(self.control_tab, "🛠️ SYSTEM CONTROL")
@@ -203,7 +203,7 @@ else:
         self.res_thread = ResourceMonitorThread()
         self.res_thread.stats_updated.connect(self.update_stats)
         self.res_thread.start()
-        
+
         # Log okuma zamanlayıcısı
         self.log_timer = QTimer()
         self.log_timer.timeout.connect(self.update_logs)
@@ -231,10 +231,10 @@ else:
     def send_chat(self):
         text = self.chat_input.text().strip()
         if not text: return
-        
+
         self.chat_display.append(f"<br><b>👤 SİZ:</b> {text}")
         self.chat_input.clear()
-        
+
         # AI Processing
         threading.Thread(target=self.process_ai, args=(text,), daemon=True).start()
 
@@ -251,13 +251,13 @@ else:
             except Exception as e:
                 response = f"API Hatası (KB moduna geçiliyor): {str(e)}"
                 self.ai_mode = "KNOWLEDGE_BASE"
-        
+
         if not response or self.ai_mode == "KNOWLEDGE_BASE":
             response = self.get_kb_response(text)
-        
+
         # Update UI from thread
         QTimer.singleShot(0, lambda: self.chat_display.append(f"🤖 <b>NEXUS:</b> {response}"))
-        
+
         # Trigger Engine if command-like
         if HAS_ENGINE and any(kw in text.lower() for kw in ["yap", "çalıştır", "düzenle", "iyileştir", "analiz"]):
             process_command(text)
@@ -276,10 +276,10 @@ if __name__ == "__main__":
     if not HAS_PYQT:
         print("PyQt6 bulunamadı. Lütfen 'pip install PyQt6' komutunu çalıştırın.")
         sys.exit(1)
-        
+
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
-    
+
     # Koyu tema ayarı
     palette = QPalette()
     palette.setColor(QPalette.ColorRole.Window, QColor(53, 53, 53))
@@ -296,7 +296,7 @@ if __name__ == "__main__":
     palette.setColor(QPalette.ColorRole.Highlight, QColor(42, 130, 218))
     palette.setColor(QPalette.ColorRole.HighlightedText, Qt.GlobalColor.black)
     app.setPalette(palette)
-    
+
     gui = NEXUSUnifiedControl()
     gui.show()
     sys.exit(app.exec())
