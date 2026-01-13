@@ -307,13 +307,21 @@ class InfiniteLearner:
                 "Scalability Patterns",
             ],
             "media_social_automation": [
-                "YouTube Data API v3",
-                "Automated Video Analysis",
-                "Social Media Trend Scraping",
-                "Content Generation Pipelines",
-                "FFmpeg Programmatic Editing",
-                "Automated Subtitle Generation",
-                "Engagement Analytics"
+                "YouTube Data API v3 Advanced Integration",
+                "Automated Video Metadata Optimization (SEO)",
+                "Real-time Trending Topic Extraction",
+                "YouTube Comment Sentiment Analysis",
+                "Automated Video Script Generation with AI",
+                "YouTube Transcript to Knowledge Base (RAG)",
+                "Automated Thumbnail Design Logic",
+                "YouTube Shorts Content Automation",
+                "Channel Performance Data Analytics",
+                "AI-Powered Competitor Channel Analysis",
+                "FFmpeg Automated Video Clip Generation",
+                "YouTube API Rate Limit Management",
+                "OAuth2 Persistent Authentication Flows",
+                "YouTube Live Stream Real-time Interaction Bot",
+                "Automated Subtitle & Closed Caption Generation"
             ],
         }
 
