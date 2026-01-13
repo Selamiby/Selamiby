@@ -29,6 +29,7 @@ from typing import Any, Dict, List
 import requests
 
 from nexus_brain import NexusBrain
+from nexus_real_asset_factory import NexusAssetFactory
 
 # Logging setup
 log_dir = Path("nexus_logs")
@@ -76,6 +77,7 @@ class InfiniteLearner:
         self.modules_dir = Path("nexus_modules")
         self.modules_dir.mkdir(exist_ok=True)
         self.journal_path = Path("NEXUS_JOURNAL.md")
+        self.asset_factory = NexusAssetFactory()
 
         self.metrics_path = Path("nexus_logs") / "learner_metrics.json"
         self.heartbeat_path = Path("nexus_logs") / "learner_heartbeat.txt"
@@ -405,6 +407,17 @@ class InfiniteLearner:
             )
             summary_text = brain.think(summary_prompt, "Sen NEXUS-ONE'ın bilge analiz birimisin.")
 
+            # 3. REAL ASSET ÜRETİMİ (Görsel, 3D, Ses) - SÖZDE DEĞİL GERÇEK!
+            asset_path = None
+            if any(k in topic.lower() for k in ["3d", "model", "texture", "görsel", "audio", "sound", "ses"]):
+                logger.info(f"🏗️ Konu gereği gerçek varlık üretiliyor: {topic}")
+                if "3d" in topic.lower() or "model" in topic.lower():
+                    asset_path = self.asset_factory.generate_3d_model(f"Low poly {topic} asset for game development")
+                elif "audio" in topic.lower() or "ses" in topic.lower():
+                    asset_path = self.asset_factory.generate_audio(f"Sound effect for {topic}")
+                else:
+                    asset_path = self.asset_factory.generate_image(f"Ultra realistic {topic} texture/reference")
+
             if not clean_code or "import " not in clean_code:
                 continue
 
@@ -421,7 +434,11 @@ class InfiniteLearner:
                 with open(self.journal_path, "a", encoding="utf-8") as f:
                     f.write(f"\n\n## 📘 {datetime.now().strftime('%Y-%m-%d %H:%M')} - {topic}\n")
                     f.write(f"**Domain:** {domain_name}\n")
-                    f.write(f"**Modül:** `{module_file.name}`\n\n")
+                    f.write(f"**Modül:** `{module_file.name}`\n")
+                    if asset_path:
+                        f.write(f"**Üretilen Varlık:** `{asset_path}`\n\n")
+                    else:
+                        f.write("\n")
                     f.write(f"{summary_text or 'Analiz hazırlanıyor...'}\n")
                     f.write("\n---\n")
 
