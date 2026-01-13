@@ -1,0 +1,6 @@
+{
+  "topic": "Flutter Architecture",
+  "domain": "mobile_advanced",
+  "summary": "# Flutter Mimarisi Analizi\nFlutter uygulamalar\u0131n\u0131n tasar\u0131m ve yap\u0131land\u0131rmas\u0131n\u0131 sa\u011flar. Flutter mimarisi, geli\u015ftiricilerin daha etkili ve \u00f6l\u00e7eklenebilir uygulamalar olu\u015fturmas\u0131na yard\u0131mc\u0131 olur. NEXUS-ONE projelerine entegre edilerek, daha g\u00fc\u00e7l\u00fc ve esnek bir uygulama yap\u0131s\u0131 sa\u011flar.\n\n## Teknik Katk\u0131\n* **B BloC Mimarisi**: \u0130\u015f mant\u0131\u011f\u0131n\u0131 UI'dan ay\u0131rarak daha kolay bak\u0131m ve test sa\u011flar.\n* **MVVM (Model-View-ViewModel)**: Veri ba\u011flam\u0131n\u0131 ve veri i\u015fleme Mant\u0131\u011f\u0131n\u0131 ay\u0131ran bir mimari modeldir.\n* **Clean Architecture**: Katmanl\u0131 mimari yakla\u015f\u0131m\u0131, veritaban\u0131 eri\u015fiminden i\u015f mant\u0131\u011f\u0131na kadar her katman i\u00e7in ayr\u0131lan yap\u0131d\u0131r.",
+  "learned_at": "2026-01-14T02:22:16.048403"
+}
