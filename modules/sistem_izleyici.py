@@ -1,4 +1,4 @@
-﻿# modules/sistem_izleyici.py
+# modules/sistem_izleyici.py
 import psutil
 
 

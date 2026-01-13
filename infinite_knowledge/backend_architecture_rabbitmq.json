@@ -1,8 +1,8 @@
 {
   "topic": "RabbitMQ",
   "domain": "backend_architecture",
-  "learned_at": "2026-01-12T14:02:07.136778",
-  "cycle": 1057,
+  "learned_at": "2026-01-13T17:37:07.120600",
+  "cycle": 3,
   "key_concepts": [
     "RabbitMQ fundamentals",
     "RabbitMQ architecture",

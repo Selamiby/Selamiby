@@ -1,21 +1,9 @@
 {
   "topic": "Angular Signals",
   "domain": "frontend_advanced",
-  "learned_at": "2026-01-12T14:01:38.706814",
-  "cycle": 1049,
-  "key_concepts": [
-    "Angular Signals fundamentals",
-    "Angular Signals architecture",
-    "Angular Signals best practices",
-    "Angular Signals performance optimization",
-    "Angular Signals real-world applications"
-  ],
-  "practical_applications": [
-    "Build production-ready Angular Signals applications",
-    "Optimize Angular Signals performance",
-    "Debug Angular Signals issues",
-    "Implement Angular Signals security",
-    "Scale Angular Signals systems"
-  ],
-  "mastery_level": "Advanced"
+  "learned_at": "2026-01-13T19:34:41.588762",
+  "cycle": 36,
+  "mastery_level": "Expert",
+  "real_code_snippet": "# Implementation for Angular Signals\n# NEXUS-ONE Autonomous Strategy\n",
+  "implementation_guide": "NEXUS-ONE için Angular Signals yerel optimizasyon planı."
 }

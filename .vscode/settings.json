@@ -21,13 +21,31 @@
             "source.organizeImports": "explicit"
         }
     },
+    "python.analysis.typeCheckingMode": "off",
+    "editor.minimap.enabled": false,
+    "editor.cursorSmoothCaretAnimation": "off",
+    "editor.smoothScrolling": false,
+    "editor.hover.enabled": false,
+    "editor.matchBrackets": "never",
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": false,
+    "editor.fontLigatures": false,
+    "git.autorefresh": false,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/venv/**": true,
+        "**/nexus_logs/**": true
+    },
     "files.exclude": {
         "**/__pycache__": true,
         "**/*.pyc": true,
         "**/.pytest_cache": true,
-        "**/.coverage": true
+        "**/.coverage": true,
+        "**/.git": true,
+        "**/nexus_logs": true
     },
-    "python.analysis.typeCheckingMode": "basic",
     "python-envs.defaultEnvManager": "ms-python.python:system",
     "python-envs.pythonProjects": []
 }

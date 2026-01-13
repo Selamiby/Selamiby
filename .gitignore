@@ -1,6 +1,15 @@
 # Python
 __pycache__/
 *.py[cod]
+nexus_logs/*.log
+!nexus_logs/cpu_guardian.log
+nexus_resource_guard.log
+nexus_status.json
+*.tmp
+temp/
+venv/
+.env
+.venv
 *$py.class
 *.so
 .Python

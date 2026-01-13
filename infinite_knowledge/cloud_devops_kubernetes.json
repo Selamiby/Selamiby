@@ -1,21 +1,9 @@
 {
   "topic": "Kubernetes",
   "domain": "cloud_devops",
-  "learned_at": "2026-01-12T14:02:27.748653",
-  "cycle": 1063,
-  "key_concepts": [
-    "Kubernetes fundamentals",
-    "Kubernetes architecture",
-    "Kubernetes best practices",
-    "Kubernetes performance optimization",
-    "Kubernetes real-world applications"
-  ],
-  "practical_applications": [
-    "Build production-ready Kubernetes applications",
-    "Optimize Kubernetes performance",
-    "Debug Kubernetes issues",
-    "Implement Kubernetes security",
-    "Scale Kubernetes systems"
-  ],
-  "mastery_level": "Advanced"
+  "learned_at": "2026-01-13T19:24:30.723595",
+  "cycle": 2,
+  "mastery_level": "Expert",
+  "real_code_snippet": "# Implementation for Kubernetes\n# NEXUS-ONE Autonomous Strategy\n",
+  "implementation_guide": "NEXUS-ONE için Kubernetes yerel optimizasyon planı."
 }

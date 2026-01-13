@@ -1,11 +1,6 @@
-#Requires -Version 5.0
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
-param()
 #Requires -Version 5.1
 #Requires -PSEdition Desktop
-
-# Advanced Git Synchronization Script for NEXUS-ONE
-# Version 2.1 - Rebase Strategy with Force-with-Lease
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVars', '')]
 
 param(
     [string]$Branch = "main",
@@ -14,6 +9,9 @@ param(
     [switch]$Force,
     [switch]$NoPush
 )
+
+# Advanced Git Synchronization Script for NEXUS-ONE
+# Version 2.1 - Rebase Strategy with Force-with-Lease
 
 # --- CONFIGURATION ---
 $CommitMessage = "NEXUS-AUTO: Autonomous sync and self-update"
@@ -33,10 +31,10 @@ function Write-SyncLog {
     
     # Write to console
     $color = switch ($Level) {
-        "ERROR"   { "Red" }
+        "ERROR" { "Red" }
         "WARNING" { "Yellow" }
         "SUCCESS" { "Green" }
-        default   { "Cyan" }
+        default { "Cyan" }
     }
     Write-Host $logEntry -ForegroundColor $color
     

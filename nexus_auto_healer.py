@@ -52,18 +52,19 @@ class NEXUSAutoHealer:
     def get_errors(self) -> Dict[str, List[str]]:
         """VS Code Problems panelinden hataları al"""
         try:
+            # Recursive tarama yerine sadece ana klasördeki kritik dosyaları kontrol et (CPU dostu)
             result = subprocess.run(
                 [
                     "powershell",
                     "-NoProfile",
                     "-Command",
-                    "Get-ChildItem -Recurse -Include '*.ps1','*.yml','*.yaml' -Path .",
+                    "Get-ChildItem -Include '*.ps1','*.yml','*.yaml' -Path .",
                 ],
                 capture_output=True,
                 text=True,
                 cwd=self.workspace_root,
             )
-            self.log("Hata taraması başlatıldı", "INFO")
+            self.log("Hata taraması başlatıldı (Sığ tarama)", "INFO")
             return self.parse_errors()
         except Exception as e:
             self.log(f"Hata okuma hatası: {e}", "ERROR")

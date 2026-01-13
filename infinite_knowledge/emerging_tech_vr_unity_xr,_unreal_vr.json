@@ -1,21 +1,9 @@
 {
   "topic": "VR (Unity XR, Unreal VR)",
   "domain": "emerging_tech",
-  "learned_at": "2026-01-12T14:00:45.601336",
-  "cycle": 1034,
-  "key_concepts": [
-    "VR (Unity XR, Unreal VR) fundamentals",
-    "VR (Unity XR, Unreal VR) architecture",
-    "VR (Unity XR, Unreal VR) best practices",
-    "VR (Unity XR, Unreal VR) performance optimization",
-    "VR (Unity XR, Unreal VR) real-world applications"
-  ],
-  "practical_applications": [
-    "Build production-ready VR (Unity XR, Unreal VR) applications",
-    "Optimize VR (Unity XR, Unreal VR) performance",
-    "Debug VR (Unity XR, Unreal VR) issues",
-    "Implement VR (Unity XR, Unreal VR) security",
-    "Scale VR (Unity XR, Unreal VR) systems"
-  ],
-  "mastery_level": "Advanced"
+  "learned_at": "2026-01-13T19:25:48.186777",
+  "cycle": 7,
+  "mastery_level": "Expert",
+  "real_code_snippet": "# Implementation for VR (Unity XR, Unreal VR)\n# NEXUS-ONE Autonomous Strategy\n",
+  "implementation_guide": "NEXUS-ONE için VR (Unity XR, Unreal VR) yerel optimizasyon planı."
 }

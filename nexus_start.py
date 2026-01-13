@@ -1,49 +1,49 @@
-ï»¿# nexus_start.py - FAST START
+# nexus_start.py - FAST START
 import os
 import time
 from datetime import datetime
 
-print("ğŸš€ NEXUS SÄ°STEM BAÅLATILIYOR...")
+print("?? NEXUS SİSTEM BAŞLATILIYOR...")
 print(f"Tarih: {datetime.now()}")
 
-# KlasÃ¶rleri oluÅŸtur
+# Klasörleri oluştur
 for klasor in ["modules", "logs", "data", "generated", "backups"]:
     os.makedirs(klasor, exist_ok=True)
-    print(f"âœ… {klasor} klasÃ¶rÃ¼ hazÄ±r")
+    print(f"? {klasor} klasörü hazır")
 
-# ModÃ¼lleri yÃ¼kle
-print("\nğŸ“¦ MODÃœLLER YÃœKLENÄ°YOR...")
+# Modülleri yükle
+print("\n?? MODÜLLER YÜKLENİYOR...")
 beyin = None
 try:
     if os.path.exists("modules"):
         from modules.beyin import Beyin
 
         beyin = Beyin()
-        print("âœ… Beyin modÃ¼lÃ¼ yÃ¼klendi")
+        print("? Beyin modülü yüklendi")
     else:
-        print("âš ï¸  Beyin modÃ¼lÃ¼ bulunamadÄ± - devam ediliyor")
+        print("??  Beyin modülü bulunamadı - devam ediliyor")
 except Exception as e:
-    print(f"âš ï¸  ModÃ¼l yÃ¼kleme hatasÄ±: {e} - devam ediliyor")
+    print(f"??  Modül yükleme hatası: {e} - devam ediliyor")
 
-# Test gÃ¶revi
-print("\nğŸ§ª TEST GÃ–REVÄ°...")
+# Test görevi
+print("\n?? TEST GÖREVİ...")
 if beyin:
-    karar = beyin.karar_ver("Sistem baÅŸlat")
+    karar = beyin.karar_ver("Sistem başlat")
     print(f"Karar: {karar}")
     sonuc = beyin.calistir(karar)
-    print(f"SonuÃ§: {sonuc}")
+    print(f"Sonuç: {sonuc}")
 else:
-    print("âš ï¸  Beyin modÃ¼lÃ¼ yok - test atlanÄ±yor")
+    print("??  Beyin modülü yok - test atlanıyor")
 
-# SÃ¼rekli Ã§alÄ±ÅŸma dÃ¶ngÃ¼sÃ¼
-print("\nğŸ‘ï¸  SÄ°STEM Ã‡ALIÅIYOR... (Ctrl+C ile durdur)")
+# Sürekli çalışma döngüsü
+print("\n???  SİSTEM ÇALIŞIYOR... (Ctrl+C ile durdur)")
 sayac = 0
 try:
     while True:
         sayac += 1
-        print(f"\nğŸ”„ Tur {sayac} - {datetime.now().strftime('%H:%M:%S')}")
+        print(f"\n?? Tur {sayac} - {datetime.now().strftime('%H:%M:%S')}")
         time.sleep(5)  # 5 saniye bekle
 except KeyboardInterrupt:
-    print("\nğŸ›‘ Sistem durduruluyor...")
+    print("\n?? Sistem durduruluyor...")
 
-print("\nâœ… NEXUS kapatÄ±ldÄ±")
+print("\n? NEXUS kapatıldı")

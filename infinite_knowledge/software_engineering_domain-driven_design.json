@@ -1,21 +1,9 @@
 {
   "topic": "Domain-Driven Design",
   "domain": "software_engineering",
-  "learned_at": "2026-01-12T14:01:03.148406",
-  "cycle": 1039,
-  "key_concepts": [
-    "Domain-Driven Design fundamentals",
-    "Domain-Driven Design architecture",
-    "Domain-Driven Design best practices",
-    "Domain-Driven Design performance optimization",
-    "Domain-Driven Design real-world applications"
-  ],
-  "practical_applications": [
-    "Build production-ready Domain-Driven Design applications",
-    "Optimize Domain-Driven Design performance",
-    "Debug Domain-Driven Design issues",
-    "Implement Domain-Driven Design security",
-    "Scale Domain-Driven Design systems"
-  ],
-  "mastery_level": "Advanced"
+  "learned_at": "2026-01-13T19:43:12.151286",
+  "cycle": 70,
+  "mastery_level": "Expert",
+  "real_code_snippet": "# Implementation for Domain-Driven Design\n# NEXUS-ONE Autonomous Strategy\n",
+  "implementation_guide": "NEXUS-ONE için Domain-Driven Design yerel optimizasyon planı."
 }

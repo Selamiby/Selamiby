@@ -1,3 +1,4 @@
+import logging
 #!/usr/bin/env python3
 """
 NEXUS-ONE Advanced Features:
@@ -125,7 +126,7 @@ def feature_3_code_formatter():
                         f.write(fixed)
                     total_fixed += 1
                     print(f"[OK] {py_file.name}: Auto-fixed formatting")
-            except:
+            except Exception as e:
                 pass
 
         print(f"[Result] Fixed formatting in {total_fixed} files")
@@ -168,7 +169,7 @@ def feature_4_error_prediction():
                             issues_found += 1
                             if issues_found <= 5:
                                 print(f"  {py_file.name}:{line_num} - {issue_type}")
-            except:
+            except Exception as e:
                 pass
 
         print(f"[Result] Found {issues_found} potential issues")
@@ -199,7 +200,7 @@ def feature_5_deployment_readiness():
             print(f"  {status} {check_name}")
             if result:
                 passed += 1
-        except:
+        except Exception as e:
             print(f"  [ERROR] {check_name}")
 
     print(f"\n[Result] {passed}/{len(checks)} deployment requirements met")

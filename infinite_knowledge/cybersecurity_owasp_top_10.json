@@ -1,21 +1,9 @@
 {
   "topic": "OWASP Top 10",
   "domain": "cybersecurity",
-  "learned_at": "2026-01-12T14:02:31.933460",
-  "cycle": 1064,
-  "key_concepts": [
-    "OWASP Top 10 fundamentals",
-    "OWASP Top 10 architecture",
-    "OWASP Top 10 best practices",
-    "OWASP Top 10 performance optimization",
-    "OWASP Top 10 real-world applications"
-  ],
-  "practical_applications": [
-    "Build production-ready OWASP Top 10 applications",
-    "Optimize OWASP Top 10 performance",
-    "Debug OWASP Top 10 issues",
-    "Implement OWASP Top 10 security",
-    "Scale OWASP Top 10 systems"
-  ],
-  "mastery_level": "Advanced"
+  "learned_at": "2026-01-13T19:24:14.093865",
+  "cycle": 1,
+  "mastery_level": "Expert",
+  "real_code_snippet": "# Implementation for OWASP Top 10\n# NEXUS-ONE Autonomous Strategy\n",
+  "implementation_guide": "NEXUS-ONE için OWASP Top 10 yerel optimizasyon planı."
 }

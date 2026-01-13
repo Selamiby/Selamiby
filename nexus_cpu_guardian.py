@@ -33,7 +33,7 @@ logger = logging.getLogger("CPUGuardian")
 class CPUGuardian:
     """Protects system from CPU/RAM overload"""
 
-    def __init__(self, cpu_threshold=70, ram_threshold=80):
+    def __init__(self, cpu_threshold=95, ram_threshold=90):
         self.cpu_threshold = cpu_threshold
         self.ram_threshold = ram_threshold
         self.running = True
@@ -110,7 +110,7 @@ class CPUGuardian:
         except Exception as e:
             logger.error(f"Throttling sırasında hata: {e}")
 
-        time.sleep(10)  # Pause for 10 seconds to let system recover
+        time.sleep(20)  # Pause for 20 seconds to let system recover
         self.throttled = False
         logger.info("🔼 CPU Guardian: İşlemlere devam")
 
@@ -179,7 +179,7 @@ class CPUGuardian:
 
 
 # Global CPU Guardian instance
-_guardian = CPUGuardian(cpu_threshold=65, ram_threshold=75)
+_guardian = CPUGuardian(cpu_threshold=50, ram_threshold=70)
 
 
 def get_guardian() -> CPUGuardian:
@@ -193,7 +193,7 @@ def start_guardian():
 
 
 if __name__ == "__main__":
-    guardian = CPUGuardian(cpu_threshold=65, ram_threshold=75)
+    guardian = CPUGuardian(cpu_threshold=50, ram_threshold=70)
     monitor_thread = guardian.start()
 
     try:

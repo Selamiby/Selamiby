@@ -43,8 +43,6 @@ logging.basicConfig(
 logger = logging.getLogger("Copilot-NEXUS")
 
 
-
-
 class CollaborationEngine:
     """Manages collaboration between GitHub Copilot and NEXUS-ONE"""
 
@@ -208,7 +206,7 @@ class CollaborationEngine:
                     kg = json.load(f)
                 patterns = kg.get("code_patterns", {})
                 return [{"id": k, **v} for k, v in list(patterns.items())[-5:]]
-        except:
+        except Exception as e:
             pass
         return []
 
@@ -223,7 +221,7 @@ class CollaborationEngine:
                     for action in session.get("copilot_actions", []):
                         if not action.get("details", {}).get("success", True):
                             issues.append(action["type"])
-        except:
+        except Exception as e:
             pass
         return list(set(issues))[-10:]  # Last 10 unique issues
 
@@ -309,8 +307,6 @@ class CollaborationEngine:
         }
 
         return stats
-
-
 
 
 def main():

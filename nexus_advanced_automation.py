@@ -1,3 +1,4 @@
+import logging
 #!/usr/bin/env python3
 """
 NEXUS-ONE 5 İleri Otomasyon Özellikleri
@@ -40,7 +41,7 @@ def analyze_performance():
             )
             if max_nesting > 20:
                 high_complexity += 1
-        except:
+        except Exception as e:
             pass
 
     print(f"[OK] High Complexity Files: {high_complexity}")
@@ -50,7 +51,7 @@ def analyze_performance():
             ["git", "rev-list", "--all", "--count"], capture_output=True, text=True
         ).stdout.strip()
         print(f"[OK] Git Commits: {commits}")
-    except:
+    except Exception as e:
         pass
 
 
@@ -83,7 +84,7 @@ def format_code():
                 print(
                     f"[OK] {py_file.name}: Found unused vars - {', '.join(unused[:3])}"
                 )
-        except:
+        except Exception as e:
             pass
 
 
@@ -111,7 +112,7 @@ def generate_tests():
                 f"[OK] {py_file.name}: {len(classes)} classes, {len(functions)} functions"
             )
             print(f"  -> Ready to generate test_*.py file")
-        except:
+        except Exception as e:
             pass
 
 
@@ -142,7 +143,7 @@ def scan_security():
             for issue_type, pattern in patterns.items():
                 if re.search(pattern, content):
                     issues.append(f"{py_file.name}: {issue_type}")
-        except:
+        except Exception as e:
             pass
 
     print(f"[OK] Security Issues Found: {len(issues)}")
@@ -186,7 +187,7 @@ def generate_docs():
                     docs += f"**Classes**: {', '.join(classes[:5])}\n"
                 if functions:
                     docs += f"**Functions**: {', '.join(functions[:5])}\n"
-        except:
+        except Exception as e:
             pass
 
     doc_path = Path.cwd() / "data" / "API_DOCUMENTATION.md"

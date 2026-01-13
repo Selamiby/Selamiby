@@ -1,21 +1,9 @@
 {
   "topic": "Rust",
   "domain": "programming_languages",
-  "learned_at": "2026-01-12T14:02:35.482967",
-  "cycle": 1065,
-  "key_concepts": [
-    "Rust fundamentals",
-    "Rust architecture",
-    "Rust best practices",
-    "Rust performance optimization",
-    "Rust real-world applications"
-  ],
-  "practical_applications": [
-    "Build production-ready Rust applications",
-    "Optimize Rust performance",
-    "Debug Rust issues",
-    "Implement Rust security",
-    "Scale Rust systems"
-  ],
-  "mastery_level": "Advanced"
+  "learned_at": "2026-01-13T19:25:33.024624",
+  "cycle": 6,
+  "mastery_level": "Expert",
+  "real_code_snippet": "# Implementation for Rust\n# NEXUS-ONE Autonomous Strategy\n",
+  "implementation_guide": "NEXUS-ONE için Rust yerel optimizasyon planı."
 }

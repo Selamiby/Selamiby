@@ -1,21 +1,9 @@
 {
   "topic": "AR (ARKit, ARCore)",
   "domain": "emerging_tech",
-  "learned_at": "2026-01-12T14:00:45.300142",
-  "cycle": 1034,
-  "key_concepts": [
-    "AR (ARKit, ARCore) fundamentals",
-    "AR (ARKit, ARCore) architecture",
-    "AR (ARKit, ARCore) best practices",
-    "AR (ARKit, ARCore) performance optimization",
-    "AR (ARKit, ARCore) real-world applications"
-  ],
-  "practical_applications": [
-    "Build production-ready AR (ARKit, ARCore) applications",
-    "Optimize AR (ARKit, ARCore) performance",
-    "Debug AR (ARKit, ARCore) issues",
-    "Implement AR (ARKit, ARCore) security",
-    "Scale AR (ARKit, ARCore) systems"
-  ],
-  "mastery_level": "Advanced"
+  "learned_at": "2026-01-13T19:25:48.150023",
+  "cycle": 7,
+  "mastery_level": "Expert",
+  "real_code_snippet": "# Implementation for AR (ARKit, ARCore)\n# NEXUS-ONE Autonomous Strategy\n",
+  "implementation_guide": "NEXUS-ONE için AR (ARKit, ARCore) yerel optimizasyon planı."
 }

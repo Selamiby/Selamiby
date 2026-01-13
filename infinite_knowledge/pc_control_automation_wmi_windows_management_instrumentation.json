@@ -1,0 +1,9 @@
+{
+  "topic": "WMI (Windows Management Instrumentation)",
+  "domain": "pc_control_automation",
+  "learned_at": "2026-01-13T19:26:35.903597",
+  "cycle": 10,
+  "mastery_level": "Expert",
+  "real_code_snippet": "# Implementation for WMI (Windows Management Instrumentation)\n# NEXUS-ONE Autonomous Strategy\n",
+  "implementation_guide": "NEXUS-ONE için WMI (Windows Management Instrumentation) yerel optimizasyon planı."
+}

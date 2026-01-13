@@ -1,3 +1,4 @@
+import logging
 #!/usr/bin/env python3
 """
 NEXUS + COPILOT REAL-TIME COLLABORATION DASHBOARD
