@@ -37403,3 +37403,28 @@ POWERSHELL Hatalarý:
 [2026-01-14 02:23:41] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-14 02:23:41] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$IntervalSeconds' assigned but never used
 [2026-01-14 02:23:41] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-14 02:23:44] [INFO] Toplam hata: 22
+[2026-01-14 02:23:44] [INFO] 
+POWERSHELL Hatalarý:
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: Variable '$elapsedMs' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1: Variable '$pushJob' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1: Variable '$LogLevel' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1: Variable '$cycleElapsed' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$MaxRetries' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$OutputEncoding' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$syncResult' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$EnableParallelOps' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$ErrorLogPath' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_production.ps1: Variable '$EnableSmartCommit' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\autonomous_sync_v2.ps1: Variable '$IntervalSeconds' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\persistent_learner.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\report_learned_languages.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1: Variable '$Mode' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\run_human_agent.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1: Variable '$authStatus' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\create_desktop_shortcut.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\run_control_panel.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$IntervalSeconds' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$ErrorActionPreference' assigned but never used
+[2026-01-14 02:23:44] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
