@@ -68909,12 +68909,17 @@
     },
     {
       "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_advanced.ps1",
-      "variable": "elapsedMs",
+      "variable": "pushJob",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
       "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_advanced.ps1",
-      "variable": "pushJob",
+      "variable": "elapsedMs",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_learner.ps1",
+      "variable": "ErrorActionPreference",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
@@ -68928,18 +68933,8 @@
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
-      "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_learner.ps1",
-      "variable": "ErrorActionPreference",
-      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
-    },
-    {
       "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
-      "variable": "MaxRetries",
-      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
-    },
-    {
-      "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
-      "variable": "OutputEncoding",
+      "variable": "ErrorLogPath",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
@@ -68949,17 +68944,22 @@
     },
     {
       "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
+      "variable": "MaxRetries",
+      "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
+    },
+    {
+      "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
       "variable": "EnableParallelOps",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
       "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
-      "variable": "ErrorLogPath",
+      "variable": "EnableSmartCommit",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
       "file": "c:\\Users\\selam\\NEXUS-ONE\\autonomous_production.ps1",
-      "variable": "EnableSmartCommit",
+      "variable": "OutputEncoding",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
@@ -68999,12 +68999,12 @@
     },
     {
       "file": "c:\\Users\\selam\\NEXUS-ONE\\scripts\\run_security.ps1",
-      "variable": "IntervalSeconds",
+      "variable": "ErrorActionPreference",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
       "file": "c:\\Users\\selam\\NEXUS-ONE\\scripts\\run_security.ps1",
-      "variable": "ErrorActionPreference",
+      "variable": "IntervalSeconds",
       "fix": "Remove or use [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute]"
     },
     {
