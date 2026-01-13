@@ -1,6 +1,9 @@
 import os
+
 from dotenv import load_dotenv
+
 from nexus_brain import NexusBrain
+
 
 def test_api_keys():
     load_dotenv()
