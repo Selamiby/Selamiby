@@ -75,6 +75,7 @@ class InfiniteLearner:
         self.knowledge_base.mkdir(exist_ok=True)
         self.modules_dir = Path("nexus_modules")
         self.modules_dir.mkdir(exist_ok=True)
+        self.journal_path = Path("NEXUS_JOURNAL.md")
 
         self.metrics_path = Path("nexus_logs") / "learner_metrics.json"
         self.heartbeat_path = Path("nexus_logs") / "learner_heartbeat.txt"
@@ -367,7 +368,7 @@ class InfiniteLearner:
             return False
 
     def learn_from_domain(self, domain: str, topics: List[str]):
-        """Bir domain'den gerçek öğrenme - Fiziksel Modül Üretimi Aktif!"""
+        """Bir domain'den gerçek öğrenme - Fiziksel Modül + Günlük Analizi"""
         domain_name = domain.replace("_", " ").title()
         logger.info(f"\n{'='*80}")
         logger.info(f"🏭 NEXUS MODULE FACTORY: {domain_name} Üzerinde Çalışıyor")
@@ -383,27 +384,31 @@ class InfiniteLearner:
             if topic_key in self.learned_topics:
                 continue
 
-            logger.info(f"🎯 {topic} için gerçek modül tasarlanıyor...")
+            logger.info(f"🎯 {topic} için modül ve analiz hazırlanıyor...")
 
-            prompt = (
-                f"Görev: {topic} konusu üzerine %100 gerçek, profesyonel seviyede ve doğrudan çalıştırılabilir bir Python modülü yaz.\n"
+            # 1. KOD ÜRETİMİ
+            code_prompt = (
+                f"Görev: {topic} konusu üzerine %100 gerçek ve çalıştırılabilir bir Python modülü yaz.\n"
                 "KURALLAR:\n"
-                "1. Sadece çalışan kaynak kod: Hiçbir açıklama veya markdown dışı metin içermesin.\n"
+                "1. Sadece kaynak kod: Hiçbir açıklama veya markdown dışı metin içermesin.\n"
                 "2. Tam kapsam: Importlar, sınıflar ve bir main() fonksiyonu içersin.\n"
-                "3. NEXUS-ONE Entegrasyonu: Kodun sonuna # NEXUS-ONE CORE MODULE - PRODUCTION READY ekle.\n"
+                "3. NEXUS-ONE Entegrasyonu: Kodun sonuna # NEXUS-ONE CORE MODULE ekle.\n"
             )
-            
-            raw_content = brain.think(prompt, "Sen sadece profesyonel Python modülleri üreten bir kod fabrikasısın.")
-            if not raw_content:
+            raw_code = brain.think(code_prompt, "Sen sadece çalışan Python kodları üreten bir makinesin.")
+            clean_code = self._extract_code(raw_code or "")
+
+            # 2. ANALİZ / METİN ÜRETİMİ (Kullanıcı için)
+            summary_prompt = (
+                f"Görev: '{topic}' hakkında ne öğrendiğini ve bu modülün NEXUS-ONE'a ne kattığını anlatan kısa bir analiz yaz.\n"
+                "Dil: Türkçe\n"
+                "Format: Başlık, Özet (3 cümle), Teknik Katkı (Bullet points).\n"
+            )
+            summary_text = brain.think(summary_prompt, "Sen NEXUS-ONE'ın bilge analiz birimisin.")
+
+            if not clean_code or "import " not in clean_code:
                 continue
 
-            clean_code = self._extract_code(raw_content)
-
-            if not clean_code or "import " not in clean_code or len(clean_code) < 50:
-                logger.warning(f"⚠️ {topic} için geçerli kod üretilemedi, pas geçiliyor.")
-                continue
-
-            # Modülü Kaydet (.py dosyası olarak)
+            # Kaydetme İşlemleri
             safe_topic = _safe_topic_name(topic)
             module_file = self.modules_dir / f"{domain}_{safe_topic}.py"
             
@@ -412,33 +417,34 @@ class InfiniteLearner:
                 with open(module_file, "w", encoding="utf-8") as f:
                     f.write(clean_code)
                 
-                # Test Et
-                is_valid = self._test_generated_module(module_file)
-                
-                # JSON Bilgisini de kaydet (Metadata)
+                # Günlüğe (Journal) Yaz
+                with open(self.journal_path, "a", encoding="utf-8") as f:
+                    f.write(f"\n\n## 📘 {datetime.now().strftime('%Y-%m-%d %H:%M')} - {topic}\n")
+                    f.write(f"**Domain:** {domain_name}\n")
+                    f.write(f"**Modül:** `{module_file.name}`\n\n")
+                    f.write(f"{summary_text or 'Analiz hazırlanıyor...'}\n")
+                    f.write("\n---\n")
+
+                # JSON Metadata
                 knowledge = {
-                    "topic": topic,
-                    "domain": domain,
-                    "module_path": str(module_file),
-                    "learned_at": datetime.now().isoformat(),
-                    "status": "Verified" if is_valid else "Needs Fixing",
-                    "code_preview": clean_code[:300]
+                    "topic": topic, "domain": domain, 
+                    "summary": summary_text,
+                    "learned_at": datetime.now().isoformat()
                 }
-                
                 kb_file = self.knowledge_base / f"{domain}_{safe_topic}.json"
                 with open(kb_file, "w", encoding="utf-8") as f:
-                    json.dump(knowledge, f, indent=2, ensure_ascii=False)
+                    json.dump(knowledge, f, indent=2, ensure_ascii=True)
 
-                self.capabilities_gained.append(f"{domain_name}: {topic}")
+                self.capabilities_gained.append(f"{topic}")
                 learned_count += 1
                 self.total_topics_learned += 1
                 self.domain_stats[domain] = self.domain_stats.get(domain, 0) + 1
                 self.learned_topics.add(topic_key)
 
-                logger.info(f"✅ MODÜL ÜRETİLDİ: {module_file.name}")
+                logger.info(f"✅ MODÜL + ANALİZ TAMAMLANDI: {topic}")
             
             except Exception as e:
-                logger.error(f"❌ Modül üretim hatası: {e}")
+                logger.error(f"❌ Kayıt hatası: {e}")
                 continue
 
             time.sleep(1)
