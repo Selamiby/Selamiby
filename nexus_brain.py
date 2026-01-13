@@ -109,7 +109,8 @@ class NexusBrain:
 
     def _call_gemini(self, prompt, system_prompt):
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key={self.gemini_key}"
+            # v1beta yerine v1 kullanarak ve model ismini düzelterek tekrar deniyoruz
+            url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={self.gemini_key}"
             headers = {"Content-Type": "application/json"}
             data = {
                 "contents": [{
@@ -117,7 +118,19 @@ class NexusBrain:
                 }]
             }
             response = requests.post(url, headers=headers, json=data)
-            return response.json()['candidates'][0]['content']['parts'][0]['text']
+            json_res = response.json()
+            if 'candidates' in json_res:
+                return json_res['candidates'][0]['content']['parts'][0]['text']
+            
+            # Eğer hata verirse v1beta ile gemini-1.5-flash-latest dene
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={self.gemini_key}"
+            response = requests.post(url, headers=headers, json=data)
+            json_res = response.json()
+            if 'candidates' in json_res:
+                return json_res['candidates'][0]['content']['parts'][0]['text']
+
+            logger.error(f"Gemini API Response Error: {json_res}")
+            return None
         except Exception as e:
             logger.error(f"Gemini API Error: {e}")
             return None
