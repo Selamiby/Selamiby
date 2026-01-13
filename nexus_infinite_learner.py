@@ -92,7 +92,20 @@ class InfiniteLearner:
                 "Agentic Workflows",
                 "Self-Correction Loops",
                 "Memory Management (RAG)",
-                "Task Decomposition Strategies"
+                "Task Decomposition Strategies",
+                "Autonomous Planning & Reasoning",
+                "Multi-Agent Orchestration",
+                "Agent-Based Software Engineering"
+            ],
+            "autonomous_coding_systems": [
+                "Aider Coding Patterns",
+                "OpenDevin Architecture",
+                "Self-Healing Code Logic",
+                "Automated PR Generation",
+                "Autonomous Bug Discovery",
+                "Dynamic Code Evolution",
+                "GPT-Engineer Core Flow",
+                "Plandex Specialized Workflows"
             ],
             "advanced_reasoning_models": [
                 "Chain of Thought Prompting",
@@ -100,23 +113,25 @@ class InfiniteLearner:
                 "ReAct Framework",
                 "RLHF (Reinforcement Learning from Human Feedback)",
                 "Quantization (GGUF, AWQ)",
-                "LoRA Fine-tuning"
+                "LoRA Fine-tuning",
+                "Reward Modeling",
+                "Constitutional AI",
+                "In-Context Learning Optimization"
             ],
             "programming_languages": [
-                "C# (.NET)",
-                "C++",
-                "Rust",
-                "Go",
-                "Kotlin",
-                "Swift",
-                "TypeScript",
-                "Julia",
-                "Mojo (Modular AI Infrastructure)",
-                "CUDA (C++)",
-                "R",
-                "Scala",
-                "Assembly",
-                "WebAssembly"
+                "Python (Advanced Metaprogramming)",
+                "Rust (Memory Safety & Zero-cost Abstractions)",
+                "Go (Concurrent Systems)",
+                "C# (.NET 8+ Deep Dive)",
+                "C++ (Modern C++20/23)",
+                "TypeScript (Advanced Type Systems)",
+                "Kotlin (Multiplatform)",
+                "Swift (Server-side & UI)",
+                "Julia (High Performance)",
+                "Mojo (AI Native Language)",
+                "Zig (Modern C Alternative)",
+                "Assembly (architecture specific optimization)",
+                "WebAssembly (Edge performance)"
             ],
             "pc_control_automation": [
                 "Windows API (Win32/User32)",
@@ -328,13 +343,16 @@ class InfiniteLearner:
             # AI Brain ile %100 GERÇEK, ÇALIŞAN, PRODUCTION-READY kod al
             # Örnek (Example) veya placeholder asla kabul edilmiyor.
             prompt = (
-                f"{topic} konusu için %100 gerçek, profesyonel seviyede ve doğrudan çalıştırılabilir ham kod bloğu yaz. "
-                "Kod sadece bir 'snippet' olmasın, tüm importları ve ana fonksiyonları içeren tam bir modül olsun. "
-                "İçerisinde asla 'your_api_key', 'example_data' gibi placeholderlar olmasın. "
-                "Kodun sonunda 'Bu kod NEXUS-ONE için özel olarak üretilmiştir' ibaresi yorum satırı olarak yer alsın."
+                f"Soru: {topic} konusu için %100 gerçek, profesyonel seviyede ve doğrudan çalıştırılabilir tam bir kod modülü yaz.\n"
+                "KURALLAR:\n"
+                "1. Sadece 'snippet' değil, tüm importları içeren eksiksiz bir kaynak kod dosyası olsun.\n"
+                "2. Asla 'example', 'test_data', 'your_key' gibi yer tutucu kullanma. Gerçekten çalışan mantık yaz.\n"
+                "3. YORUM SATIRI YOK: Kodun ne yaptığını anlatan metinler kodun içine gömülü olsun, dışarıda açıklama yapma.\n"
+                "4. SADECE KOD: Yanıtında tek bir kelime bile açıklama olmasın, sadece ``` diliyle sarılmış kod bloğu gönder.\n"
+                "5. Kodun sonuna şu yorumu ekle: # NEXUS-ONE PERSISTENT CORE CODE - VERIFIED FOR PRODUCTION"
             )
             
-            knowledge_content = brain.think(prompt, "Sen dünyanın en iyi yazılım mühendisisin ve sadece gerçek profesyonel kod yazarsın.")
+            knowledge_content = brain.think(prompt, "Sen dünyanın en iyi yazılım mühendisisin. Sadece ve sadece çalışan kaynak kod üretirsin.")
 
             if not knowledge_content or len(knowledge_content) < 50:
                 logger.warning(f"⚠️ {topic} için yeterli kod üretilemedi, pas geçiliyor.")
