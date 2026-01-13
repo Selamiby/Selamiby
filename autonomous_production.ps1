@@ -34,12 +34,12 @@ function Write-AdvLog {
     $logMsg = "[$time] [$Level] [$Module] $Message"
     
     switch ($Level) {
-        "INFO"    { Write-Host $logMsg -ForegroundColor Cyan }
+        "INFO" { Write-Host $logMsg -ForegroundColor Cyan }
         "SUCCESS" { Write-Host $logMsg -ForegroundColor Green }
         "WARNING" { Write-Host $logMsg -ForegroundColor Yellow }
-        "ERROR"   { Write-Host $logMsg -ForegroundColor Red }
-        "DEBUG"   { if ($env:NEXUS_DEBUG -eq "true") { Write-Host $logMsg -ForegroundColor DarkGray } }
-        default   { Write-Host $logMsg -ForegroundColor White }
+        "ERROR" { Write-Host $logMsg -ForegroundColor Red }
+        "DEBUG" { if ($env:NEXUS_DEBUG -eq "true") { Write-Host $logMsg -ForegroundColor DarkGray } }
+        default { Write-Host $logMsg -ForegroundColor White }
     }
     Add-Content -Path $LogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
 }
@@ -52,7 +52,8 @@ function Test-SystemHealth {
         if ($driveInfo) { $healthStatus.Disk = [math]::Round($driveInfo.Free / 1GB, 2) }
         $cpuInfo = Get-CimInstance Win32_Processor -ErrorAction SilentlyContinue
         if ($cpuInfo) { $healthStatus.CPU = [math]::Round(($cpuInfo | Measure-Object -Property LoadPercentage -Average).Average, 2) }
-    } catch { }
+    }
+    catch { }
     return $healthStatus
 }
 
@@ -106,7 +107,8 @@ try {
                 
                 Write-AdvLog "Çok fazla hata! Bekleme süresi artırıldı: $wait sn" "WARNING" "CYCLE"
                 Start-Sleep -Seconds $wait
-            } else {
+            }
+            else {
                 Start-Sleep -Seconds $IntervalSeconds
             }
         }
