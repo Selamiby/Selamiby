@@ -26,11 +26,18 @@ class NexusBrain:
         self.gemini_key = os.getenv("GOOGLE_AI_STUDIO_KEY")
         self.openai_key = os.getenv("OPENAI_API_KEY")
         self.anthropic_key = os.getenv("ANTHROPIC_API_KEY")
+        self.deepseek_key = os.getenv("DEEPSEEK_API_KEY")
 
     def think(self, prompt: str, system_prompt: str = "You are NEXUS-ONE, an advanced autonomous AI."):
         """Decides which model to use based on availability and task."""
 
-        # 1. Try Anthropic (Claude) - Highest Priority if available
+        # 1. Try DeepSeek (Best for Coding if key exists)
+        if "code" in prompt.lower() or "python" in prompt.lower():
+            if self.deepseek_key and self.deepseek_key != "...":
+                result = self._call_deepseek(prompt, system_prompt)
+                if result: return result
+
+        # 2. Try Anthropic (Claude)
         if self.anthropic_key and self.anthropic_key != "..." and anthropic:
             result = self._call_anthropic(prompt, system_prompt)
             if result: return result
@@ -49,6 +56,26 @@ class NexusBrain:
             return self._call_openai(prompt, system_prompt)
 
         return "Internal Logic: Deep Intelligence APIs not configured. Running on base autonomous patterns."
+
+    def _call_deepseek(self, prompt, system_prompt):
+        try:
+            url = "https://api.deepseek.com/v1/chat/completions"
+            headers = {"Authorization": f"Bearer {self.deepseek_key}", "Content-Type": "application/json"}
+            data = {
+                "model": "deepseek-coder",
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt}
+                ]
+            }
+            response = requests.post(url, headers=headers, json=data)
+            res_json = response.json()
+            if 'choices' in res_json:
+                return res_json['choices'][0]['message']['content']
+            return None
+        except Exception as e:
+            logger.error(f"DeepSeek Call Error: {e}")
+            return None
 
     def _call_groq(self, prompt, system_prompt):
         try:
