@@ -383,6 +383,18 @@ class InfiniteLearner:
             file_name = f"{domain}_{_safe_topic_name(topic)}.json"
             file_path = self.knowledge_base / file_name
             try:
+                # EĞER KONU YOUTUBE İLE İLGİLİYSE GERÇEK VERİ TRANSFERİ YAP
+                if "youtube" in topic.lower() or domain == "media_social_automation":
+                    logger.info(f"📹 YouTube API Etkileşimi Başlatılıyor: {topic}")
+                    yt_key = os.getenv("YOUTUBE_API_KEY")
+                    if yt_key and yt_key != "...":
+                        # Gerçek API çağrısı simülasyonu değil, AI'ya bu anahtarla ne yapabileceğini sorup koda işletiyoruz
+                        real_action = brain.think(
+                            f"YouTube API anahtarım ({yt_key}) var. {topic} için bu anahtarla yapılabilecek en gelişmiş gerçek dünya işlemini yap ve kodunu ver.",
+                            "Sen otonom bir sistem mühendisisin."
+                        )
+                        knowledge["real_world_execution_plan"] = real_action
+
                 file_path.parent.mkdir(parents=True, exist_ok=True)
                 with open(file_path, "w", encoding="utf-8") as f:
                     json.dump(knowledge, f, indent=2, ensure_ascii=False)
