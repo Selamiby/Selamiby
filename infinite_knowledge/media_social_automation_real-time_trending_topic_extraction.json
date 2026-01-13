@@ -1,0 +1,8 @@
+{
+  "topic": "Real-time Trending Topic Extraction",
+  "domain": "media_social_automation",
+  "module_path": "nexus_modules\\media_social_automation_real-time_trending_topic_extraction.py",
+  "learned_at": "2026-01-14T00:42:05.460284",
+  "status": "Verified",
+  "code_preview": "import tweepy\nfrom textblob import TextBlob\nfrom collections import defaultdict\nimport nltk\nfrom nltk.corpus import stopwords\nfrom nltk.tokenize import word_tokenize, sent_tokenize\nimport heapq\nfrom datetime import datetime, timedelta\n\nclass Tweety:\n    def __init__(self, consumer_key, consumer_secr"
+}

@@ -1,0 +1,8 @@
+{
+  "topic": "YouTube Data API v3 Advanced Integration",
+  "domain": "media_social_automation",
+  "module_path": "nexus_modules\\media_social_automation_youtube_data_api_v3_advanced_integration.py",
+  "learned_at": "2026-01-14T00:41:57.777382",
+  "status": "Verified",
+  "code_preview": "import os\nimport json\nfrom googleapiclient.discovery import build\n\nclass YouTubeDataAPI:\n    def __init__(self, api_key):\n        self.api_key = api_key\n        self.youtube = build('youtube', 'v3', developerKey=self.api_key)\n\n    def get_channel_info(self, channel_id):\n        request = self.youtub"
+}
