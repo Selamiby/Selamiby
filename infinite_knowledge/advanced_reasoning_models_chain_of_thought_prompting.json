@@ -1,10 +1,6 @@
 {
   "topic": "Chain of Thought Prompting",
   "domain": "advanced_reasoning_models",
-  "learned_at": "2026-01-14T00:24:18.249003",
-  "cycle": 6,
-  "mastery_level": "Production-Ready-Code",
-  "real_code_content": null,
-  "verification_status": "Verified by NEXUS-BRAIN",
-  "implementation_guide": "Bu dosya doğrudan 'exec()' veya import ile NEXUS-ONE'a entegre edilebilir."
+  "summary": "**Chain of Thought Prompting Analizi**\n\n\u00d6zet: \nChain of Thought Prompting, NEXUS-ONE'\u0131n dil anlama ve \u00fcretme yeteneklerini \u00f6nemli \u00f6l\u00e7\u00fcde geli\u015ftiren bir \u00f6zelliktir. Bu mod\u00fcl, daha do\u011fru ve tutarl\u0131 cevaplar \u00fcretmek i\u00e7in d\u00fc\u015f\u00fcncelerin zincirleme olarak birle\u015ftirilmesine \ud5c8zem eder. Bu sayede, NEXUS-ONEComplex ve multiple-ad\u0131m gerektiren problemleri daha etkin bir \u015fekilde \u00e7\u00f6zebilir.\n\nTeknik Katk\u0131:\n* D\u00fc\u015f\u00fcnce zinciri olu\u015fturma: NEXUS-ONE, bir soruya veya problemi \u00e7\u00f6zmeye y\u00f6nelik olarak ad\u0131mlar\u0131 s\u0131ralayabilen bir d\u00fc\u015f\u00fcnce zinciri olu\u015fturur.\n* Ad\u0131m ad\u0131m \u00e7\u00f6z\u00fcmleme: Her bir ad\u0131m, \u00f6nceki ad\u0131mlar\u0131n sonu\u00e7lar\u0131ndan yararlanarak ilerler ve bu \u015fekilde tutarl\u0131 bir \u00e7\u00f6z\u00fcm s\u00fcreci olu\u015fur.\n* Yan\u0131t iyile\u015ftirme: D\u00fc\u015f\u00fcnce zinciri sayesinde, NEXUS-ONE'\u0131n verdi\u011fi yan\u0131tlar daha tutarl\u0131 ve do\u011fru olur, \u00e7\u00fcnk\u00fc t\u00fcm ad\u0131mlar d\u00fc\u015f\u00fcnce zinciri i\u00e7erisinde de\u011ferlendirilir.",
+  "learned_at": "2026-01-14T02:27:12.954217"
 }

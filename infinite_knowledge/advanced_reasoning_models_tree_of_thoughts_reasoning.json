@@ -1,10 +1,6 @@
 {
   "topic": "Tree of Thoughts Reasoning",
   "domain": "advanced_reasoning_models",
-  "learned_at": "2026-01-14T00:24:20.288205",
-  "cycle": 6,
-  "mastery_level": "Production-Ready-Code",
-  "real_code_content": null,
-  "verification_status": "Verified by NEXUS-BRAIN",
-  "implementation_guide": "Bu dosya doğrudan 'exec()' veya import ile NEXUS-ONE'a entegre edilebilir."
+  "summary": "**A\u011fa\u00e7s\u0131 D\u00fc\u015f\u00fcnme Mant\u0131\u011f\u0131: Tree of Thoughts Reasoning**\n\nTree of Thoughts Reasoning, NEXUS-ONE'\u0131n bilgi i\u015flem ve analiz yeteneklerini geni\u015fleten bir d\u00fc\u015f\u00fcnce s\u00fcreci modellemesidir. Bu mod\u00fcl, insan d\u00fc\u015f\u00fcnme s\u00fcre\u00e7lerini taklit ederek, karma\u015f\u0131k verileri a\u011fa\u00e7s\u0131 bir yap\u0131ya d\u00f6n\u00fc\u015ft\u00fcrerek daha etkili ve d\u00fczenli bir analiz sa\u011flar. Tree of Thoughts Reasoning, NEXUS-ONE'\u0131n karar alma ve problem \u00e7\u00f6zme kabiliyetlerini geli\u015ftirmek i\u00e7in tasarlanm\u0131\u015ft\u0131r.\n\n* **Veri Yap\u0131land\u0131rmas\u0131**: Tree of Thoughts Reasoning, verilerin hiyerar\u015fik bir yap\u0131ya d\u00f6n\u00fc\u015ft\u00fcr\u00fclmesini sa\u011flar, bu sayede daha etkili bir \u015fekilde analiz ve de\u011ferlendirme yap\u0131labilmesine olanak tan\u0131r.\n* **D\u00fc\u015f\u00fcnce S\u00fcre\u00e7leri**: Bu mod\u00fcl, insan d\u00fc\u015f\u00fcnce s\u00fcre\u00e7lerini sim\u00fcle etmeye yarar, b\u00f6ylece NEXUS-ONE'\u0131n daha insan benzeri bir \u015fekilde karar vermesine ve problem \u00e7\u00f6zmek i\u00e7in yarat\u0131c\u0131 \u00e7\u00f6z\u00fcmler \u00fcretmesine yard\u0131mc\u0131 olur.\n* **Karar Alma**: Tree of Thoughts Reasoning, NEXUS-ONE'\u0131n karar alma s\u00fcrecini optimize eder, b\u00f6ylece daha h\u0131zl\u0131 ve daha do\u011fru kararlar alabilmesini sa\u011flar.\n* **Problem \u00c7\u00f6zme**: Bu mod\u00fcl, karma\u015f\u0131k problemlerin \u00e7\u00f6z\u00fcm\u00fc i\u00e7in etkili bir y\u00f6ntem sunar, NEXUS-ONE'\u0131n \u043f\u0440\u043e\u0431\u043b\u0435\u043c \u00e7\u00f6zme kabiliyetlerini geni\u015fletir.",
+  "learned_at": "2026-01-14T02:27:18.346798"
 }
