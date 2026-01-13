@@ -55,10 +55,34 @@ class NexusBrain:
             return None
 
     def _call_gemini(self, prompt, system_prompt):
-        # Placeholder for Gemini API call
-        return "Gemini Analysis Active (Connection Ready)"
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key={self.gemini_key}"
+            headers = {"Content-Type": "application/json"}
+            data = {
+                "contents": [{
+                    "parts": [{"text": f"System: {system_prompt}\nUser: {prompt}"}]
+                }]
+            }
+            response = requests.post(url, headers=headers, json=data)
+            return response.json()['candidates'][0]['content']['parts'][0]['text']
+        except Exception as e:
+            logger.error(f"Gemini API Error: {e}")
+            return None
 
-    def _call_openai(self, prompt, system_prompt):
+    def search_internet(self, query: str):
+        """Uses Tavily AI Search to find real-time info."""
+        tavily_key = os.getenv("TAVILY_API_KEY")
+        if not tavily_key or tavily_key == "...":
+            return "Search unavailable: API Key missing."
+        
+        try:
+            url = "https://api.tavily.com/search"
+            data = {"api_key": tavily_key, "query": query, "search_depth": "advanced"}
+            response = requests.post(url, json=data)
+            return response.json().get("results", [])
+        except Exception as e:
+            logger.error(f"Tavily Search Error: {e}")
+            return []
         try:
             url = "https://api.openai.com/v1/chat/completions"
             headers = {"Authorization": f"Bearer {self.openai_key}", "Content-Type": "application/json"}
