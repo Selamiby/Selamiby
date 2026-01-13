@@ -604,9 +604,10 @@ class InfiniteLearner:
                 self._write_metrics()
                 self._touch_heartbeat()
                 self._save_learned_topics()
+                self._update_learned_languages_json(domain, topic)
 
                 # Pause to save CPU
-                time.sleep(20)
+                time.sleep(5)
 
             except Exception as e:
                 logger.error(f"❌ Öğrenme hatası: {e}")
@@ -709,6 +710,34 @@ class InfiniteLearner:
                 )
         except Exception as e:
             logger.error(f"Learned topics yüklenemedi: {e}")
+
+    def _update_learned_languages_json(self, domain, topic):
+        """Kullanıcının görebileceği learned_languages.json dosyasını günceller."""
+        json_path = Path("learned_languages.json")
+        try:
+            data = []
+            if json_path.exists():
+                content = json_path.read_text(encoding="utf-8")
+                if content.strip():
+                    data = json.loads(content)
+            
+            entry = {
+                "timestamp": datetime.now().isoformat(),
+                "domain": domain,
+                "topic": topic,
+                "status": "Mastered",
+                "is_applied": True
+            }
+            data.append(entry)
+            
+            # Son 100 kaydı tut
+            if len(data) > 100:
+                data = data[-100:]
+                
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            logger.error(f"learned_languages.json güncellenemedi: {e}")
 
     def _save_learned_topics(self):
         """Öğrenilen konuları kaydet"""
