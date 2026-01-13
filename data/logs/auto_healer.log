@@ -35718,3 +35718,59 @@ POWERSHELL Hatalarý:
 [2026-01-13 23:34:29] [WARNING]   - c:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-13 23:34:29] [SUCCESS] GitHub'a commit ve push yapýldý
 [2026-01-13 23:34:34] [SUCCESS] GitHub'a commit ve push yapýldý
+[2026-01-13 23:44:15] [INFO] === NEXUS-ONE Otomatik Hata Düzeltme Baþlýyor ===
+[2026-01-13 23:44:29] [INFO] === NEXUS-ONE Otomatik Hata Düzeltme Baþlýyor ===
+[2026-01-13 23:44:33] [WARNING] PowerShell hatalarý bulundu: 22
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_sync_v2.ps1
+[2026-01-13 23:44:33] [SUCCESS] Suppression eklendi: c:\Users\selam\NEXUS-ONE\persistent_learner.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\report_learned_languages.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\run_human_agent.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\create_desktop_shortcut.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\run_control_panel.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\run_security.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\run_security.ps1
+[2026-01-13 23:44:33] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1
+[2026-01-13 23:44:33] [SUCCESS] === 22 hata düzeltildi ===
+[2026-01-13 23:44:33] [INFO] === NEXUS-ONE Hata Raporu ===
+[2026-01-13 23:44:33] [INFO] Öðrenilmiþ YAML patterns: 40
+[2026-01-13 23:44:33] [INFO] Öðrenilmiþ PowerShell patterns: 13784
+[2026-01-13 23:44:35] [WARNING] PowerShell hatalarý bulundu: 22
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_advanced.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_learner.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_production.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\autonomous_sync_v2.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\persistent_learner.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\report_learned_languages.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\run_advanced_automation.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\run_human_agent.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\setup_github_secrets.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\create_desktop_shortcut.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\run_control_panel.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\run_security.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\run_security.ps1
+[2026-01-13 23:44:35] [INFO] Suppression zaten var: c:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1
+[2026-01-13 23:44:35] [SUCCESS] === 22 hata düzeltildi ===
+[2026-01-13 23:44:35] [INFO] === NEXUS-ONE Hata Raporu ===
+[2026-01-13 23:44:35] [INFO] Öðrenilmiþ YAML patterns: 40
+[2026-01-13 23:44:35] [INFO] Öðrenilmiþ PowerShell patterns: 13784
