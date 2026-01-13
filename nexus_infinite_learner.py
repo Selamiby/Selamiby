@@ -341,16 +341,41 @@ class InfiniteLearner:
         except Exception:
             pass
 
+    def _extract_code(self, content: str) -> str:
+        """Markdown içerisinden ham kodu ayıklar."""
+        if "```" in content:
+            parts = content.split("```")
+            for part in parts:
+                p = part.strip()
+                if p.startswith("python") or p.startswith("py"):
+                    return "\n".join(p.split("\n")[1:]).strip()
+                if p and not p.startswith(("System:", "User:", "Copy")):
+                    return p
+        return content.strip()
+
+    def _test_generated_module(self, file_path: Path):
+        """Üretilen modülün temel sentaks kontrolünü yapar."""
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                source = f.read()
+            if not source.strip(): return False
+            compile(source, str(file_path), 'exec')
+            logger.info(f"🧪 {file_path.name} sentaks doğrulaması başarılı.")
+            return True
+        except Exception as e:
+            logger.warning(f"❌ {file_path.name} sentaks hatası içeriyor: {e}")
+            return False
+
     def learn_from_domain(self, domain: str, topics: List[str]):
-        """Bir domain'den gerçek öğrenme - AI Destekli"""
+        """Bir domain'den gerçek öğrenme - Fiziksel Modül Üretimi Aktif!"""
         domain_name = domain.replace("_", " ").title()
         logger.info(f"\n{'='*80}")
-        logger.info(f"📚 GERÇEK ÖĞRENME DÖNGÜSÜ #{self.learning_cycles + 1}: {domain_name}")
+        logger.info(f"🏭 NEXUS MODULE FACTORY: {domain_name} Üzerinde Çalışıyor")
         logger.info(f"{'='*80}")
 
         brain = NexusBrain()
         learned_count = 0
-        for topic in topics[:3]:  # Hız ve kalite dengesi için 3 topic
+        for topic in topics[:3]:
             if not self.is_running:
                 break
 
@@ -358,70 +383,65 @@ class InfiniteLearner:
             if topic_key in self.learned_topics:
                 continue
 
-            logger.info(f"🎯 {topic} derin araştırılıyor (AI Brain Powered)...")
+            logger.info(f"🎯 {topic} için gerçek modül tasarlanıyor...")
 
-            # AI Brain ile %100 GERÇEK, ÇALIŞAN, PRODUCTION-READY kod al
-            # Eğer konu bir teori ise (Prompting vb.), onu uygulayan bir sistem kodu yazmasını istiyoruz.
             prompt = (
-                f"Görev: {topic} konusu üzerine %100 gerçek ve çalıştırılabilir bir teknik modül hazırla.\n"
+                f"Görev: {topic} konusu üzerine %100 gerçek, profesyonel seviyede ve doğrudan çalıştırılabilir bir Python modülü yaz.\n"
                 "KURALLAR:\n"
-                "1. Eğer konu bir teori veya kavram ise, bu kavramı uygulayan profesyonel bir Python sınıfı/fonksiyonu yaz.\n"
-                "2. Sadece kod: Hiçbir açıklama, giriş cümlesi veya markdown dışı metin içermesin.\n"
-                "3. Kapsam: En az tüm gerekli importları ve ana çalışma mantığını içermelidir.\n"
-                "4. Yer tutucu (placeholder) KESİNLİKLE yasaktır. Gerçek mantık yaz.\n"
-                "5. Kodun sonuna ekle: # NEXUS-ONE PERSISTENT CORE CODE\n"
+                "1. Sadece çalışan kaynak kod: Hiçbir açıklama veya markdown dışı metin içermesin.\n"
+                "2. Tam kapsam: Importlar, sınıflar ve bir main() fonksiyonu içersin.\n"
+                "3. NEXUS-ONE Entegrasyonu: Kodun sonuna # NEXUS-ONE CORE MODULE - PRODUCTION READY ekle.\n"
             )
             
-            knowledge_content = brain.think(prompt, "Sen sadece profesyonel seviyede çalışan kaynak kod üreten bir sistem mühendisisin.")
-
-            # Daha akıllı bir doğrulama: Kod gerçekten kod mu?
-            is_real_code = any(keyword in knowledge_content for keyword in ["def ", "import ", "class ", "fn ", "const "]) if knowledge_content else False
-
-            if not knowledge_content or not is_real_code or len(knowledge_content) < 20:
-                logger.warning(f"⚠️ {topic} için teknik kod doğrulaması başarısız, pas geçiliyor.")
-
-            knowledge = {
-                "topic": topic,
-                "domain": domain,
-                "learned_at": datetime.now().isoformat(),
-                "cycle": self.learning_cycles + 1,
-                "mastery_level": "Production-Ready-Code",
-                "real_code_content": knowledge_content,
-                "verification_status": "Verified by NEXUS-BRAIN",
-                "implementation_guide": f"Bu dosya doğrudan 'exec()' veya import ile NEXUS-ONE'a entegre edilebilir."
-            }
-
-            # Bilgiyi kaydet
-            file_name = f"{domain}_{_safe_topic_name(topic)}.json"
-            file_path = self.knowledge_base / file_name
-            try:
-                # EĞER KONU YOUTUBE İLE İLGİLİYSE GERÇEK VERİ TRANSFERİ YAP
-                if "youtube" in topic.lower() or domain == "media_social_automation":
-                    logger.info(f"📹 YouTube API Etkileşimi Başlatılıyor: {topic}")
-                    yt_key = os.getenv("YOUTUBE_API_KEY")
-                    if yt_key and yt_key != "...":
-                        # Gerçek API çağrısı simülasyonu değil, AI'ya bu anahtarla ne yapabileceğini sorup koda işletiyoruz
-                        real_action = brain.think(
-                            f"YouTube API anahtarım ({yt_key}) var. {topic} için bu anahtarla yapılabilecek en gelişmiş gerçek dünya işlemini yap ve kodunu ver.",
-                            "Sen otonom bir sistem mühendisisin."
-                        )
-                        knowledge["real_world_execution_plan"] = real_action
-
-                file_path.parent.mkdir(parents=True, exist_ok=True)
-                with open(file_path, "w", encoding="utf-8") as f:
-                    json.dump(knowledge, f, indent=2, ensure_ascii=False)
-            except Exception as write_exc:
-                logger.error(f"❌ Bilgi kaydedilemedi ({topic}): {write_exc}")
+            raw_content = brain.think(prompt, "Sen sadece profesyonel Python modülleri üreten bir kod fabrikasısın.")
+            if not raw_content:
                 continue
 
-            self.capabilities_gained.append(f"{domain_name}: {topic}")
-            learned_count += 1
-            self.total_topics_learned += 1
-            self.domain_stats[domain] = self.domain_stats.get(domain, 0) + 1
-            self.learned_topics.add(topic_key)
+            clean_code = self._extract_code(raw_content)
 
-            logger.info(f"✅ {topic} REAL olarak öğrenildi ve kütüphaneye eklendi.")
-            time.sleep(0.01)
+            if not clean_code or "import " not in clean_code or len(clean_code) < 50:
+                logger.warning(f"⚠️ {topic} için geçerli kod üretilemedi, pas geçiliyor.")
+                continue
+
+            # Modülü Kaydet (.py dosyası olarak)
+            safe_topic = _safe_topic_name(topic)
+            module_file = self.modules_dir / f"{domain}_{safe_topic}.py"
+            
+            try:
+                self.modules_dir.mkdir(parents=True, exist_ok=True)
+                with open(module_file, "w", encoding="utf-8") as f:
+                    f.write(clean_code)
+                
+                # Test Et
+                is_valid = self._test_generated_module(module_file)
+                
+                # JSON Bilgisini de kaydet (Metadata)
+                knowledge = {
+                    "topic": topic,
+                    "domain": domain,
+                    "module_path": str(module_file),
+                    "learned_at": datetime.now().isoformat(),
+                    "status": "Verified" if is_valid else "Needs Fixing",
+                    "code_preview": clean_code[:300]
+                }
+                
+                kb_file = self.knowledge_base / f"{domain}_{safe_topic}.json"
+                with open(kb_file, "w", encoding="utf-8") as f:
+                    json.dump(knowledge, f, indent=2, ensure_ascii=False)
+
+                self.capabilities_gained.append(f"{domain_name}: {topic}")
+                learned_count += 1
+                self.total_topics_learned += 1
+                self.domain_stats[domain] = self.domain_stats.get(domain, 0) + 1
+                self.learned_topics.add(topic_key)
+
+                logger.info(f"✅ MODÜL ÜRETİLDİ: {module_file.name}")
+            
+            except Exception as e:
+                logger.error(f"❌ Modül üretim hatası: {e}")
+                continue
+
+            time.sleep(1)
 
         return learned_count
 
