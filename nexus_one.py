@@ -70,6 +70,7 @@ class NexusOneCore:
     def run(self):
         """Orchestrates the entire autonomous cycle."""
         logger.info("✨ NEXUS-ONE is evolving to Advanced Autonomy...")
+        brain = NexusBrain()
         
         # Initial launch of all systems
         for name, script in self.subsystems.items():
@@ -78,8 +79,10 @@ class NexusOneCore:
 
         logger.info("🌟 ALL SYSTEMS REAL & AUTONOMOUS. Nexus-One is now fully independent.")
         
+        cycle_count = 0
         try:
             while True:
+                cycle_count += 1
                 # Core monitoring loop
                 cpu = psutil.cpu_percent(interval=5)
                 active_count = sum(1 for p in self.processes.values() if p.poll() is None)
@@ -93,6 +96,15 @@ class NexusOneCore:
 
                 logger.info(f"💓 Heartbeat: {status_emoji} | 📚 Knowledge Base: {knowledge_count} Topics | ⚡ CPU: {cpu}%")
                 
+                # Strategic Intelligence update every 5 cycles
+                if cycle_count % 5 == 0:
+                    intelligence = brain.think(
+                        f"Current System State: {active_count}/{len(self.subsystems)} systems active, {knowledge_count} topics learned. "
+                        "Give a 1-sentence strategic focus for the next hour.",
+                        "You are the NEXUS-ONE Strategic Overmind."
+                    )
+                    logger.info(f"🧠 STRATEGIC FOCUS: {intelligence}")
+
                 # If any system died, restart it
                 for name, proc in self.processes.items():
                     if proc.poll() is not None:
