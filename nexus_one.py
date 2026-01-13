@@ -33,7 +33,7 @@ class NexusOneCore:
         self.workspace = Path(__file__).parent
         self.processes = {}
         setup_directories()
-        
+
         # Define all managed subsystems
         self.subsystems = {
             "ResourceGuard": "nexus_resource_guard.py",
@@ -71,14 +71,14 @@ class NexusOneCore:
         """Orchestrates the entire autonomous cycle."""
         logger.info("✨ NEXUS-ONE is evolving to Advanced Autonomy...")
         brain = NexusBrain()
-        
+
         # Initial launch of all systems
         for name, script in self.subsystems.items():
             self.start_subsystem(name, script)
             time.sleep(3) # Increased staggered launch to avoid race conditions
 
         logger.info("🌟 ALL SYSTEMS REAL & AUTONOMOUS. Nexus-One is now fully independent.")
-        
+
         cycle_count = 0
         try:
             while True:
@@ -87,7 +87,7 @@ class NexusOneCore:
                 cpu = psutil.cpu_percent(interval=5)
                 active_count = sum(1 for p in self.processes.values() if p.poll() is None)
                 knowledge_count = len(list(self.workspace.glob("infinite_knowledge/*.json")))
-                
+
                 # Dynamic Activity Message
                 if active_count == len(self.subsystems):
                     status_emoji = "🟢 FULL ACTIVE"
@@ -95,7 +95,7 @@ class NexusOneCore:
                     status_emoji = f"🟡 {active_count}/{len(self.subsystems)} ACTIVE"
 
                 logger.info(f"💓 Heartbeat: {status_emoji} | 📚 Knowledge Base: {knowledge_count} Topics | ⚡ CPU: {cpu}%")
-                
+
                 # Strategic Intelligence update every 5 cycles
                 if cycle_count % 5 == 0:
                     intelligence = brain.think(
@@ -111,7 +111,7 @@ class NexusOneCore:
                         exit_code = proc.poll()
                         logger.warning(f"⚠️ {name} has stopped (Exit Code: {exit_code}). Restarting...")
                         self.start_subsystem(name, self.subsystems[name])
-                
+
                 time.sleep(30) # Tick every 30 seconds
         except KeyboardInterrupt:
             logger.info("🛑 Shutting down Nexus-One Core...")
