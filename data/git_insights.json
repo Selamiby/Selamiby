@@ -3,10 +3,6 @@
     "contributors": 1,
     "recent_changes": 5
   },
-  "autonomous_engine.py": {
-    "contributors": 1,
-    "recent_changes": 5
-  },
   "autonomous_production.ps1": {
     "contributors": 1,
     "recent_changes": 5
@@ -36,6 +32,10 @@
     "recent_changes": 5
   },
   "data/healer_patterns.json": {
+    "contributors": 1,
+    "recent_changes": 5
+  },
+  "data/logs/auto_healer.log": {
     "contributors": 1,
     "recent_changes": 5
   }

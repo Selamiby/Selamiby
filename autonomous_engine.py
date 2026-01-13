@@ -42,6 +42,7 @@ logger = logging.getLogger("AutonomousEngine")
 
 
 
+
 class AutonomousEngine:
     """Main autonomous development engine"""
 
@@ -287,6 +288,7 @@ class AutonomousEngine:
 
 
 
+
 def process_command(command_text: str):
     """
     Processes a single command received from the human interface.
@@ -327,6 +329,7 @@ def process_command(command_text: str):
     # For this direct command-response model, we don't need the 5-hour loop.
     # The original `main` function can be kept for pure autonomous mode later.
     print(f"[ENGINE] Finished processing command: {command_text}")
+
 
 
 
