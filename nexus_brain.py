@@ -66,6 +66,39 @@ class NexusBrain:
         except:
             return None
 
+    def _call_anthropic(self, prompt, system_prompt):
+        """Calls Claude with NEXUS-ONE tools support."""
+        if not anthropic: return None
+        try:
+            client = anthropic.Anthropic(api_key=self.anthropic_key)
+            message = client.messages.create(
+                model="claude-3-5-sonnet-20241022", # Latest stable sonnet
+                max_tokens=4096,
+                temperature=0.7,
+                system=system_prompt,
+                messages=[
+                    {"role": "user", "content": prompt}
+                ],
+                tools=[
+                    {
+                        "name": "nexus_one_action",
+                        "description": "NEXUS-ONE otonom eylem gerçekleştirir.",
+                        "input_schema": {
+                            "type": "object",
+                            "properties": {
+                                "action_type": {"type": "string", "description": "Eylem türü (optimize, fix, learn)"},
+                                "target": {"type": "string", "description": "Hedef dosya veya konu"}
+                            },
+                            "required": ["action_type", "target"]
+                        }
+                    }
+                ]
+            )
+            return message.content[0].text
+        except Exception as e:
+            logger.error(f"Anthropic API Error: {e}")
+            return None
+
     def _call_gemini(self, prompt, system_prompt):
         try:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key={self.gemini_key}"
