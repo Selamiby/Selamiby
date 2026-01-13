@@ -6,6 +6,11 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
+try:
+    import anthropic
+except ImportError:
+    anthropic = None
+
 load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format="[%(asctime)s] 🧠 BRAIN: %(message)s")
@@ -20,13 +25,20 @@ class NexusBrain:
         self.groq_key = os.getenv("GROQ_API_KEY")
         self.gemini_key = os.getenv("GOOGLE_AI_STUDIO_KEY")
         self.openai_key = os.getenv("OPENAI_API_KEY")
-        
+        self.anthropic_key = os.getenv("ANTHROPIC_API_KEY")
+
     def think(self, prompt: str, system_prompt: str = "You are NEXUS-ONE, an advanced autonomous AI."):
         """Decides which model to use based on availability and task."""
         
-        # 1. Try Groq (Ultra Fast Reasoning) - Currently checking if '...'
+        # 1. Try Anthropic (Claude) - Highest Priority if available
+        if self.anthropic_key and self.anthropic_key != "..." and anthropic:
+            result = self._call_anthropic(prompt, system_prompt)
+            if result: return result
+
+        # 2. Try Groq (Ultra Fast Reasoning)
         if self.groq_key and self.groq_key != "...":
-            return self._call_groq(prompt, system_prompt)
+            result = self._call_groq(prompt, system_prompt)
+            if result: return result
         
         # 2. Try Gemini (Deep Analysis)
         if self.gemini_key and self.gemini_key != "...":
