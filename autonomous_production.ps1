@@ -10,12 +10,17 @@ param(
     [int]$MaxRetries = 3
 )
 
-# NEXUS-ONE Advanced Autonomous System - Production Ready v2.1
-# Gerçekçi, çalışan, optimize edilmiş sistem
+# NEXUS-ONE Advanced Autonomous System - Production Ready v2.2
+# UTF-8 encoding fix and bug fixes
+
+# Encoding fix for PowerShell 5.1
+$OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::InputEncoding = [System.Text.Encoding]::UTF8
 
 # Logging System
-$LogPath = Join-Path $PSScriptRoot "nexus_logs\autonomous_$($(Get-Date -Format 'yyyy-MM-dd').ToString()).log"
-$ErrorLogPath = Join-Path $PSScriptRoot "nexus_logs\errors_$($(Get-Date -Format 'yyyy-MM-dd').ToString()).log"
+$LogPath = Join-Path $PSScriptRoot "nexus_logs\autonomous_$(Get-Date -Format 'yyyy-MM-dd').log"
+$ErrorLogPath = Join-Path $PSScriptRoot "nexus_logs\errors_$(Get-Date -Format 'yyyy-MM-dd').log"
 
 function Initialize-Logging {
     if (-not (Test-Path (Join-Path $PSScriptRoot "nexus_logs"))) { 
@@ -24,8 +29,8 @@ function Initialize-Logging {
     
     # Clear old logs (keep last 7 days)
     Get-ChildItem (Join-Path $PSScriptRoot "nexus_logs") -Filter "*.log" | 
-        Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-7) } | 
-        Remove-Item -Force -ErrorAction SilentlyContinue
+    Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-7) } | 
+    Remove-Item -Force -ErrorAction SilentlyContinue
 }
 
 function Write-AdvLog {
@@ -36,75 +41,106 @@ function Write-AdvLog {
     )
     
     $time = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
-    $logMsg = "[$time] [$Level] [$Module] $Message"
+    
+    # Türkçe karakter fix
+    $cleanMessage = $Message
+    
+    $logMsg = "[$time] [$Level] [$Module] $cleanMessage"
     
     # Console output with colors
     switch ($Level) {
         "INFO" { 
             Write-Host $logMsg -ForegroundColor Cyan
-            Add-Content -Path $LogPath -Value $logMsg -ErrorAction SilentlyContinue
+            Add-Content -Path $LogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
         }
         "SUCCESS" { 
             Write-Host $logMsg -ForegroundColor Green
-            Add-Content -Path $LogPath -Value $logMsg -ErrorAction SilentlyContinue
+            Add-Content -Path $LogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
         }
         "WARNING" { 
             Write-Host $logMsg -ForegroundColor Yellow
-            Add-Content -Path $LogPath -Value $logMsg -ErrorAction SilentlyContinue
-            Add-Content -Path $ErrorLogPath -Value $logMsg -ErrorAction SilentlyContinue
+            Add-Content -Path $LogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
+            Add-Content -Path $ErrorLogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
         }
         "ERROR" { 
             Write-Host $logMsg -ForegroundColor Red
-            Add-Content -Path $LogPath -Value $logMsg -ErrorAction SilentlyContinue
-            Add-Content -Path $ErrorLogPath -Value $logMsg -ErrorAction SilentlyContinue
+            Add-Content -Path $LogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
+            Add-Content -Path $ErrorLogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
         }
         "DEBUG" { 
             if ($env:NEXUS_DEBUG -eq "true") {
                 Write-Host $logMsg -ForegroundColor DarkGray
-                Add-Content -Path $LogPath -Value $logMsg -ErrorAction SilentlyContinue
+                Add-Content -Path $LogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
             }
         }
         default { 
             Write-Host $logMsg -ForegroundColor White
-            Add-Content -Path $LogPath -Value $logMsg -ErrorAction SilentlyContinue
+            Add-Content -Path $LogPath -Value $logMsg -Encoding UTF8 -ErrorAction SilentlyContinue
         }
     }
 }
 
-# Health Check System
+# Health Check System - FIXED
 function Test-SystemHealth {
-    $healthStatus = @{
+    $healthStatus = [ordered]@{
         "PowershellVersion" = $PSVersionTable.PSVersion.ToString()
-        "ExecutionPolicy" = Get-ExecutionPolicy
-        "PythonAvailable" = $false
-        "GitAvailable" = $false
-        "DiskSpace" = (Get-PSDrive -Name $PSScriptRoot.Substring(0,1)).Free / 1GB
-        "MemoryUsage" = [math]::Round((Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory / 1MB, 2)
-        "CPUUsage" = (Get-CimInstance Win32_Processor | Measure-Object -Property LoadPercentage -Average).Average
+        "ExecutionPolicy"   = Get-ExecutionPolicy
+        "PythonAvailable"   = $false
+        "GitAvailable"      = $false
+        "DiskSpace"         = 0
+        "MemoryUsage"       = 0
+        "CPUUsage"          = 0
     }
     
-    # Check Python
     try {
-        $pythonVersion = python --version 2>&1
-        if ($LASTEXITCODE -eq 0) {
-            $healthStatus.PythonAvailable = $true
-            $healthStatus.PythonVersion = ($pythonVersion -replace 'Python ', '').Trim()
+        # Disk space - FIXED
+        $drive = $PSScriptRoot.Substring(0, 1)
+        $driveInfo = Get-PSDrive -Name $drive -ErrorAction SilentlyContinue
+        if ($driveInfo) {
+            $healthStatus.DiskSpace = [math]::Round($driveInfo.Free / 1GB, 2)
         }
-    } catch { }
-    
-    # Check Git
-    try {
-        $gitVersion = git --version 2>&1
-        if ($LASTEXITCODE -eq 0) {
-            $healthStatus.GitAvailable = $true
-            $healthStatus.GitVersion = ($gitVersion -replace 'git version ', '').Trim()
+        
+        # Memory - FIXED
+        $osInfo = Get-CimInstance Win32_OperatingSystem -ErrorAction SilentlyContinue
+        if ($osInfo) {
+            $healthStatus.MemoryUsage = [math]::Round($osInfo.FreePhysicalMemory / 1MB, 2)
         }
-    } catch { }
+        
+        # CPU - FIXED
+        $cpuInfo = Get-CimInstance Win32_Processor -ErrorAction SilentlyContinue
+        if ($cpuInfo) {
+            $healthStatus.CPUUsage = [math]::Round(($cpuInfo | Measure-Object -Property LoadPercentage -Average).Average, 2)
+        }
+        
+        # Check Python - FIXED
+        try {
+            $pythonOutput = & python --version 2>&1
+            if ($LASTEXITCODE -eq 0) {
+                $healthStatus.PythonAvailable = $true
+                $healthStatus.PythonVersion = ($pythonOutput -replace 'Python ', '').Trim()
+            }
+        }
+        catch { }
+        
+        # Check Git - FIXED
+        try {
+            $gitOutput = & git --version 2>&1
+            if ($LASTEXITCODE -eq 0) {
+                $healthStatus.GitAvailable = $true
+                $healthStatus.GitVersion = ($gitOutput -replace 'git version ', '').Trim()
+            }
+        }
+        catch { }
+        
+    }
+    catch {
+        Write-AdvLog "Health check error: $_" "WARNING" "SYSTEM"
+    }
     
     return $healthStatus
 }
 
-# Ana senkronizasyon döngüsü - DÜZELTİLMİŞ VERSİYON
+# Ana senkronizasyon döngüsü
 function Invoke-GitSync {
     param(
         [int]$RetryCount = 0,
@@ -122,34 +158,36 @@ function Invoke-GitSync {
             Write-AdvLog "Fallback: Temel Git operasyonları başlatılıyor..." "WARNING" "GIT-SYNC"
             
             # Check git status
-            $status = git status --porcelain 2>$null
+            $status = & git status --porcelain 2>$null
             if ($LASTEXITCODE -ne 0) {
                 throw "Git komutu çalıştırılamadı"
             }
             
             if ($status) {
                 # Stage changes
-                git add . 2>$null
+                & git add . 2>$null
                 if ($LASTEXITCODE -eq 0) {
                     # Commit with auto message
                     $commitMsg = "NEXUS-AUTO: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Otonom güncelleme"
-                    git commit -m $commitMsg 2>$null
+                    & git commit -m $commitMsg 2>$null
                     
                     if ($LASTEXITCODE -eq 0) {
                         # Push to remote
-                        git push 2>$null
+                        & git push 2>$null
                         if ($LASTEXITCODE -eq 0) {
                             Write-AdvLog "Fallback senkronizasyon başarılı" "SUCCESS" "GIT-SYNC"
                             return $true
                         }
                     }
                 }
-            } else {
+            }
+            else {
                 Write-AdvLog "Değişiklik yok, senkronizasyon atlanıyor" "INFO" "GIT-SYNC"
                 return $true
             }
             
-        } catch {
+        }
+        catch {
             Write-AdvLog "Fallback senkronizasyon başarısız: $_" "ERROR" "GIT-SYNC"
             return $false
         }
@@ -158,7 +196,7 @@ function Invoke-GitSync {
     }
     
     try {
-        # v2 script'i çalıştır - DÜZELTİLMİŞ SATIR
+        # v2 script'i çalıştır
         $processInfo = New-Object System.Diagnostics.ProcessStartInfo
         $processInfo.FileName = "powershell.exe"
         $processInfo.Arguments = "-NoProfile -ExecutionPolicy Bypass -File `"$SyncScript`" -IntervalSeconds 10"
@@ -166,6 +204,8 @@ function Invoke-GitSync {
         $processInfo.RedirectStandardError = $true
         $processInfo.UseShellExecute = $false
         $processInfo.CreateNoWindow = $true
+        $processInfo.StandardOutputEncoding = [System.Text.Encoding]::UTF8
+        $processInfo.StandardErrorEncoding = [System.Text.Encoding]::UTF8
         
         $process = New-Object System.Diagnostics.Process
         $process.StartInfo = $processInfo
@@ -238,6 +278,8 @@ function Invoke-NEXUSHealer {
             $processInfo.RedirectStandardError = $true
             $processInfo.UseShellExecute = $false
             $processInfo.CreateNoWindow = $true
+            $processInfo.StandardOutputEncoding = [System.Text.Encoding]::UTF8
+            $processInfo.StandardErrorEncoding = [System.Text.Encoding]::UTF8
             
             $process = New-Object System.Diagnostics.Process
             $process.StartInfo = $processInfo
@@ -291,33 +333,44 @@ function Invoke-AdvancedFeatures {
             try {
                 Write-AdvLog "Advanced features çalıştırılıyor..." "INFO" "ADV-FEATURES"
                 
-                # DÜZELTİLMİŞ SATIR: Python process'i düzgün çalıştırma
-                $result = Start-Process "python.exe" -ArgumentList "`"$featureScript`"" `
-                    -NoNewWindow -Wait -PassThru -RedirectStandardOutput "temp_output.txt" -RedirectStandardError "temp_error.txt"
+                # Python process'i düzgün çalıştırma - FIXED
+                $processInfo = New-Object System.Diagnostics.ProcessStartInfo
+                $processInfo.FileName = "python.exe"
+                $processInfo.Arguments = "`"$featureScript`""
+                $processInfo.RedirectStandardOutput = $true
+                $processInfo.RedirectStandardError = $true
+                $processInfo.UseShellExecute = $false
+                $processInfo.CreateNoWindow = $true
+                $processInfo.StandardOutputEncoding = [System.Text.Encoding]::UTF8
+                $processInfo.StandardErrorEncoding = [System.Text.Encoding]::UTF8
                 
-                if ($result.ExitCode -eq 0) {
+                $process = New-Object System.Diagnostics.Process
+                $process.StartInfo = $processInfo
+                $process.Start() | Out-Null
+                
+                # Timeout after 45 seconds
+                if (-not $process.WaitForExit(45000)) {
+                    $process.Kill()
+                    Write-AdvLog "Advanced features timeout (45s)" "WARNING" "ADV-FEATURES"
+                    return $false
+                }
+                
+                $output = $process.StandardOutput.ReadToEnd()
+                $errorOutput = $process.StandardError.ReadToEnd()
+                
+                if ($process.ExitCode -eq 0) {
                     Write-AdvLog "Advanced features tamamlandı" "SUCCESS" "ADV-FEATURES"
-                    
-                    # Cleanup temp files
-                    if (Test-Path "temp_output.txt") { Remove-Item "temp_output.txt" -Force }
-                    if (Test-Path "temp_error.txt") { Remove-Item "temp_error.txt" -Force }
-                    
                     return $true
                 }
                 else {
-                    Write-AdvLog "Advanced features hata kodu: $($result.ExitCode)" "ERROR" "ADV-FEATURES"
-                    
-                    # Read error log if exists
-                    if (Test-Path "temp_error.txt") {
-                        $errors = Get-Content "temp_error.txt" -ErrorAction SilentlyContinue
-                        $errors | ForEach-Object {
+                    Write-AdvLog "Advanced features hata kodu: $($process.ExitCode)" "ERROR" "ADV-FEATURES"
+                    if ($errorOutput) {
+                        $errorOutput.Split("`n") | Select-Object -First 3 | ForEach-Object {
                             if ($_.Trim()) {
                                 Write-AdvLog "Feature Error: $_" "ERROR" "ADV-FEATURES"
                             }
                         }
-                        Remove-Item "temp_error.txt" -Force
                     }
-                    
                     return $false
                 }
             }
@@ -354,6 +407,8 @@ function Invoke-SuperLearner {
                 $processInfo.RedirectStandardError = $true
                 $processInfo.UseShellExecute = $false
                 $processInfo.CreateNoWindow = $true
+                $processInfo.StandardOutputEncoding = [System.Text.Encoding]::UTF8
+                $processInfo.StandardErrorEncoding = [System.Text.Encoding]::UTF8
                 
                 $process = New-Object System.Diagnostics.Process
                 $process.StartInfo = $processInfo
@@ -413,9 +468,9 @@ function Invoke-AutonomousTasks {
     Write-AdvLog "Otonom görevler başlıyor (Cycle: $CycleCount)..." "INFO" "TASK-RUNNER"
     
     $taskResults = @{
-        "AutoHealer" = $false
+        "AutoHealer"       = $false
         "AdvancedFeatures" = $false
-        "SuperLearner" = $false
+        "SuperLearner"     = $false
     }
     
     # Görev 1: NEXUS-ONE Auto Healer
@@ -436,15 +491,43 @@ function Invoke-AutonomousTasks {
     return $taskResults
 }
 
-# Performans Monitor
+# Performans Monitor - FIXED VERSION
 function Get-PerformanceMetrics {
     $metrics = @{
-        "Cycle" = $script:LoopCounter
+        "Cycle"     = $script:LoopCounter
         "Timestamp" = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-        "Memory_MB" = [math]::Round((Get-Process -Id $PID).WorkingSet64 / 1MB, 2)
-        "CPU_Time" = [math]::Round((Get-Process -Id $PID).CPU, 2)
-        "Threads" = (Get-Process -Id $PID).Threads.Count
-        "Uptime" = [math]::Round((Get-Date) - $script:StartTime).TotalMinutes
+        "Memory_MB" = 0
+        "CPU_Time"  = 0
+        "Threads"   = 1
+        "Uptime"    = 0
+    }
+    
+    try {
+        # Get current process
+        $currentProcess = Get-Process -Id $PID -ErrorAction SilentlyContinue
+        
+        if ($currentProcess) {
+            # Memory in MB - FIXED Round method
+            $memoryMB = $currentProcess.WorkingSet64 / 1MB
+            $metrics.Memory_MB = [math]::Round($memoryMB, 2)
+            
+            # CPU Time - FIXED
+            $metrics.CPU_Time = [math]::Round($currentProcess.TotalProcessorTime.TotalSeconds, 2)
+            
+            # Threads
+            $metrics.Threads = $currentProcess.Threads.Count
+        }
+        
+        # Uptime - FIXED
+        $uptimeMinutes = 0
+        if ($script:StartTime) {
+            $uptimeMinutes = [math]::Round(((Get-Date) - $script:StartTime).TotalMinutes, 2)
+        }
+        $metrics.Uptime = $uptimeMinutes
+        
+    }
+    catch {
+        Write-AdvLog "Performance metrics error: $_" "WARNING" "PERFORMANCE"
     }
     
     return $metrics
@@ -452,17 +535,14 @@ function Get-PerformanceMetrics {
 
 # Graceful Shutdown Handler
 function Register-ShutdownHandler {
-    # Handle Ctrl+C
-    [Console]::TreatControlCAsInput = $true
-    
     # Cleanup function
     $cleanupScript = {
         Write-AdvLog "Shutdown signal alındı, temizlik yapılıyor..." "WARNING" "SHUTDOWN"
         
         # Save state if needed
         $state = @{
-            LastCycle = $script:LoopCounter
-            LastRun = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+            LastCycle    = $script:LoopCounter
+            LastRun      = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
             HealthStatus = Test-SystemHealth
         }
         
@@ -473,7 +553,12 @@ function Register-ShutdownHandler {
     }
     
     # Register for termination events
-    Register-EngineEvent -SourceIdentifier PowerShell.Exiting -Action $cleanupScript
+    try {
+        Register-EngineEvent -SourceIdentifier PowerShell.Exiting -Action $cleanupScript
+    }
+    catch {
+        Write-AdvLog "Shutdown handler registration failed: $_" "WARNING" "SYSTEM"
+    }
 }
 
 # Ana Kontrol Döngüsü
@@ -484,7 +569,7 @@ try {
     $script:LoopCounter = 0
     
     Write-AdvLog "================================================" "INFO" "SYSTEM"
-    Write-AdvLog "NEXUS-ONE Otonom Üretim Sistemi v2.1 Başlatıldı" "SUCCESS" "SYSTEM"
+    Write-AdvLog "NEXUS-ONE Otonom Üretim Sistemi v2.2 Başlatıldı" "SUCCESS" "SYSTEM"
     Write-AdvLog "Başlangıç Zamanı: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" "INFO" "SYSTEM"
     Write-AdvLog "Interval: $IntervalSeconds saniye" "INFO" "SYSTEM"
     Write-AdvLog "Max Retries: $MaxRetries" "INFO" "SYSTEM"
@@ -508,9 +593,11 @@ try {
         Write-AdvLog "`n--- Döngü #$($script:LoopCounter) [$($(Get-Date).ToString('HH:mm:ss'))] ---" "INFO" "CYCLE"
         
         try {
-            # 1. Performance metrics
+            # 1. Performance metrics - FIXED
             $perf = Get-PerformanceMetrics
-            Write-AdvLog "Performans: Memory=$($perf.Memory_MB)MB, CPU=$($perf.CPU_Time)s, Uptime=$($perf.Uptime)m" "DEBUG" "PERFORMANCE"
+            if ($perf) {
+                Write-AdvLog "Performans: Memory=$($perf.Memory_MB)MB, CPU=$($perf.CPU_Time)s, Uptime=$($perf.Uptime)m" "DEBUG" "PERFORMANCE"
+            }
             
             # 2. Git Senkronizasyonu
             $syncResult = Invoke-GitSync
@@ -541,8 +628,8 @@ try {
             Write-AdvLog "Döngü hatası: $_" "ERROR" "CYCLE"
             Write-AdvLog "Stack Trace: $($_.ScriptStackTrace)" "ERROR" "CYCLE"
             
-            # Exponential backoff on critical errors
-            $backoffTime = [math]::Min(60 * [math]::Pow(2, [math]::Min($script:LoopCounter / 10, 5)), 600)
+            # Exponential backoff on critical errors - FIXED calculation
+            $backoffTime = [math]::Min([math]::Pow(2, [math]::Min($script:LoopCounter, 5)), 60)
             Write-AdvLog "Kritik hata, $backoffTime saniye bekleniyor..." "WARNING" "CYCLE"
             Start-Sleep -Seconds $backoffTime
         }

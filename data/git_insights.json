@@ -1,4 +1,8 @@
 {
+  "autonomous_production.ps1": {
+    "contributors": 2,
+    "recent_changes": 5
+  },
   "data/healer_patterns.json": {
     "contributors": 1,
     "recent_changes": 5

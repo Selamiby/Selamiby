@@ -32544,3 +32544,4 @@ POWERSHELL Hatalarý:
 [2026-01-13 02:48:26] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_security.ps1: Variable '$IntervalSeconds' assigned but never used
 [2026-01-13 02:48:26] [WARNING]   - C:\Users\selam\NEXUS-ONE\scripts\run_task_queue.ps1: Variable '$ErrorActionPreference' assigned but never used
 [2026-01-13 02:48:37] [SUCCESS] GitHub'a commit ve push yapýldý
+[2026-01-13 02:50:46] [INFO] === NEXUS-ONE Otomatik Hata Düzeltme Baþlýyor ===
