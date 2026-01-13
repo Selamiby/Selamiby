@@ -1,10 +1,6 @@
 {
   "topic": "CrewAI Multi-Agent Systems",
   "domain": "autonomous_ai_agents",
-  "learned_at": "2026-01-14T00:31:26.719875",
-  "cycle": 24,
-  "mastery_level": "Production-Ready-Code",
-  "real_code_content": null,
-  "verification_status": "Verified by NEXUS-BRAIN",
-  "implementation_guide": "Bu dosya doğrudan 'exec()' veya import ile NEXUS-ONE'a entegre edilebilir."
+  "summary": "**CrewAI Multi-Agent Systems Analizi**\n\u00d6zet: CrewAI Multi-Agent Systems, NEXUS-ONE'a entegre edilen bir mod\u00fcld\u00fcr. Bu mod\u00fcl,\u591alu ajanslar\u0131n i\u015fbirli\u011fi ve etkile\u015fimi yoluyla daha verimli ve esnek \u00e7\u00f6z\u00fcmler sunar. CrewAI Multi-Agent Systems'in entegrasyonu, NEXUS-ONE'un karar alma ve problem \u00e7\u00f6zme yeteneklerini \u00f6nemli \u00f6l\u00e7\u00fcde geli\u015ftirir.\nTeknik Katk\u0131:\n*Birden fazla ajans\u0131n e\u015fzamanl\u0131 \u00e7al\u0131\u015fmas\u0131n\u0131 sa\u011flar\n* \u0130\u015fbirlikli \u00f6\u011frenme ve problem \u00e7\u00f6zme yetenekleri sunar\n* Karar alma s\u00fcre\u00e7lerini h\u0131zland\u0131r\u0131r ve optimize eder\n* Farkl\u0131 senaryolara adapte olmas\u0131n\u0131 sa\u011flar",
+  "learned_at": "2026-01-14T02:24:41.715685"
 }
