@@ -58,18 +58,122 @@ function Test-SystemHealth {
 }
 
 function Invoke-GitSync {
-    Write-AdvLog "Git senkronizasyonu kontrol ediliyor..." "INFO" "GIT"
-    # Basit bir git status check (Hata almamak için güvenli yöntem)
-    & git add . 2>$null
-    & git commit -m "NEXUS-AUTO-UPDATE" 2>$null
-    & git push 2>$null
-    return $true
+    $syncScriptPath = Join-Path $PSScriptRoot "autonomous_sync_v2.ps1"
+    Write-AdvLog "Gelişmiş Git senkronizasyonu başlatılıyor..." "INFO" "GIT"
+    
+    if (-not (Test-Path $syncScriptPath)) {
+        Write-AdvLog "autonomous_sync_v2.ps1 bulunamadı. Senkronizasyon atlanıyor." "ERROR" "GIT"
+        return $false
+    }
+    
+    try {
+        $processInfo = New-Object System.Diagnostics.ProcessStartInfo
+        $processInfo.FileName = "powershell.exe"
+        $processInfo.Arguments = "-ExecutionPolicy Bypass -File `"$syncScriptPath`""
+        $processInfo.RedirectStandardOutput = $true
+        $processInfo.RedirectStandardError = $true
+        $processInfo.UseShellExecute = $false
+        $processInfo.CreateNoWindow = $true
+        
+        $process = New-Object System.Diagnostics.Process
+        $process.StartInfo = $processInfo
+        $process.Start() | Out-Null
+        
+        $output = $process.StandardOutput.ReadToEnd()
+        $errorOutput = $process.StandardError.ReadToEnd()
+        
+        $process.WaitForExit()
+        
+        if ($output) { $output.Split("`n") | ForEach-Object { Write-AdvLog $_ "DEBUG" "GIT_SYNC" } }
+        
+        if ($process.ExitCode -ne 0) {
+            throw "Git senkronizasyon betiği hata koduyla ($($process.ExitCode)) sonlandı. Hata: $errorOutput"
+        }
+        
+        Write-AdvLog "Git senkronizasyonu başarıyla tamamlandı." "SUCCESS" "GIT"
+        return $true
+    }
+    catch {
+        Write-AdvLog "Git senkronizasyonu sırasında kritik hata: $_" "ERROR" "GIT"
+        return $false
+    }
+}
+
+function Invoke-PythonScript {
+    param(
+        [string]$ScriptName,
+        [string]$Arguments,
+        [int]$TimeoutSeconds = 120
+    )
+    $scriptPath = Join-Path $PSScriptRoot $ScriptName
+    $componentName = ($ScriptName -split '\.')[0].ToUpper()
+    
+    if (-not (Test-Path $scriptPath)) {
+        Write-AdvLog "$ScriptName bulunamadı." "ERROR" $componentName
+        return $false
+    }
+    
+    Write-AdvLog "$ScriptName başlatılıyor... Argümanlar: $Arguments" "INFO" $componentName
+    
+    try {
+        $processInfo = New-Object System.Diagnostics.ProcessStartInfo
+        $processInfo.FileName = "python.exe" # Assuming python is in PATH
+        $processInfo.Arguments = "`"$scriptPath`" $Arguments"
+        $processInfo.RedirectStandardOutput = $true
+        $processInfo.RedirectStandardError = $true
+        $processInfo.UseShellExecute = $false
+        $processInfo.CreateNoWindow = $true
+        $processInfo.StandardOutputEncoding = [System.Text.Encoding]::UTF8
+        $processInfo.StandardErrorEncoding = [System.Text.Encoding]::UTF8
+        
+        $process = New-Object System.Diagnostics.Process
+        $process.StartInfo = $processInfo
+        $process.Start() | Out-Null
+        
+        if (-not $process.WaitForExit($TimeoutSeconds * 1000)) {
+            $process.Kill()
+            throw "$ScriptName zaman aşımına uğradı ($($TimeoutSeconds)s). Sonlandırıldı."
+        }
+        
+        $output = $process.StandardOutput.ReadToEnd()
+        $errorOutput = $process.StandardError.ReadToEnd()
+        
+        if ($output) { $output.Split("`n") | ForEach-Object { if ($_.Trim()) { Write-AdvLog $_ "DEBUG" $componentName } } }
+        
+        if ($process.ExitCode -ne 0) {
+            throw "$ScriptName hata koduyla ($($process.ExitCode)) sonlandı. Hata: $errorOutput"
+        }
+        
+        Write-AdvLog "$ScriptName başarıyla tamamlandı." "SUCCESS" $componentName
+        return $true
+    }
+    catch {
+        Write-AdvLog "$ScriptName çalıştırılırken kritik hata: $_" "ERROR" $componentName
+        return $false
+    }
 }
 
 function Invoke-AutonomousTasks {
     param([int]$CycleCount)
-    Write-AdvLog "Görevler işleniyor..." "INFO" "TASK"
-    return @{ "Task1" = $true; "Task2" = $true }
+    
+    Write-AdvLog "Gerçek otonom görevler yürütülüyor..." "INFO" "TASK_RUNNER"
+    $results = [ordered]@{}
+    
+    # Her döngüde çalışır
+    $results['AdvancedFeatures'] = Invoke-PythonScript -ScriptName "nexus_advanced_features.py"
+    
+    # Her 3 döngüde bir çalışır
+    if (($CycleCount % 3) -eq 0) {
+        $results['AutoHealer'] = Invoke-PythonScript -ScriptName "nexus_auto_healer.py"
+    }
+    
+    # Her 5 döngüde bir çalışır
+    if (($CycleCount % 5) -eq 0) {
+        $results['SuperLearner'] = Invoke-PythonScript -ScriptName "nexus_super_learner.py" -Arguments "--mode=aggressive --include-nexus"
+    }
+    
+    Write-AdvLog "Tüm otonom görevler tamamlandı." "INFO" "TASK_RUNNER"
+    return $results
 }
 
 function Register-ShutdownHandler {
