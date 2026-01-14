@@ -64,7 +64,7 @@ class EthereumClient(BlockchainBase):
         self.network = "sepolia"
         self.rpc_url = "https://sepolia.infura.io/v3/YOUR_PROJECT_ID"
         self.gas_price_multiplier = 1.0
-        
+
         # Nexus Config'den kullanıcı cüzdanını yükle
         try:
             config_path = Path("nexus_one_config.json")
