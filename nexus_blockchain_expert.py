@@ -24,7 +24,7 @@ class BlockchainExpert:
 
     def generate_high_yield_proposal(self, target_platform="Upwork"):
         """Creates a winning proposal for 2026's RWA and AI-DeFi trends."""
-        
+
         proposal = {
             "title": "Expert Solidity Architect | AI-Integrated DeFi & RWA Specialist",
             "summary": (
@@ -41,17 +41,17 @@ class BlockchainExpert:
             "estimated_value": "$5,000 - $15,000 per project",
             "unique_selling_point": "NEXUS-ONE uses autonomous cross-chain analysis to detect MEV risks before deployment."
         }
-        
+
         file_name = self.output_path / f"blockchain_proposal_{int(time.time())}.json"
         with open(file_name, "w", encoding="utf-8") as f:
             json.dump(proposal, f, indent=4)
-            
+
         print(f"✅ High-yield proposal generated: {file_name}")
         return proposal
 
     def generate_core_logic_sample(self):
         """Generates a sample Solidity contract for an AI-Integrated Optimizer."""
-        
+
         solidity_code = """
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
@@ -94,11 +94,11 @@ contract NexusAgenticOptimizer is Ownable {
     }
 }
         """
-        
+
         file_name = self.output_path / "NexusAgenticOptimizer.sol"
         with open(file_name, "w") as f:
             f.write(solidity_code)
-            
+
         print(f"✅ Core logic sample created: {file_name}")
 
 if __name__ == "__main__":
