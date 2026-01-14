@@ -37,7 +37,7 @@ class NexusGuardian:
         # Önce portu temizle
         os.system("taskkill /F /IM streamlit.exe /T")
         time.sleep(2)
-        
+
         # Dashboard'u yeniden başlat
         subprocess.Popen(["streamlit", "run", "nexus_dashboard_v3.py", "--server.port", "8501", "--server.address", "127.0.0.1"])
         print("✅ PANEL YENİDEN BAŞLATILDI. STABİLİTE BEKLENİYOR.")
@@ -52,7 +52,7 @@ class NexusGuardian:
                     self.retry_count = 0
             else:
                 self.retry_count = 0 # Her şey yolundaysa sıfırla
-            
+
             time.sleep(10) # 10 saniyede bir kontrol et
 
 if __name__ == "__main__":

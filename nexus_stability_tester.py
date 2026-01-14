@@ -78,12 +78,12 @@ class NexusStabilityTester:
         self.test_file_integrity()
         self.check_port_conflict()
         self.test_sovereign_logic()
-        
+
         # Sonuçları kaydet
         report_path = self.workspace / "logs" / "stability_test_report.json"
         report_path.parent.mkdir(exist_ok=True)
         report_path.write_text(json.dumps(self.test_log, indent=4, ensure_ascii=False), encoding="utf-8")
-        
+
         success_rate = len([t for t in self.test_log if t["status"] == "BAŞARILI"]) / len(self.test_log)
         print(f"\n📊 TEST TAMAMLANDI. Başarı Oranı: %{success_rate*100:.1f}")
         return success_rate
