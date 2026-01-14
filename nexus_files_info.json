@@ -1,0 +1,858 @@
+[
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\copilot_nexus_collaboration.py",
+        "Length": 12918
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\diagnose_nexus_app.py",
+        "Length": 1697
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\NexusAccelerator.py",
+        "Length": 2781
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\NexusBrain.py",
+        "Length": 2000
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_3d_content_generator.py",
+        "Length": 553
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_ab_tester_config_healer.py",
+        "Length": 9631
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_accelerator.py",
+        "Length": 2339
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_accelerator_neural.py",
+        "Length": 2830
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_account_automator.py",
+        "Length": 18579
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_adobe_stock_generator.py",
+        "Length": 9224
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_advanced_ai.py",
+        "Length": 6656
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_advanced_automation.py",
+        "Length": 7304
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_advanced_features.py",
+        "Length": 7205
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_advanced_visuals.py",
+        "Length": 1217
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_agent_factory.py",
+        "Length": 7252
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_aggressive_improver.py",
+        "Length": 7691
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_ai_content_generator.py",
+        "Length": 16674
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_analysis_batch.py",
+        "Length": 2360
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_analytics_dashboard.py",
+        "Length": 5084
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_api_server.py",
+        "Length": 13614
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_app_wrapper.py",
+        "Length": 1487
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_asset_pipeline.py",
+        "Length": 8625
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_assistant_center.py",
+        "Length": 2317
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_autonomous_authority.py",
+        "Length": 17411
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_autonomous_coding_lesson.py",
+        "Length": 3096
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_autonomous_director.py",
+        "Length": 21459
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_autonomous_game_factory.py",
+        "Length": 15272
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_auto_healer.py",
+        "Length": 13998
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_blockchain_expert.py",
+        "Length": 3891
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_blockchain_nft.py",
+        "Length": 14006
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_brain.py",
+        "Length": 14133
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_bug_bounty_hunter.py",
+        "Length": 5783
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_cerebro.py",
+        "Length": 3748
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_ci_cd.py",
+        "Length": 3082
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_cloud_sync_codegen.py",
+        "Length": 10812
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_complete_game_builder.py",
+        "Length": 8950
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_computer_controller.py",
+        "Length": 7957
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_consolidator.py",
+        "Length": 3193
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_continuous_improver.py",
+        "Length": 11589
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_controller_engine_game.py",
+        "Length": 7584
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_copilot_interaction.py",
+        "Length": 7451
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_core_integrator.py",
+        "Length": 1980
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_cpu_guardian.py",
+        "Length": 7246
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_crash_storage.py",
+        "Length": 10227
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_daemon.py",
+        "Length": 5289
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_daily_summary.py",
+        "Length": 1227
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_dashboard_v2.py",
+        "Length": 7395
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_dashboard_v3.py",
+        "Length": 14479
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_earning_bridge.py",
+        "Length": 2077
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_evolution.py",
+        "Length": 10689
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_feature_auto_impl.py",
+        "Length": 5886
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_final_protocol.py",
+        "Length": 6282
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_final_touch.py",
+        "Length": 15811
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_game_backend.py",
+        "Length": 8795
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_game_tools.py",
+        "Length": 3068
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_generate_report.py",
+        "Length": 2222
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_git_auto_sync.py",
+        "Length": 3824
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_global_intel.py",
+        "Length": 3150
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_graduation_accelerator.py",
+        "Length": 2761
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_guardian.py",
+        "Length": 3175
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_guardian_v4.py",
+        "Length": 2027
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_hardware_optimizer.py",
+        "Length": 1760
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_hypercore.py",
+        "Length": 3366
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_hypergraph.py",
+        "Length": 1536
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_hyperoptimizer.py",
+        "Length": 3173
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_hyper_evolver.py",
+        "Length": 1934
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_hyper_runner.py",
+        "Length": 3284
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_idle_rpg.py",
+        "Length": 8068
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_infinite_learner.py",
+        "Length": 14535
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_innovation_engine.py",
+        "Length": 5078
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_instant_worker.py",
+        "Length": 3805
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_integration_test.py",
+        "Length": 4107
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_intelligence_score.py",
+        "Length": 8207
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_language_master_accelerator.py",
+        "Length": 3785
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_learner.py",
+        "Length": 7944
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_learning_tracker.py",
+        "Length": 2476
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_master_orchestrator.py",
+        "Length": 14862
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_mb_engine.py",
+        "Length": 3244
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_meta_learner.py",
+        "Length": 2111
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_mmo_sharding.py",
+        "Length": 6459
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_mobile_forge.py",
+        "Length": 2586
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_multimodal.py",
+        "Length": 2598
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_multiplayer_sync.py",
+        "Length": 4012
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_multi_learner.py",
+        "Length": 5087
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_neural_coder.py",
+        "Length": 2102
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_neuroarch.py",
+        "Length": 2438
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_neurocore.py",
+        "Length": 1730
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_neurograph.py",
+        "Length": 2335
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_neurosurge.py",
+        "Length": 2631
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_neuro_architect.py",
+        "Length": 4232
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_nlp.py",
+        "Length": 2738
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_notifier_db_logger.py",
+        "Length": 9092
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_npc_generator.py",
+        "Length": 2738
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_one.py",
+        "Length": 5032
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_performance_profiler.py",
+        "Length": 9665
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_periodic_report.py",
+        "Length": 8362
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_playtest_bot.py",
+        "Length": 4017
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_procedural_generation.py",
+        "Length": 6900
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_production_evolver.py",
+        "Length": 2618
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_quantum_assimilator.py",
+        "Length": 4979
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_quantum_firewall.py",
+        "Length": 4852
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_realtime_worker.py",
+        "Length": 9247
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_real_asset_factory.py",
+        "Length": 4677
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_real_asset_generator.py",
+        "Length": 20272
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_real_work_engine.py",
+        "Length": 5357
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_real_world_test.py",
+        "Length": 2038
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_resilience_test.py",
+        "Length": 2577
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_resource_guard.py",
+        "Length": 7437
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_resource_monitor.py",
+        "Length": 4855
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_revenue_hunter.py",
+        "Length": 17533
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_rpg_mobile.py",
+        "Length": 181
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_security.py",
+        "Length": 12485
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_security_scanner.py",
+        "Length": 2620
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_self_augmentor.py",
+        "Length": 2825
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_self_healer.py",
+        "Length": 4424
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_self_learner.py",
+        "Length": 23414
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_self_updater.py",
+        "Length": 13403
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_sovereign_core.py",
+        "Length": 4115
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_sovereign_production.py",
+        "Length": 4311
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_sovereign_server.py",
+        "Length": 10673
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_stability_tester.py",
+        "Length": 3762
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_start.py",
+        "Length": 1448
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_story_architect.py",
+        "Length": 2519
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_strategist.py",
+        "Length": 3385
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\NEXUS_SUMMARY.py",
+        "Length": 6553
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_super.py",
+        "Length": 4163
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_super_healer.py",
+        "Length": 3961
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_super_learner.py",
+        "Length": 20216
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_swarm_worker.py",
+        "Length": 3738
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_task_orchestrator.py",
+        "Length": 3980
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_unified_control.py",
+        "Length": 11264
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_v3_test.py",
+        "Length": 2854
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_vision_curator.py",
+        "Length": 2571
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_visual_showcase.py",
+        "Length": 3507
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_vr_ar_support.py",
+        "Length": 11547
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_v_3d.py",
+        "Length": 8786
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_watchdog_restart.py",
+        "Length": 5141
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\start_nexus_hyper.py",
+        "Length": 3233
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\archive\\nexus_auto_healer_v2.py",
+        "Length": 3258
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\archive\\nexus_batch_200_analysis.py",
+        "Length": 2289
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\archive\\nexus_batch_analysis_100.py",
+        "Length": 2496
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\archive\\nexus_copilot_real_collaboration.py",
+        "Length": 10323
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\archive\\nexus_game_engine_controller.py",
+        "Length": 7255
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\archive\\nexus_neural_accelerator.py",
+        "Length": 2830
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\generated\\nexus_demo_script.py",
+        "Length": 521
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_advanced_graphics_vision_1768358977.py",
+        "Length": 3436
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_advanced_graphics_vision_1768371658.py",
+        "Length": 2086
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_advanced_graphics_vision_1768381646.py",
+        "Length": 2516
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_agent_orchestration_1768366216.py",
+        "Length": 2420
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_agent_orchestration_1768370748.py",
+        "Length": 2250
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_autonomous_intelligence_1768362596.py",
+        "Length": 2963
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_autonomous_intelligence_1768380713.py",
+        "Length": 3511
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_competitive_features_1768358074.py",
+        "Length": 2167
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_competitive_features_1768389800.py",
+        "Length": 2383
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_competitive_features_1768390707.py",
+        "Length": 2533
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_cyber_sovereignty_1768360786.py",
+        "Length": 1463
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_cyber_sovereignty_1768365311.py",
+        "Length": 2148
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_cyber_sovereignty_1768387985.py",
+        "Length": 1310
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_cyber_sovereignty_1768391612.py",
+        "Length": 2184
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_deep_coding_evolution_1768377093.py",
+        "Length": 6439
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_deep_coding_evolution_1768386174.py",
+        "Length": 2649
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_gaming_intelligence_1768361692.py",
+        "Length": 3734
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_gaming_intelligence_1768373471.py",
+        "Length": 2397
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_gaming_intelligence_1768378903.py",
+        "Length": 1845
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_gaming_intelligence_1768392521.py",
+        "Length": 2313
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_global_expertise_1768368030.py",
+        "Length": 3413
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_global_expertise_1768368935.py",
+        "Length": 2015
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_global_expertise_1768379808.py",
+        "Length": 2089
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_global_market_authority_1768367129.py",
+        "Length": 2688
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_global_market_authority_1768376187.py",
+        "Length": 1906
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_global_market_authority_1768388894.py",
+        "Length": 2293
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_real_world_control_1768369842.py",
+        "Length": 2192
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_real_world_control_1768372565.py",
+        "Length": 2911
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_real_world_control_1768383458.py",
+        "Length": 2234
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_revenue_optimization_1768359883.py",
+        "Length": 3970
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_revenue_optimization_1768374376.py",
+        "Length": 2507
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_revenue_optimization_1768375281.py",
+        "Length": 3021
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_revenue_optimization_1768385269.py",
+        "Length": 3589
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_revenue_optimization_1768387080.py",
+        "Length": 3129
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_social_engineered_growth_1768363501.py",
+        "Length": 1905
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_social_engineered_growth_1768364406.py",
+        "Length": 3891
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_social_engineered_growth_1768377999.py",
+        "Length": 2350
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_social_engineered_growth_1768382552.py",
+        "Length": 2895
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_social_engineered_growth_1768384363.py",
+        "Length": 3526
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\nexus_modules\\nexus_evolution_social_engineered_growth_1768393432.py",
+        "Length": 2607
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_architecture.py",
+        "Length": 1368
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_brain.py",
+        "Length": 4063
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_combat.py",
+        "Length": 3392
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_database.py",
+        "Length": 4372
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_economy.py",
+        "Length": 3426
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_factions.py",
+        "Length": 4453
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_graphics.py",
+        "Length": 3394
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_humanized.py",
+        "Length": 3342
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_infinite.py",
+        "Length": 2516
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_job.py",
+        "Length": 2456
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_knowledge.py",
+        "Length": 2673
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_leveling.py",
+        "Length": 3889
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_multiplayer.py",
+        "Length": 1601
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_network.py",
+        "Length": 5238
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_optimization.py",
+        "Length": 2162
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_platform.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_quality.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_revenue.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_sound.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_third-party.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_unique.py",
+        "Length": 1864
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_visual.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_world.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_x-factor.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_yield.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_zen.py",
+        "Length": 59
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\quantum_projects\\nexus_connect\\nexus_connect_core.py",
+        "Length": 4554
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\quantum_projects\\nexus_social\\nexus_social_core.py",
+        "Length": 2592
+    },
+    {
+        "FullName": "C:\\Users\\selam\\NEXUS-ONE\\quantum_projects\\nexus_stream\\nexus_stream_core.py",
+        "Length": 4392
+    }
+]

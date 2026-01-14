@@ -1,0 +1,11 @@
+{
+  "server_auth": true,
+  "prediction": "client_side_dead_reckoning",
+  "sync_vars": [
+    "position",
+    "rotation",
+    "attack_dir",
+    "health"
+  ],
+  "endpoint": "/mp/update"
+}

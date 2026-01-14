@@ -1,0 +1,10 @@
+{
+    "header": {
+        "from": "did:nexus:718df400b61d7d04d2a069e0af5ae6eb",
+        "to": "did:nexus:global_node",
+        "timestamp": 1768405110.1723905,
+        "version": "1.0.EVO"
+    },
+    "payload": "umcX6j36czMOoyjcJvGB4wr23tejMrAfZ59OsF2UyW7kz0pJthUwZqs3EchjoWMQ",
+    "signature": "86e24168aecf02a2e673ffa3bf2021a81663940ca1dfd295a2578d31f167dff5"
+}

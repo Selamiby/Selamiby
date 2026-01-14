@@ -1,0 +1,19 @@
+{
+  "top_performers": [
+    "Last War: Survival",
+    "Whiteout Survival",
+    "Legend of Mushroom",
+    "Royal Match"
+  ],
+  "high_revenue_mechanics": [
+    "Hybrid UA (Casual mini-games leading to 4X meta)",
+    "Equipment-based Gacha (Continuous dopamine loops)",
+    "Monthly Subscription Cards (High retention)",
+    "Clash-based Social Pressure (Guild wars)",
+    "DTC Store Integration (Bypassing 30% store fee)"
+  ],
+  "chinese_idle_rpg_model": {
+    "core_loop": "Instant item drops + Auto-battle + Power score rush",
+    "monetization": "Flash sales + VIP tiers + Limited time meta-shifts"
+  }
+}

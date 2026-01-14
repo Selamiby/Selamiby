@@ -1,0 +1,29 @@
+{
+  "material_name": "Cyberpunk_Alloy",
+  "shading_model": "Lit",
+  "channels": {
+    "albedo": {
+      "map": "Cyberpunk_Alloy_basecolor.png",
+      "color_space": "sRGB"
+    },
+    "metallic": {
+      "value": 0.8,
+      "map": "Cyberpunk_Alloy_metallic.png"
+    },
+    "roughness": {
+      "value": 0.2,
+      "map": "Cyberpunk_Alloy_roughness.png"
+    },
+    "normal": {
+      "map": "Cyberpunk_Alloy_normal.png",
+      "intensity": 1.0
+    },
+    "ao": {
+      "map": "Cyberpunk_Alloy_ao.png"
+    }
+  },
+  "features": [
+    "RayTracing_Reflection",
+    "Global_Illumination_V3"
+  ]
+}

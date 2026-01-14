@@ -1,0 +1,38 @@
+[
+    {
+        "test": "Dosya Bütünlüğü: nexus_dashboard_v3.py",
+        "status": "BAŞARILI",
+        "message": "Dosya mevcut ve erişilebilir.",
+        "time": "Wed Jan 14 22:48:29 2026"
+    },
+    {
+        "test": "Dosya Bütünlüğü: nexus_brain.py",
+        "status": "BAŞARILI",
+        "message": "Dosya mevcut ve erişilebilir.",
+        "time": "Wed Jan 14 22:48:29 2026"
+    },
+    {
+        "test": "Dosya Bütünlüğü: nexus_sovereign_core.py",
+        "status": "BAŞARILI",
+        "message": "Dosya mevcut ve erişilebilir.",
+        "time": "Wed Jan 14 22:48:29 2026"
+    },
+    {
+        "test": "Dosya Bütünlüğü: nexus_active_work.json",
+        "status": "BAŞARILI",
+        "message": "Dosya mevcut ve erişilebilir.",
+        "time": "Wed Jan 14 22:48:29 2026"
+    },
+    {
+        "test": "Port Denetimi: 8501",
+        "status": "UYARI",
+        "message": "Port 8501 şu an meşgul. Bir süreç çalışıyor.",
+        "time": "Wed Jan 14 22:48:29 2026"
+    },
+    {
+        "test": "Zeka Çekirdeği Testi",
+        "status": "BAŞARILI",
+        "message": "Yanıt süresi: 0.00ms",
+        "time": "Wed Jan 14 22:48:29 2026"
+    }
+]

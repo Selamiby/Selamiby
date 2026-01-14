@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "nextjs_14_architecture",
+        "name": "Next.js 14/15 Pro",
+        "layer": "Intelligence UI",
+        "concepts": [
+            "Server Components",
+            "Streaming SSR",
+            "Hydration-Free UI"
+        ],
+        "description": "Y\u00fcksek yo\u011funluklu veri panelleri ve ak\u0131c\u0131 aray\u00fczler."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:05 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}

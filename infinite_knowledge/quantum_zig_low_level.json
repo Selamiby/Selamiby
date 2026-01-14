@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "zig_low_level",
+        "name": "Zig Performance",
+        "layer": "System Transparency",
+        "concepts": [
+            "Comptime",
+            "No hidden allocations",
+            "C interop"
+        ],
+        "description": "Tam \u015feffafl\u0131k ve s\u0131f\u0131r gizli y\u00fck."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:04 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}

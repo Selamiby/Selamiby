@@ -1,0 +1,8 @@
+[16104:17080:0114/143622.493:INFO:components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc:206] No machine level policy manager exists.
+[11008:12000:0114/143622.648:ERROR:gpu\ipc\service\gpu_channel_manager.cc:911] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[16104:11188:0114/143622.867:WARNING:chrome\browser\media\router\discovery\discovery_network_list_win.cc:228] Failed to open WLAN handle: Hizmet başlatılmadı. (0x426)
+[11008:12000:0114/143622.873:ERROR:gpu\ipc\service\gpu_channel_manager.cc:911] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[11008:12000:0114/143623.099:ERROR:gpu\ipc\service\gpu_channel_manager.cc:911] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[16104:17080:0114/143625.791:INFO:CONSOLE:0] "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/css". Strict MIME type checking is enforced for module scripts per HTML spec.", source: https://huggingface.co/docs/transformers/v5.0.0rc2/en/_app/immutable/assets/0.e3b0c442.css (0)
+[9528:9480:0114/143635.325:WARNING:net\extras\sqlite\sqlite_persistent_store_backend_base.cc:176] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:226 to client_task_runner_.
+[9528:9480:0114/143635.325:WARNING:net\extras\sqlite\sqlite_persistent_store_backend_base.cc:176] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:226 to client_task_runner_.

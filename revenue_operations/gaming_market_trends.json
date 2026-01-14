@@ -1,0 +1,20 @@
+{
+  "pc_steam": {
+    "top_genre": "Survival Crafting / Extraction Shooters",
+    "trending_mechanics": [
+      "Deep Base Building",
+      "Skill-based Directional Combat",
+      "Procedural World Events"
+    ],
+    "monetization": "Premium / Cosmetic DLC"
+  },
+  "mobile": {
+    "top_genre": "Hyper-casual / Hybrid-casual RPG",
+    "trending_mechanics": [
+      "One-hand Controls",
+      "In-app Ad Integration",
+      "Idle Progression Systems"
+    ],
+    "monetization": "In-app Purchases / Reward Ads"
+  }
+}

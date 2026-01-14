@@ -1,0 +1,31 @@
+{
+    "version": 1.0,
+    "paradigm": "QUANTUM-NEURAL-SYMBOLIC",
+    "synapses": {
+        "Otonom Karar Verme": {
+            "concept": "Otonom Karar Verme",
+            "weight": 0.1919612185238878,
+            "derived_from": [],
+            "timestamp": "Wed Jan 14 22:46:25 2026"
+        },
+        "Matris Manipülasyonu": {
+            "concept": "Matris Manipülasyonu",
+            "weight": 0.009727309707601321,
+            "derived_from": [],
+            "timestamp": "Wed Jan 14 22:46:25 2026"
+        },
+        "Self-Coding-Logic": {
+            "concept": "Self-Coding-Logic",
+            "weight": 0.633242649590266,
+            "derived_from": [],
+            "timestamp": "Wed Jan 14 22:46:26 2026"
+        },
+        "Zevksiz Hata Ayıklama": {
+            "concept": "Zevksiz Hata Ayıklama",
+            "weight": 0.058877765754437865,
+            "derived_from": [],
+            "timestamp": "Wed Jan 14 22:46:26 2026"
+        }
+    },
+    "experience_score": 0.04
+}

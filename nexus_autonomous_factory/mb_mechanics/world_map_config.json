@@ -1,0 +1,12 @@
+{
+  "factions": [
+    "Nordlar",
+    "Svadya",
+    "Kergit",
+    "Rodok"
+  ],
+  "settlements": 24,
+  "economy": "Dynamic_Nexus_Trade_v2",
+  "time_scale": 1.0,
+  "is_persistent": true
+}

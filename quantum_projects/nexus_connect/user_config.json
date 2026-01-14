@@ -1,0 +1,6 @@
+{
+    "did": "did:nexus:718df400b61d7d04d2a069e0af5ae6eb",
+    "secret_seed": "890c52afe777e193522c11e6c0860aa98de5c3768e5293a53ca020a68f96f054",
+    "created_at": 1768404891.8047976,
+    "security_level": "ECC-QUANTUM-AES256"
+}

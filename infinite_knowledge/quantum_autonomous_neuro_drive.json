@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "autonomous_neuro_drive",
+        "name": "Neuro-Drive Autonomous Robotics",
+        "layer": "Robotic Intelligence",
+        "concepts": [
+            "SLAM 2.0",
+            "Biomimetic Motion Pathfinding",
+            "Edge-Robot Reasoning"
+        ],
+        "description": "Otonom robotlar\u0131n kendi kararlar\u0131n\u0131 vermesini sa\u011flayan n\u00f6ral s\u00fcr\u00fc\u015f dili."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:10 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}

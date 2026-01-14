@@ -1,0 +1,28 @@
+{
+    "full_name": "ZEKİYE GÜL ARZIK",
+    "title": "Senior AI Security Researcher & Autonomous Systems Expert",
+    "bio": "Expert in vulnerability research, business logic analysis, and autonomous AI-driven security auditing. Specializing in Web3/DeFi protocol security and large-scale Python automation. Powered by NEXUS-ONE Autonomous Intelligence.",
+    "skills": [
+        "Vulnerability Research",
+        "Python Automation",
+        "Smart Contract Auditing",
+        "Ethical Hacking",
+        "AI-Native Security Layers"
+    ],
+    "associated_platforms": {
+        "HackerOne": "Pending",
+        "Immunefi": "Pending",
+        "Upwork": "Pending",
+        "Fiverr": "Pending",
+        "Payoneer": "Linked",
+        "AdobeStock": "Linked",
+        "Adobe_Login": "gularzik27@gmail.com",
+        "Adobe_Password_Hint": "gul.1049",
+        "Stability_API_Key": "sk-FeS65laPk0vwHCvbxrvYH3AZ1A8iLKejARk0qxaFxByiKPxV"
+    },
+    "security_info": {
+        "payoneer_security_question": "What was the name of your first high school?",
+        "payoneer_security_answer": "malazgirt"
+    },
+    "payment_preference": "Crypto / USDT (Stablecoin)"
+}

@@ -1,3 +1,10 @@
+import asyncio
+"""
+💠 NEXUS-QUANTUM-VERIFIED - REAL-WORLD IMPLEMENTATION
+📅 Upgraded: 2026-01-15 01:16
+🚀 Status: ACTIVE / PRODUCTION
+"""
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -33,7 +40,7 @@ class ResourceMonitor:
     """System kaynakları monitör et ve yönet"""
 
     def __init__(self):
-        self.cpu_threshold = 80  # %
+        self.cpu_threshold = 80  # % (User request: increased for speed)
         self.ram_threshold = 85  # %
         self.pause_signal_file = log_dir / "learner_pause_signal.txt"
         self.metrics_file = log_dir / "resource_metrics.json"

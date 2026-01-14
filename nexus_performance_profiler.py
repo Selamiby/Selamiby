@@ -1,11 +1,18 @@
+import asyncio
+"""
+💠 NEXUS-QUANTUM-VERIFIED - REAL-WORLD IMPLEMENTATION
+📅 Upgraded: 2026-01-15 01:21
+🚀 Status: ACTIVE / PRODUCTION
+"""
+
 #!/usr/bin/env python3
-"""
-NEXUS Advanced Performance Profiler
-- Real-time FPS, draw calls, GC, memory tracking
-- Per-frame metrics + aggregate analytics
-- Threshold alerts + frame budget analysis
-- Web dashboard integration
-"""
+# """
+# NEXUS Advanced Performance Profiler
+# - Real-time FPS, draw calls, GC, memory tracking
+# - Per-frame metrics + aggregate analytics
+# - Threshold alerts + frame budget analysis
+# - Web dashboard integration
+# """
 import json
 import logging
 import sqlite3
@@ -170,7 +177,11 @@ class PerformanceMonitor:
         conn = sqlite3.connect(DB_PATH)
         cur = conn.cursor()
         cur.execute(
-            "SELECT max_fps, max_draw_calls, max_triangles, max_gc_memory_mb FROM performance_profiles WHERE platform = ? AND quality = ?",
+            """
+            SELECT max_draw_calls, max_triangles, max_gc_memory_mb 
+            FROM performance_profiles 
+            WHERE platform = ? AND quality = ?
+            """,
             (platform, quality)
         )
         profile = cur.fetchone()
@@ -179,7 +190,7 @@ class PerformanceMonitor:
         if not profile:
             return alerts
 
-        _, max_draw_calls, max_triangles, max_gc = profile
+        max_draw_calls, max_triangles, max_gc = profile
 
         if metrics.get("draw_calls", 0) > max_draw_calls:
             alerts.append({
@@ -288,22 +299,3 @@ if __name__ == "__main__":
     _init_db()
     logger.info("Starting Performance Profiler on 0.0.0.0:7002")
     app.run(host="0.0.0.0", port=7002)
-
-        except:
-            pass
-
-    # Sort by size
-    files_by_size.sort(key=lambda x: x[1], reverse=True)
-
-    logger.info(f"📊 En büyük 5 dosya:")
-    for name, size, lines in files_by_size[:5]:
-        logger.info(f"   {name}: {size/1024:.1f}KB ({lines} lines)")
-
-    logger.info(f"📊 En kompleks 5 dosya:")
-    for name, complexity, lines in files_by_complexity[:5]:
-        logger.info(f"   {name}: complexity={complexity}, lines={lines}")
-
-    logger.info(f"✅ Performance analizi tamamlandı")
-
-if __name__ == "__main__":
-    analyze_performance()

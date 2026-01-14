@@ -1,0 +1,10 @@
+{
+  "total_earned": 0.0,
+  "pending_payments": 0.0,
+  "active_contracts": [],
+  "passive_income_streams": {
+    "GPU_Mining_Lease": 0.0,
+    "NFT_Royalties": 0.0,
+    "YouTube_AdSense_Est": 0.0
+  }
+}

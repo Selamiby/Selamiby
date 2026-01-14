@@ -1,0 +1,13 @@
+{
+    "interests": [
+        "Technology",
+        "Art",
+        "Philosophy"
+    ],
+    "avoid_topics": [
+        "Polarized Politics",
+        "Doomscrolling"
+    ],
+    "max_screen_time_daily": 60,
+    "current_fatigue_index": 0.25
+}

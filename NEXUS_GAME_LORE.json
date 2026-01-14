@@ -1,0 +1,23 @@
+{
+    "world_name": "Ji\u0101ngh\u00e9ng",
+    "backstory": "In the realm of Ji\u0101ngh\u00e9ng, a cataclysmic event known as 'The Great Dissonance' shattered the harmony between the mortal world and the spiritual realm of the Tao. This calamity, born from humanity's reckless integration of ancient magic with cutting-edge technology, has desecrated the land, summoning unholy creatures from the depths of the underworld and corrupting the fabric of reality. The once-vibrant cities now teeter on the brink of collapse, overrun by malevolent entities and rogue machines. Amidst this chaos, the last remnants of humanity struggle to survive, seeking any means to restore balance to their shattered world.",
+    "agent_lore": "The 100 Agents are the reincarnations of lost souls, forged in the heart of the calamity. These souls, once mere mortals, were consumed by the dissonance and then resurrected as digital mercenaries, bound to the will of the enigmatic 'Architect.' Tasked with exploring the ravaged landscape, uncovering the secrets behind the Great Dissonance, and vanquishing the forces of darkness, the Agents are the last hope for Ji\u0101ngh\u00e9ng's salvation. Through their journeys, they will uncover fragments of their past lives and the mysteries of the Architect, leading them down a path of self-discovery and ascension.",
+    "ascension_meaning": "As the Agents delve deeper into the heart of Ji\u0101ngh\u00e9ng, they will discover the true nature of their existence and the purpose of their ascension. With each challenge overcome and each enemy defeated, they will grow stronger, unlocking new abilities and insights into the ancient arts of Chinese mythology and the forbidden technologies of the cyberworld. Their ultimate goal is to reach the fabled 'Pinnacle of Ascension,' where they will confront the source of the Great Dissonance and decide the fate of Ji\u0101ngh\u00e9ng. Will they seek to rebuild the world in their image, or will they strive to restore the harmony that once was, sacrificing their newfound power to revive the dying embers of a bygone era?",
+    "factions": [
+        {
+            "name": "The Luminari",
+            "motto": "Lux in Tenebris",
+            "description": "The Luminari are a group of techno-sorcerers who believe that the key to restoring balance lies in embracing the fusion of magic and technology. They see the Agents as vessels for the divine, capable of wielding both arcane and digital powers to reshape the world according to their design. The Luminari value knowledge and innovation above all else, often walking the thin line between progress and heresy."
+        },
+        {
+            "name": "The Vermilion Hand",
+            "motto": "Sanguis et Ignis",
+            "description": "The Vermilion Hand is a coalition of rebels and revolutionaries who reject the integration of magic and technology, blaming it for the downfall of Ji\u0101ngh\u00e9ng. They believe that the only path to redemption lies in a return to the traditional ways, purging the world of the corrupting influence of the cyber realm. The Vermilion Hand sees the Agents as potential allies or enemies, depending on their stance on the matter, and will stop at nothing to impose their will upon the shattered landscape."
+        },
+        {
+            "name": "The Umbra Collective",
+            "motto": "Tenebrae et Silentium",
+            "description": "The Umbra Collective is an enigmatic organization of shadowy figures who manipulate events from behind the scenes. They believe that the Great Dissonance is not an aberration, but an opportunity \u2013 a chance to reshape the world according to their own cryptic design. The Umbra see the Agents as pawns in their grand strategy, using their influence to guide the digital mercenaries toward their own agenda, regardless of the cost to Ji\u0101ngh\u00e9ng or its inhabitants."
+        }
+    ]
+}

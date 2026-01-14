@@ -25,7 +25,7 @@
     "editor.minimap.enabled": false,
     "editor.cursorSmoothCaretAnimation": "off",
     "editor.smoothScrolling": false,
-    "editor.hover.enabled": false,
+    "editor.hover.enabled": "off",
     "editor.matchBrackets": "never",
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": false,

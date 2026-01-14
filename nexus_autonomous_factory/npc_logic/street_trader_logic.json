@@ -1,0 +1,27 @@
+{
+  "npc_name": "Street_Trader",
+  "personality": "Kurnaz ve Hareketli",
+  "states": {
+    "IDLE": {
+      "action": "play_animation_idle",
+      "next": "WANDER",
+      "condition": "timer_expired"
+    },
+    "WANDER": {
+      "action": "move_to_random_point",
+      "next": "IDLE",
+      "condition": "reached_target"
+    },
+    "INTERACT": {
+      "action": "look_at_player",
+      "next": "TALK",
+      "condition": "player_nearby"
+    },
+    "TALK": {
+      "action": "generate_dynamic_dialogue",
+      "next": "IDLE",
+      "condition": "dialogue_finished"
+    }
+  },
+  "ai_engine": "Nexus_Core_Brain_v1"
+}

@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "solidity_vyper",
+        "name": "Blockchain Autonomy",
+        "layer": "Mainnet Integrity",
+        "concepts": [
+            "Gas Optimization",
+            "Smart Contract Auditor",
+            "MEV Resistance"
+        ],
+        "description": "Ger\u00e7ek d\u00fcnya finansal otonomisi i\u00e7in blockchain uzmanl\u0131\u011f\u0131."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:07 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}

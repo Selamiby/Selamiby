@@ -1,0 +1,27 @@
+{
+    "exact_duplicates": [
+        [
+            "C:\\Users\\selam\\NEXUS-ONE\\nexus_accelerator_neural.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\archive\\nexus_neural_accelerator.py"
+        ],
+        [
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_platform.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_quality.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_revenue.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_sound.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_third-party.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_visual.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_world.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_x-factor.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_yield.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\production\\nexus_layer_zen.py"
+        ]
+    ],
+    "similar_files": [
+        [
+            "C:\\Users\\selam\\NEXUS-ONE\\nexus_analysis_batch.py",
+            "C:\\Users\\selam\\NEXUS-ONE\\archive\\nexus_batch_analysis_100.py",
+            0.9738151915169877
+        ]
+    ]
+}

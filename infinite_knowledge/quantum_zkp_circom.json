@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "zkp_circom",
+        "name": "Zero-Knowledge Cryptography",
+        "layer": "Privacy & Security",
+        "concepts": [
+            "zk-SNARKs",
+            "Circom Circuits",
+            "Proof Verification"
+        ],
+        "description": "Kuantum seviyesinde gizlilik ve do\u011frulama teknolojisi."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:08 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}

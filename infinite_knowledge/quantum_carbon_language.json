@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "carbon_language",
+        "name": "Carbon Language",
+        "layer": "Core Performance",
+        "concepts": [
+            "C++ Interop",
+            "Generics",
+            "Memory Safety Transition"
+        ],
+        "description": "C++'\u0131n yerini alan, Google destekli y\u00fcksek performans dili."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:05 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}

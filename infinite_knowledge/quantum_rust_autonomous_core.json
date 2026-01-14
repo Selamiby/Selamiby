@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "rust_autonomous_core",
+        "name": "Rust Systems Mastery",
+        "layer": "Autonomous Safety",
+        "concepts": [
+            "Zero-cost abstractions",
+            "Fearless concurrency",
+            "Memory safety without GC"
+        ],
+        "description": "Hataya yer vermeyen otonom sistem \u00e7ekirde\u011fi."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:03 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}

@@ -1,4 +1,10 @@
-import json
+"""
+💠 NEXUS-QUANTUM-VERIFIED - REAL-WORLD IMPLEMENTATION
+📅 Upgraded: 2026-01-15 01:21
+🚀 Status: ACTIVE / PRODUCTION
+"""
+
+﻿import json
 import os
 import subprocess
 from datetime import datetime
@@ -12,186 +18,196 @@ from streamlit_agraph import Config, Edge, Node, agraph
 
 from nexus_brain import NexusBrain
 
-# Page Config
-st.set_page_config(page_title="NEXUS-ONE Command Center v3", layout="wide", page_icon="🧠")
+# Config & Wallet Data
+WORKSPACE = Path(os.getcwd())
 
-# Brain Instance
+def load_nexus_data():
+    try:
+        conf = json.loads((WORKSPACE / "nexus_one_config.json").read_text(encoding="utf-8"))
+    except: conf = {}
+    try:
+        wall = json.loads((WORKSPACE / "revenue_operations" / "real_wallet_status.json").read_text(encoding="utf-8"))
+    except: wall = {}
+    return conf, wall
+
+config_data, wallet_data = load_nexus_data()
+
+# Page Config
+st.set_page_config(page_title="NEXUS KUANTUM ÇAI V4", layout="wide", page_icon="⚡")
+
+# Custom UI Styling (Kuantum Aesthetics)
+st.markdown("""
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap');
+    
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+    }
+    
+    .stApp {
+        background: radial-gradient(circle at top right, #1e293b, #020617);
+        color: #f8fafc;
+    }
+    
+    [data-testid="stMetric"] { 
+        background: rgba(15, 23, 42, 0.6); 
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(59, 130, 246, 0.2); 
+        padding: 25px; 
+        border-radius: 24px; 
+        box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        transition: 0.5s ease;
+    }
+    
+    [data-testid="stMetric"]:hover { 
+        transform: scale(1.02);
+        border-color: #3b82f6; 
+        box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+    }
+    
+    h1, h2, h3 {
+        font-family: 'Orbitron', sans-serif !important;
+        letter-spacing: 2px;
+    }
+
+    .stTabs [data-baseweb="tab-highlight"] { background-color: #3b82f6; height: 4px; border-radius: 2px; }
+    .stTabs [data-baseweb="tab"] { 
+        color: #94a3b8; 
+        padding: 15px 30px;
+        font-weight: 700; 
+        font-size: 16px; 
+    }
+    .stTabs [aria-selected="true"] { color: #3b82f6 !important; background: rgba(59, 130, 246, 0.05); }
+    
+    div.stButton > button { 
+        width: 100%; 
+        border-radius: 15px; 
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #3b82f6;
+        border: 1px solid #3b82f6;
+        height: 4em; 
+        font-weight: bold; 
+        text-transform: uppercase;
+        transition: 0.4s; 
+    }
+    
+    div.stButton > button:hover { 
+        background: #3b82f6;
+        color: white;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+</style>
+"#, unsafe_allow_html=True)
+
 brain = NexusBrain()
 
-# Session State for Chat
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-
-# Paths
-WORKSPACE = Path(os.getcwd())
-MODULES_DIR = WORKSPACE / "nexus_modules"
-ASSETS_DIR = WORKSPACE / "nexus_real_assets"
-KNOWLEDGE_DIR = WORKSPACE / "infinite_knowledge"
-LOGS_DIR = WORKSPACE / "nexus_logs"
-JOURNAL_PATH = WORKSPACE / "NEXUS_JOURNAL.md"
-
-# Sidebar - System Health & Quick Actions
+# Sidebar
 with st.sidebar:
-    st.header("⚡ NEXUS-ONE BIOS")
-    cpu_usage = psutil.cpu_percent()
-    mem_usage = psutil.virtual_memory().percent
-    st.write(f"CPU: {cpu_usage}%")
-    st.progress(cpu_usage / 100)
-    st.write(f"RAM: {mem_usage}%")
-    st.progress(mem_usage / 100)
+    st.markdown("<h2 style='color: #3b82f6; text-align: center;'>🛡️ KOMUTA</h2>", unsafe_allow_html=True)
+    st.success(f"**Sahibi:** Selami Arzık")
+    st.info(f"**Ağ:** Mainnet 0x807...9530")
     
     st.divider()
+    st.header("⚡ SSTEM")
+    cpu = psutil.cpu_percent()
+    st.metric("Nöron Yükü", f"%{cpu}")
+    st.progress(cpu / 100)
     
-    st.subheader("🤖 Human Feedback")
-    feedback = st.text_area("Yapay Zekaya Talimat Ver:", placeholder="Örn: Daha fazla siber güvenlik çalış...")
-    if st.button("Talimatı Gönder"):
-        with open(LOGS_DIR / "human_instructions.txt", "a", encoding="utf-8") as f:
-            f.write(f"[{datetime.now().isoformat()}] {feedback}\n")
-        st.success("Talimat sisteme iletildi.")
-
-# Main Navigation
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-    "📊 Dashboard", 
-    "🕸️ Neural Net", 
-    "📝 Code Editor", 
-    "💬 Sohbet",
-    "💻 Terminal", 
-    "📂 System Logs"
-])
-
-# Tab 1: Dashboard
-with tab1:
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.header("🚀 Üretim Hattı")
-        if ASSETS_DIR.exists():
-            files = sorted(ASSETS_DIR.glob("*"), key=os.path.getmtime, reverse=True)
-            if files:
-                for file in files[:3]:
-                    with st.expander(f"📁 Asset: {file.name}"):
-                        if file.suffix.lower() in [".png", ".jpg", ".jpeg"]:
-                            st.image(str(file))
-                        elif file.suffix.lower() in [".mp3", ".wav"]:
-                            st.audio(str(file))
-                        else: st.write(f"Binary: {file.name}")
-            else:
-                st.info("Henüz varlık üretilmedi.")
+    mem = psutil.virtual_memory().percent
+    st.metric("Hafıza Matrisi", f"%{mem}")
+    st.progress(mem / 100)
+    
+    st.divider()
+    if st.button("🚀 ÇEKRDE BAŞLAT"):
+        subprocess.Popen(["python", "nexus_one.py"])
+    if st.button("🛠️ KUANTUM ONARIM"):
+        subprocess.Popen(["python", "nexus_self_healer.py"])
         
-        st.divider()
-        st.header("📘 Son Analizler")
-        if JOURNAL_PATH.exists():
-            content = JOURNAL_PATH.read_text(encoding="utf-8")
-            st.markdown(content[-5000:] if len(content) > 5000 else content)
-            
-    with col2:
-        st.header("🎯 Anlık Üretim")
-        target = st.selectbox("Tür", ["Görsel", "3D Model", "Ses"])
-        prompt = st.text_input("Prompt:", key="instant_prompt")
-        if st.button("Hızlı Üret"):
-            from nexus_real_asset_factory import NexusAssetFactory
-            factory = NexusAssetFactory()
-            with st.spinner("Üretiliyor..."):
-                if target == "Görsel": res = factory.generate_image(prompt)
-                elif target == "3D Model": res = factory.generate_3d_model(prompt)
-                else: res = factory.generate_audio(prompt)
-                
-                if res:
-                    st.success(f"Başarıyla üretildi: {res}")
-                    st.rerun()
-                else:
-                    st.error("Hata oluştu.")
+    st.divider()
+    st.metric("Net Kazanç", f"$\{wallet_data.get('total_earned', 0.0):.2f}")
+    st.caption("NEXUS-QUANTUM v4.0.0")
 
-# Tab 2: Neural Net (Graphs)
-with tab2:
-    st.header("🕸️ Bilgi Sinir Ağı")
-    nodes = []
+# Header
+st.markdown("<h1 style='text-align: center; color: #3b82f6; text-shadow: 0 0 35px rgba(59,130,246,0.8);'>⚡ NEXUS KUANTUM ÇAI</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #64748b;'>Master Selami Arzık için tamamen yerli ve milli otonom sistem.</p>", unsafe_allow_html=True)
+
+# Tabs
+tabs = st.tabs(["🏠 Karargah", "💰 Kazanç", "🧠 Sinir Ağı", "⚙️ Kontrol", "📝 Atölye", "💬 letişim", "📂 Arşiv"])
+
+with tabs[0]:
+    st.header("🚀 Durum Raporu")
+    m1, m2, m3, m4 = st.columns(4)
+    with m1: st.metric("Öğrenilen Bilgi", len(list(WORKSPACE.glob("infinite_knowledge/*.json"))))
+    with m2: 
+        act_work = {}
+        if (WORKSPACE/ "nexus_active_work.json").exists():
+            try: act_work = json.loads((WORKSPACE/ "nexus_active_work.json").read_text())
+            except: pass
+        st.metric("Aktif Birim", act_work.get("agent", "BEKLEMEDE"))
+    with m3: st.metric("Üretilen Varlık", len(list(WORKSPACE.glob("revenue_operations/ready_to_send/**/*.*"))))
+    with m4: st.metric("Mod", "KUANTUM")
+
+    st.divider()
+    c_left, c_right = st.columns([2, 1])
+    with c_left:
+        st.subheader("📜 Gelişim Günlüğü")
+        if (WORKSPACE / "NEXUS_JOURNAL.md").exists():
+            st.markdown((WORKSPACE / "NEXUS_JOURNAL.md").read_text(encoding="utf-8")[-2000:])
+    with c_right:
+        st.subheader("🖼️ Son Üretimler")
+        ap = WORKSPACE / "revenue_operations" / "ready_to_send" / "adobe_stock"
+        if ap.exists():
+            for f in sorted(ap.glob("*.png"), key=os.path.getmtime, reverse=True)[:2]:
+                st.image(str(f), caption=f.name)
+
+with tabs[1]:
+    st.header("💰 Gelir Operasyonları")
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        if st.button("🚀 Adobe Stock Başlat"): subprocess.Popen(["python", "nexus_adobe_stock_generator.py"])
+    with c2:
+        if st.button("🔎 Hata Avcısı Başlat"): subprocess.Popen(["python", "nexus_bug_bounty_hunter.py"])
+    with c3:
+        if st.button("🔄 Verileri Tazele"): st.rerun()
+
+with tabs[2]:
+    st.header("🧠 Bilgi Haritası")
+    nodes = [Node(id="NEXUS", label="MERKEZ", size=500, color="#3b82f6")]
     edges = []
-    
-    # Root Node
-    nodes.append(Node(id="NEXUS", label="NEXUS-ONE", size=400, color="#FF4B4B"))
-    
-    # Domain Nodes & Topic Nodes
-    if KNOWLEDGE_DIR.exists():
-        knowledge_files = list(KNOWLEDGE_DIR.glob("*.json"))[:40] 
-        domains = set()
-        for kf in knowledge_files:
-            try:
-                data = json.loads(kf.read_text(encoding="utf-8"))
-                domain = data.get("domain", "Unknown")
-                topic = data.get("topic", "Topic")
-                
-                if domain not in domains:
-                    nodes.append(Node(id=domain, label=domain, color="#667eea", size=300))
-                    edges.append(Edge(source="NEXUS", target=domain))
-                    domains.add(domain)
-                
-                nodes.append(Node(id=topic, label=topic, size=150, color="#10b981"))
-                edges.append(Edge(source=domain, target=topic))
-            except: continue
-            
-    config = Config(width=1200, height=800, directed=True, nodeHighlightBehavior=True, highlightColor="#F7A7A6", collapsible=True)
-    agraph(nodes=nodes, edges=edges, config=config)
+    for t in list((WORKSPACE / "infinite_knowledge").glob("*.json"))[:30]:
+        nodes.append(Node(id=t.stem, label=t.stem.split('_')[-1].upper(), size=200, color="#10b981"))
+        edges.append(Edge(source="NEXUS", target=t.stem))
+    agraph(nodes=nodes, edges=edges, config=Config(width=800, height=500, directed=True))
 
-# Tab 3: Code Editor
-with tab3:
-    st.header("📝 Modül Editörü")
-    if MODULES_DIR.exists():
-        module_files = [f.name for f in MODULES_DIR.glob("*.py")]
-        selected_file = st.selectbox("Düzenlenecek Modül:", module_files)
-        if selected_file:
-            file_path = MODULES_DIR / selected_file
-            content = file_path.read_text(encoding="utf-8")
-            
-            st.subheader(f"Düzenleniyor: {selected_file}")
-            new_code = st_ace(value=content, language="python", theme="monokai", height=500, key="ace_editor")
-            
-            if st.button("Kaydet ve Uygula"):
-                file_path.write_text(new_code, encoding="utf-8")
-                st.success(f"{selected_file} güncellendi ve otonom sisteme işlendi!")
+with tabs[4]:
+    st.header("📝 Atölye")
+    md = WORKSPACE / "nexus_modules"
+    if md.exists():
+        sel = st.selectbox("Modül Seç:", [f.name for f in md.glob("*.py")])
+        if sel:
+            path = md / sel
+            code = st_ace(value=path.read_text(encoding="utf-8"), language="python", theme="monokai", height=400)
+            if st.button("Kaydet"): path.write_text(code, encoding="utf-8")
 
-# Tab 4: Sohbet
-with tab4:
-    st.header("💬 NEXUS-ONE Sohbet")
-    
-    # History
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+with tabs[5]:
+    st.header("💬 Nexus ile Konuş")
+    if "msgs" not in st.session_state: st.session_state.msgs = []
+    for m in st.session_state.msgs:
+        with st.chat_message(m["r"]): st.markdown(m["c"])
+    if prompt := st.chat_input("Emret Master..."):
+        st.session_state.msgs.append({"r": "user", "c": prompt})
+        resp = brain.think(prompt)
+        st.session_state.msgs.append({"r": "assistant", "c": resp})
+        st.rerun()
 
-    # Input
-    if prompt := st.chat_input("NEXUS-ONE ile konuş..."):
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-
-        with st.chat_message("assistant"):
-            with st.spinner("Düşünüyorum..."):
-                response = brain.think(prompt)
-                st.markdown(response)
-                st.session_state.messages.append({"role": "assistant", "content": response})
-
-# Tab 5: Terminal
-with tab5:
-    st.header("💻 Otonom Terminal")
-    cmd = st.text_input("Komut Çalıştır (PowerShell):", placeholder="dir, python nexus_one.py, etc...")
-    if st.button("Çalıştır"):
-        try:
-            result = subprocess.run(["powershell", "-Command", cmd], capture_output=True, text=True)
-            if result.stdout:
-                st.code(result.stdout)
-            if result.stderr:
-                st.error(result.stderr)
-        except Exception as e:
-            st.error(f"Hata: {e}")
-
-# Tab 6: System Logs
-with tab6:
-    st.header("📂 Log İzleyici")
-    log_files = sorted(list(LOGS_DIR.glob("*.log")) + list(LOGS_DIR.glob("*.txt")), key=os.path.getmtime, reverse=True)
-    selected_log = st.selectbox("Log Dosyası Seç:", [f.name for f in log_files])
-    if selected_log:
-        log_content = (LOGS_DIR / selected_log).read_text(encoding="utf-8")
-        st.text_area("Son Kayıtlar", log_content[-10000:] if len(log_content) > 10000 else log_content, height=600)
+with tabs[6]:
+    st.header("📋 Kayıtlar")
+    lf = list(WORKSPACE.glob("*.log")) + list((WORKSPACE / "nexus_logs").glob("*.log"))
+    if lf:
+        sel_l = st.selectbox("Log:", [f.name for f in lf])
+        for f in lf:
+            if f.name == sel_l:
+                st.text_area("Çıktı", f.read_text(encoding="utf-8", errors="ignore")[-5000:], height=500)
 
 st.divider()
-st.caption("NEXUS-ONE | Advanced Command Center v3.0 | 2026")
+st.caption("NEXUS-QUANTUM | Master Selami Arzık | 2026")

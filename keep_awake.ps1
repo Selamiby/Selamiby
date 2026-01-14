@@ -1,9 +1,9 @@
 # NEXUS-ONE Keep Awake Script
-# Prevents computer from sleeping during 3-hour development session
+# Prevents computer from sleeping during 24/7 autonomous sessions
 
 param(
-    [int]$DurationMinutes = 180,  # 3 hours default
-    [int]$CheckIntervalSeconds = 30
+    [int]$DurationMinutes = 525600,  # 1 year (Infinite for practical purposes)
+    [int]$CheckIntervalSeconds = 60
 )
 
 Write-Host "🚀 NEXUS-ONE Keep Awake Active - Duration: $DurationMinutes minutes" -ForegroundColor Cyan

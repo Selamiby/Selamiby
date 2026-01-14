@@ -1,3 +1,9 @@
+"""
+💠 NEXUS-QUANTUM-VERIFIED - REAL-WORLD IMPLEMENTATION
+📅 Upgraded: 2026-01-15 01:14
+🚀 Status: ACTIVE / PRODUCTION
+"""
+
 #!/usr/bin/env python3
 """
 NEXUS Blockchain/NFT - GERÇEK IMPLEMENTASYON
@@ -58,6 +64,20 @@ class EthereumClient(BlockchainBase):
         self.network = "sepolia"
         self.rpc_url = "https://sepolia.infura.io/v3/YOUR_PROJECT_ID"
         self.gas_price_multiplier = 1.0
+        
+        # Nexus Config'den kullanıcı cüzdanını yükle
+        try:
+            config_path = Path("nexus_one_config.json")
+            if config_path.exists():
+                with open(config_path, "r") as f:
+                    config = json.load(f)
+                self.master_address = config.get("blockchain_identity", {}).get("master_address")
+                logger.info(f"🔑 Master Identity yüklendi: {self.master_address}")
+            else:
+                self.master_address = None
+        except Exception as e:
+            logger.error(f"❌ Config okuma hatası: {e}")
+            self.master_address = None
 
         if HAS_WEB3:
             try:

@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "quantum_robotics_pci",
+        "name": "Physical Contact Interface (PCI)",
+        "layer": "Haptic Robotics",
+        "concepts": [
+            "Haptic Feedback Loops",
+            "Neural-Sensor Fusion",
+            "Kinetic Latency Reduction"
+        ],
+        "description": "Fiziksel temas ve robotik hissetme kodlama dili. Robotlar\u0131n dokunma duyusunu y\u00f6netir."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:10 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}

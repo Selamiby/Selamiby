@@ -1,0 +1,43 @@
+{
+    "blockchain_identity": {
+        "owner_name": "Selami Arzık",
+        "master_address": "0x807c4E5Eee5aFAF4443DE6dbef403A323A959530",
+        "network": "ethereum_mainnet",
+        "provider": "blockchain_com",
+        "active": true
+    },
+    "performance_settings": {
+        "mode": "performance",
+        "max_cpu_usage": 45,
+        "max_background_threads": 4,
+        "power_save": false,
+        "gpu_acceleration": true,
+        "logic_caching": true
+    },
+    "economy": {
+        "market_sync_interval": 30,
+        "prestige_levels": [
+            {
+                "required_level": 10
+            },
+            {
+                "required_level": 20
+            },
+            {
+                "required_level": 50
+            },
+            {
+                "required_level": 100
+            }
+        ],
+        "item_prices": {
+            "1": 500,
+            "2": 1500,
+            "3": 5000
+        },
+        "resource_exchange_rates": {
+            "1": 1.5,
+            "2": 2.0
+        }
+    }
+}

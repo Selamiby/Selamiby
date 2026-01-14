@@ -1,0 +1,16 @@
+{
+    "skill": {
+        "id": "triton_gpu",
+        "name": "Triton GPU Programming",
+        "layer": "AI Hardware Speed",
+        "concepts": [
+            "GPU Kernels",
+            "Deep Learning Compiler",
+            "Tile-based Programming"
+        ],
+        "description": "Yapay zeka modellerini do\u011frudan GPU \u00fczerinde en h\u0131zl\u0131 ko\u015fturma dili."
+    },
+    "assimilated_at": "Wed Jan 14 23:38:09 2026",
+    "status": "MASTERED",
+    "quantum_level": 4.0
+}
