@@ -332,7 +332,7 @@ class GitHubYouTubeLearner:
         # Gerçek veri: GitHub trendleri ve yerel dökümantasyon analizi
         # Simülasyon yerine gerçek problem çözme verilerine yönlendiriyoruz
         topic_data = self.search_open_source_solutions(query)
-        
+
         real_knowledge = []
         for repo in topic_data:
             real_knowledge.append({
